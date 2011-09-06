@@ -1,0 +1,147 @@
+3GPPP Technical Specification Group: Multiplexing and Channel Coding (TDD), TS 125.212V6.7.0. December 2005.
+Babich F., Montorsi G., Vatta F. Some Notes on Rate–Compatible Punctured Turbo Codes (RCPTC) Design. IEEE Trans. Commun., 52(5):681—684, May 2004.
+Berrou C., Glavieux A., Thitimajshida P. Near Shannon Limit Error–Correcting Coding and Decoding: Turbo codes. On: Proc. IEEE Int. Conf. Communications, vol. 2, Geneva, Switzerland, 1993, pp. 1064–1070.
+Crozier S. New High–Spread High–Distance Interleavers for Turbo–Codes. On: 20th Biennial Symposium on Communications, Kingston (Canada, May 28–31, 2000), Queen's University.
+Crozier S., Guinand P. High Performance Low–Memory Interleavers Banks for Turbo Codes. On: IEEE 54th Vehicular Technology Conference, VTC Fall 2001 (October 7–11, 2001, Atlantic City, NJ, USA).
+Crozier S., Lodge J., Guinand P. Hunt A. Performance of Turbo Codes with Relative Prime and Golden Interleaving Strategies. On: In 6th Intern. Mobile Satellite Conference (IMSC 99), (June 1999, Ottawa, Canada). Pp. 268–275.
+Crozier S., Guinand P. Hunt A. On Designing Turbo Codes with Data Puncturing. On: 2005 Canadian Workshop on Information Theory (CWIT 2005) proceedings, (June 5–8 2005, Montreal, Quebec, Canada).
+Divsalar D., Pollara F. Multiple Turbo Codes. On: MILCOM 95 (November 6–8, 1995). Pp. 279–285.
+Garello R., Pierleoni P., Benedetto S. Computing the Free Distance of Turbo Codes and Serially Concatenated Codes with Interleavers: Algorithms and Applications. IEEE J. Select. Areas Commun., 19(5):800— 812, May 2001.
+Hagenauer J. Rate–Compatible Punctured Convolutional Codes (RCPC Codes) and their Applications. IEEE Trans. on Communications, 36(4):389–400, April 1988.
+Morelos–Zaragoza R.H. The Art of Error Correcting Coding. England. John Wiley & Sons. 2006. 3GPPP Technical Specification Group: Multiplexing and Channel Coding (TDD), TS 125.212 V6.7.0. December 2005
+Shannon C.E. A Mathematical Theory of Communication. Bell Sys. Tech. J., 27:379–423–623–656, 1948.
+Vucetic B., Jinhong Y. Turbo Codes, Principles and Applications. Boston. Kluwer Academic Publishers. 2002.
+Wang D., Kobayashi H. On Design of Interleavers with Practical Size for Turbo Codes. On: IEEE International Conference on Communications, (June 2000, ICC 2000). Vol. 2, 18–22.
+Valenti M.C. Iterative Detection and Decoding for Wireless Communications (Ph.D. Dissertation), Bradley Dept. of Elect. & Comp. Eng., Virginia Tech, July 1999.
+Chen K.H, Boning D.S., Welsch R.E. Multivariate Statistical Process Control and Signature Analysis Using Eigen factor Detection Methods. On: The 33rd Symposium on the Interface of Computer Science and Statistics, Costa Mesa Ca., 2001.
+Hawkins D.M. Multivariate Quality Control Based on Regression–Adjusted Variables. Technometrics, 33(1):61–75, 1991.
+Hayter A.J., Tsui K.L. Identification and Quantification in Multivariate Quality Control Problems. Journal of Quality Technology, 26(3):197–208, 1994.
+Jackson J.E. A User's Guide to Principal Components. John Wiley and Sons, Inc. 1991.
+Johnson R.A., Wichern D.W. Applied Multivariate Statistical Analysis. Pren tice Hall. 1998.
+Lowry A.C., Montgomery D.C. A Review of Multivariate Control Charts. IIE Transactions, 27(6):800–810, 1995.
+Lowry A.C., Woodall H.W. A Multivariate Exponentially Weighted Moving Average Control Chart. Technometrics , 34(1):46–53, 1992.
+Mason L.R., Young C.J. Multivariate Statistical Process Control with Industrial Applications. ASA. SIAM. 2001.
+Mason L.R., Tracy D.N., Young C.J. A Practical Approach for Interpreting Multivariate T2 Control Chart Signals. Journal of Quality Technology, 29(4):396–406, 1997.
+Montgomery D.C. Introduction to Statistical Quality Control. New York. John Wiley and Sons. 2001.
+Nedumaran G., Pignatiello J.J. Jr. Diagno sing Signals from T2 and X2 Multivariate Control Charts. Quality Engineering, 10(4):657–667, 1998.
+Odeh R.E. Tables of Percentage Points of the Distribution of the Maximum Absolute Value of Equally Correlated Normal Random Variables. Communications in Statistics–Simulation and Computation, (11):65–87, 1982.
+Prins J., Mader D. Multivariate Control Charts for Grouped and Individual Observations. Quality Engineering, 10(1): 49–57, 1997.
+Sheu S.H., Lin T.Ch. The Generally Weigthed Moving Average Control Chart for Detecting Small Shifts in the Process Mean. Quality Engineering, 16(2):209–231, 2003–2004.
+Umit F., Cigdem A. Multivariate Quality Control: A Historical Perspective. Yilditz Technical University. 2001. Pp. 54–65.
+Wu Z. An Enhanced X Chart for Detecting Mean Shift. Quality Engineering, 7(2):345–356, 1994–1995.
+Ye N., Parmar D., Borror M.C. A Hybrid SPC Method with the Chi–Square Distance Monitoring Procedure for Largescale, Complex Process Data. Quality and Reliability Engineering International, (22):393–402, 2006.
+Dommen–Mathew P., Kohler–Jeffery L. An Improved Model for Analyzing Industrial Power Systems. IEEE Trans. On Industry Applications, 31(5):1140–1146, 1995.
+Dunki–Jacobs J.R., Davis–Chet E. An Argument and Procedure for Conceptual Power System Design Studies. IEEE Trans. On Industry Applications, 30(2):253–261, 1994.
+IEEE. Recommended Practice for Industrial and Commercial Power Systems Analysis. IEEE Brown Book. IEEE Std 399–1997. 1997.
+Kundur P. Power System Stability and Control. Mc Graw Hill. 1994.
+Paine D.M. Increasing the Electrical Output of a Cogeneration Plant. IEEE Trans. On Industry Applications, 38(3): 726–735, 2002.
+Rosales S.I., López V.J.J., García P.J., Robles P.E., García A.D., Guzmán C.B. Interconexión de centros industriales con la red eléctrica del servicio público. Boletín IIE, pp. 42–48, enero–febrero, 2000.
+Shilling–Stanley R. Electrical Transient Stability and Underfrequency Load Shedding Analysis for a Large Pump Station. IEEE Trans. On Industry Applications, 33(1):194–201, 1997.
+Smith–Thomas P. Power System Studies for Cement plants. IEEE Industry Applications Magazine, pp. 56–65, July/August, 2007.
+Barrios L, Sánchez F. Deterioro por corrosión atmosférica en sistemas de almacenamiento magnético de datos. Tesis (Licenciatura). México DF. Facultad de Ingeniería, Universidad Nacional Autónoma de México. 2005.
+Cerrud S., Ortiz A., Jacobo V., Schouwenaars R. Design, Construction and Testing of a System for Accelerated Simulation of Damage by Atmospheric Corrosion on Electronics Equipment. Corrosion Reviews, Vol. 21, 2003.
+Gouda V.K., Carew J.A., Riad W.T. Investigation of Computer Hardware Failure due to Corrosion, British Corrosion Journal, Vol.24, 1989.
+Goglia P., Berkowitz J. Diamond Like Carbon Applications in High Density Hard Disk Recording Heads. Diamond and Related Materials, 2001.
+Guttenplan, J.D. Corrosion in the Electronics Industry. Metals Handbook. ASM International. Vol.13. 1987.
+Leygraf C.D., Graedel T. Atmospheric Corrosion. New York. John Wiley & Sons. 2000.
+Marcus, P. Corrosion Mechanisms in Theory and Practice. Marcel Dekker Publisher. 2002.
+Ortiz A. Simulación acelerada de la corrosión atmosférica en equipo electrónico. Tesis (Doctoral). México DF. Facultad de Ingeniería, Universidad Nacional Autónoma de México. Posgrado de Ingeniería. 2004.
+Ortiz A. et al. Análisis del deterioro que por corrosión atmosférica se presenta en sistemas de almacenamiento magnético de datos. Memorias del XI Congreso Internacional de la SOMIM, 2005.
+Ortiz A. et al. Estudio del deterioro por corrosión atmosférica en discos duros y cabezas de Lectura/Escritura. Memorias del XIII Congreso Internacional de la SOMIM, 2007.
+White E., Slensky G. Case Histories and Failures of Electronics and Communications Equipment. Metals Handbook, ASM, 1987.
+Almutawa S, Savsar M., Al–Rashdan K. Optimum Machine Selection in Multistage Manufacturing Systems. International Journal of Production Research, 43(6):1109–1126, 2005.
+Back T, Hammel U., Schwefel H.P. Evolutionary Computation: Comments on the History and Current State. IEEE Transactions on Evolutionary Computation, 1(1):3–17, 1997.
+Coello C. An Updated Survey of Evolutionary Multiobjective Optimization Techniques: State of the Art and Future Trends. En: Proceedings of the 1999 Congress on Evolutionary Computation (1999, Washington, DC, United State). 1999, pp. 1–13.
+Coello C. An Updated Survey of GA–Based Multiobjective Optimization Techniques. ACM Computing Surveys, 32 –(2): 109—143, 2000.
+Corne D., Jerram N., Knowles J., Oates M. PESA–II: Region Based Selection in Evolutionary Multiobjective Optimization. En: Proceedings of the 2001 Genetic and Evolutionary Computation Conference 2001, San Francisco, California,USA). 2001, pp. 283–290.
+Corne D, Knowles J., Oates M. The Pareto Envelope Based Selection Algorithm for Multiobjective Optimization. En: Proceedings of the 2000 International Conference on Parallel Problem Solving from Nature (6th, 2000, Berlin, Germany). 2000, pp. 839–848.
+Defersha F.M., Chen M. Machine Cell Formation Using a Mathematical Model and a Genetic–Algorithm–Based Heuristic. International Journal of Production Research, 44(12): 2421–2444, 2006.
+Dominic P.D.D, Kaliyamoorthy M., Saravana–Kumar. Efficient Dispatching Rules for Dynamic Job Shop Scheduling. The International Journal of Advanced Manufacturing Technology, 24:70–75, 2004.
+Feyzioglu O, Pierreval H., Deflandre D. A Simulation–Based Optimization Approach to Size Manufacturing Systems. International Journal of production Research, 43(2):247–266, 2005.
+Fonseca C.M., Fleming P.J. Genetic Algorithms for Multiobjetive Optimization: Formulation, Discussion and Generalization. En: Proceedings of the 1993 International Conference on Genetic Algorithms (5th, 1993, California, United State). 1993, pp. 416–423.
+Haupt R.A. Survey of Priority Rule–Based Scheduling. OR Spectrum, 11(1):3–16, 1989.
+Holthaus O. Design of Efficient Job Shop Scheduling Rules. Computers and Industrial Engineering, 33(1): 249–252, 1997.
+Horn J., Nafpliotins N., Golberg D. A Niched Pareto Genetic Algorithm for Multiobjective Optimization. En: Proceedings of the First IEEE Conference on Evolutionary Computation (1994, Orlando, FL, United State ). 1994, pp. 82–87.
+Knowles J., Corne D. The Pareto Archived Evolution Strategy : A New Baseline Algorithm for Pareto. En: Proc. of the 1999 Congress on Evolutionary Computation (1999, Washington, DC, United State). 1999, pp. 1–8.
+Law A., Kelton W. Simulation Modeling and Analysis. 3rd. United States, Ed. McGraw Hill. 2000. 760 p.
+Michalewicz Z. Genetic Algorithms+Data Structures=Evolution Programs. 2nd.US, Ed. Springer. 1999. 387 p.
+Mühlenbein H., Schlierkamp–Voosen D. Predictive Models for the Breeder Genetic Algorithm: I. Continuous Parameter Optimization. Evolutionary Computation, 1(1): 25–49, 1993.
+Paris J.L., Tautou L., Pierreval H. Dealingwith Design Options in the Optimization of Manufacturing Systems: an Evolutionary Approach. International Journal of Production Research, 39(6):1081–1094, 2001.
+Pierreval H., Caux C., Paris J.P., Viguier F. Evolutionary Approach to the Design and Organization of Manufacturing System. Computers & Industrial Engineering, 44(3): 339—364, 2003.
+Pierreval H., Tautou L. Using Evolutionary Algorithms and Simulation for the Optimization of Manufacturing Systems. IIE Transactions, 29(3):181–189, 1997.
+Salazar E. y Larrazábal M.C. Configuración de sistemas de producción utilizando algoritmos genéticos. Actas (CD) XII CLAIO—Congreso Latino Iberoamericano de Investigación Operativa. Montevideo, Uruguay, 27. 11–30. 11. 2006.
+Schaffer J.D. Multiple Objective Optimization with Vector Evaluated Genetic Algorithms. En: Proceedings of the First International Conference on Genetic Algorithms (1985, NJ, United State). 1985, pp. 93–100.
+Spear W., De Jong K., Back T., Fogel D.B., Garis H. An Overview of Evolutionary Computation. En: Proceedings of the European Conference on Machine Learning (1993, London, UK). 1993, pp. 442–459.
+Srinivas N., Deb K. Multiobjective Optimization Using Nondominated Sorting in Genetic Algorithms. The Journal Evolutionary Computation, 2(3):221–248, 1993.
+Van–Veld huizen D., Lamont G. Multiobjective Optimization with Messy Genetic Algorithms. En: Proceedings of the 2000 ACM Symposium on Applied computing (2000, Como, Italia). 2000, pp. 470–476.
+Zydallis J.B, Van Veldhuizen D.A., Lamont G.B. A Statical Comparison of Multiobjective Evolutionary Algorithms Includong the MOMGA–II. En: Proceedings of the 2001 International Conference on Evolutionary Multi Criterion Optimization (2001, London, UK). 2001, pp. 226–240.
+Zitzler E., Thiele L. Multiobjective Evolutionary Algorithms: A Comparative Case Study and the Strength Pareto Approach. IEEE Transactions On Evolutionary Computation, 3(4):257–271, 1999.
+Zitzler E., Laumanns M., Thiele L. SPEA2: Improving the Strength Pareto Evolutionary Algorithm. Technical Report 103, Computer Engineering and Networks Laboratory (TIK), Swiss Federal Institute of Technology (ETH) Zurich Switzerland. 2001, pp. 21.
+Aparicio M., F.C. Fundamentos de hidrología de superficie. LIMUSA y Grupo Noriega Editores. México. 2001.
+Cal y Mayor R., Cárdenas J. Ingeniería de Tránsito. Séptima edición. Facultad de Ingeniería. Asociación Mexicana de Caminos. 1995.
+Dirección General de Obras Públicas del GDF. Reportes internos y comunicación personal. 2000–2005.
+Gobierno del Distrito Federal. Programa Integral de Transporte y Vialidad del Gobierno del Distrito Federal 1995–2000. 1995.
+Gobierno del Distrito Federal. Programa Integral de Transporte y Vialidad del Gobierno del Distrito Federal 2001–2006. 2001.
+ICA, SCT Metro. Memoria, Metro de la ciudad de México. 1977.
+Instituto Nacional de Geografía y Estadística (INEGI) (2004 y 2005) [en línea]. Disponible en: www.inegi.gob.mx
+Lozano A., Torres V., Guzmán A., Granados F., Álvarez–Icaza L., Magallanes R., Antún J.P., Luyando G., Vargas F., Argumedo M., Romero E. Simulación macroscópica del efecto del "Proyecto Segundo Piso de Periférico y Viaducto" sobre el tráfico en la red vial de la Zona Metropolitana del Valle de México–Fase II. Informe para el Fideicomiso para el Mejoramiento de las Vías de Comunicación del Distrito Federal y la Secretaría del Medio Ambiente, Gobierno del Distrito Federal. Convenio UNAM–GDF: 11733–229–13– II–02. Instituto de Ingeniería, UNAM, pp. 125. 2004.
+Lozano A., Granados F., Torres V., Hernández R., Guzmán A., Alarcón R., Vargas F., Guarneros L., Argumedo M., Romero E., Antún J.P., Magallanes R., Álvarez–Icaza L. Simulación macroscópica del efecto de la "Fase I del proyecto Segundo Piso de Periférico y Viaducto" sobre el tráfico de la red vial de la Zona Metropolitana del Valle de México. Informe para el Fideicomiso para el Mejoramiento de las Vías de Comunicación del Distrito Federal y la Secretaría del Medio Ambiente, Gobierno del Distrito Federal. Convenio UNAM–GDF: 11733–229–13–II–02. Instituto de Ingeniería, UNAM, pp. 171. 2002.
+Meli R. Manual de diseño estructural. Primera edición. México. LIMUSA. 1992.
+Moreno–Bonett, A. Análisis de Inversiones. Facultad de Ingeniería, UNAM. 1985.
+Moreno–Bonett A. Apuntes del Curso: Ingeniería de Sistemas III. Facultad de Ingeniería, UNAM. 1991.
+Secretaría de Comunicaciones y Transporte (SCT) (2004) [en línea]. Disponible en: www.sct.gob.mx
+Téllez–Sánchez R. Evaluación de proyectos de infraestructura urbana para el transporte. DEPFI–Facultad de Economía, UNAM. 1993.
+Secretaría de Transporte y Vialidad del GDF. Volúmenes de tránsito en el Distrito Federal. Estaciones Maestras (Reporte interno). 1998.
+Cheng Y.C., Yu C.C. Optimal Region for Design and Control of Ternary Systems. AIChE J, 49:682, 2003.
+Elliot T.R., Luyben W.L. Quantitative Assessment of Controllability During the Design of a Ternary System with Two Recycle Streams. Ind. Eng. Chem. Res., 35:3470, 1996.
+Georgakis C. On the Use of Extensive Variables in Process Dynamics and Control. Chem. Eng. Sci, 41:1471, 1986
+Henson M.A., Ogunnaike B.A., Schwaber J.S. Habituating Control, Strategies for Process Control. AIChE J. 13:291, 1995.
+Luyben W.L. Process Modeling Simulation and Control for Chemical Engineers. New York. McGraw–Hill. 1990.
+Monroy–Loperena R, Solar R., Alvarez–Ramirez J. Balanced Control Scheme for Reactor/Separador Processes with Material Recycle. Ind. Eng. Chem. Res, 43:1853, 2004.
+Skogestad S. Simple Analytical Rules for Model Reduction and PID Controller Tuning. J. Process Control., 13:291,2003.
+Tyreus B.D., Luyben W.L. Dynamics and Control of Recycle Systems. 4. Ternary Systems with One and Two Recycle Streams. Ind. Eng. Chem. Res., 32:1154, 1993.
+Akagi H., Kanazawa Y. y Nabae A. Instantaneous Reactive Power Compensators Comprising Switching Devices Without Energy Storage Components. IEEE Trans. on Industry Application, . IA–20(3):625–630, May/June, 1984.
+Barrero F. Análisis topológico y funcional de acondicionadores para la reducción de perturbaciones en la red eléctrica. Tesis (Doctorado). Madrid, España. Universidad Nacional de Educación a Distancia, Escuela Técnica Superior de Ingenieros Industriales, Dpto. de Ingeniería Eléctrica, Electrónica y de Control. 1995. Pp. 4–30.
+Cárdenas V. Filtros activos híbridos para compensación armónica de corriente y de compensación de factor de potencia en sistemas trifásicos. Tesis (Doctorado). Cuernavaca, México. Centro Nacional de Investigación y Desarrollo Tecnológico. 1999.
+Fang Z.P., Donald J.A. Harmonic Sources and Filtering Approaches. IEEE on Industrial Application, 34th Annual Meeting. Phoenix Arizona, 1999, pp. 448–455.
+Krause P.C. Analysis of Electric Machinary. IEEE Press. 1994.
+IEEE Std. 519—1992. Recommended Practices and Requirements for Harmonic Control in Electrical Power Systems. IEEE Industry Applications Society.
+Nuñez–Gutiérrez C.A. Estrategias de control no lineal aplicadas a filtros activos de potencia. Tesis (Doctorado). Cuernavaca, México. CENIDET. 2002.
+Reyes–Trujillo E. Aplicación de un filtro activo de corriente para la reducción de armónicas y corrección del factor de potencia en sistemas eléctricos industriales. Tesis (Maestría). DF, México. ESIMEZ, IPN. 2005.
+Wagner V.E., Balda et al. Effects of Harmonics on Equipment. IEEE Transactions on Power Delivery, 8(2):672–679. 1993.
+Acosta J., Turrent G., Olín M., González R. A Model for Management of Technology. IEEE International Engineering Management Conference, Albuquerque USA. 2000. Pp. 63–68.
+Adams M.E., Day G., Dougherty D. Enhancing New Product Development Performance: An Organizational Learning Perspective. Journal of Product Innovation Management, 15: 404–422. Elsevier Science Inc. 1998.
+Ching Ch.L., Yang J. Knowledge Value Chain. Journal of Management Development, 19(9):783–793. MCB University Press. 2000.
+Danneels E. The Dynamics of Product Innovation and Firm Competences. Strategic Management Journal, 23:1095–1121. Johm Wiley & Sons Ltd. 2002.
+Drucker P.F. The Age of Discontinuity: Guidelines to our Changing Society. New Brunswick USA & London. Transaction Publishers. 1992.
+Drucker P.F. The Discipline of Innovation: the Innovating Enterprise. Harvard Business Review. 2002.
+Geistauts G.A., Backer E.R., Eschenbach T.G. An Integrated Technology Management Model, 91. Portland International Conferences on Management of Engineering Technology, IEEE. 1992. Pp. 742–744.
+Hidalgo A. Mecanismos de excelencia para la transferencia de la tecnología desarrollada en la universidad a la industria. Anales del seminario iberoamericano sobre tendencias modernas en Gerencia de la Ciencia y la Innovación Tecnológica. IBERGECIT'97. 1997. Pp. 227–243.
+Hindle K., Yencken J. Public Research Commercialization, Entre preneurship and New Technology Based Firms: an Integrated Model. Technovation, 24:793–803. 2004.
+Jacob W.F., Kwak Y.H. In Search of Innovative Techniques to Evaluate Pharmaceutical R&D Projects. Technovation, 23:291–296. Elsevier Ltd. 2003.
+Kerzner H. Project Management, a Systems Approach to Planning, Scheduling and Controlling. Third Edition. New York. Van Nostrand Reinhold. 1989. Pp. 711–758.
+Knoepfel H., Berger R. Project Cost Management in Project Management in Progress: tools & Strategies for the 90's. M.C. Grool et al. (Editors). North Holland. Elsevier Science Publishers. 1986. Pp. 239–246.
+Lara R.F. Informe de trabajo de la Dirección del Centro de Ciencias Aplicadas y Desarrollo Tecnológico: periodo 1998–2005, UNAM. 2005.
+Lieb E.B. How Many R&D Projects to Develop? IEEE Transactions on Engineering Management, 45(1):73–77, February 1998.
+Linn R.J., Zhang W., Li Z.Y. An Intelligent Management System for Technology Management. Computers & Industrial Engineering, 38:397–412, Elsevier Science Ltd. 2000.
+Lundvall B.A. National Systems of Innovation: Towards a Theory of Innovation and Interactive Learrning. London. Pinter Publishers. 1992.
+Medellín C.E. Transferencia de tecnología de la universidad al sector productivo. Anales del Seminario–Taller Iberoamericano de Actualización en Gestión Tecnológica IBERGECIT ' 96, 1996. Pp72–91.
+Pandey M.D., Nathwany J.S., Lind N.C. The Derivation and Calibration of Life–Quiality Index (LQI) from Economic Principles. Structural Safety, 28(4):341–361. Elsevier. 2006.
+Porter M.E. Competitive Advantage: Creating and Sustaining Superior Performance. The Free Press. EUA. Mc. Millan Inc. 1997.
+Tribe K. Reading Trade in the Wealth of Nations. History of European Ideas, 32:58–79. 2006.
+Basak T., Aravind G. y Roy S. Visualization of Heat Flow Due to Natural Convection within Triangular Cavities Using Bejan's Heatline Concept. Int. J. Heat Mass Trans., 52 (11–12):2824–2833. 2009b.
+Basak T., Roy S. y Pop I. Heat Flow Analysis for Natural Convection within Trapezoidal Enclosures Based on Heatline Concept. Int. J. Heat Mass Trans., 52(11–12): 2471–2483. 2009.
+Basak T., Roy S. y Aravind G. Analysis of Heat Recovery and Thermal Transport within Entrapped Fluid Based on Heatline Approach. Chem. Eng. Sci., 64(8):1673–1686. 2009c.
+Bejan A. Convective Heat Transfer. Third Ed. New York. John Wiley & Sons. 2004.
+Calcagni B., Marsili F. y Paroncini M. Natural Convective Heat Transfer in Square Enclosures Heated from Below. Applied Thermal Engineering, 25:2522–2531. 2005.
+Dalal A. y Kumar M. Heatline Method for the Visualization of Natural Convection in a Complicated Cavity. Int. J. Heat Mass Trans, 51(1–2):263–272. 2008.
+Deng Q–H y Tang G–F. Numerical Visualization of Mass and Heat Transport for Cconjugate Natural Convection/Heat Conduction by Stream line and Heatline. Int. J. Heat Mass Transf, 45(11):2373–2385. 2002.
+Eckert E.R.G. y Drake R.M. Analysis of Heat and Mass Transfer. New York. McGraw–Hill. 1972.
+Kimura S. y Bejan A. The Heatline Visualization of Convective Heat Transfer. J. Heat Transfer, 105:916–919. 1983.
+Mahmud S. y Fraser R.A. Visualizing Energy Flows Through Energy Stream lines and Pathlines. Int. J. Heat Mass Trans, (19–20):3990–4002. 2007.
+Mobedi M. y Oztop H.F. Visualization of Heat Transport Using Dimension less Heatfunction for Natural Convection and Conduction in an Enclosure with Thick Solid Ceiling. Computers & Mathematics with Applications, 56(10):2596–2608. 2008.
+Morega A.I. y M., Bejan A. Heatline Visualization of Forced Convection Boundary Layers. Int. J. Heat Mass Trans, 36:3957–3966. 1993.
+Nansteel M.W. y Greif R. Natural Convection in Undivided and Partially Divided Rectangular Enclosures. J. Heat Transfer, 103:623–629. 1981.
+Nienchuan N.L. y Bejan A. Natural Convection in a Partially Divided Enclosure. Int. J. Heat Mass Trans, 26:1867–1878. 1983.
+Osorio A., Ávila R. y Cervantes J.G. On the Natural Convection of Water Near its Density Inversion in an Inclined Square Cavity. Int. J. Heat Mass Trans, 47:4491— 4495. 2004.
+Zhao F., Liu D. y Tang G. Natural Convection in an Enclosure with Localized Heating and Salting from Below. Int. J. Heat Mass Trans., 51(11–12):2889–2904. 2008.

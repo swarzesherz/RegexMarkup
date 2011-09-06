@@ -39,4 +39,8 @@
 		<nombre>Salud Mental</nombre>
 		<exp>([0-9]+)\.\ (.+?)\.\ (.+?)(?:\.\ |\?\ )(.*)</exp>
 	</revista>
+	<revista issn="1405-7743">
+		<nombre>Ingeniería, investigación y tecnología</nombre>
+		<exp>((?:.+?\ y\ .+?)|.+?)\.\ (.*)</exp>
+	</revista>
 </reglas>
