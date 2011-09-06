@@ -1,0 +1,2344 @@
+
+Contribución en revista
+
+
+1
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Van Heukelem</surname> 
+			<fname>WF</fname>
+		</oauthor>. 
+		<date dateiso="19770000">1977</date>. 
+		<title language="en">Laboratory maintenance, breeding and biomedical research potential of the Yucatan octopus (Octopus maya)</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Lab. Anim. Sci.</stitle> 
+		<volid>27</volid>: 
+		<pages>825-859</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Bilyard</surname> 
+			<fname>RG</fname>.
+		</oauthor> 
+		<date dateiso="19870000">1987</date>. 
+		<title language="en">The value of benthic infauna in marine pollution monitoring studies</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Mar. Pollut. Bull.</stitle> 
+		<volid>18</volid>(<issueno>11</issueno>): 
+		<pages>581-585</pages>.
+	</oiserial>
+</ocitat> 
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Lusseau</surname> 
+			<fname>D</fname>
+		</oauthor>. 
+		<date dateiso="20040000">2004</date>. 
+		<title language="en">The hidden cost of tourism: detecting long-term effects of tourism using behavioral information</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Ecol. and Soc.</stitle> 
+		<volid>9</volid>(<issueno>1</issueno>): 
+		<pages>2</pages>
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Anderson</surname> 
+			<fname>MJ</fname>
+		</oauthor>. 
+		<date dateiso="20010000">2001</date>b. 
+		<title language="en">Permutation tests for univariate or multivariate analysis of variance and regression</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Can. J. of Fish. and Aquat. Sci.</stitle> 
+		<volid>58</volid>: 
+		<pages>626-639</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Davies</surname> 
+			<fname>SP</fname>
+		</oauthor>. 
+		<date dateiso="19840000">1984</date>. 
+		<title language="en">The role of zooxanthellae in the nutritional energy requirements of Pocillopora eydouxi</title>.
+	</ocontrib> 
+	<oiserial><sertitle>Coral Reefs</sertitle> 
+		<volid>2</volid>: 
+		<pages>181-186</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Sini</surname> 
+			<fname>MI</fname>
+		</oauthor>. 
+		<date dateiso="20050000">2005</date>. 
+		<title language="en">Bottlenose dolphins around Aberdeen harbour, north-east Scotland: A short-term study of habitat utilization and the potential effects of boat traffic</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>J. Mar. Biol. Assoc. UK</stitle> 
+		<volid>85</volid>: 
+		<pages>1547-1554</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Fourmanoir</surname> 
+			<fname>P</fname>
+		</oauthor>. 
+		<date dateiso="19710000">1971</date>. 
+		<title language="en">Notes ichtyologiques (III)</title>.
+	</ocontrib> 
+	<oiserial><sertitle>Cahiers ORSTOM</sertitle>, <isstitle>Sér. Océanogr.</isstitle> 
+		<volid>9</volid>: 
+		<pages>267-278</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Garman</surname> 
+			<fname>S</fname>
+		</oauthor>. 
+		<date dateiso="18990000">1899</date>. 
+		<title language="en">Reports of an exploration off the west coasts of Mexico, Central and South America, and off Galápagos Island</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>The Fishes. Mem. Mus. Comp. Zool.</stitle> 
+		<pubname>Harvard College</pubname> 
+		<volid>24</volid>: 
+		<pages>1-131</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Schaefer</surname> 
+			<fname>MB</fname>
+		</oauthor>. 
+		<date dateiso="19540000">1954</date>. 
+		<title language="en">Some aspects of the dynamics of populations important to the management of commercial marine fisheries</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Bull. IATTC</stitle>, 
+		<pages>25-56</pages> pp.
+	</oiserial>
+</ocitat>
+
+
+2
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Addadi</surname> 
+			<fname>L</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Weiner</surname> 
+			<fname>S</fname>.
+		</oauthor> 
+		<date dateiso="19920000">1992</date>. 
+		<title language="en">Control and design principles in biological mineralization</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Angew. Chem.</stitle> 
+		<volid>31</volid>(
+		<pages>2</pages>): 
+		<pages>153-169</pages>.
+	</oiserial>
+</ocitat> 
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Solís-Ramírez</surname> 
+			<fname>MJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Chávez</surname> 
+			<fname>EA</fname>
+		</oauthor>. 
+		<date dateiso="19860000">1986</date>. 
+		<title language="es">Evaluación y régimen óptimo de pesca de pulpo de la Península de Yucatán, México</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Ann. Inst. Cienc. Mar Limnol. Univ. Nac. Aut. Méx.</stitle> 
+		<volid>13</volid>: 
+		<pages>1-18</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Duggins</surname> 
+			<fname>DO</fname>,
+		</oauthor> <oauthor role="nd">
+			<surname>Eckman</surname> 
+			<fname>JE</fname>
+		</oauthor>. 
+		<date dateiso="19970000">1997</date>. 
+		<title language="en">Is kelp detritus a good food for suspension feeders? Effects of kelp species, age and secondary metabolites</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Mar. Biol.</stitle> 
+		<volid>128</volid>: 
+		<pages>489-495</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Meldrum</surname> 
+			<fname>FC</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Hyde</surname> 
+			<fname>ST</fname>
+		</oauthor>. 
+		<date dateiso="20010000">2001</date>. 
+		<title language="en">Morphological influence of magnesium and organic additives on the precipitation of calcite</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>J. Crystal Growth</stitle> 
+		<volid>231</volid>: 
+		<pages>544-558</pages>.
+	</oiserial>
+</ocitat> 
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Solana-Sansores</surname> 
+			<fname>R</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Ramírez-López</surname> 
+			<fname>K</fname>
+		</oauthor>. 
+		<date dateiso="20060000">2006</date>. 
+		<title language="es">Análisis de la Pesquería Mexicana del Atún en el Golfo de México, 2004</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>ICCAT</stitle>. 
+		<volid>59</volid>: 
+		<pages>525-535</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Anderson</surname> 
+			<fname>MJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Willis</surname> 
+			<fname>TJ</fname>
+		</oauthor>. 
+		<date dateiso="20030000">2003</date>. 
+		<title language="en">Canonical analysis of principal coordinates: a useful method of constrained ordination for ecology</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Ecology</stitle> 
+		<volid>84</volid>: 
+		<pages>511-525</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Richardson</surname> 
+			<fname>WJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Wursig</surname> 
+			<fname>B</fname>
+		</oauthor>. 
+		<date dateiso="19970000">1997</date>. 
+		<title language="en">Influences of man-made noise and other human actions on cetacean behavior</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Marine and Freshwater Behaviour and Physiology</stitle> 
+		<volid>29</volid>(<issueno>1</issueno>): 
+		<pages>183-209</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Eversole</surname> 
+			<fname>D</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Fletcher</surname> 
+			<fname>CH</fname>
+		</oauthor>. 
+		<date dateiso="20030000">2003</date>. 
+		<title language="en">Longshore sediment transport rates on a reef-fronted beach: Field data and empirical models. Kaanapali Beach, Hawaii</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>J. Coast. Res.</stitle> 
+		<volid>19</volid>: 
+		<pages>649-663</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Muñoz-Pérez</surname> 
+			<fname>JJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Medina</surname> 
+			<fname>R</fname>
+		</oauthor>. 
+		<date dateiso="20090000">2009</date> 
+		<title language="en">Comparison of long-, medium-and short-term variations of beach profiles with and without submerged geological control</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Coast. Eng.</stitle> <extent>doi: 10.1016/j.coastaleng.2009.09.011.</extent>
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Strickland</surname> 
+			<fname>JDH</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Parsons</surname> 
+			<fname>TR</fname>
+		</oauthor>. 
+		<date dateiso="19720000">1972</date>. 
+		<title language="en">A Practical Handbook of Seawater Analysis</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Fish. Res. Bd. Canada, Bull.</stitle> 
+		<volid>167</volid>, 
+		<pages>310</pages> pp.
+	</oiserial>
+</ocitat>
+
+
+3
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Pascoe</surname> 
+			<fname>PL</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Parry</surname> 
+			<fname>HE</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Hawkins</surname> 
+			<fname>AJS</fname>
+		</oauthor>. 
+		<date dateiso="20090000">2009</date>. 
+		<title language="en">Observations on the measurement and interpretation of clearance rate variations in suspension-feeding bivalve shellfish</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Aquat. Biol.</stitle> <extent>doi: 10.3354/ab00123</extent>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Itaya</surname> 
+			<fname>T</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Tomuro</surname> 
+			<fname>M</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Ninagawa</surname> 
+			<fname>K</fname>
+		</oauthor>. 
+		<date dateiso="19970000">1997</date>. 
+		<title language="en">Asymmetric X-ray diffraction peak of metamorphosed carbonaceous material</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Island Arc</stitle> 
+		<volid>6</volid>: 
+		<pages>228-232</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>López</surname> 
+			<fname>N</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Rodríguez</surname> 
+			<fname>D</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Candelaria</surname> 
+			<fname>C</fname>
+		</oauthor>. 
+		<date dateiso="20040000">2004</date>. 
+		<title language="en">Intraspecific variation in algal species in Guerrero, Mexico</title>.
+	</ocontrib> 
+	<oiserial><sertitle>Universidad y Ciencia</sertitle> (
+		<othinfo>spec. num.</othinfo>) 
+		<volid>1</volid>: 
+		<pages>7-15</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Figueiras</surname> 
+			<fname>FG</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Labarta</surname> 
+			<fname>U</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Fernández-Reiriz</surname> 
+			<fname>MJ</fname>
+		</oauthor>. 
+		<date dateiso="20000000">2002</date>. 
+		<title language="es">Coastal upwelling, primary production and mussel growth in the Rías Baixas of Galicia</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Hydrobiologia</stitle> 
+		<volid>484</volid>: 
+		<pages>121-131</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Filgueira</surname> 
+			<fname>R</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Labarta</surname> 
+			<fname>U</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Fernández-Reiriz</surname> 
+			<fname>MJ</fname>
+		</oauthor>. 
+		<date dateiso="20060000">2006</date>. 
+		<title language="en">Flow-through chamber method for clearance rate measurements in bivalves. Design and validation of individual chambers and mesocosm</title>
+	</ocontrib>. 
+	<oiserial>
+		<stitle>Limnol. Oceanogr. Methods</stitle> 
+		<volid>4</volid>: 
+		<pages>284-292</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Filgueira</surname> 
+			<fname>R</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Fernández-Reiriz</surname> 
+			<fname>MJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Labarta</surname> 
+			<fname>U</fname>
+		</oauthor>. 
+		<date dateiso="20090000">2009</date>. 
+		<title language="en">Clearance rate of the mussel Mytilus galloprovincialis. I. Response to extreme chlorophyll ranges</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Cienc. Mar.</stitle> 
+		<volid>35</volid>: 
+		<pages>405-417</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Solana-Sansores</surname> 
+			<fname>R</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Urbina-Pastor</surname> 
+			<fname>R</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Brown</surname> 
+			<fname>CA</fname>
+		</oauthor>. 
+		<date dateiso="20040000">2004</date>. 
+		<title language="es">Estandarización de las tasas de captura de la pesquería de atún aleta amarilla (Thunnus albacares) con Palangre en el Golfo de México, Con Base en los Programas de Observadores de México (PNAAPD) y Estados Unidos (1992-2002)</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>El Vigía PNAAPD</stitle>, 
+		<volid>9</volid>(<issueno>20</issueno>): 
+		<pages>13-15</pages>.
+	</oiserial>
+</ocitat> 
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Noguez-Fuentes</surname> 
+			<fname>JF</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Dreyfus-León</surname> 
+			<fname>MJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Robles-Ruíz</surname> 
+			<fname>H</fname>
+		</oauthor>. 
+		<date dateiso="20070000">2007</date>. 
+		<title language="es">Influencia de la luminosidad de las fases lunares en la captura de atún aleta amarilla (Thunnus albacares) con palangre en el Golfo de México</title>.
+	</ocontrib> 
+	<oiserial><sertitle>Hidrobiológicas</sertitle>. 
+		<volid>17</volid>: 
+		<pages>91-99</pages>
+	</oiserial>
+</ocitat> 
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Quiroz</surname> 
+			<fname>JC</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Wiff</surname> 
+			<fname>R</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Montenegro</surname> 
+			<fname>C</fname>
+		</oauthor>. 
+		<date dateiso="20050000">2005</date>. 
+		<title language="en">Factores que afectan las tasas de captura de langostino amarillo (Cervimunida johni) en la zona norte de Chile</title>.
+	</ocontrib> 
+	<oiserial><sertitle>Investigación Marina, Valparaíso</sertitle>. 
+		<volid>33</volid>: 
+		<pages>43-55</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Kim</surname> 
+			<fname>SJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Yoo</surname> 
+			<fname>M</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Lee</surname> 
+			<fname>EK</fname>
+		</oauthor>. 
+		<date dateiso="20040000">2004</date>. 
+		<title language="en">Description of a postflexion larva specimen of Liopropoma japonicum (Doederlein) off Jeju Island, Korea</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Ocean Polar Res.</stitle> 
+		<volid>26</volid>: 
+		<pages>685-688</pages>.
+	</oiserial>
+</ocitat> 
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Cusack</surname> 
+			<fname>M</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Fraser</surname> 
+			<fname>AC</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Stachel</surname> 
+			<fname>T</fname>
+		</oauthor>. 
+		<date dateiso="20030000">2003</date>. 
+		<title language="en">Magnesium and phosphorus distribution in the avian eggshell</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Comp. Biochem. Physiol. B: Biochem. Mol. Biol.</stitle> 
+		<volid>134</volid>: 
+		<pages>63-69</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Effenberger</surname> 
+			<fname>H</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Mereiter</surname> 
+			<fname>K</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Zemann</surname> 
+			<fname>J</fname>
+		</oauthor>. 
+		<date dateiso="19810000">1981</date>. 
+		<title language="en">Crystal structure refinements of magnesite, calcite, rhodochrosite, siderite, smithonite, and dolomite, with discussion of some aspects of the stereochemistry of calcite type carbonates</title>. 
+		<pubname>Z. Kristallogr</pubname>.: 
+		<pages>233-243</pages>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Bottcher</surname> 
+			<fname>ME</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Gehlken</surname> 
+			<fname>PL</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Steele</surname> 
+			<fname>DF</fname>
+		</oauthor>. 
+		<date dateiso="19970000">1997</date>. 
+		<title language="en">Characterization of inorganic and biogenic magnesian calcites by Fourier transform infrared spectroscopy</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Solid State Ionics</stitle> 
+		<volid>101-103</volid>: 
+		<pages>1379-1385</pages>.
+	</oiserial>
+</ocitat> 
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Muñoz-Pérez</surname>, 
+			<fname>JJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Gómez-Pina</surname> 
+			<fname>G</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Enríquez</surname> 
+			<fname>J</fname>
+		</oauthor>. 
+		<date dateiso="20090000">2009</date>. 
+		<title language="en">Comments on ''An approximation to short-term evolution and sediment transport pathways along the littoral of Cadiz Bay (SW Spain)''</title>
+	</ocontrib> by <ocontrib>
+		<oauthor role="nd">
+			<surname>Anfuso</surname>
+		</oauthor> <et-al>et al.</et-al>
+	</ocontrib> (
+	<oiserial>
+		<stitle>Environ. Geol.</stitle> 
+		<volid>56</volid>: 
+		<pages>69-79</pages>). 
+		<othinfo>Environ. Earth Sci. 59: 477-479</othinfo>
+	</oiserial>.
+</ocitat>
+
+
+
+
+4 ...
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Muñoz-Pérez</surname> 
+			<fname>JJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Gutiérrez-Mas</surname> 
+			<fname>JM</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Parrado</surname> 
+			<fname>JM</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Moreno</surname> 
+			<fname>L</fname>
+		</oauthor>. 
+		<date dateiso="19990000">1999</date>b. 
+		<title language="en">Sediment transport velocity by a tracer experiment at Regla Beach (Spain)</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>J. Waterway Port Coast. Ocean Eng.</stitle> 
+		<volid>125</volid>: 
+		<pages>332-335</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Arreguín-Sánchez</surname> 
+			<fname>F</fname>
+		</oauthor>,<oauthor role="nd"> 
+			<surname>Solís-Ramírez</surname> 
+			<fname>MJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>González de la Rosa</surname> 
+			<fname>ME</fname>
+		</oauthor>. 
+		<date dateiso="20000000">2000</date>. 
+		<title language="en">Population dynamics and stock assessment for the Octopus maya (Cephalopoda: Octopodidae) fishery in Campeche Bank, Gulf of Mexico</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Rev. Biol. Trop.</stitle> 
+		<volid>48</volid> (<issueno>2-3</issueno>): 
+		<pages>323-331</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>McCosker</surname> 
+			<fname>JE</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Merlen</surname> 
+			<fname>G</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Long</surname> 
+			<fname>DJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Gilmore</surname> 
+			<fname>RG</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Villon</surname> 
+			<fname>C</fname>
+		</oauthor>. 
+		<date dateiso="19970000">1997</date>. 
+		<title language="en">Deepslope fishes collected during the 1995 eruption of Isla Fernandina, Galápagos</title>.
+	</ocontrib> 
+	<oiserial><sertitle>Noticias de Galápagos</sertitle> 
+		<volid>58</volid>: 
+		<pages>22-58</pages>.
+	</oiserial>
+</ocitat> 
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Sosa-Nishizaki,</surname> 
+			<fname>O</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Robles-Ruíz</surname> 
+			<fname>H</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Dreyfus-León</surname> 
+			<fname>MJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Ceseña-Ojeda</surname> 
+			<fname>O</fname>
+		</oauthor>. 
+		<date dateiso="20010000">2001</date>. 
+		<title language="es">La pesca de atún con palangre en el Golfo de México (Primer semestre del 2001)</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>El Vigía PNAAPD.</stitle> 
+		<volid>6</volid>: 
+		<pages>20-23</pages>.
+	</oiserial>
+</ocitat> 
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Bayne</surname> 
+			<fname>BL</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Iglesias</surname> 
+			<fname>JIP</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Hawkins</surname> 
+			<fname>AJS</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Navarro</surname> 
+			<fname>E</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Héral</surname> 
+			<fname>M</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Deslous-Paoli</surname> 
+			<fname>JM</fname>
+		</oauthor>. 
+		<date dateiso="19930000">1993</date>. 
+		<title language="en">Feeding behaviour of the mussel Mytilus edulis: Responses to variations in quantity and organic content of the seston</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>J. Mar. Biol. Assoc. UK</stitle> 
+		<volid>73</volid>: 
+		<pages>813-829</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Heredia</surname> 
+			<fname>A</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Rodríguez-Hernández</surname> 
+			<fname>AG</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Lozano</surname> 
+			<fname>LF</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Peña-Rico</surname> 
+			<fname>MA</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Velázquez</surname> 
+			<fname>R</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Basiuk</surname> 
+			<fname>VA</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Bucio</surname> 
+			<fname>L</fname>
+		</oauthor>. 
+		<date dateiso="20050000">2005</date>. 
+		<title language="en">Microstructure and thermal change of texture of calcite crystals in ostrich eggshell Struthio camelus</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Mater, Sci. Eng.</stitle> 
+		<volid>C25</volid>: 
+		<pages>1-9</pages>.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Avila-Serrano</surname> 
+			<fname>GE</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Santa Rosa del Río</surname> 
+			<fname>MA</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Anfuso-Melfi</surname> 
+			<fname>G</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Benavente-González</surname> 
+			<fname>J</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Guardado-France</surname> 
+			<fname>R</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>González- Yajimovich</surname> 
+			<fname>O</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Velázquez-González</surname> 
+			<fname>EK</fname>
+		</oauthor>. 
+		<date dateiso="20090000">2009</date>. 
+		<title language="en">Sediment variations and littoral transport at La Victoria Beach, Cádiz, Spain</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>Cienc. Mar.</stitle> 
+		<volid>35</volid>: 
+		<pages>259-269</pages>.
+	</oiserial>
+</ocitat> 
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Avila-Serrano</surname> 
+			<fname>GE</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Santa Rosa del Río</surname> 
+			<fname>MA</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Anfunso-Melfi</surname> 
+			<fname>G</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Benavente-González</surname> 
+			<fname>J</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Guardado-France</surname> 
+			<fname>R</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>González Yajimovich</surname> 
+			<fname>O</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Velázquez-González</surname> 
+			<fname>EK</fname>
+		</oauthor>. 
+		<date dateiso="20090000">2009</date>. 
+		<title language="en">Sediment variations and littoral transport at La Victoria Beach, Cádiz, Spain</title>.
+	</ocontrib> 
+	<oiserial><sertitle>Ciencias Marinas</sertitle>, 
+		<volid>35</volid>(<issueno>3</issueno>): 
+		<pages>259-269</pages>.
+	</oiserial>
+</ocitat>
+
+
+
+
+
+
+Contribución en revista - autor corporativo
+
+
+<ocitat>
+	<ocontrib>
+		<ocorpaut><orgname>ICCAT</orgname></ocorpaut>. 
+		<date dateiso="20040000">2004</date>. 
+		<title language="es">Sesión de evaluación de ICCAT 2003 del stock de rabil. 21-26 de julio de 2003, Mérida, México</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>ICCAT</stitle> 
+		<volid>56</volid>: 
+		<pages>443-527</pages>.
+	</oiserial>
+</ocitat>
+
+
+
+
+
+
+Contribución en monografía
+ 
+
+1
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Geweke</surname> 
+			<fname>J</fname>
+		</oauthor>. 
+		<date dateiso="19920000">1992</date>. 
+		<title language="en">Evaluating the accuracy of sampling-based approaches to the calculation of posterior moments</title>.
+	</ocontrib> In: <omonog>
+		<oauthor role="ed">
+			<surname>Berger</surname> 
+			<fname>JO</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Bernardo</surname> 
+			<fname>JM</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Dawid</surname> 
+			<fname>AP</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Smith</surname> 
+			<fname>AFM</fname>
+		</oauthor> (eds.), 
+		<title language="es">Bayesian Statistics</title>. <extent>4. Proceedings of the 4th Valencia International Meeting</extent>. 
+		<pubname>Clarendon Press</pubname>, 
+		<city>Oxford</city>, pp. 
+		<pages>169-193</pages>.
+	</omonog>
+</ocitat> 
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Maeda-Martínez</surname> 
+			<fname>AN</fname>
+		</oauthor>. 
+		<date dateiso="20080000">2008</date>. 
+		<title language="es">Estado actual del cultivo de bivalvos en México</title>.
+	</ocontrib> In: <omonog>
+		<oauthor role="ed">
+			<surname>Lovatelli</surname> 
+			<fname>A</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Farias</surname> 
+			<fname>A</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Uriarte</surname> 
+			<fname>I</fname>
+		</oauthor> (eds.), 
+		<title language="es">Taller Regional de la FAO sobre el Estado Actual del Cultivo y Manejo de Moluscos Bivalvos y su Proyección Futura: Factores que afectan su sustentabilidad en América Latina</title>. <extent>Actas de Pesca de la FAO</extent>, No. 
+		<volid>12</volid>, 
+		<city>Rome</city>, pp. 
+		<pages>91-100</pages>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Maluf</surname> 
+			<fname>LY</fname>
+		</oauthor>. 
+		<date dateiso="19830000">1983</date>. 
+		<title language="en">Physcal oceanography</title>.
+	</ocontrib> In: <omonog>
+		<oauthor role="ed">
+			<surname>Cody</surname> 
+			<fname>TJ</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Cody</surname> 
+			<fname>ML</fname>
+		</oauthor> (eds.), 
+		<title language="en">Island Biogeography in the Sea of Cortez</title>. 
+		<pubname>Univ. California Press</pubname>, 
+		<city>Berkeley</city>, pp. 
+		<pages>13-25</pages>.
+	</omonog>
+</ocitat> 
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>David</surname> 
+			<fname>L</fname>
+		</oauthor>. 
+		<date dateiso="20020000">2002</date>. 
+		<title language="en">Disturbance to Mediterranean cetaceans caused by vessel traffic</title>.
+	</ocontrib> In: <omonog>
+		<oauthor role="ed">
+			<surname>Notarbartolo di Sciara</surname> 
+			<fname>G</fname>
+		</oauthor> (ed.), 
+		<title language="en">Cetaceans of the Mediterranean and Black Seas: State of knowledge and conservation strategies</title>. <extent>Report to the ACCOBAMS Secretariat</extent>, 
+		<city>Monaco</city>, 
+		<othinfo>February 2002</othinfo>, <extent>Section 11</extent>, 
+		<pages>21</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Kendall</surname> 
+			<fname>AW</fname>
+		</oauthor>. 
+		<date dateiso="19840000">1984</date>. 
+		<title language="en">Serranidae: Development and relationships</title>.
+	</ocontrib> In: <omonog>
+		<oauthor role="ed">
+			<surname>Moser</surname> 
+			<fname>HG</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Richards</surname> 
+			<fname>WJ</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Cohen</surname> 
+			<fname>DM</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Fahay</surname> 
+			<fname>MP</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Kendall Jr.</surname> 
+			<fname>AW</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Richardson</surname> 
+			<fname>SL</fname>
+		</oauthor> (eds.), 
+		<title language="en">Ontogeny and Systematics of Fishes</title>. <extent>American Society of Ichthyologists and Herpetologists Publ. Num. 1</extent>, pp. 
+		<pages>499-510</pages>.
+	</omonog>
+</ocitat> 
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Solís-Ramírez</surname> 
+			<fname>MJ</fname>
+		</oauthor>. 
+		<date dateiso="19940000">1994</date>. 
+		<title language="es">La pesquería del pulpo del Golfo de México y Caribe mexicano</title>.
+	</ocontrib> In: <omonog>
+		<title language="es">Atlas Pesquero y Pesquerías Relevantes de México</title>. 
+		<othinfo>CD Multimedia</othinfo>. 
+		<pubname>Secretaría de Pesca</pubname>, 
+		<pubname>INP</pubname>, 
+		<pubname>CENEDIC</pubname>, 
+		<pubname>Univ. de Colima</pubname>, 
+		<country>México</country>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Akaike </surname>
+			<fname>M</fname>
+		</oauthor>. 
+		<date dateiso="19730000">1973</date>. 
+		<title language="en">Information theory and an extension of the maximum likelihood principle</title>.
+	</ocontrib> In: <omonog>
+		<oauthor role="nd">
+			<surname>Petrov </surname>
+			<fname>B</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Csaki </surname>
+			<fname>F</fname>
+		</oauthor> (eds.), 
+		<title language="en">Proc. 2nd International Symposium of Information Theory</title>. 
+		<pubname>Akademia Kiado</pubname>, 
+		<city>Budapest</city>, pp. 
+		<pages>267-281</pages>.
+	</omonog>
+</ocitat> 
+
+
+2
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Newell</surname> 
+			<fname>CR</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Shumway</surname> 
+			<fname>SE</fname>
+		</oauthor>. 
+		<date dateiso="19930000">1993</date>. 
+		<title language="en">Grazing of natural particulates by bivalve molluscs: Spatial and temporal perspective</title>.
+	</ocontrib> In: <omonog>
+		<oauthor role="ed">
+			<surname>Dame</surname> 
+			<fname>RD</fname>
+		</oauthor> (ed.), 
+		<title language="en">Bivalve Filter Feeders in Estuarine and Coastal Ecosystem Processes</title>. 
+		<pubname>Springer-Verlag</pubname>, 
+		<city>Berlin</city>, pp. 
+		<pages>85-148</pages>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Walne</surname> 
+			<fname>PR</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Mann</surname> 
+			<fname>R</fname>
+		</oauthor>. 
+		<date dateiso="19750000">1975</date>. 
+		<title language="en">Growth and biochemical composition in Ostrea edulis and Crassostrea gigas</title>.
+	</ocontrib> In: <omonog>
+		<oauthor role="ed">
+			<surname>Barnes</surname> 
+			<fname>H</fname>
+		</oauthor> (ed.), <edition>9</edition>th <confgrp><confname>European Marine Biology Symposium</confname></confgrp>. 
+		<pubname>Aberdeen Univ. Press</pubname>, 
+		<city>Scotland</city>, pp. 
+		<pages>587-607</pages>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Hubbs</surname> 
+			<fname>CL</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Roden</surname> 
+			<fname>GI</fname>
+		</oauthor>. 
+		<date dateiso="19640000">1964</date>. 
+		<title language="en">Oceanography and marine life along the Pacific coast of Middel America</title>.
+	</ocontrib> In: <omonog>
+		<oauthor role="ed">
+			<surname>Wauchope</surname> 
+			<fname>R</fname>
+		</oauthor> (ed.), 
+		<title language="en">A Handbook of Middle American Indians</title>. 
+		<pubname>Univ. Texas Press</pubname>, 
+		<city>Austin</city>, pp. 
+		<pages>143-186</pages>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Nakaza</surname> 
+			<fname>E</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Hino</surname> 
+			<fname>M</fname>
+		</oauthor>. 
+		<date dateiso="19900000">1990</date>. 
+		<title language="en">Reef zone disaster caused by bore-like surf beat</title>.
+	</ocontrib> In: <omonog>
+		<title language="en">Flows and Waves</title>. 
+		<pubname>Tokyo Institute of Technology</pubname>, <extent>Rep. No. 5</extent>, pp. 
+		<pages>85-97</pages>.
+	</omonog>
+</ocitat>
+
+
+3 ...
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Solís-Ramírez</surname> 
+			<fname>MJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Arreguín-Sánchez</surname> 
+			<fname>F</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Seijo</surname> 
+			<fname>JC</fname>
+		</oauthor>. 
+		<date dateiso="19970000">1997</date>. 
+		<title language="es">Pesquería de pulpo de la plataforma continental de Yucatán</title>.
+	</ocontrib> In: <omonog>
+		<oauthor role="ed">
+			<surname>Flores-Hernández</surname> 
+			<fname>D</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Sánchez-Gil</surname> 
+			<fname>P</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Seijo</surname> 
+			<fname>JC</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Arreguín-Sánchez</surname> 
+			<fname>F</fname> 
+		</oauthor>(eds.), 
+		<title language="es">Análisis y Diagnóstico de los Recursos Pesqueros Critícos del Golfo de México</title>. 
+		<pubname>Universidad Autónoma de Campeche</pubname>, <coltitle>EPOMEX Serie Científica</coltitle> 
+		<volid>7</volid>, pp. 
+		<pages>61-80</pages>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Fernández-Reiriz</surname> 
+			<fname>MJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Duarte</surname> 
+			<fname>P</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Labarta</surname> 
+			<fname>U</fname>
+		</oauthor>. 
+		<date dateiso="20070000">2007</date>. 
+		<title language="es">Modelos de comportamiento alimentario en el mejillón de las rías de Galicia</title>.
+	</ocontrib> In: <omonog>
+		<oauthor role="ed">
+			<surname>Figueras</surname> 
+			<fname>A</fname>
+		</oauthor> (ed.), 
+		<title language="es">Biología y Cultivo del Mejillón (Mytilus galloprovincialis) en Galicia</title>. <coltitle>Biblioteca de Ciencias</coltitle> (CSIC), 
+		<city>Madrid</city>, pp. 
+		<pages>197-223</pages>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Richards</surname> 
+			<fname>WJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Baldwin</surname> 
+			<fname>CC</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Röpke</surname> 
+			<fname>A</fname>
+		</oauthor>. 
+		<date dateiso="20060000">2006</date>. 
+		<title language="en">Subfamily Epinephelinae, tribe Liopropomatini</title>.
+	</ocontrib> In: <omonog>
+		<oauthor role="ed">
+			<surname>Richards</surname> 
+			<fname>WJ</fname>
+		</oauthor> (ed.), 
+		<title language="en">Early Stages of Atlantic Fishes: An identification guide for western central North Atlantic</title>. 
+		<pubname>CRC Press</pubname>, 
+		<city>Boca Raton</city>, 
+		<state>Florida</state>, pp. 
+		<pages>1300-1302</pages>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Wang</surname> 
+			<fname>D</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Würsig</surname> 
+			<fname>B</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Evans</surname> 
+			<fname>W</fname>
+		</oauthor>. 
+		<date dateiso="19950000">1995</date>. 
+		<title language="en">Comparisons of whistles among seven odontocete species</title>.
+	</ocontrib> In: <omonog>
+		<oauthor role="nd">
+			<surname>Kastelein</surname> 
+			<fname>RA</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Thomas</surname> 
+			<fname>JA</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Nachtigall</surname> 
+			<fname>PE</fname>
+		</oauthor>, 
+		<title language="en">Sensory systems of aquatic mammals</title>. 
+		<pubname>De Spil Publishers</pubname>, 
+		<city>Woerden</city>, 
+		<country>The Netherlands</country>, pp. 
+		<pages>299-323</pages>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>López</surname> 
+			<fname>N</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Rodríguez</surname> 
+			<fname>D</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Candelaria</surname> 
+			<fname>C</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>González-González</surname> 
+			<fname>J</fname>
+		</oauthor>. 
+		<date dateiso="20000000">2000</date>. 
+		<title language="en">Subtidal macroalgal communities in Acapulco and Zihuatanejo, Guerrero, Mexico</title>.
+	</ocontrib> In: <omonog>
+		<oauthor role="ed">
+			<surname>Munawar</surname> 
+			<fname>M</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Laurence</surname> 
+			<fname>SG</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Munawar</surname> 
+			<fname>IF</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Malley</surname> 
+			<fname>DF</fname>
+		</oauthor> (eds.), 
+		<title language="en">Aquatic Ecosystems of Mexico: Status and Scope</title>. <coltitle>Ecovision World Monograph Series</coltitle>, pp. 
+		<pages>335-351</pages>.
+	</omonog>
+</ocitat>
+
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Papale</surname> 
+			<fname>E</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Azzolin</surname> 
+			<fname>M</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Giacoma</surname> 
+			<fname>R</fname>
+		</oauthor>. 
+		<date dateiso="20080000">2008</date>. 
+		<title language="en">Land based survey of Tursiops truncatus interaction with boat traffic in Lampedusa Island</title>.
+	</ocontrib> <omonog>P
+		<title language="en">roceedings of the 22nd European cetacean Society Annual Conference</title>, 
+		<pubname>Egmond and Zee</pubname>, 
+		<country>The Netherland</country>, 
+		<pages>10-12</pages> March.
+	</omonog>
+</ocitat>
+
+
+
+Contribución en monografía - autor corporativo
+
+<ocitat>
+	<omonog><ocorpaut><orgname>INP</orgname></ocorpaut>. 
+		<date dateiso="20000000">2000</date>a. 
+		<title language="es">Capitulo Atún del Golfo de México. In: Sustentabilidad y Pesca Responsable en México: Evaluación y Manejo 1999-2000</title>. 
+		<pubname>Instituto Nacional de la Pesca</pubname>, 
+		<pubname>SAGARPA</pubname>, 
+		<country>México</country>, pp. 
+		<pages>559-584</pages>.
+	</omonog>
+</ocitat>
+
+
+
+
+Monografías
+
+    
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Haddon</surname> 
+			<fname>M</fname>
+		</oauthor>. 
+		<date dateiso="20010000">2001</date>. 
+		<title language="en">Modelling and Quantitative Methods in Fisheries</title>. 
+		<pubname>Chapman & Hall</pubname>/
+		<pubname>CRC</pubname>, 
+		<city>Boca Raton</city>, 
+		<state>Florida</state>, 
+		<pages>406</pages> pp.
+	</omonog>
+</ocitat> 
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Degens</surname> 
+			<fname>T</fname>
+		</oauthor>. 
+		<date dateiso="19890000">1989</date>. 
+		<title language="en">Perspectives on Biogeochemistry</title>. 
+		<pubname>Springer-Verlag</pubname>, 
+		<city>Berlin</city>, 
+		<pages>423</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>De la Lanza</surname> 
+			<fname>EG</fname>
+		</oauthor>. 
+		<date dateiso="19910000">1991</date>. 
+		<title language="es">Oceanografía de Mares Mexicanos</title>. 
+		<pubname>AGT Editor</pubname>, 
+		<country>Mexico</country>, 
+		<pages>579</pages> pp.
+	</omonog>
+</ocitat> 
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Fournier</surname> 
+			<fname>D</fname>
+		</oauthor>. 
+		<date dateiso="19960000">1996</date>. 
+		<title language="en">An introduction to AD MODEL BUILDER for use in nonlinear modeling and statistics</title>. 
+		<pubname>Otter Research</pubname> Ltd., 
+		<country>Canada</country>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Lazarev</surname> 
+			<fname>AN</fname>
+		</oauthor>. 
+		<date dateiso="19720000">1972</date>. 
+		<title language="en">Vibrational Spectra and Structure of Silicates</title>. 
+		<pubname>Consultants Bureau</pubname>, 
+		<state>New York</state>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Mann</surname> 
+			<fname>S</fname>.
+		</oauthor> 
+		<date dateiso="20010000">2001</date>. 
+		<title language="en">Principles and Concepts in Bioinorganic Materials Chemistry</title>. 
+		<pubname>Oxford Univ. Press</pubname>, 
+		<city>Oxford</city>.
+	</omonog>
+</ocitat> 
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Young</surname> 
+			<fname>RA</fname>
+		</oauthor>. 
+		<date dateiso="19930000">1993</date>. 
+		<title language="en">The Rietveld Method</title>. 
+		<pubname>Oxford Univ. Press</pubname>, 
+		<city>Oxford</city>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Horikawa</surname> 
+			<fname>K</fname>
+		</oauthor>. 
+		<date dateiso="19880000">1988</date>. 
+		<title language="en">Nearshore Dynamics and Coastal Processes: Theory, Measurement and Predictive Models</title>. 
+		<pubname>Univ. Tokyo Press</pubname>, 
+		<pages>522</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Soto-Ruíz</surname>, 
+			<fname>M</fname>
+		</oauthor>. 
+		<date dateiso="20020000">2002</date>. 
+		<title language="es">Estandarización de series de CPUE con S-Plus</title>.
+		<pubname> Instituto Tecnológico de Oceanografía</pubname>, 
+		<city>Madrid</city>, 
+		<country>Spain</country>, 
+		<pages>105</pages> pp. 
+		<url>Http://www.ieo.es/images/pdfs/manual.pdf</url>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Kendall</surname> 
+			<fname>AW</fname>
+		</oauthor>. 
+		<date dateiso="19790000">1979</date>. 
+		<title language="en">Morphological comparisons of North American sea bass larvae (Pisces: Serranidae)</title>.
+	</ocontrib> 
+	<oiserial>
+		<stitle>NOAA Tech. Rep. NMFS Circ.</stitle> 
+		<volid>428</volid>, 
+		<pages>50</pages> pp.
+	</oiserial>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Dean</surname> 
+			<fname>RG</fname>.
+		</oauthor> 
+		<date dateiso="19770000">1977</date>. 
+		<title language="en">Equilibrium beach profiles: US Atlantic and Gulf coasts</title>. <extent>Ocean Engineering Rep. No. 12</extent>, 
+		<pubname>Univ. of Delaware</pubname>, 
+		<city>Newark</city>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Evans</surname> 
+			<fname>PGH</fname>
+		</oauthor>. 
+		<date dateiso="20030000">2003</date>. 
+		<title language="en">Shipping as a possible source of disturbance to cetaceans in the ASCOBANS region</title>. 
+		<url>www.ASCOBANS.org</url>.
+	</omonog>
+</ocitat>
+
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Notarbartolo di Sciara</surname> 
+			<fname>G</fname>
+		</oauthor>. 
+		<date dateiso="20020000">2002</date>. 
+		<title language="en">Cetaceans of the Mediterranean and Black Seas: State of knowledge and conservation strategies</title>. <extent>Report to the ACCOBAMS Secretariat</extent>, 
+		<city>Monaco</city>, 
+		<othinfo>February 2002</othinfo>, <extent>Section 11</extent>, 
+		<pages>21</pages> pp (
+		<url>www.ACCOBAMS.org</url>).
+	</omonog>
+</ocitat>
+
+
+
+2 
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Hilborn</surname> 
+			<fname>R</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Mangel</surname> 
+			<fname>M</fname>
+		</oauthor>. 
+		<date dateiso="19970000">1997</date>. 
+		<title language="en">The Ecological Detective: Confronting Models with Data</title>. 
+		<pubname>Princeton Univ. Press</pubname>, 
+		<city>Princeton</city>, 
+		<state>New Jersey</state>, 
+		<pages>315</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Milton</surname> 
+			<fname>JS</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Tsokos</surname> 
+			<fname>JO</fname>
+		</oauthor>. 
+		<date dateiso="20010000">2001</date>. 
+		<title language="es">Estadística para biología y ciencias de la salud</title>. 
+		<pubname>Interamericana Mc-Graw Hill</pubname>. 
+		<city>Madrid</city>, 
+		<country>España</country>. 
+		<pages>210</pages> pp.
+	</omonog>
+</ocitat> 
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Neter</surname> 
+			<fname>J</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Wasserman</surname> 
+			<fname>W</fname>
+		</oauthor>. 
+		<date dateiso="19740000">1974</date>. 
+		<title language="en">Applied Linear Statistical Models</title>. 
+		<pubname>Richard D Irwin</pubname>, 
+		<city>Homewood</city>, 
+		<state>Illinois</state>, 
+		<pages>842</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Grove</surname> 
+			<fname>JS</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Lavenberg</surname> 
+			<fname>RJ</fname>
+		</oauthor>. 
+		<date dateiso="19970000">1997</date>. 
+		<title language="en">The Fishes of the Galápagos Islands</title>. 
+		<pubname>Stanford Univ. Press</pubname>, 
+		<city>Stanford</city>, 
+		<state>California</state>, 
+		<pages>863</pages> pp.
+	</omonog>
+</ocitat> 
+
+<ocitat>
+	<omonog>
+		<oauthor role="ed">
+			<surname>Leis</surname> 
+			<fname>JM</fname>
+		</oauthor>, <oauthor role="ed">
+			<surname>Carson-Ewart</surname> 
+			<fname>BM</fname>
+		</oauthor> (eds). 
+		<date dateiso="20000000">2000</date>. 
+		<title language="en">The Larvae of Indo-Pacific Coastal Fishes. An identification guide to marine fish larvae</title>. 
+		<pubname>Brill</pubname>, 
+		<pubname>Leiden</pubname>, 
+		<country>The Netherlands</country>, 
+		<pages>850</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Motulsky</surname> 
+			<fname>H</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Christopoulos</surname> 
+			<fname>A</fname>
+		</oauthor>. 
+		<date dateiso="20040000">2004</date>. 
+		<title language="en">Fitting Models to Biological Data Using Linear and Nonlinear Regression</title>. 
+		<pubname>Oxford Univ. Press</pubname>, 
+		<city>Oxford</city>, 
+		<pages>351</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Woelkerling</surname> 
+			<fname>WJ</fname>.
+		</oauthor> 
+		<date dateiso="19880000">1988</date>. 
+		<title language="en">The Coralline Red Algae: An analysis of the genera and subfamilies of nongeniculate Corallinaceae</title>. 
+		<pubname>British Museum and Oxford University Press</pubname>, 
+		<city>London</city> and 
+		<city>Oxford</city>, 
+		<pages>268</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Hilborn</surname>, 
+			<fname>R</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Walters</surname> 
+			<fname>C</fname>
+		</oauthor>. 
+		<date dateiso="19920000">1992</date>. 
+		<title language="en">Quantitative fisheries stock assessment</title>. 
+		<pubname>Chapman and Hall</pubname>, 
+		<state>New York</state>, 
+		<pages>570</pages> pp.
+	</omonog>
+</ocitat> 
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Sokal</surname> 
+			<fname>RR</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Rohlf</surname> 
+			<fname>FJ</fname>
+		</oauthor>. 
+		<date dateiso="19810000">1981</date>. 
+		<title language="en">Biometry</title>. 
+		<pubname>W.H. Freeman and Company</pubname>, 
+		<state>New York</state>. 
+		<pages>959</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Allen</surname> 
+			<fname>GR</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Robertson</surname> 
+			<fname>DR</fname>
+		</oauthor>. 
+		<date dateiso="19940000">1994</date>. 
+		<title language="en">Fishes of the Tropical Eastern Pacific</title>. 
+		<pubname>Univ. of Hawaii Press</pubname>, 
+		<city>Honolulu</city>, 
+		<pages>332</pages> pp.
+	</omonog>
+</ocitat> 
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Fredsoe</surname> 
+			<fname>J</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Deigaard</surname> 
+			<fname>R</fname>
+		</oauthor>. 
+		<date dateiso="19920000">1992</date>. 
+		<title language="en">Mechanics of Coastal Sediment Transport</title>. 
+		<pubname>World Scientific Publishing</pubname> Co., 
+		<city>Singapore</city>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Hilborn</surname> 
+			<fname>R</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Walters</surname> 
+			<fname>CJ</fname>
+		</oauthor>. 
+		<date dateiso="19920000">1992</date>. 
+		<title language="en">Quantitative fisheries stock assessment: choice, dynamics and uncertainty</title>. 
+		<pubname>Chapman and Hall</pubname>, 
+		<state>New York</state>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Tucker</surname> 
+			<fname>ME</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Wright</surname> 
+			<fname>VP</fname>
+		</oauthor>. 
+		<date dateiso="19910000">1991</date>. 
+		<title language="en">Carbonate Sedimentology</title>. 
+		<pubname>Wiley-Blackwell</pubname>.
+	</omonog>
+</ocitat>
+
+
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Beddington</surname> 
+			<fname>JR</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Cooke</surname> 
+			<fname>JG</fname>
+		</oauthor>. 
+		<date dateiso="19830000">1983</date>. 
+		<title language="en">The potential yield of fish stocks</title>. <extent>FAO Fish. Tech. Pap. 242</extent>, 
+		<pages>47</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Punt</surname> 
+			<fname>AE</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Hilborn</surname> 
+			<fname>R</fname>
+		</oauthor>. 
+		<date dateiso="20010000">2001</date>. 
+		<title language="en">BAYES-SA: Bayesian Stock Assessment Methods in Fisheries. User's manual</title>. <coltitle>FAO Computerized Information Series (Fisheries)</coltitle> No. 
+		<volid>12</volid>, 
+		<city>Rome</city>, 
+		<pages>56</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Baker</surname> 
+			<fname>CS</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Herman</surname> 
+			<fname>LM</fname>
+		</oauthor>. 
+		<date dateiso="19890000">1989</date>. 
+		<title language="en">Behavioural responses of summering humpback whales to vessel traffic. Experimental and opportunistic observation</title>. <extent>Report from Kewalo Basin Marine Mammal Laboratory</extent>, 
+		<pubname>University of Hawaii</pubname>, 
+		<city>Honolulu</city>, for the 
+		<pubname>US National Park Service</pubname>, 
+		<city>Anchorage</city>, 
+		<country>Alaska</country>, 
+		<pages>50</pages> pp. 
+		<othinfo>NTIS PB90-198409</othinfo>.
+	</omonog>
+</ocitat>
+
+
+
+ 
+3 ..
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Parsons</surname> 
+			<fname>TR</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Maitia</surname> 
+			<fname>Y</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Lalli</surname> 
+			<fname>CM</fname>
+		</oauthor>. 
+		<date dateiso="19840000">1984</date>. 
+		<title language="en">A Manual of Chemical and Biological Methods for Seawater Analysis</title>. 
+		<pubname>Pergamon Press</pubname>, 
+		<city>Oxford</city>, 
+		<pages>173</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Thomson</surname> 
+			<fname>DA</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Findley</surname> 
+			<fname>LT</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Kerstitch</surname> 
+			<fname>AN</fname>
+		</oauthor>. 
+		<date dateiso="19790000">1979</date>. 
+		<title language="en">Reef Fishes of the Sea of Cortez: The Rocky-shore Fishes of the Gulf of California</title>. 
+		<pubname>John Wiley & Sons</pubname>, 
+		<state>New York</state>, 
+		<pages>302</pages> pp.
+	</omonog>
+</ocitat></other>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Richardson</surname> 
+			<fname>WJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Greene</surname> 
+			<fname>CR</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Malme</surname> 
+			<fname>CI</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Thompson</surname> 
+			<fname>DH</fname>
+		</oauthor>. 
+		<date dateiso="19950000">1995</date>. 
+		<title language="en">Marine Mammals and Noise</title>. 
+		<pubname>Academic Press</pubname>, 
+		<city>San Diego</city>, 
+		<pages>576</pages> pp.
+	</omonog>
+</ocitat>
+
+
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Muñoz-Pérez</surname> 
+			<fname>JJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Payo</surname> 
+			<fname>A</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Román-Sierra</surname> 
+			<fname>J</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Navarro</surname> 
+			<fname>M</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Moreno</surname> 
+			<fname>L</fname>
+		</oauthor>. 
+		<date dateiso="20100000">2010</date>. 
+		<title language="en">Optimization of beach profile spacing given an admissible error</title>. 
+		<pubname>Coast. Eng.</pubname> (
+		<othinfo>in press</othinfo>).
+	</omonog>
+</ocitat> 
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Antao</surname> 
+			<fname>SM</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Mulder</surname> 
+			<fname>WH</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Hassan</surname> 
+			<fname>I</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Crichton</surname> 
+			<fname>WA</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Parise</surname> 
+			<fname>JB</fname>
+		</oauthor>. 
+		<date dateiso="20040000">2004</date>. 
+		<title language="en">Cation disorder in dolomite, CaMg(CO3)2, and its influence on the aragonite + magnesite dolomite reaction boundary</title>. 
+		<volid>89</volid>(<extent>7</extent>): 
+		<pages>1142-1147</pages>.
+	</omonog>
+</ocitat>
+
+
+
+
+Monografía - Autor corporativo
+
+
+<ocitat>
+	<omonog><ocorpaut><orgname>PROVIGO</orgname>.</ocorpaut> 
+		<date dateiso="19960000">1996</date>. 
+		<title language="es">Nueve Años de Muestreo Hidrográfico en la Ría de Vigo (Enero 1987-Enero 1996)</title>. 
+		<pubname>Fundación PROVIGO</pubname>, 
+		<city>Vigo</city>, 
+		<pages>47</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog><ocorpaut><orgname>FAO</orgname></ocorpaut>. 
+		<date dateiso="20090000">2009</date>. 
+		<title language="en">El estado mundial de la pesca y la acuicultura 2008</title>. 
+		<pubname>Fisheries and Aquaculture Department</pubname>, 
+		<pubname>UN Food and Agriculture Organization</pubname>, 
+		<city>Rome</city>, 
+		<pages>218</pages> pp.
+	</omonog>
+</ocitat> 
+
+<ocitat>
+	<omonog><ocorpaut><orgname>INE</orgname></ocorpaut>. 
+		<date dateiso="20000000">2000</date>. 
+		<title language="es">Indicadores para la evaluación del desempeño ambiental</title>. <edition>Primera</edition> edición. 
+		<pubname>Instituto Nacional de Ecología</pubname>, 
+		<pubname>SEMARNAT</pubname>, 
+		<country>México</country>, 
+		<pages>180</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog><ocorpaut><orgname>INP</orgname></ocorpaut>. 
+		<date dateiso="20000000">2000</date>b. 
+		<title language="es">Catálogo de los sistemas de captura de las principales pesquerías comerciales</title>. I
+		<pubname>nstituto Nacional de la Pesca</pubname>, 
+		<pubname>SEMARNAP</pubname>, 
+		<pages>139</pages> pp.
+	</omonog>
+</ocitat> 
+
+<ocitat>
+	<omonog><ocorpaut><orgname>USACE</orgname> (US Army Corps of Engineers).</ocorpaut> 
+		<date dateiso="20020000">2002</date>. 
+		<title language="en">Coastal Engineering Manual. EM 1110-2-1100</title>. 
+		<url>Http://chl.erdc.usace.army.mil/cem</url>.
+	</omonog>
+</ocitat>
+
+
+
+Proceedings
+
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Gómez-Pina</surname> 
+			<fname>G</fname>.
+		</oauthor> 
+		<date dateiso="19990000">1999</date>.
+		<title language="en"> Beach nourishment: Fundamental, the Spanish experience. Proc. of the Short Course on Coastal and Port Engineering</title>, <confgrp><no>5</no>th <confname>International Conference on Coastal and Port Engineering in Developing Countries</confname> (COPEDEC), 
+		<city>Cape Town</city></confgrp>, pp. 
+		<pages>6.1-6.48.</pages>
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Gómez-Pina</surname> 
+			<fname>G</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Fages</surname> 
+			<fname>L</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Ramírez</surname> 
+			<fname>JL</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Muñoz-Pérez</surname> 
+			<fname>JJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Enríquez</surname> 
+			<fname>J</fname>
+		</oauthor>. 
+		<date dateiso="20060000">2006</date>. 
+		<title language="en">A critical review of beach restoration projects on the northern coast of Cadiz (Spain) after thirteen years</title>. <confgrp>Proc. <confname>30</confname>th <confname>International Conference on Coastal Engineering</confname>, 
+		<city>San Diego</city> (ASCE)</confgrp>, pp. 
+		<pages>4167-4178</pages>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Roberts</surname> 
+			<fname>MH</fname>
+		</oauthor>, 
+		<date dateiso="19800000">1980</date>. 
+		<title language="en">Physical processes and sediment flux through reef-lagoon systems</title>. 
+		<othinfo>Proc. 17th</othinfo> 
+		<pubname>ICCE</pubname>, 
+		<pubname>ASCE</pubname>, Vol. 
+		<volid>1</volid>, pp. 
+		<pages>946-962</pages>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Horikawa</surname> 
+			<fname>KA</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Kuo</surname> 
+			<fname>CT</fname>
+		</oauthor>. 
+		<date dateiso="19660000">1966</date>. 
+		<title language="en">A study of wave transformation inside surf zone</title>. 
+		<othinfo>Proc. 10th</othinfo> 
+		<pubname>ICCE</pubname>, 
+		<pubname>ASCE</pubname>, Vol. 
+		<volid>I</volid>: 
+		<pages>217-233</pages>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Muñoz-Pérez</surname> 
+			<fname>JJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Medina</surname> 
+			<fname>R</fname>
+		</oauthor>. 
+		<date dateiso="20020000">2002</date>. 
+		<title language="en">Profile changes due to a fortnightly tidal cycle</title>. 
+		<othinfo>Proc. 28th</othinfo> 
+		<pubname>ICCE</pubname>, 
+		<pubname>ASCE</pubname>, 
+		<city>Sydney</city>, pp. 
+		<pages>3063-3075</pages>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Muñoz-Pérez</surname> 
+			<fname>JJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Medina</surname> 
+			<fname>R</fname>
+		</oauthor>. 
+		<date dateiso="20050000">2005</date>. 
+		<title language="en">Short-term variability on reef protected beach profiles: An analysis using EOF</title>. 
+		<othinfo>Proc. 5th Int. Conf</othinfo>. 
+		<pubname>Coastal Dynamics</pubname>, 
+		<city>Barcelona</city>.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Kraus</surname> 
+			<fname>NC</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Isobe</surname> 
+			<fname>M</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Igarashi</surname> 
+			<fname>H</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Sasaki</surname> 
+			<fname>T</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Horikawa</surname> 
+			<fname>K</fname>
+		</oauthor>. 
+		<date dateiso="19820000">1982</date>. 
+		<title language="en">Field experiments on longshore sand transport in the surf zone</title>. 
+		<othinfo>Proc. 18th</othinfo> 
+		<pubname>ICCE</pubname>, 
+		<pubname>ASCE</pubname>, pp. 
+		<pages>969-988</pages>.
+	</omonog>
+</ocitat> 
+
+
+
+
+Tesis
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Arreola-Lizárraga</surname> 
+			<fname>JA</fname>
+		</oauthor>. 
+		<date dateiso="20030000">2003</date>. 
+		<title language="es">Bases de manejo costero: Patrones ecológicos en la laguna costera Las Guásimas, Territorio Yaqui, México</title>. <thesis><degree>Ph.D.</degree> thesis, <orgname>Centro de Investigaciones Biológicas del Noroeste</orgname>, 
+		<city>La Paz</city>, 
+		<state>BCS</state>, 
+		<country>México</country></thesis>, 
+		<pages>61</pages> pp.
+	</omonog>
+</ocitat> 
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>García</surname> 
+			<fname>M</fname>.
+		</oauthor> 
+		<date dateiso="20090000">2009</date>. 
+		<title language="es">Estructura comunitaria de la fauna asociada a algas submareales en tres sitios contrastantes en Zihuatanejo, Guerrero</title>. <thesis><degree>M.Sc.</degree> thesis, <orgname>Universidad Nacional Autónoma de México</orgname></thesis>, 
+		<pages>99</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Harrington</surname> 
+			<fname>LM</fname>
+		</oauthor>. 
+		<date dateiso="20040000">2004</date>. 
+		<title language="en">Ecology of crustose coralline algae: Interactions with scleractinian corals and responses to environmental conditions</title>. <thesis><degree>Ph.D.</degree> thesis, <orgdiv>School of Marine Biology and Aquaculture</orgdiv>, <orgname>James Cook University</orgname></thesis>, 
+		<pages>149</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Heredia</surname> 
+			<fname>A</fname>
+		</oauthor>. 
+		<date dateiso="20000000">2000</date>. 
+		<title language="en">Analysis of modern and ancient bones: Morphology, structure and contributions to the study of biomaterials</title>. <thesis><degree>B. Sc.</degree> Thesis. <orgdiv>Faculty of Sciences</orgdiv>. <orgname>Universidad Nacional Autonoma de Mexico</orgname></thesis>. 
+		<pages>64</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Muñoz-Pérez</surname> 
+			<fname>JJ</fname>
+		</oauthor>. 
+		<date dateiso="19960000">1996</date>. 
+		<title language="es">Análisis de la morfología y variabilidad de playas apoyadas en lajas rocosas</title>. <thesis><degree>Ph.D.</degree> thesis, <orgname>Cadiz Univ.</orgname>, 
+		<country>Spain</country></thesis>, 
+		<pages>150</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Rodríguez-Troncoso</surname> 
+			<fname>A</fname>
+		</oauthor>. 
+		<date dateiso="20040000">2004</date>. 
+		<title language="es">Ciclo reproductivo de tres especies formadoras de arrecife en bahía La Entrega, Oaxaca, México</title>. <thesis><degree>M.Sc.</degree> thesis, <orgname>Universidad Autónoma de Baja California</orgname>, 
+		<country>México</country></thesis>, 
+		<pages>117</pages> pp.
+	</omonog>
+</ocitat>
+
+
+
+
+Congresos, simposios
+
+
+<ocitat>
+	<ocontrib>
+		<oauthor role="nd">
+			<surname>Hoyos-Chairez</surname> 
+			<fname>F</fname>
+		</oauthor>. 
+		<date dateiso="20040000">2004</date>. 
+		<title language="en">Ostricultura sonorense. Antecedentes, presente y perspectiva de desarrollo sustentable</title>.
+	</ocontrib> <omonog>
+		<title language="es">Memoria Foro Agricultura y Desarrollo Rural Sustentable</title>, 
+		<city>Hermosillo</city>, 
+		<state>Sonora</state>, 
+		<othinfo>29-30 April</othinfo> 
+		<date dateiso="20040000">2004</date>, 
+		<pages>11</pages> pp.
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Fuentes</surname> 
+			<fname>D</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Solís-Ramírez</surname> 
+			<fname>MJ</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>De la Garza</surname> 
+			<fname>J</fname>
+		</oauthor>. 
+		<date dateiso="19650000">1965</date>. 
+		<title language="es">Algunos aspectos de la reproducción de pulpo (Octopus vulgaris Lamarck) de la Sonda de Campeche</title>. <extent>Res. II Congreso Nacional de Oceanografía</extent>, 
+		<city>Ensenada</city>, 
+		<state>Baja California</state>, 
+		<country>México</country>.
+	</omonog>
+</ocitat> 
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Mazón-Suástegui</surname> 
+			<fname>JM</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Robles-Mungaray</surname> 
+			<fname>M</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Flores-Higuera</surname> 
+			<fname>F</fname>
+		</oauthor>, <oauthor role="nd">
+			<surname>Avilés-Quevedo</surname> 
+			<fname>A</fname>
+		</oauthor>. 
+		<date dateiso="20020000">2002</date>. 
+		<title language="es">Experiencias en la producción de semilla de ostión de placer Crassostrea corteziensis en el laboratorio</title>. <confgrp><no>IV</no> <confname>Simposio Nacional de Acuicultura y Pesca</confname></confgrp> (<extent>Book of Abstracts</extent>), 
+		<city>Antigua</city>, 
+		<country>Guatemala</country>, pp. 
+		<pages>16-18</pages>.
+	</omonog>
+</ocitat>
+
+
+
+
+Otros
+
+<ocitat>
+	<omonog><ocorpaut><orgname>INP</orgname>.</ocorpaut> 
+		<date dateiso="20020000">2002</date>, 
+		<othinfo>2003, 2004, 2005, 2006, 2007</othinfo>. 
+		<title language="es">Evaluación de la población de pulpo (Octopus maya) en la Península de Yucatán</title>. 
+		<pubname>Instituto Nacional de la Pesca</pubname>, 
+		<country>México</country>. 
+		<url>Http://www.inp.sagarpa.gob.mx/Dictamenes/Dictamenes.htm</url>
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog><ocorpaut><orgname>INAPESCA</orgname>.</ocorpaut> 
+		<date dateiso="20080000">2008</date>. 
+		<title language="es">Evaluación de la población de pulpo (Octopus maya) en la Península de Yucatán 2008</title>. <extent>Documento interno</extent>, 
+		<pubname>Instituto Nacional de la Pesca</pubname>, 
+		<country>México</country>. 
+		<url>Http://www.inp.sagarpa.gob.mx/Dictamenes/Dictamenes.htm</url>
+	</omonog>
+</ocitat>
+
+<ocitat>
+	<omonog>
+		<oauthor role="nd">
+			<surname>Rodríguez-Carvajal</surname> 
+			<fname>J</fname>.
+		</oauthor> 
+		<date dateiso="19810000">1981</date>. 
+		<title language="en">FULLPROF program for Rietveld refinement and pattern matching analysis (unpublished)</title>. 
+		<othinfo>The program is a strongly modified version of that described by DB Wiles and RA Youn</othinfo>g.
+	</omonog>
+</ocitat>
