@@ -41,6 +41,6 @@
 	</revista>
 	<revista issn="1405-7743">
 		<nombre>Ingeniería, investigación y tecnología</nombre>
-		<exp>((?:.+?\ y\ .+?)|.+?)\.\ (.*)</exp>
+		<exp>((?:.+?\ y\ .+?)|.+?)\.\ (.+?)(?:\.\ |\?\ )(.*)</exp>
 	</revista>
 </reglas>
