@@ -122,19 +122,19 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
       'RetStr = RetStr & vbCrLf
       'RetStr = RetStr & objMatch.Value
       For Each itemXML In groups.ChildNodes
+        If Not IsNull(itemXML.getAttribute("notag")) Then
+            tagStringOpen = vbNullString
+            tagStringClose = vbNullString
+        Else
+            tagStringOpen = "[" & itemXML.nodeName & "]"
+            tagStringClose = "[/" & itemXML.nodeName & "]"
+        End If
+        'RetStr = RetStr & " SubGrupo " & itemXML.nodeName & ": "
+        'RetStr = RetStr & subjetcString
+        'RetStr = RetStr & vbCrLf
         If Not (itemXML.SelectSingleNode("value") Is Nothing) Then
             backreference = itemXML.SelectSingleNode("value").Text
             subjetcString = objMatch.SubMatches((CInt(backreference) - 1))
-            If Not IsNull(itemXML.getAttribute("notag")) Then
-                tagStringOpen = vbNullString
-                tagStringClose = vbNullString
-            Else
-                tagStringOpen = "[" & itemXML.nodeName & "]"
-                tagStringClose = "[/" & itemXML.nodeName & "]"
-            End If
-            'RetStr = RetStr & " SubGrupo " & itemXML.nodeName & ": "
-            'RetStr = RetStr & subjetcString
-            'RetStr = RetStr & vbCrLf
             If Not (itemXML.SelectSingleNode("regex") Is Nothing) Then
                 Set groupsXML = itemXML.SelectSingleNode("grupos")
                 patternString = itemXML.SelectSingleNode("regex").Text
@@ -152,38 +152,7 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
                 'RetStr = RetStr & "[" & tagString & "]" & subjetcString & "[/" & tagString & "]"
             End If
         Else
-            RetStr = RetStr & "[" & itemXML.nodeName & "]"
-            For Each itemXML2 In itemXML.ChildNodes
-                backreference = itemXML2.SelectSingleNode("value").Text
-                subjetcString = objMatch.SubMatches((CInt(backreference) - 1))
-                If Not IsNull(itemXML2.getAttribute("notag")) Then
-                    tagStringOpen = vbNullString
-                    tagStringClose = vbNullString
-                Else
-                    tagStringOpen = "[" & itemXML2.nodeName & "]"
-                    tagStringClose = "[/" & itemXML2.nodeName & "]"
-                End If
-                'RetStr = RetStr & " SubGrupo " & itemXML.nodeName & ": "
-                'RetStr = RetStr & subjetcString
-                'RetStr = RetStr & vbCrLf
-                If Not (itemXML2.SelectSingleNode("regex") Is Nothing) Then
-                    Set groupsXML = itemXML2.SelectSingleNode("grupos")
-                    patternString = itemXML2.SelectSingleNode("regex").Text
-                    'RetStr = RetStr & TestRegExp(patternString, subjetcString, groupsXML)
-                    RetStr = RetStr & tagStringOpen & TestRegExp(patternString, subjetcString, groupsXML) & tagStringClose
-                Else
-                    If Not (itemXML2.SelectSingleNode("separator") Is Nothing) Then
-                        backreferenceSeparator = itemXML2.SelectSingleNode("separator").Text
-                        replaceString = tagStringOpen & "$" & backreference & tagStringClose & "$" & backreferenceSeparator
-                    Else
-                        replaceString = tagStringOpen & "$" & backreference & tagStringClose
-                    End If
-                    RetStr = RetStr & objRegExp.Replace(myString, replaceString)
-                    'MsgBox replaceString, vbOKOnly, "replace string"
-                    'RetStr = RetStr & "[" & tagString & "]" & subjetcString & "[/" & tagString & "]"
-                End If
-            Next
-            RetStr = RetStr & "[/" & itemXML.nodeName & "]"
+            RetStr = RetStr & tagStringOpen & TestRegExp(myPattern, myString, itemXML) & tagStringClose
         End If
       Next
     Next
