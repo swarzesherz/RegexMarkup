@@ -12,23 +12,27 @@ Sub regex()
     Dim groupsXML As IXMLDOMElement
     'Variable initialitation
     Set xmlDoc = New DOMDocument
+    'Leemos y verificamos que el iss exista
     issn = getAttrValueInTag("article", "issn")
     If issn = vbNullString Then
         MsgBox "No esta definido issn"
     Else
         MsgBox issn, vbOKOnly, "ISSN"
+        'Cargamos el archivo xml donde se encuetran los patrones de las revistas
         If Not xmlDoc.Load("C:\Documents and Settings\Herz\Mis documentos\Dropbox\SciELO_Files\Automatas\regex.xml") Then
             MsgBox "No se pudo cargar el archivo xml"
         Else
+            'Leemos el nodo correspondiente al issn de la revista
             Set objElem = xmlDoc.SelectSingleNode("//*[@issn=""" & issn & """]")
             If objElem Is Nothing Then
                 MsgBox "No se econtro la revista en el archivo xml"
             Else
+                'Asignamos los grupos en los que se divide la revista
                 Set groupsXML = objElem.SelectSingleNode("grupos")
-
                 'Pattern Search
                 patternString = objElem.SelectSingleNode("regex").Text
                 MsgBox patternString, vbOKOnly, "Pattern String"
+                'Verificamos que la seleccion sea del parrafo completo
                 If Selection.Paragraphs.First.Range.Start <> Selection.Range.Start Or Selection.Paragraphs.Last.Range.End <> Selection.Range.End Then
                     MsgBox "Seleccione la cita(s) completamente"
                 Else
@@ -38,7 +42,8 @@ Sub regex()
                     'Buscando parrafo por parrafo
                     Set parrafos = Selection.Paragraphs
                     For Each parrafo In parrafos
-                        subjetcString = parrafo.Range.Text
+                        'Mandamos el texto de cada parrafo a una funcion que nos lo regresara marcado y quitamos el salto linea
+                        subjetcString = ActiveDocument.Range(Start:=parrafo.Range.Start, End:=(parrafo.Range.End - 1)).Text
                         'MsgBox (TestRegExp(patternString, subjetcString))
                         replaceText = replaceText & TestRegExp(patternString, subjetcString, groupsXML)
                         replaceText = replaceText & vbCrLf
