@@ -2,22 +2,47 @@
 <reglas>
 	<revista issn="1026-8774">
 		<nombre>Revista mexicana de ciencias geológicas</nombre>
-		<exp>(.*?)[,.]\ ((?:19|20)[0-9]{2}[a-z]*)[,.]\ (.*):\ (.*)\.</exp>
+		<regex>(.*?)[,.]\ ((?:19|20)[0-9]{2}[a-z]*)[,.]\ (.*):\ (.*)\.</regex>
 	</revista>
 	<revista issn="0185-3880">
 		<nombre>Ciencias marinas</nombre>
-		<exp>(.*?)\.\ ((?:19|20)[0-9]{2}[a-z]*)[,.]\ (.*?)(?:\.\ In:\ |\.\ )(.*)</exp>
+		<regex>(.*?)\.\ ((?:19|20)[0-9]{2}[a-z]*)[,.]\ (.*?)(?:\.\ In:\ |\.\ )(.*)</regex>
 	</revista>
 	<revista issn="0187-6236">
 		<nombre>Atmósfera</nombre>
-		<exp>(.*?),\ ((?:19|20)[0-9]{2}[a-z]*)[,.]\ (.*?)(?:\.\ In:\ |\.\ )(.*)</exp>
+		<regex>(.*?,\ )((?:19|20)[0-9]{2}[a-z]*)([,.]\ )(.*?)(\.\ In:\ |\.\ )(.*)</regex>
+		<grupos>
+			<contrib>
+				<autores notag="true">
+					<value>1</value>
+					<regex>(.*?)(,\ |\ and\ )</regex>
+					<grupos>
+						<autor>
+							<value>1</value>
+							<separator>2</separator>
+						</autor>
+					</grupos>
+				</autores>
+				<fecha>
+					<value>2</value>
+					<separator>3</separator>
+				</fecha>
+				<titulo>
+					<value>4</value>
+					<separator>5</separator>
+				</titulo>
+			</contrib>
+			<revista>
+				<value>6</value>
+			</revista>
+		</grupos>
 	</revista>
 	<revista issn="0185-3325">
 		<nombre>Salud Mental</nombre>
-		<exp>([0-9]+)\.\ (.+?)\.\ (.+?)(?:\.\ |\?\ )(.*)</exp>
+		<regex>([0-9]+)\.\ (.+?)\.\ (.+?)(?:\.\ |\?\ )(.*)</regex>
 	</revista>
 	<revista issn="1405-7743">
 		<nombre>Ingeniería, investigación y tecnología</nombre>
-		<exp>((?:.+?\ y\ .+?)|.+?)\.\ (.+?)(?:\.\ |\?\ )(.*)</exp>
+		<regex>((?:.+?\ y\ .+?)|.+?)\.\ (.+?)(?:\.\ |\?\ )(.*)</regex>
 	</revista>
 </reglas>
