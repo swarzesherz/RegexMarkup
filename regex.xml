@@ -19,6 +19,16 @@
 					<grupos>
 						<autor>
 							<value>1</value>
+							<regex>(.*?)(\ )([A-Z]\.\ [A-Z]\.|[A-Z]\.)</regex>
+							<grupos>
+								<fname>
+									<value>1</value>
+									<separator>2</separator>
+								</fname>
+								<lname>
+									<value>3</value>
+								</lname>
+							</grupos>
 							<separator>2</separator>
 						</autor>
 					</grupos>

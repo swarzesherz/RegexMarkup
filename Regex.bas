@@ -158,8 +158,8 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
     Next
     
    Else
-    RetStr = "No hay coincidencias en la cadena:" & vbCrLf
-    RetStr = RetStr & myString & vbCrLf
+    'RetStr = "No hay coincidencias en la cadena:" & vbCrLf
+    RetStr = RetStr & myString
    End If
    TestRegExp = RetStr
 End Function
