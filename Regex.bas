@@ -102,6 +102,7 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
    Dim tagStringClose As String
    Dim backreference As String
    Dim backreferenceSeparator As String
+   Dim backreferenceSeparatorString As String
    Dim replaceString As String
    ' Create a regular expression object.
    Set objRegExp = New regExp
@@ -146,7 +147,14 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
                 Set groupsXML = itemXML.SelectSingleNode("grupos")
                 patternString = itemXML.SelectSingleNode("regex").Text
                 'RetStr = RetStr & TestRegExp(patternString, subjetcString, groupsXML)
-                RetStr = RetStr & tagStringOpen & TestRegExp(patternString, subjetcString, groupsXML) & tagStringClose
+                'RetStr = RetStr & tagStringOpen & TestRegExp(patternString, subjetcString, groupsXML) & tagStringClose
+                If Not (itemXML.SelectSingleNode("separator") Is Nothing) Then
+                    backreferenceSeparator = itemXML.SelectSingleNode("separator").Text
+                    backreferenceSeparatorString = objMatch.SubMatches((CInt(backreferenceSeparator) - 1))
+                    RetStr = RetStr & tagStringOpen & TestRegExp(patternString, subjetcString, groupsXML) & tagStringClose & backreferenceSeparatorString
+                Else
+                    RetStr = RetStr & tagStringOpen & TestRegExp(patternString, subjetcString, groupsXML) & tagStringClose
+                End If
             Else
                 If Not (itemXML.SelectSingleNode("separator") Is Nothing) Then
                     backreferenceSeparator = itemXML.SelectSingleNode("separator").Text

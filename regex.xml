@@ -33,10 +33,17 @@
 						</autor>
 					</grupos>
 				</autores>
-				<fecha>
+				<fechas notag="true">
 					<value>2</value>
+					<regex>((?:19|20)[0-9]{2})([a-z]*)</regex>
+					<grupos>
+						<fecha>
+							<value>1</value>
+							<separator>2</separator>
+						</fecha>
+					</grupos>
 					<separator>3</separator>
-				</fecha>
+				</fechas>
 				<titulo>
 					<value>4</value>
 					<separator>5</separator>
