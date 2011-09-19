@@ -132,7 +132,9 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
         'RetStr = RetStr & " SubGrupo " & itemXML.nodeName & ": "
         'RetStr = RetStr & subjetcString
         'RetStr = RetStr & vbCrLf
-        If Not (itemXML.SelectSingleNode("value") Is Nothing) Then
+        If (itemXML.SelectSingleNode("value") Is Nothing) Then
+            RetStr = RetStr & tagStringOpen & TestRegExp(myPattern, myString, itemXML) & tagStringClose
+        Else
             backreference = itemXML.SelectSingleNode("value").Text
             subjetcString = objMatch.SubMatches((CInt(backreference) - 1))
             If Not (itemXML.SelectSingleNode("regex") Is Nothing) Then
@@ -151,8 +153,6 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
                 'MsgBox replaceString, vbOKOnly, "replace string"
                 'RetStr = RetStr & "[" & tagString & "]" & subjetcString & "[/" & tagString & "]"
             End If
-        Else
-            RetStr = RetStr & tagStringOpen & TestRegExp(myPattern, myString, itemXML) & tagStringClose
         End If
       Next
     Next
