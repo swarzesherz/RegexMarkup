@@ -14,43 +14,43 @@
 		<grupos>
 			<contrib>
 				<autores notag="true">
-					<value>1</value>
+					<value>$1</value>
 					<regex>(.*?)(,\ |\ and\ )</regex>
 					<grupos>
 						<autor>
-							<value>1</value>
+							<value>$1</value>
 							<regex>(.*?)(\ )([A-Z]\.\ [A-Z]\.|[A-Z]\.)</regex>
 							<grupos>
 								<fname>
-									<value>1</value>
-									<separator>2</separator>
+									<value>$1</value>
+									<separator>$2</separator>
 								</fname>
 								<lname>
-									<value>3</value>
+									<value>$3</value>
 								</lname>
 							</grupos>
-							<separator>2</separator>
+							<separator>$2</separator>
 						</autor>
 					</grupos>
 				</autores>
-				<fechas notag="true">
-					<value>2</value>
+				<fecha notag="true">
+					<value>$2</value>
 					<regex>((?:19|20)[0-9]{2})([a-z]*)</regex>
 					<grupos>
 						<fecha>
-							<value>1</value>
-							<separator>2</separator>
+							<value>$1</value>
+							<separator>$2</separator>
 						</fecha>
 					</grupos>
-					<separator>3</separator>
-				</fechas>
+					<separator>$3</separator>
+				</fecha>
 				<titulo>
-					<value>4</value>
-					<separator>5</separator>
+					<value>$4</value>
+					<separator>$5</separator>
 				</titulo>
 			</contrib>
 			<revista>
-				<value>6</value>
+				<value>$6</value>
 			</revista>
 		</grupos>
 	</revista>

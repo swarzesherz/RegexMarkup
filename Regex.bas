@@ -142,7 +142,7 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
             RetStr = RetStr & tagStringOpen & TestRegExp(myPattern, myString, itemXML) & tagStringClose
         Else
             backreference = itemXML.SelectSingleNode("value").Text
-            subjetcString = objMatch.SubMatches((CInt(backreference) - 1))
+            subjetcString = objRegExp.Replace(myString, backreference)
             If Not (itemXML.SelectSingleNode("regex") Is Nothing) Then
                 Set groupsXML = itemXML.SelectSingleNode("grupos")
                 patternString = itemXML.SelectSingleNode("regex").Text
@@ -158,9 +158,9 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
             Else
                 If Not (itemXML.SelectSingleNode("separator") Is Nothing) Then
                     backreferenceSeparator = itemXML.SelectSingleNode("separator").Text
-                    replaceString = tagStringOpen & "$" & backreference & tagStringClose & "$" & backreferenceSeparator
+                    replaceString = tagStringOpen & backreference & tagStringClose & backreferenceSeparator
                 Else
-                    replaceString = tagStringOpen & "$" & backreference & tagStringClose
+                    replaceString = tagStringOpen & backreference & tagStringClose
                 End If
                 RetStr = RetStr & objRegExp.Replace(myString, replaceString)
                 'MsgBox replaceString, vbOKOnly, "replace string"
