@@ -123,10 +123,7 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
     Set colMatches = objRegExp.Execute(myString)   ' Execute search.
 
     For Each objMatch In colMatches   ' Iterate Matches collection.
-      'RetStr = RetStr & "Coincidencia en la posicion "
-      'RetStr = RetStr & objMatch.FirstIndex & ". Coincidencia completa:"
-      'RetStr = RetStr & vbCrLf
-      'RetStr = RetStr & objMatch.Value
+
       For Each itemXML In groups.ChildNodes
         If Not IsNull(itemXML.getAttribute("notag")) Then
             tagStringOpen = vbNullString
@@ -135,9 +132,7 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
             tagStringOpen = "[" & itemXML.nodeName & "]"
             tagStringClose = "[/" & itemXML.nodeName & "]"
         End If
-        'RetStr = RetStr & " SubGrupo " & itemXML.nodeName & ": "
-        'RetStr = RetStr & subjetcString
-        'RetStr = RetStr & vbCrLf
+
         If (itemXML.SelectSingleNode("value") Is Nothing) Then
             RetStr = RetStr & tagStringOpen & TestRegExp(myPattern, myString, itemXML) & tagStringClose
         Else
@@ -146,32 +141,27 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
             If Not (itemXML.SelectSingleNode("regex") Is Nothing) Then
                 Set groupsXML = itemXML.SelectSingleNode("grupos")
                 patternString = itemXML.SelectSingleNode("regex").Text
-                'RetStr = RetStr & TestRegExp(patternString, subjetcString, groupsXML)
-                'RetStr = RetStr & tagStringOpen & TestRegExp(patternString, subjetcString, groupsXML) & tagStringClose
+
+                RetStr = RetStr & tagStringOpen & TestRegExp(patternString, subjetcString, groupsXML) & tagStringClose
                 If Not (itemXML.SelectSingleNode("separator") Is Nothing) Then
                     backreferenceSeparator = itemXML.SelectSingleNode("separator").Text
                     backreferenceSeparatorString = objRegExp.Replace(objMatch.Value, backreferenceSeparator)
-                    RetStr = RetStr & tagStringOpen & TestRegExp(patternString, subjetcString, groupsXML) & tagStringClose & backreferenceSeparatorString
-                Else
-                    RetStr = RetStr & tagStringOpen & TestRegExp(patternString, subjetcString, groupsXML) & tagStringClose
+                    RetStr = RetStr & backreferenceSeparatorString
                 End If
             Else
+                replaceString = tagStringOpen & backreference & tagStringClose
                 If Not (itemXML.SelectSingleNode("separator") Is Nothing) Then
                     backreferenceSeparator = itemXML.SelectSingleNode("separator").Text
-                    replaceString = tagStringOpen & backreference & tagStringClose & backreferenceSeparator
-                Else
-                    replaceString = tagStringOpen & backreference & tagStringClose
+                    replaceString = replaceString & backreferenceSeparator
                 End If
                 RetStr = RetStr & objRegExp.Replace(myString, replaceString)
                 'MsgBox replaceString, vbOKOnly, "replace string"
-                'RetStr = RetStr & "[" & tagString & "]" & subjetcString & "[/" & tagString & "]"
             End If
         End If
       Next
     Next
     
    Else
-    'RetStr = "No hay coincidencias en la cadena:" & vbCrLf
     RetStr = RetStr & myString
    End If
    TestRegExp = RetStr
