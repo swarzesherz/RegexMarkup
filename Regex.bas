@@ -142,7 +142,7 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
             RetStr = RetStr & tagStringOpen & TestRegExp(myPattern, myString, itemXML) & tagStringClose
         Else
             backreference = itemXML.SelectSingleNode("value").Text
-            subjetcString = objRegExp.Replace(myString, backreference)
+            subjetcString = objRegExp.Replace(objMatch.Value, backreference)
             If Not (itemXML.SelectSingleNode("regex") Is Nothing) Then
                 Set groupsXML = itemXML.SelectSingleNode("grupos")
                 patternString = itemXML.SelectSingleNode("regex").Text
@@ -150,7 +150,7 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
                 'RetStr = RetStr & tagStringOpen & TestRegExp(patternString, subjetcString, groupsXML) & tagStringClose
                 If Not (itemXML.SelectSingleNode("separator") Is Nothing) Then
                     backreferenceSeparator = itemXML.SelectSingleNode("separator").Text
-                    backreferenceSeparatorString = objMatch.SubMatches((CInt(backreferenceSeparator) - 1))
+                    backreferenceSeparatorString = objRegExp.Replace(objMatch.Value, backreferenceSeparator)
                     RetStr = RetStr & tagStringOpen & TestRegExp(patternString, subjetcString, groupsXML) & tagStringClose & backreferenceSeparatorString
                 Else
                     RetStr = RetStr & tagStringOpen & TestRegExp(patternString, subjetcString, groupsXML) & tagStringClose
