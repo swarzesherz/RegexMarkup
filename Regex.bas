@@ -138,28 +138,35 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
         If (itemXML.SelectSingleNode("value") Is Nothing) Then
             RetStr = RetStr & tagStringOpen & TestRegExp(myPattern, myString, itemXML) & tagStringClose
         Else
-            If Not (itemXML.SelectSingleNode("prevalue") Is Nothing) Then
-                backreferencePreValue = itemXML.SelectSingleNode("prevalue").Text
-                backreferencePreValueString = objRegExp.Replace(objMatch.Value, backreferencePreValue)
-                RetStr = RetStr & backreferencePreValueString
-            End If
             
             backreference = itemXML.SelectSingleNode("value").Text
             subjetcString = objRegExp.Replace(objMatch.Value, backreference)
             If Not (itemXML.SelectSingleNode("regex") Is Nothing) Then
+                If Not (itemXML.SelectSingleNode("prevalue") Is Nothing) Then
+                    backreferencePreValue = itemXML.SelectSingleNode("prevalue").Text
+                    backreferencePreValueString = objRegExp.Replace(objMatch.Value, backreferencePreValue)
+                    RetStr = RetStr & backreferencePreValueString
+                End If
                 Set groupsXML = itemXML.SelectSingleNode("grupos")
                 patternString = itemXML.SelectSingleNode("regex").Text
                 RetStr = RetStr & tagStringOpen & TestRegExp(patternString, subjetcString, groupsXML) & tagStringClose
+                If Not (itemXML.SelectSingleNode("postvalue") Is Nothing) Then
+                    backreferencePostValue = itemXML.SelectSingleNode("postvalue").Text
+                    backreferencePostValueString = objRegExp.Replace(objMatch.Value, backreferencePostValue)
+                    RetStr = RetStr & backreferencePostValueString
+                End If
             Else
-                replaceString = tagStringOpen & backreference & tagStringClose
+                replaceString = vbNullString
+                If Not (itemXML.SelectSingleNode("prevalue") Is Nothing) Then
+                    backreferencePreValue = itemXML.SelectSingleNode("prevalue").Text
+                    replaceString = replaceString & backreferencePreValue
+                End If
+                replaceString = replaceString & tagStringOpen & backreference & tagStringClose
+                If Not (itemXML.SelectSingleNode("postvalue") Is Nothing) Then
+                    backreferencePostValue = itemXML.SelectSingleNode("postvalue").Text
+                    replaceString = replaceString & backreferencePostValue
+                End If
                 RetStr = RetStr & objRegExp.Replace(myString, replaceString)
-                'MsgBox replaceString, vbOKOnly, "replace string"
-            End If
-            
-            If Not (itemXML.SelectSingleNode("postvalue") Is Nothing) Then
-                backreferencePostValue = itemXML.SelectSingleNode("postvalue").Text
-                backreferencePostValueString = objRegExp.Replace(objMatch.Value, backreferencePostValue)
-                RetStr = RetStr & backreferencePostValueString
             End If
         End If
       Next
