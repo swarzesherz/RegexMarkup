@@ -101,8 +101,10 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
    Dim tagStringOpen As String
    Dim tagStringClose As String
    Dim backreference As String
-   Dim backreferenceSeparator As String
-   Dim backreferenceSeparatorString As String
+   Dim backreferencePostValue As String
+   Dim backreferencePostValueString As String
+   Dim backreferencePreValue As String
+   Dim backreferencePreValueString As String
    Dim replaceString As String
    ' Create a regular expression object.
    Set objRegExp = New regExp
@@ -136,26 +138,28 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
         If (itemXML.SelectSingleNode("value") Is Nothing) Then
             RetStr = RetStr & tagStringOpen & TestRegExp(myPattern, myString, itemXML) & tagStringClose
         Else
+            If Not (itemXML.SelectSingleNode("prevalue") Is Nothing) Then
+                backreferencePreValue = itemXML.SelectSingleNode("prevalue").Text
+                backreferencePreValueString = objRegExp.Replace(objMatch.Value, backreferencePreValue)
+                RetStr = RetStr & backreferencePreValueString
+            End If
+            
             backreference = itemXML.SelectSingleNode("value").Text
             subjetcString = objRegExp.Replace(objMatch.Value, backreference)
             If Not (itemXML.SelectSingleNode("regex") Is Nothing) Then
                 Set groupsXML = itemXML.SelectSingleNode("grupos")
                 patternString = itemXML.SelectSingleNode("regex").Text
-
                 RetStr = RetStr & tagStringOpen & TestRegExp(patternString, subjetcString, groupsXML) & tagStringClose
-                If Not (itemXML.SelectSingleNode("separator") Is Nothing) Then
-                    backreferenceSeparator = itemXML.SelectSingleNode("separator").Text
-                    backreferenceSeparatorString = objRegExp.Replace(objMatch.Value, backreferenceSeparator)
-                    RetStr = RetStr & backreferenceSeparatorString
-                End If
             Else
                 replaceString = tagStringOpen & backreference & tagStringClose
-                If Not (itemXML.SelectSingleNode("separator") Is Nothing) Then
-                    backreferenceSeparator = itemXML.SelectSingleNode("separator").Text
-                    replaceString = replaceString & backreferenceSeparator
-                End If
                 RetStr = RetStr & objRegExp.Replace(myString, replaceString)
                 'MsgBox replaceString, vbOKOnly, "replace string"
+            End If
+            
+            If Not (itemXML.SelectSingleNode("postvalue") Is Nothing) Then
+                backreferencePostValue = itemXML.SelectSingleNode("postvalue").Text
+                backreferencePostValueString = objRegExp.Replace(objMatch.Value, backreferencePostValue)
+                RetStr = RetStr & backreferencePostValueString
             End If
         End If
       Next

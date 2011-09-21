@@ -23,23 +23,23 @@
 							<grupos>
 								<fname>
 									<value>$1</value>
-									<separator>$2</separator>
+									<postvalue>$2</postvalue>
 								</fname>
 								<lname>
 									<value>$3</value>
 								</lname>
 							</grupos>
-							<separator>$2</separator>
+							<postvalue>$2</postvalue>
 						</autor>
 					</grupos>
 				</autores>
 				<fecha>
 					<value>$2</value>
-					<separator>$3</separator>
+					<postvalue>$3</postvalue>
 				</fecha>
 				<titulo>
 					<value>$4</value>
-					<separator>$5</separator>
+					<postvalue>$5</postvalue>
 				</titulo>
 			</contrib>
 			<revista>
