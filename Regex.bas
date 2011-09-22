@@ -17,7 +17,7 @@ Sub regex()
     If issn = vbNullString Then
         MsgBox "No esta definido issn"
     Else
-        MsgBox issn, vbOKOnly, "ISSN"
+        'MsgBox issn, vbOKOnly, "ISSN"
         'Cargamos el archivo xml donde se encuetran los patrones de las revistas
         If Not xmlDoc.Load("C:\Documents and Settings\Herz\Mis documentos\Dropbox\SciELO_Files\Automatas\regex.xml") Then
             MsgBox "No se pudo cargar el archivo xml"
@@ -31,14 +31,14 @@ Sub regex()
                 Set groupsXML = objElem.SelectSingleNode("grupos")
                 'Pattern Search
                 patternString = objElem.SelectSingleNode("regex").Text
-                MsgBox patternString, vbOKOnly, "Pattern String"
+                'MsgBox patternString, vbOKOnly, "Pattern String"
                 'Verificamos que la seleccion sea del parrafo completo
                 If Selection.Paragraphs.First.Range.Start <> Selection.Range.Start Or Selection.Paragraphs.Last.Range.End <> Selection.Range.End Then
                     MsgBox "Seleccione la cita(s) completamente"
                 Else
                     'Asign text to subjectString
                     subjetcString = Selection.Text
-                    MsgBox subjetcString, vbOKOnly, "Texto Seleccionado"
+                    'MsgBox subjetcString, vbOKOnly, "Texto Seleccionado"
                     'Buscando parrafo por parrafo
                     Set parrafos = Selection.Paragraphs
                     For Each parrafo In parrafos
@@ -125,8 +125,9 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
     Set colMatches = objRegExp.Execute(myString)   ' Execute search.
 
     For Each objMatch In colMatches   ' Iterate Matches collection.
-
+    'Iteramos los nodos dentro del xml que nos dan el contenido de las citas
       For Each itemXML In groups.ChildNodes
+        'Verificamos si el nodo es una etiqueta(tag) o no
         If Not IsNull(itemXML.getAttribute("notag")) Then
             tagStringOpen = vbNullString
             tagStringClose = vbNullString
@@ -134,14 +135,17 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
             tagStringOpen = "[" & itemXML.nodeName & "]"
             tagStringClose = "[/" & itemXML.nodeName & "]"
         End If
-
+        'Verificamos si el nodo contiene un valor directo para la etiqueta(tag) o si su valor esta compuesto otras etiquetas(tag)
         If (itemXML.SelectSingleNode("value") Is Nothing) Then
+            'Si esta compuesto de otras etiquetas(tag) volvemos a enviar la cadena y el patron con los nodos hijos de la etiqueta(tag)
             RetStr = RetStr & tagStringOpen & TestRegExp(myPattern, myString, itemXML) & tagStringClose
         Else
-            
+            'Deacuedo al valor que tenemos indicado en el xml extramos la cadena de texto correspondiente
             backreference = itemXML.SelectSingleNode("value").Text
             subjetcString = objRegExp.Replace(objMatch.Value, backreference)
+            'Verificamos si a la cadena de texto resultante hay que aplicarle un patron nuevo y si no agregamos las etiquetas(tag) directamente
             If Not (itemXML.SelectSingleNode("regex") Is Nothing) Then
+                'Verificamos si hay que poner un valor antes de la etiqueta(tag)
                 If Not (itemXML.SelectSingleNode("prevalue") Is Nothing) Then
                     backreferencePreValue = itemXML.SelectSingleNode("prevalue").Text
                     backreferencePreValueString = objRegExp.Replace(objMatch.Value, backreferencePreValue)
@@ -149,7 +153,9 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
                 End If
                 Set groupsXML = itemXML.SelectSingleNode("grupos")
                 patternString = itemXML.SelectSingleNode("regex").Text
+                'Enviamos la cadena resultante con el patron nuevo a aplicar y las etiquetas(tag) que debe contener y el resultado lo ponemos dentro de la etiqueta(tag) correspondiente
                 RetStr = RetStr & tagStringOpen & TestRegExp(patternString, subjetcString, groupsXML) & tagStringClose
+                'Verificamos si hay que poner un valor despues de la etiqueta(tag)
                 If Not (itemXML.SelectSingleNode("postvalue") Is Nothing) Then
                     backreferencePostValue = itemXML.SelectSingleNode("postvalue").Text
                     backreferencePostValueString = objRegExp.Replace(objMatch.Value, backreferencePostValue)
@@ -157,11 +163,14 @@ Function TestRegExp(myPattern As String, myString As String, groups As IXMLDOMEl
                 End If
             Else
                 replaceString = vbNullString
+                'Verificamos si hay que poner un valor antes de la etiqueta(tag)
                 If Not (itemXML.SelectSingleNode("prevalue") Is Nothing) Then
                     backreferencePreValue = itemXML.SelectSingleNode("prevalue").Text
                     replaceString = replaceString & backreferencePreValue
                 End If
+                'Armamos la etiqueta(tag) con su valor
                 replaceString = replaceString & tagStringOpen & backreference & tagStringClose
+                'Verificamos si hay que poner un valor antes de la etiqueta(tag)
                 If Not (itemXML.SelectSingleNode("postvalue") Is Nothing) Then
                     backreferencePostValue = itemXML.SelectSingleNode("postvalue").Text
                     replaceString = replaceString & backreferencePostValue
