@@ -24,6 +24,7 @@ namespace RegexMarkup
             Word.Paragraphs parrafos = null;
             Word.Paragraph parrafo = null;
             XmlDocument xmlDoc = new XmlDocument();
+            Exception errores = null;
             /* Inicializamos variables */
             ActiveDocument = Globals.ThisAddIn.Application.ActiveDocument;
             /* Leemos y verificamos que el iss exista */
@@ -33,9 +34,18 @@ namespace RegexMarkup
             } else {
                 //MessageBox.Show(issn, "ISSN");
                 /* Cargamos el archivo xml donde se encuetran los patrones de las revistas */
-                if(!xmlDoc.Load("C:\Documents and Settings\Herz\Mis documentos\Dropbox\SciELO_Files\Automatas\regex.xml")){
-                    MessageBox.Show("No se pudo cargar el archivo xml");
+                try
+                {
+                    xmlDoc.Load(@"C:\Documents and Settings\Herz\Mis documentos\Dropbox\SciELO_Files\Automatas\regex.xmla");
                 }
+                catch (Exception e)
+                {
+                    errores = e;
+                }
+                if(errores != null){
+                    MessageBox.Show(errores.Message);
+                }
+                MessageBox.Show("Startup RegexMarkup");
             }
         }
 
