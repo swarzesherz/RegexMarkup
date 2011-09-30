@@ -10,10 +10,13 @@ namespace RegexMarkup
     {
         Office.CommandBar commandBarMarkup;
         Office.CommandBarButton regexButton;
+        RegexMarkup objectRegexMarkup = new RegexMarkup();
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
+
             AddToolbar();
+       
         }
         private void AddToolbar()
         {
@@ -38,23 +41,18 @@ namespace RegexMarkup
                 regexButton = (Office.CommandBarButton)commandBarMarkup.Controls.Add(
                     1, missing, missing, missing, missing);
 
-                regexButton.Style = Office.MsoButtonStyle.msoButtonCaption;
+                regexButton.Style = Office.MsoButtonStyle.msoButtonIconAndCaption;
                 regexButton.Caption = "Markup Regex";
                 regexButton.Tag = "Markup Regex";
-                regexButton.Click += new Office._CommandBarButtonEvents_ClickEventHandler(ButtonClick);
-
+                regexButton.FaceId = 2476;
+                
+                regexButton.Click += new Office._CommandBarButtonEvents_ClickEventHandler(objectRegexMarkup.StartMarkup);
                 commandBarMarkup.Visible = true;
             }
             catch (ArgumentException e)
             {
                 MessageBox.Show(e.Message);
             }
-        }
-
-        // Handles the event when a button on the new toolbar is clicked.
-        private void ButtonClick(Office.CommandBarButton ctrl, ref bool cancel)
-        {
-            MessageBox.Show("You clicked: " + ctrl.Caption);
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)

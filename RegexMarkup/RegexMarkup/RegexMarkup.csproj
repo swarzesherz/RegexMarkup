@@ -157,6 +157,7 @@
     <None Include="ThisAddIn.Designer.Designer.xml">
       <DependentUpon>Main.cs</DependentUpon>
     </None>
+    <Compile Include="RegexMarkup.cs" />
     <Compile Include="ThisAddIn.Designer.Designer.cs">
       <DependentUpon>ThisAddIn.Designer.Designer.xml</DependentUpon>
     </Compile>
