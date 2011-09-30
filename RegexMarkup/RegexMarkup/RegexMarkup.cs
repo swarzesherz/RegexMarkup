@@ -40,10 +40,8 @@ namespace RegexMarkup
                 }
                 catch (Exception e)
                 {
-                    errores = e;
-                }
-                if(errores != null){
-                    MessageBox.Show(errores.Message);
+                    MessageBox.Show(e.Message);
+                    return;
                 }
                 MessageBox.Show("Startup RegexMarkup");
             }
