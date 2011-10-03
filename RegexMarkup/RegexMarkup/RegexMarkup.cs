@@ -67,14 +67,12 @@ namespace RegexMarkup
                             /* Mandamos el texto de cada parrafo a una funcion que nos lo regresara marcado y quitamos el salto linea */
                             object parrafoStart = parrafo.Range.Start;
                             object parrafoEnd = (parrafo.Range.End - 1);
-
                             subjetcString = ActiveDocument.Range(ref parrafoStart, ref parrafoEnd).Text;
-                            MessageBox.Show(subjetcString, "Texto de parrafo");
-
+                            //MessageBox.Show(subjetcString, "Texto de parrafo");
                             replaceText = replaceText + markupText(patternString, subjetcString, groupsXML) + "\r";
-
                         }
-
+                        MessageBox.Show(replaceText, "replaceText");
+                        docSeleccion.Range.Text = replaceText;
                     }
 
                 }
@@ -122,7 +120,7 @@ namespace RegexMarkup
             String subjectString = null;
             String tagStringOpen = null;
             String tagStringClose = null;
-            String backReference = null;
+            String backreference = null;
             String backreferencePostValue = null;
             String backreferencePostValueString = null;
             String backreferencePreValue = null;
@@ -132,9 +130,7 @@ namespace RegexMarkup
             Regex objRegExp = null;
             RegexOptions options = RegexOptions.IgnoreCase;
             Match matchResults = null;
-            XmlNode itemXML2 = null;
             XmlNode groupsXML = null;
-
             /* Iniciando búsqueda del patron en la cadena de texto */
             objRegExp = new Regex(refPattern, options);
             matchResults = objRegExp.Match(refString);
@@ -142,7 +138,54 @@ namespace RegexMarkup
             while (matchResults.Success) {
                 /* Iteramos los nodos dentro del xml que nos dan el contenido de las citas */
                 foreach (XmlNode itemXML in refGroups.ChildNodes){
+                    /* Verificamos si el nodo es una etiqueta(tag) o no */
+                    if(itemXML.Attributes.GetNamedItem("notag") == null){
+                        tagStringOpen = "[" + itemXML.Name + "]";
+                        tagStringClose = "[/" + itemXML.Name + "]";
+                    }
+                    /* Verificamos si el nodo contiene un valor directo para la etiqueta(tag) o si su valor esta compuesto otras etiquetas(tag) */
+                    if (itemXML.SelectSingleNode("value") == null) {
+                        /* Si esta compuesto de otras etiquetas(tag) volvemos a enviar la cadena y el patron con los nodos hijos de la etiqueta(tag) */
+                        resultString = resultString + tagStringOpen + markupText(refPattern, refString, itemXML) + tagStringClose;
+                    } else {
+                        /* Deacuerdo al valor que tenemos indicado en el xml extramos la cadena de texto correspondiente */
+                        backreference = itemXML.SelectSingleNode("value").InnerText;
+                        subjectString = objRegExp.Replace(matchResults.Value, backreference);
+                        /* Verificamos si a la cadena de texto resultante hay que aplicarle un patron nuevo y si no agregamos las etiquetas(tag) directamente */
+                        if (itemXML.SelectSingleNode("regex") != null) {
+                            /* Verificamos si hay que poner un valor antes de la etiqueta(tag) */
+                            if (itemXML.SelectSingleNode("prevalue") != null) {
+                                backreferencePreValue = itemXML.SelectSingleNode("prevalue").InnerText;
+                                backreferencePreValueString = objRegExp.Replace(matchResults.Value, backreferencePreValue);
+                                resultString = resultString + backreferencePreValueString;
+                            }
+                            groupsXML = itemXML.SelectSingleNode("grupos");
+                            patternString = itemXML.SelectSingleNode("regex").InnerText;
+                            /* Enviamos la cadena resultante con el patron nuevo a aplicar y las etiquetas(tag) que debe contener y el resultado lo ponemos dentro de la etiqueta(tag) correspondiente */
+                            resultString = resultString + tagStringOpen + markupText(patternString, subjectString, groupsXML) + tagStringClose;
+                            if (itemXML.SelectSingleNode("postvalue") != null) {
+                                backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
+                                backreferencePostValueString = objRegExp.Replace(matchResults.Value, backreferencePostValue);
+                                resultString = resultString + backreferencePostValueString;
+                            }
+                        } else {
+                            replaceString = null;
+                            /* Verificamos si hay que poner un valor antes de la etiqueta(tag) */
+                            if (itemXML.SelectSingleNode("prevalue") != null) {
+                                backreferencePreValue = itemXML.SelectSingleNode("prevalue").InnerText;
+                                replaceString = replaceString + backreferencePreValue;
+                            }
+                            /* Armamos la etiqueta(tag) con su valor */
+                            replaceString = replaceString + tagStringOpen + backreference + tagStringClose;
+                            if (itemXML.SelectSingleNode("postvalue") != null) {
+                                backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
+                                replaceString = replaceString + backreferencePostValue;
+                            }
+                            resultString = resultString + objRegExp.Replace(refString, replaceString);
+                        }
+                    }
                 }
+                matchResults = matchResults.NextMatch();
             }
 
             return resultString;
