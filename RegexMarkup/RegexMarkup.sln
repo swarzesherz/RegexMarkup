@@ -1,9 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexMarkup", "RegexMarkup\RegexMarkup.csproj", "{03A41239-A6D2-4B3C-86ED-E9221067C2FD}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RegexMarkupPrograma de instalación", "RegexMarkupPrograma de instalación\RegexMarkupPrograma de instalación", "{809F3DC5-FEFC-4514-A57C-A17B441211B5}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RegexMarkupRegexMarkupSetup", "RegexMarkupSetup\RegexMarkupSetup", "{809F3DC5-FEFC-4514-A57C-A17B441211B5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetSecurity", "SetSecurity\SetSecurity.csproj", "{56E8E807-0807-45E0-B19A-98912AE47630}"
 EndProject

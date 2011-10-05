@@ -6,3 +6,5 @@ RegexMarkup/SetSecurity/obj/*
 RegexMarkup/SetSecurity/bin/*
 RegexMarkup/RegexMarkupPrograma*
 RegexMarkup/RegexMarkup/publish/*
+RegexMarkup/RegexMarkupSetup/Debug/*
+RegexMarkup/RegexMarkupSetup/Release/*
