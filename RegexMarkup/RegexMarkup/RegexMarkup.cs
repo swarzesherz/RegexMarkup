@@ -113,7 +113,7 @@ namespace RegexMarkup
         }
 
         /* Función para marcar la cadena de texto */
-        private String markupText(String refPattern, String refString, XmlNode refGroups) { 
+        private String markupText(String refPattern, String refString, XmlNode refGroups) {
             /* Definición de variables */
             String patternString = null;
             String subjectString = null;

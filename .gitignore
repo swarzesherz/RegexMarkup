@@ -2,3 +2,7 @@
 ~$*
 RegexMarkup/RegexMarkup/bin/*
 RegexMarkup/RegexMarkup/obj/*
+RegexMarkup/SetSecurity/obj/*
+RegexMarkup/SetSecurity/bin/*
+RegexMarkup/RegexMarkupPrograma*
+RegexMarkup/RegexMarkup/publish/*
