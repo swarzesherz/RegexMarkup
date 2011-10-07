@@ -7,20 +7,25 @@ using Word = Microsoft.Office.Interop.Word;
 using Office = Microsoft.Office.Core;
 using System.Xml;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace RegexMarkup
 {
     class RegexMarkup
     {
         public static Word.Document ActiveDocument = null;
-        /* Procedimiento al que llamaremos para inciar el proceso de marcación */
-        public void StartMarkup(Office.CommandBarButton ctrl, ref bool cancel)
+        #region startMarkup
+        ///<summary>
+        ///Procedimiento al que llamaremos para inciar el proceso de marcación
+        ///</summary>
+        public void startMarkup(Office.CommandBarButton ctrl, ref bool cancel)
         {
             /* Declaracion de variables */
             String patternString = null;
             String subjetcString = null;
             String replaceText = null;
             String issn = null;
+            String pathXML = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "regex.xml");
             Word.Selection docSeleccion = null;
             XmlDocument xmlDoc = new XmlDocument();
             XmlNode objElem = null;
@@ -36,7 +41,7 @@ namespace RegexMarkup
                 /* Cargamos el archivo xml donde se encuetran los patrones de las revistas */
                 try
                 {
-                    xmlDoc.Load(@"C:\Documents and Settings\Herz\Mis documentos\Dropbox\SciELO_Files\Automatas\regex.xml");
+                    xmlDoc.Load(pathXML);
                 }
                 catch (Exception e)
                 {
@@ -78,8 +83,12 @@ namespace RegexMarkup
 
             }
         }
+        #endregion
 
-        /* Función para obtener el atributo de una etiqueta(TAG) */
+        #region getAttrValueInTag
+        /// <summary
+        /// Función para obtener el atributo de una etiqueta(TAG)
+        /// </sumary>
         private String getAttrValueInTag(String tag, String attr) {
             /* Declaración de variables */
             String subjectString = null;
@@ -111,8 +120,12 @@ namespace RegexMarkup
             }
             return result;
         }
-
-        /* Función para marcar la cadena de texto */
+        #endregion
+   
+        #region markupTex
+        /// <summary
+        /// Función para marcar la cadena de texto
+        /// </sumary>
         private String markupText(String refPattern, String refString, XmlNode refGroups) {
             /* Definición de variables */
             String patternString = null;
@@ -192,5 +205,6 @@ namespace RegexMarkup
             }
             return resultString;
         }
+        #endregion
     }
 }

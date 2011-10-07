@@ -46,7 +46,7 @@ namespace RegexMarkup
                 regexButton.Tag = "Markup Regex";
                 regexButton.FaceId = 2476;
                 
-                regexButton.Click += new Office._CommandBarButtonEvents_ClickEventHandler(objectRegexMarkup.StartMarkup);
+                regexButton.Click += new Office._CommandBarButtonEvents_ClickEventHandler(objectRegexMarkup.startMarkup);
                 commandBarMarkup.Visible = true;
             }
             catch (ArgumentException e)
