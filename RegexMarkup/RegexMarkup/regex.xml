@@ -19,16 +19,32 @@
           <grupos>
             <autor>
               <value>$1</value>
-              <regex>(.*?)(\ )([A-Z]\.\ [A-Z]\.|[A-Z]\.)</regex>
-              <grupos>
-                <fname>
-                  <value>$1</value>
-                  <postvalue>$2</postvalue>
-                </fname>
-                <lname>
-                  <value>$3</value>
-                </lname>
-              </grupos>
+              <multiple>
+                <opcion>
+                  <regex>([A-Z]\.\ [A-Z]\.|[A-Z]\.)(\ )(.*)</regex>
+                  <grupos>
+                    <fname>
+                      <value>$1</value>
+                      <postvalue>$2</postvalue>
+                    </fname>
+                    <lname>
+                      <value>$3</value>
+                    </lname>
+                  </grupos>
+                </opcion>
+                <opcion>
+                  <regex>(.*?)(\ )([A-Z]\.\ [A-Z]\.|[A-Z]\.)</regex>
+                  <grupos>
+                    <fname>
+                      <value>$1</value>
+                      <postvalue>$2</postvalue>
+                    </fname>
+                    <lname>
+                      <value>$3</value>
+                    </lname>
+                  </grupos>
+                </opcion>
+              </multiple>
               <postvalue>$2</postvalue>
             </autor>
           </grupos>
@@ -39,11 +55,10 @@
         </fecha>
         <titulo>
           <value>$4</value>
-          <postvalue>$5</postvalue>
         </titulo>
       </contrib>
       <revista>
-        <value>$6</value>
+        <value>$5$6</value>
       </revista>
     </grupos>
   </revista>
