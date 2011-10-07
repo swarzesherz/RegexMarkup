@@ -23,13 +23,13 @@
                 <opcion>
                   <regex>([A-Z]\.\ [A-Z]\.|[A-Z]\.)(\ )(.*)</regex>
                   <grupos>
-                    <fname>
+                    <lname>
                       <value>$1</value>
                       <postvalue>$2</postvalue>
-                    </fname>
-                    <lname>
-                      <value>$3</value>
                     </lname>
+                    <fname>
+                      <value>$3</value>
+                    </fname>
                   </grupos>
                 </opcion>
                 <opcion>
@@ -57,9 +57,29 @@
           <value>$4</value>
         </titulo>
       </contrib>
-      <revista>
+      <contribin notag="true">
         <value>$5$6</value>
-      </revista>
+        <multiple>
+          <opcion>
+            <regex>(\.\ In:\ )(.*)</regex>
+            <grupos>
+              <monog>
+                <prevalue>$1</prevalue>
+                <value>$2</value>
+              </monog>
+            </grupos>
+          </opcion>
+          <opcion>
+            <regex>(\.\ )(.*)</regex>
+            <grupos>
+              <serial>
+                <prevalue>$1</prevalue>
+                <value>$2</value>
+              </serial>
+            </grupos>
+          </opcion>
+        </multiple>
+      </contribin>
     </grupos>
   </revista>
   <revista issn="0185-3325">

@@ -160,9 +160,13 @@ namespace RegexMarkup
                     /* Iteramos los nodos dentro del xml que nos dan el contenido de las citas */
                     foreach (XmlNode itemXML in refGroups.ChildNodes){
                         /* Verificamos si el nodo es una etiqueta(tag) o no */
-                        if(itemXML.Attributes.GetNamedItem("notag") == null){
+                        if (itemXML.Attributes.GetNamedItem("notag") == null)
+                        {
                             tagStringOpen = "[" + itemXML.Name + "]";
                             tagStringClose = "[/" + itemXML.Name + "]";
+                        } else {
+                            tagStringOpen = null;
+                            tagStringClose = null;
                         }
                         /* Verificamos si el nodo contiene un valor directo para la etiqueta(tag) o si su valor esta compuesto otras etiquetas(tag) */
                         if (itemXML.SelectSingleNode("value") == null) {
