@@ -11,8 +11,35 @@ using System.IO;
 
 namespace RegexMarkup
 {
-    class RegexMarkup
+    public sealed class RegexMarkup
     {
+        #region Singleton Implement
+        /// <summary>
+        /// Código para llamar a la clase como un singleton
+        /// </summary>
+        static RegexMarkup instance=null;
+        static readonly object padlock = new object();
+
+        RegexMarkup()
+        {
+        }
+
+        public static RegexMarkup Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (instance==null)
+                    {
+                        instance = new RegexMarkup();
+                    }
+                    return instance;
+                }
+            }
+        }
+        #endregion
+
         public static Word.Document ActiveDocument = null;
         #region startMarkup
         ///<summary>

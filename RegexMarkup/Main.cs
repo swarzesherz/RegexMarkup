@@ -10,7 +10,7 @@ namespace RegexMarkup
     {
         Office.CommandBar commandBarMarkup;
         Office.CommandBarButton regexButton;
-        RegexMarkup objectRegexMarkup = new RegexMarkup();
+        RegexMarkup objectRegexMarkup = RegexMarkup.Instance;
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
