@@ -41,12 +41,14 @@ namespace RegexMarkup
         #endregion
 
         public static Word.Document ActiveDocument = null;
+        public dictionaryDTD diccionarioDTD = dictionaryDTD.Instance;
         #region startMarkup
         ///<summary>
         ///Procedimiento al que llamaremos para inciar el proceso de marcación
         ///</summary>
         public void startMarkup(Office.CommandBarButton ctrl, ref bool cancel)
         {
+            Dictionary<String, Dictionary<String, String>> DTD40 = diccionarioDTD.getDTD40();
             /* Declaracion de variables */
             String patternString = null;
             String subjetcString = null;
