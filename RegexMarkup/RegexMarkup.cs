@@ -56,7 +56,7 @@ namespace RegexMarkup
             Word.Selection docSeleccion = null;
             XmlDocument xmlDoc = new XmlDocument();
             XmlNode objElem = null;
-            XmlNode groupsXML = null;
+            XmlNode structNode = null;
             /* Inicializamos variables */
             ActiveDocument = Globals.ThisAddIn.Application.ActiveDocument;
             /* Leemos y verificamos que el iss exista */
@@ -80,8 +80,8 @@ namespace RegexMarkup
                 if (objElem == null){
                     MessageBox.Show("No se econtro la revista en el archivo xml", "RegexMarkup");
                 }else { 
-                    /* Asignamos los grupos en los que se divide la revista */
-                    groupsXML = objElem.SelectSingleNode("grupos");
+                    /* Asignamos los struct en los que se divide la revista */
+                    structNode = objElem.SelectSingleNode("struct");
                     /* Patrón de búsqueda */
                     
                     patternString = objElem.SelectSingleNode("regex").InnerText;
@@ -101,7 +101,7 @@ namespace RegexMarkup
                             object parrafoEnd = (parrafo.Range.End - 1);
                             subjetcString = ActiveDocument.Range(ref parrafoStart, ref parrafoEnd).Text;
                             //MessageBox.Show(subjetcString, "Texto de parrafo");
-                            replaceText = replaceText + markupText(patternString, subjetcString, groupsXML) + "\r";
+                            replaceText = replaceText + markupText(patternString, subjetcString, structNode) + "\r";
                         }
                         docSeleccion.Range.Text = replaceText;
                     }
@@ -153,7 +153,7 @@ namespace RegexMarkup
         /// <summary
         /// Función para marcar la cadena de texto
         /// </sumary>
-        private String markupText(String refPattern, String refString, XmlNode refGroups) {
+        private String markupText(String refPattern, String refString, XmlNode refStruct) {
             /* Definición de variables */
             bool singleOptionMatch = false;
             int  singleOptionMatched = 0;
@@ -175,9 +175,9 @@ namespace RegexMarkup
             RegexOptions options = RegexOptions.IgnoreCase;
             Match matchResults = null;
             Match multipleOptionsMarchResults = null;
-            XmlNode groupsXML = null;
+            XmlNode structNode = null;
             XmlNodeList multipleOptions = null;
-            XmlNode singleOptionGroups = null;
+            XmlNode singleOptionStruct = null;
             /* Verificamos si la cadena es nula antes de evaluarla */
             if (refString != null)
             {
@@ -190,10 +190,10 @@ namespace RegexMarkup
                     while (matchResults.Success)
                     {
                         /* Iteramos los nodos dentro del xml que nos dan el contenido de las citas */
-                        foreach (XmlNode itemXML in refGroups.ChildNodes)
+                        foreach (XmlNode itemXML in refStruct.ChildNodes)
                         {
                             /* Verificamos si el nodo es una etiqueta(tag) o no */
-                            if (itemXML.Attributes.GetNamedItem("notag") == null)
+                            if (itemXML.Attributes.GetNamedItem("tag") != null)
                             {
 
                                 tagStringOpen = "[" + itemXML.Name + "]";
@@ -226,7 +226,7 @@ namespace RegexMarkup
                                     for (int i = 0; i < multipleOptions.Count; i++)
                                     {
                                         singleOptionPattern = multipleOptions[i].SelectSingleNode("regex").InnerText;
-                                        singleOptionGroups = multipleOptions[i].SelectSingleNode("grupos");
+                                        singleOptionStruct = multipleOptions[i].SelectSingleNode("struct");
                                         if (i == 0)
                                         {
                                             multipleOptionPattern = multipleOptionPattern + "(?<op" + i + ">" + singleOptionPattern + ")";
@@ -251,7 +251,7 @@ namespace RegexMarkup
                                     }
 
                                     singleOptionPattern = multipleOptions[singleOptionMatched].SelectSingleNode("regex").InnerText;
-                                    singleOptionGroups = multipleOptions[singleOptionMatched].SelectSingleNode("grupos");
+                                    singleOptionStruct = multipleOptions[singleOptionMatched].SelectSingleNode("struct");
                                     /* Verificamos si hay que poner un valor antes de la etiqueta(tag) */
                                     if (itemXML.SelectSingleNode("prevalue") != null)
                                     {
@@ -260,7 +260,7 @@ namespace RegexMarkup
                                         resultString = resultString + backreferencePreValueString;
                                     }
                                     /* Enviamos la expresion regular de la opcion que coincidio junto con el grupo de ordenamiento */
-                                    resultString = resultString + tagStringOpen + markupText(singleOptionPattern, subjectString, singleOptionGroups) + tagStringClose;
+                                    resultString = resultString + tagStringOpen + markupText(singleOptionPattern, subjectString, singleOptionStruct) + tagStringClose;
 
                                     /* Verificamos si hay que poner un valor despues de la etiqueta(tag) */
                                     if (itemXML.SelectSingleNode("postvalue") != null)
@@ -280,10 +280,10 @@ namespace RegexMarkup
                                         backreferencePreValueString = objRegExp.Replace(matchResults.Value, backreferencePreValue);
                                         resultString = resultString + backreferencePreValueString;
                                     }
-                                    groupsXML = itemXML.SelectSingleNode("grupos");
+                                    structNode = itemXML.SelectSingleNode("struct");
                                     patternString = itemXML.SelectSingleNode("regex").InnerText;
                                     /* Enviamos la cadena resultante con el patron nuevo a aplicar y las etiquetas(tag) que debe contener y el resultado lo ponemos dentro de la etiqueta(tag) correspondiente */
-                                    resultString = resultString + tagStringOpen + markupText(patternString, subjectString, groupsXML) + tagStringClose;
+                                    resultString = resultString + tagStringOpen + markupText(patternString, subjectString, structNode) + tagStringClose;
                                     if (itemXML.SelectSingleNode("postvalue") != null)
                                     {
                                         backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
