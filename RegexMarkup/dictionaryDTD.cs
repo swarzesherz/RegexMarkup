@@ -57,7 +57,6 @@ namespace RegexMarkup
             Dictionary<String, String> DTD40APAContrib = null;
             Dictionary<String, String> DTD40APASerial = null;
             Dictionary<String, String> DTD40APAMonog = null;
-            Dictionary<String, Dictionary<String, String>> DTD40VANCOUVER = null;
             Dictionary<String, String> DTD40Common = null;
 
             /* Si la DTD31 variable es nula la inicalizamos */
@@ -121,11 +120,6 @@ namespace RegexMarkup
                     DTD40APAMonog.Add("pages", "pages");
                     DTD40APAMonog.Add("extent", "extent");
                     DTD40APAMonog.Add("edition", "edition");
-                    DTD40APAMonog.Add("", "");
-                    DTD40APAMonog.Add("", "");
-                    DTD40APAMonog.Add("", "");
-                    DTD40APAMonog.Add("", "");
-                    
                     this.DTD40.Add("apa", DTD40APA);
                 }
                 catch (Exception e) {

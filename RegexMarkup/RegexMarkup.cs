@@ -8,7 +8,6 @@ using Office = Microsoft.Office.Core;
 using System.Xml;
 using System.Text.RegularExpressions;
 using System.IO;
-using Sgml;
 
 namespace RegexMarkup
 {
@@ -42,38 +41,12 @@ namespace RegexMarkup
         #endregion
 
         public static Word.Document ActiveDocument = null;
-        public dictionaryDTD diccionarioDTD = dictionaryDTD.Instance;
-        public Dictionary<String, Dictionary<String, Dictionary<String, String>>> DTD40 = null;
         #region startMarkup
         ///<summary>
         ///Procedimiento al que llamaremos para inciar el proceso de marcación
         ///</summary>
         public void startMarkup(Office.CommandBarButton ctrl, ref bool cancel)
         {
-            this.DTD40 = diccionarioDTD.getDTD40();
-            try
-            {
-                
-                SgmlReader reader = new SgmlReader();
-                reader.SystemLiteral = @"C:\SciELO\bin\SGMLPars\xmldtd\art4_0.dtd";
-                SgmlDtd DTDScielo = reader.Dtd;
-
-                ElementDecl apa = reader.Dtd.FindElement("PCONTRIB");
-                DTDStruct DTD40 = new DTDStruct("pcitat");
-                foreach (Sgml.Group elem in apa.ContentModel.CurrentModel.CurrentMembers){
-                    foreach(String elem2 in elem.CurrentMembers){
-                        MessageBox.Show(elem2);
-                    }
-                }
-                DTD40.Childs = new Dictionary<String, DTDStruct>();
-                DTDStruct DTD40Childs = new DTDStruct("pcontrib", DTD40);
-                DTD40.Childs.Add(DTD40Childs.Name, DTD40Childs);
-                MessageBox.Show(DTD40.Childs["pcontrib"].Name);
-         
-            }
-            catch (Exception e) {
-                MessageBox.Show(e.Message);
-            }
             /* Declaracion de variables */
             String patternString = null;
             String subjetcString = null;
@@ -202,7 +175,6 @@ namespace RegexMarkup
             RegexOptions options = RegexOptions.IgnoreCase;
             Match matchResults = null;
             Match multipleOptionsMarchResults = null;
-            XmlNode parentTag = null;
             XmlNode groupsXML = null;
             XmlNodeList multipleOptions = null;
             XmlNode singleOptionGroups = null;
@@ -223,32 +195,9 @@ namespace RegexMarkup
                             /* Verificamos si el nodo es una etiqueta(tag) o no */
                             if (itemXML.Attributes.GetNamedItem("notag") == null)
                             {
-                                parentTag = null;
-                                if (itemXML.Name != "contrib" && itemXML.Name != "serial" && itemXML.Name != "monog")
-                                {
-                                    parentTag = itemXML.ParentNode;
-                                    while (parentTag.Name != "contrib" && parentTag.Name != "serial" && parentTag.Name != "monog")
-                                    {
-                                        parentTag = parentTag.ParentNode;
-                                    }
-                                }
-                                try
-                                {
-                                    if (parentTag != null && DTD40["apa"][parentTag.Name].ContainsKey(itemXML.Name))
-                                    {
 
-                                        tagStringOpen = "[" + itemXML.Name + "]";
-                                        tagStringClose = "[/" + itemXML.Name + "]";
-                                    }
-                                    else
-                                    {
-                                        tagStringOpen = "[" + itemXML.Name + "]";
-                                        tagStringClose = "[/" + itemXML.Name + "]";
-                                    }
-                                }
-                                catch (Exception e) {
-                                    MessageBox.Show(e.Message);
-                                }
+                                tagStringOpen = "[" + itemXML.Name + "]";
+                                tagStringClose = "[/" + itemXML.Name + "]";
                             }
                             else
                             {
