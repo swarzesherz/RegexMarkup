@@ -102,7 +102,7 @@ namespace RegexMarkup
                             object parrafoEnd = (parrafo.Range.End - 1);
                             subjetcString = ActiveDocument.Range(ref parrafoStart, ref parrafoEnd).Text;
                             //MessageBox.Show(subjetcString, "Texto de parrafo");
-                            replaceText = replaceText + markupText(patternString, subjetcString, structNode) + "\r";
+                            replaceText = replaceText + this.markupText(patternString, subjetcString, structNode) + "\r";
                         }
                         
                         docSeleccion.Range.Text = replaceText;
@@ -116,7 +116,7 @@ namespace RegexMarkup
                         foreach (Word.Paragraph parrafo in docSeleccion.Paragraphs)
                         {
                             Word.Range refrange = parrafo.Range;
-                            colorTags(ref refrange, structNode, 0);
+                            this.colorRefTags(ref refrange, structNode, 0);
                         }
                     }
 
@@ -222,7 +222,7 @@ namespace RegexMarkup
                             if (itemXML.SelectSingleNode("value") == null)
                             {
                                 /* Si esta compuesto de otras etiquetas(tag) volvemos a enviar la cadena y el patron con los nodos hijos de la etiqueta(tag) */
-                                resultString = resultString + tagStringOpen + markupText(refPattern, refString, itemXML) + tagStringClose;
+                                resultString = resultString + tagStringOpen + this.markupText(refPattern, refString, itemXML) + tagStringClose;
                             }
                             else
                             {
@@ -274,7 +274,7 @@ namespace RegexMarkup
                                         resultString = resultString + backreferencePreValueString;
                                     }
                                     /* Enviamos la expresion regular de la opcion que coincidio junto con el grupo de ordenamiento */
-                                    resultString = resultString + tagStringOpen + markupText(singleOptionPattern, subjectString, singleOptionStruct) + tagStringClose;
+                                    resultString = resultString + tagStringOpen + this.markupText(singleOptionPattern, subjectString, singleOptionStruct) + tagStringClose;
 
                                     /* Verificamos si hay que poner un valor despues de la etiqueta(tag) */
                                     if (itemXML.SelectSingleNode("postvalue") != null)
@@ -297,7 +297,7 @@ namespace RegexMarkup
                                     structNode = itemXML.SelectSingleNode("struct");
                                     patternString = itemXML.SelectSingleNode("regex").InnerText;
                                     /* Enviamos la cadena resultante con el patron nuevo a aplicar y las etiquetas(tag) que debe contener y el resultado lo ponemos dentro de la etiqueta(tag) correspondiente */
-                                    resultString = resultString + tagStringOpen + markupText(patternString, subjectString, structNode) + tagStringClose;
+                                    resultString = resultString + tagStringOpen + this.markupText(patternString, subjectString, structNode) + tagStringClose;
                                     if (itemXML.SelectSingleNode("postvalue") != null)
                                     {
                                         backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
@@ -343,29 +343,14 @@ namespace RegexMarkup
         /// <summary>
         ///  Function to colorize tags
         /// </summary>
-        public void colorTags(ref Word.Range colorizeRange, XmlNode structNode, int color) {
+        public void colorRefTags(ref Word.Range colorizeRange, XmlNode structNode, int color) {
             /* Definimos y asignamos el arreglo de colores para las etiquetas */
             Microsoft.Office.Interop.Word.WdColor[] colors = new Microsoft.Office.Interop.Word.WdColor[]{
-                Word.WdColor.wdColorDarkRed,
                 Word.WdColor.wdColorDarkBlue,
-                Word.WdColor.wdColorPink,
-                Word.WdColor.wdColorGreen,
-                Word.WdColor.wdColorViolet,
                 Word.WdColor.wdColorTeal,
-                Word.WdColor.wdColorDarkRed,
-                Word.WdColor.wdColorDarkBlue,
-                Word.WdColor.wdColorPink,
-                Word.WdColor.wdColorGreen,
-                Word.WdColor.wdColorDarkRed,
-                Word.WdColor.wdColorDarkBlue,
-                Word.WdColor.wdColorPink,
-                Word.WdColor.wdColorGreen,
+                Word.WdColor.wdColorGray50,
+                Word.WdColor.wdColorBlue,
                 Word.WdColor.wdColorViolet,
-                Word.WdColor.wdColorTeal,
-                Word.WdColor.wdColorDarkRed,
-                Word.WdColor.wdColorDarkBlue,
-                Word.WdColor.wdColorPink,
-                Word.WdColor.wdColorGreen
             };
             object missingval = System.Type.Missing;
             object replaceAll = Word.WdReplace.wdReplaceAll;
@@ -373,7 +358,7 @@ namespace RegexMarkup
             if (structNode.Attributes.GetNamedItem("tag") != null) {
                 color++;
                 /* Si el indice de color llego a 20 lo reiniciamos a 0 */
-                color = color == 20 ? 0 : color;
+                color = color == 5 ? 0 : color;
             }
             /* Iteramos las etiquetas(tags) hijas*/
             foreach (XmlNode tag in structNode.ChildNodes){
@@ -382,17 +367,17 @@ namespace RegexMarkup
                     /* Al igual que en marcado analizamos la condiciones existentes en donde se tienen que marcar etiquetas(tags) hijas */
                     if (tag.SelectSingleNode("value") == null && tag.ChildNodes.Count > 0)
                     {
-                        colorTags(ref colorizeRange, tag, color);
+                        this.colorRefTags(ref colorizeRange, tag, color);
                     }
                     else
                     {
                         if (tag.SelectSingleNode("multiple") != null && tag.ChildNodes.Count > 0)
                         {
-                            colorTags(ref colorizeRange, tag, color);
+                            this.colorRefTags(ref colorizeRange, tag, color);
                         }
                         else if (tag.SelectSingleNode("regex") != null && tag.ChildNodes.Count > 0)
                         {
-                            colorTags(ref colorizeRange, tag, color);
+                            this.colorRefTags(ref colorizeRange, tag, color);
                         }
                     }
                     /* Si el atributo indica que es una etiqueta(tag) la coloreamos */
