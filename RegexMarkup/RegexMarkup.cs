@@ -87,6 +87,7 @@ namespace RegexMarkup
                     patternString = objElem.SelectSingleNode("regex").InnerText;
                     //MessageBox.Show("Pattern String");
                     /* Verificamos que la seleccion sea del parrafo completo */
+                    Word.Range start = Globals.ThisAddIn.Application.Selection.Range;
                     docSeleccion = Globals.ThisAddIn.Application.Selection;
                     if (docSeleccion.Start != docSeleccion.Paragraphs.First.Range.Start || docSeleccion.End != docSeleccion.Paragraphs.Last.Range.End){
                         MessageBox.Show("Seleccione la cita(s) completamente");
@@ -103,7 +104,20 @@ namespace RegexMarkup
                             //MessageBox.Show(subjetcString, "Texto de parrafo");
                             replaceText = replaceText + markupText(patternString, subjetcString, structNode) + "\r";
                         }
+                        
                         docSeleccion.Range.Text = replaceText;
+                        
+                        /* Volvemos a seleccionar el texto desde el inicio de la seleccion inicial mas el total de la cadena con etiquetas */
+                        int selectionStart = docSeleccion.Range.Start;
+                        int selectionEnd = (docSeleccion.Range.Start + replaceText.Length);
+                        start.SetRange(selectionStart, selectionEnd);
+                        start.Select();
+                        /* Coloreando Etiquetas (Tags) */
+                        foreach (Word.Paragraph parrafo in docSeleccion.Paragraphs)
+                        {
+                            Word.Range refrange = parrafo.Range;
+                            colorTags(ref refrange, structNode, 0);
+                        }
                     }
 
                 }
@@ -113,7 +127,7 @@ namespace RegexMarkup
         #endregion
 
         #region getAttrValueInTag
-        /// <summary
+        /// <summary>
         /// Función para obtener el atributo de una etiqueta(TAG)
         /// </sumary>
         private String getAttrValueInTag(String tag, String attr) {
@@ -150,7 +164,7 @@ namespace RegexMarkup
         #endregion
    
         #region markupTex
-        /// <summary
+        /// <summary>
         /// Función para marcar la cadena de texto
         /// </sumary>
         private String markupText(String refPattern, String refString, XmlNode refStruct) {
@@ -322,6 +336,97 @@ namespace RegexMarkup
                 resultString = resultString +  refString;
             }
             return resultString;
+        }
+        #endregion
+
+        #region colorTags
+        /// <summary>
+        ///  Function to colorize tags
+        /// </summary>
+        public void colorTags(ref Word.Range colorizeRange, XmlNode structNode, int color) {
+            /* Definimos y asignamos el arreglo de colores para las etiquetas */
+            Microsoft.Office.Interop.Word.WdColor[] colors = new Microsoft.Office.Interop.Word.WdColor[]{
+                Word.WdColor.wdColorDarkRed,
+                Word.WdColor.wdColorDarkBlue,
+                Word.WdColor.wdColorPink,
+                Word.WdColor.wdColorGreen,
+                Word.WdColor.wdColorViolet,
+                Word.WdColor.wdColorTeal,
+                Word.WdColor.wdColorDarkRed,
+                Word.WdColor.wdColorDarkBlue,
+                Word.WdColor.wdColorPink,
+                Word.WdColor.wdColorGreen,
+                Word.WdColor.wdColorDarkRed,
+                Word.WdColor.wdColorDarkBlue,
+                Word.WdColor.wdColorPink,
+                Word.WdColor.wdColorGreen,
+                Word.WdColor.wdColorViolet,
+                Word.WdColor.wdColorTeal,
+                Word.WdColor.wdColorDarkRed,
+                Word.WdColor.wdColorDarkBlue,
+                Word.WdColor.wdColorPink,
+                Word.WdColor.wdColorGreen
+            };
+            object missingval = System.Type.Missing;
+            object replaceAll = Word.WdReplace.wdReplaceAll;
+            /* Si la estructura enviada contiene una etiqueta aumentamos el numero de color para las etiquetas hijas */
+            if (structNode.Attributes.GetNamedItem("tag") != null) {
+                color++;
+                /* Si el indice de color llego a 20 lo reiniciamos a 0 */
+                color = color == 20 ? 0 : color;
+            }
+            /* Iteramos las etiquetas(tags) hijas*/
+            foreach (XmlNode tag in structNode.ChildNodes){
+                try
+                {   
+                    /* Al igual que en marcado analizamos la condiciones existentes en donde se tienen que marcar etiquetas(tags) hijas */
+                    if (tag.SelectSingleNode("value") == null && tag.ChildNodes.Count > 0)
+                    {
+                        colorTags(ref colorizeRange, tag, color);
+                    }
+                    else
+                    {
+                        if (tag.SelectSingleNode("multiple") != null && tag.ChildNodes.Count > 0)
+                        {
+                            colorTags(ref colorizeRange, tag, color);
+                        }
+                        else if (tag.SelectSingleNode("regex") != null && tag.ChildNodes.Count > 0)
+                        {
+                            colorTags(ref colorizeRange, tag, color);
+                        }
+                    }
+                    /* Si el atributo indica que es una etiqueta(tag) la coloreamos */
+                    if (tag.Attributes.GetNamedItem("tag") != null)
+                    {
+                        /* Buscamos y coloreamos el inicio de la etiqueta(tag) */
+                        colorizeRange.Find.ClearFormatting();
+                        colorizeRange.Find.Text = "\\[" + tag.Name + "*\\]";
+                        colorizeRange.Find.MatchWildcards = true;
+                        colorizeRange.Find.Replacement.ClearFormatting();
+                        colorizeRange.Find.Replacement.Font.Color = colors[color];
+                        colorizeRange.Find.Replacement.Font.Size = 9;
+                        colorizeRange.Find.Replacement.Font.Name = "Verdana";
+                        colorizeRange.Find.Execute(ref missingval, ref missingval, ref missingval,
+                            ref missingval, ref missingval, ref missingval, ref missingval,
+                            ref missingval, ref missingval, ref missingval, ref replaceAll,
+                            ref missingval, ref missingval, ref missingval, ref missingval);
+
+                        /* Buscamos y coloreamos el cierre de la etiqueta(tag) */
+                        colorizeRange.Find.ClearFormatting();
+                        colorizeRange.Find.Text = "\\[/" + tag.Name + "\\]";
+                        colorizeRange.Find.Replacement.ClearFormatting();
+                        colorizeRange.Find.Replacement.Font.Color = colors[color];
+                        colorizeRange.Find.Replacement.Font.Size = 9;
+                        colorizeRange.Find.Replacement.Font.Name = "Verdana";
+                        colorizeRange.Find.Execute(ref missingval, ref missingval, ref missingval,
+                            ref missingval, ref missingval, ref missingval, ref missingval,
+                            ref missingval, ref missingval, ref missingval, ref replaceAll,
+                            ref missingval, ref missingval, ref missingval, ref missingval);
+                    }
+                }catch(Exception e){
+                    //MessageBox.Show(e.Message);
+                }
+            }
         }
         #endregion
     }
