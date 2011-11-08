@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
@@ -57,6 +58,8 @@ namespace RegexMarkup
             XmlDocument xmlDoc = new XmlDocument();
             XmlNode objElem = null;
             XmlNode structNode = null;
+            List<markupStruct> citas = null;
+
             /* Inicializamos variables */
             ActiveDocument = Globals.ThisAddIn.Application.ActiveDocument;
             /* Leemos y verificamos que el iss exista */
@@ -95,6 +98,8 @@ namespace RegexMarkup
                         /* Asignamos el texto de la seleccion a subjectString */
                         subjetcString = docSeleccion.Range.Text;
                         //MessageBox.Show(subjetcString, "Texto Seleccionado");
+                        /* Inicializando arratlist de citas */
+                        citas = new List<markupStruct>();
                         /* Buscando parrafo por parrafo */
                         foreach (Word.Paragraph parrafo in docSeleccion.Paragraphs){
                             /* Mandamos el texto de cada parrafo a una funcion que nos lo regresara marcado y quitamos el salto linea */
@@ -102,6 +107,15 @@ namespace RegexMarkup
                             object parrafoEnd = (parrafo.Range.End - 1);
                             subjetcString = ActiveDocument.Range(ref parrafoStart, ref parrafoEnd).Text;
                             //MessageBox.Show(subjetcString, "Texto de parrafo");
+                            if (subjetcString == null)
+                            {
+                                citas[citas.Count - 1].Original += "\r";
+                                citas[citas.Count - 1].Marked += "\r"; 
+                            }
+                            else
+                            {
+                                citas.Add(new markupStruct(subjetcString + "\r", this.markupText(patternString, subjetcString, structNode) + "\r"));
+                            }
                             replaceText = replaceText + this.markupText(patternString, subjetcString, structNode) + "\r";
                         }
                         
@@ -395,7 +409,6 @@ namespace RegexMarkup
                             ref missingval, ref missingval, ref missingval, ref missingval,
                             ref missingval, ref missingval, ref missingval, ref replaceAll,
                             ref missingval, ref missingval, ref missingval, ref missingval);
-
                         /* Buscamos y coloreamos el cierre de la etiqueta(tag) */
                         colorizeRange.Find.ClearFormatting();
                         colorizeRange.Find.Text = "\\[/" + tag.Name + "\\]";

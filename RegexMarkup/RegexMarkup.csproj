@@ -26,11 +26,11 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <PublishUrl>publish\</PublishUrl>
-    <ApplicationVersion>1.0.0.1</ApplicationVersion>
-    <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <TargetFrameworkSubset>
     </TargetFrameworkSubset>
+    <PublishUrl>publish\</PublishUrl>
+    <ApplicationVersion>0.5.0.2</ApplicationVersion>
+    <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
   </PropertyGroup>
   <PropertyGroup>
     <!-- 
@@ -138,6 +138,7 @@
   <ItemGroup>
     <Compile Include="dictionaryDTD.cs" />
     <Compile Include="DTDStruct.cs" />
+    <Compile Include="markupStruct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -194,7 +195,7 @@
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
         <ProjectProperties HostName="Word" HostPackage="{D53BAEDE-5B63-42BE-8267-3DED11EDC582}" OfficeVersion="11.0" VstxVersion="3.0" ApplicationType="Word" Language="cs" TemplatesPath="VSTOTemplates" DebugInfoExeName="#Software\Microsoft\Office\11.0\Word\InstallRoot\Path#WINWORD.EXE" DebugInfoCommandLine="/w" />
         <Host Name="Word" GeneratedCodeNamespace="RegexMarkup" PublishedHash="69C324AB27932AA2FBF2B7EA72250886FF164DE6" IconIndex="0">
-          <HostItem Name="ThisAddIn" Code="Main.cs" CanonicalName="AddIn" PublishedHash="8D404566C14605079489B77EF1942EA23CF2802D" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.Designer.xml" GeneratedCode="ThisAddIn.Designer.Designer.cs" />
+          <HostItem Name="ThisAddIn" Code="Main.cs" CanonicalName="AddIn" PublishedHash="1999DB858FC9D17C80CA27C6FC48546598D3D6AE" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.Designer.xml" GeneratedCode="ThisAddIn.Designer.Designer.cs" />
         </Host>
         <ProjectClient>
           <VSTO_CompatibleProducts ErrorProduct="Este proyecto requiere Microsoft Office Word 2003, pero esta aplicación no está instalada." ErrorPIA="Este proyecto hace referencia al ensamblado de interoperabilidad principal para Microsoft Office Word 2003, pero este ensamblado no está instalado.">
