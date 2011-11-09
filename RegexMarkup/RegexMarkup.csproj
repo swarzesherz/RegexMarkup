@@ -147,6 +147,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ValidateMarkup.resx">
+      <DependentUpon>ValidateMarkup.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -172,6 +175,12 @@
     <Compile Include="RegexMarkup.cs" />
     <Compile Include="ThisAddIn.Designer.Designer.cs">
       <DependentUpon>ThisAddIn.Designer.Designer.xml</DependentUpon>
+    </Compile>
+    <Compile Include="ValidateMarkup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ValidateMarkup.Designer.cs">
+      <DependentUpon>ValidateMarkup.cs</DependentUpon>
     </Compile>
     <AppDesigner Include="Properties\" />
   </ItemGroup>

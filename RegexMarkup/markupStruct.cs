@@ -4,31 +4,52 @@ using System.Text;
 
 namespace RegexMarkup
 {
-    class markupStruct
+    public class markupStruct
     {
-        private String original = null;
-        private String marked = null;
+        private String originalStr = null;
+        private String markedStr = null;
+        private Boolean marked = false;
 
-        public markupStruct(String original, String marked) {
-            this.original = original;
+        public markupStruct(String originalStr, String markedStr, Boolean marked) {
+            this.originalStr = originalStr;
+            this.markedStr = markedStr;
             this.marked = marked;
         }
 
-        public String Original {
+        public String OriginalStr {
             get {
-                return this.original;
+                return this.originalStr;
             }
             set {
-                this.original = value;
+                this.originalStr = value;
             }
         }
 
-        public String Marked {
+        public String MarkedStr {
             get {
-                return this.marked;
+                return this.markedStr;
             }
             set {
+                this.markedStr = value;
+            }
+        }
+
+        public Boolean Marked
+        {
+            get
+            {
+                return this.marked;
+            }
+            set
+            {
                 this.marked = value;
+            }
+        }
+        public Boolean MarkedNo
+        {
+            get
+            {
+                return !this.marked;
             }
         }
     }

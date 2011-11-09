@@ -49,8 +49,10 @@ namespace RegexMarkup
         public void startMarkup(Office.CommandBarButton ctrl, ref bool cancel)
         {
             /* Declaracion de variables */
+            Boolean marked = true;
             String patternString = null;
             String subjetcString = null;
+            String markedString = null;
             String replaceText = null;
             String issn = null;
             String pathXML = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "regex.xml");
@@ -109,16 +111,23 @@ namespace RegexMarkup
                             //MessageBox.Show(subjetcString, "Texto de parrafo");
                             if (subjetcString == null)
                             {
-                                citas[citas.Count - 1].Original += "\r";
-                                citas[citas.Count - 1].Marked += "\r"; 
+                                citas[citas.Count - 1].OriginalStr += "\r";
+                                citas[citas.Count - 1].MarkedStr += "\r"; 
                             }
                             else
                             {
-                                citas.Add(new markupStruct(subjetcString + "\r", this.markupText(patternString, subjetcString, structNode) + "\r"));
+                                markedString = this.markupText(patternString, subjetcString, structNode);
+                                marked = true;
+                                if (subjetcString == markedString)
+                                {
+                                    marked = false;
+                                }
+                                citas.Add(new markupStruct(subjetcString + "\r", markedString + "\r", marked));
                             }
-                            replaceText = replaceText + this.markupText(patternString, subjetcString, structNode) + "\r";
+                            replaceText += markedString + "\r";
                         }
-                        
+                        ValidateMarkup formValidate = new ValidateMarkup(ref citas);
+                        formValidate.ShowDialog();
                         docSeleccion.Range.Text = replaceText;
                         
                         /* Volvemos a seleccionar el texto desde el inicio de la seleccion inicial mas el total de la cadena con etiquetas */
@@ -177,7 +186,7 @@ namespace RegexMarkup
         }
         #endregion
    
-        #region markupTex
+        #region markupText
         /// <summary>
         /// Función para marcar la cadena de texto
         /// </sumary>
