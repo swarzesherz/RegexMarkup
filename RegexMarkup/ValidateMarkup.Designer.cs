@@ -60,6 +60,7 @@ namespace RegexMarkup
             // 
             // richTextBox2
             // 
+            this.richTextBox2.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox2.Location = new System.Drawing.Point(12, 118);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(628, 70);
@@ -174,7 +175,6 @@ namespace RegexMarkup
             this.Name = "ValidateMarkup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ValidateMarkup";
-            this.Load += new System.EventHandler(this.ValidateMarkup_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

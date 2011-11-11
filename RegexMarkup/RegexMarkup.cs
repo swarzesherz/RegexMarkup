@@ -126,7 +126,7 @@ namespace RegexMarkup
                             }
                             replaceText += markedString + "\r";
                         }
-                        ValidateMarkup formValidate = new ValidateMarkup(ref citas);
+                        ValidateMarkup formValidate = new ValidateMarkup(ref citas, ref structNode);
                         formValidate.ShowDialog();
                         docSeleccion.Range.Text = replaceText;
                         
@@ -373,7 +373,7 @@ namespace RegexMarkup
                 Word.WdColor.wdColorTeal,
                 Word.WdColor.wdColorGray50,
                 Word.WdColor.wdColorBlue,
-                Word.WdColor.wdColorViolet,
+                Word.WdColor.wdColorViolet
             };
             object missingval = System.Type.Missing;
             object replaceAll = Word.WdReplace.wdReplaceAll;
@@ -412,8 +412,8 @@ namespace RegexMarkup
                         colorizeRange.Find.MatchWildcards = true;
                         colorizeRange.Find.Replacement.ClearFormatting();
                         colorizeRange.Find.Replacement.Font.Color = colors[color];
-                        colorizeRange.Find.Replacement.Font.Size = 9;
-                        colorizeRange.Find.Replacement.Font.Name = "Verdana";
+                        colorizeRange.Find.Replacement.Font.Size = 11;
+                        colorizeRange.Find.Replacement.Font.Name = "Arial";
                         colorizeRange.Find.Execute(ref missingval, ref missingval, ref missingval,
                             ref missingval, ref missingval, ref missingval, ref missingval,
                             ref missingval, ref missingval, ref missingval, ref replaceAll,
@@ -436,5 +436,6 @@ namespace RegexMarkup
             }
         }
         #endregion
+
     }
 }
