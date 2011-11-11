@@ -51,25 +51,26 @@ namespace RegexMarkup
             // 
             // richTextBox1
             // 
+            this.richTextBox1.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(12, 20);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(628, 70);
+            this.richTextBox1.Size = new System.Drawing.Size(688, 110);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
             // richTextBox2
             // 
             this.richTextBox2.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox2.Location = new System.Drawing.Point(12, 118);
+            this.richTextBox2.Location = new System.Drawing.Point(12, 163);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(628, 70);
+            this.richTextBox2.Size = new System.Drawing.Size(688, 184);
             this.richTextBox2.TabIndex = 1;
             this.richTextBox2.Text = "";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(23, 208);
+            this.button1.Location = new System.Drawing.Point(13, 383);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -79,7 +80,7 @@ namespace RegexMarkup
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(104, 208);
+            this.button2.Location = new System.Drawing.Point(94, 383);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 3;
@@ -89,7 +90,7 @@ namespace RegexMarkup
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(185, 208);
+            this.button3.Location = new System.Drawing.Point(175, 383);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 4;
@@ -99,7 +100,7 @@ namespace RegexMarkup
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(266, 208);
+            this.button4.Location = new System.Drawing.Point(256, 383);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 5;
@@ -119,7 +120,7 @@ namespace RegexMarkup
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 98);
+            this.label2.Location = new System.Drawing.Point(9, 143);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 8;
@@ -128,7 +129,7 @@ namespace RegexMarkup
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(416, 211);
+            this.radioButton1.Location = new System.Drawing.Point(406, 386);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(34, 17);
             this.radioButton1.TabIndex = 9;
@@ -139,7 +140,7 @@ namespace RegexMarkup
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(456, 211);
+            this.radioButton2.Location = new System.Drawing.Point(446, 386);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(39, 17);
             this.radioButton2.TabIndex = 10;
@@ -150,7 +151,7 @@ namespace RegexMarkup
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(347, 213);
+            this.label3.Location = new System.Drawing.Point(337, 388);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 11;
@@ -160,7 +161,7 @@ namespace RegexMarkup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 254);
+            this.ClientSize = new System.Drawing.Size(712, 418);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);

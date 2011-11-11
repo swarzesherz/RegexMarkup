@@ -26,6 +26,13 @@ namespace RegexMarkup
             this.richTextBox2.DataBindings.Add("Text", this.citas, "MarkedStr");
             this.radioButton1.DataBindings.Add("Checked", this.citas, "Marked", false, DataSourceUpdateMode.OnPropertyChanged);
             this.radioButton2.DataBindings.Add("Checked", this.citas, "MarkedNo", false, DataSourceUpdateMode.OnPropertyChanged);
+            /* Evento para colorear en la primera llamada */
+            this.richTextBox2.BindingContextChanged += new EventHandler(this.richTextBox2_BindingContextChanged);
+        }
+
+        private void richTextBox2_BindingContextChanged(object sender, EventArgs e)
+        {
+            this.colorRefTagsForm(this.structNode, startColor);
         }
 
         private void button1_Click(object sender, EventArgs e)
