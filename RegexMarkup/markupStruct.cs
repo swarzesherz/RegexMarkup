@@ -8,12 +8,14 @@ namespace RegexMarkup
     {
         private String originalStr = null;
         private String markedStr = null;
+        private String breakLines = null;
         private Boolean marked = false;
 
         public markupStruct(String originalStr, String markedStr, Boolean marked) {
             this.originalStr = originalStr;
             this.markedStr = markedStr;
             this.marked = marked;
+            this.breakLines = "\r";
         }
 
         public String OriginalStr {
@@ -31,6 +33,17 @@ namespace RegexMarkup
             }
             set {
                 this.markedStr = value;
+            }
+        }
+
+        public String BreakLines {
+            get
+            {
+                return this.breakLines;
+            }
+            set
+            {
+                this.breakLines = value;
             }
         }
 

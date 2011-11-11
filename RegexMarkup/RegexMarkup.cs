@@ -111,8 +111,7 @@ namespace RegexMarkup
                             //MessageBox.Show(subjetcString, "Texto de parrafo");
                             if (subjetcString == null)
                             {
-                                citas[citas.Count - 1].OriginalStr += "\r";
-                                citas[citas.Count - 1].MarkedStr += "\r"; 
+                                citas[citas.Count - 1].BreakLines += "\r";
                             }
                             else
                             {
@@ -122,12 +121,20 @@ namespace RegexMarkup
                                 {
                                     marked = false;
                                 }
-                                citas.Add(new markupStruct(subjetcString + "\r", markedString + "\r", marked));
+                                citas.Add(new markupStruct(subjetcString , markedString , marked));
                             }
-                            replaceText += markedString + "\r";
                         }
                         ValidateMarkup formValidate = new ValidateMarkup(ref citas, ref structNode);
                         formValidate.ShowDialog();
+                        /* Reemplzando texto original por el marcado */
+                        foreach (markupStruct cita in citas) {
+                            if(cita.Marked){
+                                replaceText += cita.MarkedStr + cita.BreakLines;
+                            }else{
+                                replaceText += cita.OriginalStr + cita.BreakLines;
+                            }
+                             
+                        }
                         docSeleccion.Range.Text = replaceText;
                         
                         /* Volvemos a seleccionar el texto desde el inicio de la seleccion inicial mas el total de la cadena con etiquetas */
@@ -245,7 +252,7 @@ namespace RegexMarkup
                             if (itemXML.SelectSingleNode("value") == null)
                             {
                                 /* Si esta compuesto de otras etiquetas(tag) volvemos a enviar la cadena y el patron con los nodos hijos de la etiqueta(tag) */
-                                resultString = resultString + tagStringOpen + this.markupText(refPattern, refString, itemXML) + tagStringClose;
+                                resultString += tagStringOpen + this.markupText(refPattern, refString, itemXML) + tagStringClose;
                             }
                             else
                             {
@@ -266,11 +273,11 @@ namespace RegexMarkup
                                         singleOptionStruct = multipleOptions[i].SelectSingleNode("struct");
                                         if (i == 0)
                                         {
-                                            multipleOptionPattern = multipleOptionPattern + "(?<op" + i + ">" + singleOptionPattern + ")";
+                                            multipleOptionPattern += "(?<op" + i + ">" + singleOptionPattern + ")";
                                         }
                                         else
                                         {
-                                            multipleOptionPattern = multipleOptionPattern + "|(?<op" + i + ">" + singleOptionPattern + ")";
+                                            multipleOptionPattern += "|(?<op" + i + ">" + singleOptionPattern + ")";
                                         }
                                     }
                                     /* Inicializamos un nuevo metro para evaluar la expresion regular de todas la opciones */
@@ -294,17 +301,17 @@ namespace RegexMarkup
                                     {
                                         backreferencePreValue = itemXML.SelectSingleNode("prevalue").InnerText;
                                         backreferencePreValueString = objRegExp.Replace(matchResults.Value, backreferencePreValue);
-                                        resultString = resultString + backreferencePreValueString;
+                                        resultString += backreferencePreValueString;
                                     }
                                     /* Enviamos la expresion regular de la opcion que coincidio junto con el grupo de ordenamiento */
-                                    resultString = resultString + tagStringOpen + this.markupText(singleOptionPattern, subjectString, singleOptionStruct) + tagStringClose;
+                                    resultString += tagStringOpen + this.markupText(singleOptionPattern, subjectString, singleOptionStruct) + tagStringClose;
 
                                     /* Verificamos si hay que poner un valor despues de la etiqueta(tag) */
                                     if (itemXML.SelectSingleNode("postvalue") != null)
                                     {
                                         backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
                                         backreferencePostValueString = objRegExp.Replace(matchResults.Value, backreferencePostValue);
-                                        resultString = resultString + backreferencePostValueString;
+                                        resultString += backreferencePostValueString;
                                     }
 
                                 }
@@ -315,17 +322,17 @@ namespace RegexMarkup
                                     {
                                         backreferencePreValue = itemXML.SelectSingleNode("prevalue").InnerText;
                                         backreferencePreValueString = objRegExp.Replace(matchResults.Value, backreferencePreValue);
-                                        resultString = resultString + backreferencePreValueString;
+                                        resultString += backreferencePreValueString;
                                     }
                                     structNode = itemXML.SelectSingleNode("struct");
                                     patternString = itemXML.SelectSingleNode("regex").InnerText;
                                     /* Enviamos la cadena resultante con el patron nuevo a aplicar y las etiquetas(tag) que debe contener y el resultado lo ponemos dentro de la etiqueta(tag) correspondiente */
-                                    resultString = resultString + tagStringOpen + this.markupText(patternString, subjectString, structNode) + tagStringClose;
+                                    resultString += tagStringOpen + this.markupText(patternString, subjectString, structNode) + tagStringClose;
                                     if (itemXML.SelectSingleNode("postvalue") != null)
                                     {
                                         backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
                                         backreferencePostValueString = objRegExp.Replace(matchResults.Value, backreferencePostValue);
-                                        resultString = resultString + backreferencePostValueString;
+                                        resultString += backreferencePostValueString;
                                     }
                                 }
                                 else
@@ -335,16 +342,16 @@ namespace RegexMarkup
                                     if (itemXML.SelectSingleNode("prevalue") != null)
                                     {
                                         backreferencePreValue = itemXML.SelectSingleNode("prevalue").InnerText;
-                                        replaceString = replaceString + backreferencePreValue;
+                                        replaceString += backreferencePreValue;
                                     }
                                     /* Armamos la etiqueta(tag) con su valor */
                                     replaceString = replaceString + tagStringOpen + backreference + tagStringClose;
                                     if (itemXML.SelectSingleNode("postvalue") != null)
                                     {
                                         backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
-                                        replaceString = replaceString + backreferencePostValue;
+                                        replaceString += backreferencePostValue;
                                     }
-                                    resultString = resultString + objRegExp.Replace(refString, replaceString);
+                                    resultString += objRegExp.Replace(refString, replaceString);
                                 }
                             }
                         }
@@ -353,10 +360,10 @@ namespace RegexMarkup
                 }
                 else
                 {
-                    resultString = resultString + refString;
+                    resultString += refString;
                 }
             } else {
-                resultString = resultString +  refString;
+                resultString +=  refString;
             }
             return resultString;
         }
@@ -423,8 +430,8 @@ namespace RegexMarkup
                         colorizeRange.Find.Text = "\\[/" + tag.Name + "\\]";
                         colorizeRange.Find.Replacement.ClearFormatting();
                         colorizeRange.Find.Replacement.Font.Color = colors[color];
-                        colorizeRange.Find.Replacement.Font.Size = 9;
-                        colorizeRange.Find.Replacement.Font.Name = "Verdana";
+                        colorizeRange.Find.Replacement.Font.Size = 11;
+                        colorizeRange.Find.Replacement.Font.Name = "Arial";
                         colorizeRange.Find.Execute(ref missingval, ref missingval, ref missingval,
                             ref missingval, ref missingval, ref missingval, ref missingval,
                             ref missingval, ref missingval, ref missingval, ref replaceAll,
