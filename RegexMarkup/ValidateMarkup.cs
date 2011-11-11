@@ -21,6 +21,8 @@ namespace RegexMarkup
             this.citas = citas;
             this.structNode = structNode;
             InitializeComponent();
+            /* Agregando evento para cambiar el tamaño de los richtextbox cuando cambie el tamaño del formulario */
+            this.SizeChanged += new EventHandler(ValidateMarkup_SizeChanged);
             this.currencyManager = (CurrencyManager)this.BindingContext[this.citas];
             this.richTextBox1.DataBindings.Add("Text", this.citas, "OriginalStr");
             this.richTextBox2.DataBindings.Add("Text", this.citas, "MarkedStr");
@@ -28,6 +30,17 @@ namespace RegexMarkup
             this.radioButton2.DataBindings.Add("Checked", this.citas, "MarkedNo", false, DataSourceUpdateMode.OnPropertyChanged);
             /* Evento para colorear en la primera llamada */
             this.richTextBox2.BindingContextChanged += new EventHandler(this.richTextBox2_BindingContextChanged);
+            /* Evento para colorear cuando cambie la posicion */
+            this.currencyManager.PositionChanged += new EventHandler(currencyManager_PositionChanged);
+        }
+
+        private void ValidateMarkup_SizeChanged(object sender, EventArgs e) {
+            this.richTextBox1.Width = this.Size.Width - 30;
+            this.richTextBox2.Width = this.Size.Width - 30;
+        }
+
+        private void currencyManager_PositionChanged(object sender, EventArgs e) {
+            this.colorRefTagsForm(this.structNode, startColor);
         }
 
         private void richTextBox2_BindingContextChanged(object sender, EventArgs e)
@@ -40,7 +53,6 @@ namespace RegexMarkup
             if (this.currencyManager.Position != 0)
             {
                 this.currencyManager.Position = 0;
-                this.colorRefTagsForm(this.structNode, startColor);
             }
         }
 
@@ -48,7 +60,6 @@ namespace RegexMarkup
         {
             if (this.currencyManager.Position != 0) {
                 this.currencyManager.Position--;
-                this.colorRefTagsForm(this.structNode, startColor);
             }
         }
 
@@ -56,7 +67,6 @@ namespace RegexMarkup
         {
             if (this.currencyManager.Position != (this.citas.Count - 1)) {
                 this.currencyManager.Position++;
-                this.colorRefTagsForm(this.structNode, startColor);
             }
         }
 
@@ -65,7 +75,6 @@ namespace RegexMarkup
             if (this.currencyManager.Position != (this.citas.Count - 1))
             {
                 this.currencyManager.Position = this.citas.Count - 1;
-                this.colorRefTagsForm(this.structNode, startColor);
             }
         }
 
