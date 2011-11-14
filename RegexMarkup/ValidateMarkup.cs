@@ -7,11 +7,13 @@ using System.Text;
 using System.Xml;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Runtime.InteropServices;
 
 namespace RegexMarkup
 {
     public partial class ValidateMarkup : Form
     {
+        const int MF_BYPOSITION = 0x400;
         private List<markupStruct> citas;
         private CurrencyManager currencyManager = null;
         private XmlNode structNode = null;
@@ -32,6 +34,7 @@ namespace RegexMarkup
             this.richTextBoxMarkup.BindingContextChanged += new EventHandler(this.richTextBox2_BindingContextChanged);
             /* Evento para colorear cuando cambie la posicion */
             this.currencyManager.PositionChanged += new EventHandler(currencyManager_PositionChanged);
+            /* Quitando opción de cerrar del formulario actual */
         }
 
         private void ValidateMarkup_SizeChanged(object sender, EventArgs e) {
@@ -117,8 +120,10 @@ namespace RegexMarkup
 
         #region colorTagsInForm
         /// <summary>
-        ///  Function to colorize tags in form
+        /// Function to colorize tags in form
         /// </summary>
+        /// <param name="structNode">Contenido de la etiqueta actual con sus hijos</param>
+        /// <param name="color">Color de la etiqueta {0,...,4} el -1 sirver para iniciar </param>
         public void colorRefTagsForm(XmlNode structNode, int color)
         {
             Regex tagExp = null;
@@ -193,5 +198,37 @@ namespace RegexMarkup
             }
         }
         #endregion
+
+        #region Disable close button
+        /// <summary>
+        /// Sección de código para quitar el boron "x"
+        /// </summary>
+
+        [DllImport("User32")]
+        private static extern int RemoveMenu(IntPtr hMenu, int nPosition, int wFlags);
+
+        [DllImport("User32")]
+        private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
+
+        [DllImport("User32")]
+        private static extern int GetMenuItemCount(IntPtr hWnd);
+
+        private void ValidateMarkup_Load(object sender, EventArgs e)
+        {
+            IntPtr hMenu = GetSystemMenu(this.Handle, false);
+
+            int menuItemCount = GetMenuItemCount(hMenu);
+            /* Quitando boton cerrar "x" */
+            RemoveMenu(hMenu, menuItemCount - 1, MF_BYPOSITION);
+            /* Quitando boton minimizar "_" */
+            this.MinimizeBox = false;
+        }
+        #endregion
+
+        private void buttonEnd_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

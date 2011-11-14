@@ -159,7 +159,10 @@ namespace RegexMarkup
         #region getAttrValueInTag
         /// <summary>
         /// Función para obtener el atributo de una etiqueta(TAG)
-        /// </sumary>
+        /// </summary>
+        /// <param name="tag">Etiqueta donde buscaremos</param>
+        /// <param name="attr">Atributo a buscar</param>
+        /// <returns>El valor del atributo buscado</returns>
         private String getAttrValueInTag(String tag, String attr) {
             /* Declaración de variables */
             String subjectString = null;
@@ -196,7 +199,11 @@ namespace RegexMarkup
         #region markupText
         /// <summary>
         /// Función para marcar la cadena de texto
-        /// </sumary>
+        /// </summary>
+        /// <param name="refPattern">Expresión regular</param>
+        /// <param name="refString">Cadena para buscar coincidencias</param>
+        /// <param name="refStruct">Instrucciones de marcado</param>
+        /// <returns>La cadena marcada</returns>
         private String markupText(String refPattern, String refString, XmlNode refStruct) {
             /* Definición de variables */
             bool singleOptionMatch = false;
@@ -371,8 +378,11 @@ namespace RegexMarkup
 
         #region colorTags
         /// <summary>
-        ///  Function to colorize tags
+        /// Function to colorize tags
         /// </summary>
+        /// <param name="colorizeRange">Rango donde se coloreara el texto</param>
+        /// <param name="structNode">Contenido de la etiqueta actual con sus hijos</param>
+        /// <param name="color">Color de la etiqueta {0,...,4}</param>
         public void colorRefTags(ref Word.Range colorizeRange, XmlNode structNode, int color) {
             /* Definimos y asignamos el arreglo de colores para las etiquetas */
             Microsoft.Office.Interop.Word.WdColor[] colors = new Microsoft.Office.Interop.Word.WdColor[]{

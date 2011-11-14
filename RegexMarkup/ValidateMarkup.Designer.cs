@@ -47,6 +47,7 @@ namespace RegexMarkup
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.richTextBoxOriginal = new System.Windows.Forms.RichTextBox();
+            this.buttonEnd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // richTextBoxMarkup
@@ -157,11 +158,22 @@ namespace RegexMarkup
             this.richTextBoxOriginal.TabIndex = 13;
             this.richTextBoxOriginal.Text = "";
             // 
+            // buttonEnd
+            // 
+            this.buttonEnd.Location = new System.Drawing.Point(598, 380);
+            this.buttonEnd.Name = "buttonEnd";
+            this.buttonEnd.Size = new System.Drawing.Size(75, 23);
+            this.buttonEnd.TabIndex = 14;
+            this.buttonEnd.Text = "Finalizar";
+            this.buttonEnd.UseVisualStyleBackColor = true;
+            this.buttonEnd.Click += new System.EventHandler(this.buttonEnd_Click);
+            // 
             // ValidateMarkup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 418);
+            this.Controls.Add(this.buttonEnd);
             this.Controls.Add(this.richTextBoxOriginal);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.radioButton2);
@@ -176,6 +188,7 @@ namespace RegexMarkup
             this.Name = "ValidateMarkup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ValidateMarkup";
+            this.Load += new System.EventHandler(this.ValidateMarkup_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,5 +207,6 @@ namespace RegexMarkup
         private RadioButton radioButton2;
         private Label label3;
         private RichTextBox richTextBoxOriginal;
+        private Button buttonEnd;
     }
 }
