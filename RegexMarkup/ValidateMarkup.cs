@@ -24,31 +24,35 @@ namespace RegexMarkup
             /* Agregando evento para cambiar el tamaño de los richtextbox cuando cambie el tamaño del formulario */
             this.SizeChanged += new EventHandler(ValidateMarkup_SizeChanged);
             this.currencyManager = (CurrencyManager)this.BindingContext[this.citas];
-            this.richTextBox1.DataBindings.Add("Text", this.citas, "OriginalStr");
-            this.richTextBox2.DataBindings.Add("Text", this.citas, "MarkedStr");
+            this.richTextBoxOriginal.DataBindings.Add("Text", this.citas, "OriginalStr");
+            this.richTextBoxMarkup.DataBindings.Add("Text", this.citas, "MarkedStr");
             this.radioButton1.DataBindings.Add("Checked", this.citas, "Marked", false, DataSourceUpdateMode.OnPropertyChanged);
             this.radioButton2.DataBindings.Add("Checked", this.citas, "MarkedNo", false, DataSourceUpdateMode.OnPropertyChanged);
             /* Evento para colorear en la primera llamada */
-            this.richTextBox2.BindingContextChanged += new EventHandler(this.richTextBox2_BindingContextChanged);
+            this.richTextBoxMarkup.BindingContextChanged += new EventHandler(this.richTextBox2_BindingContextChanged);
             /* Evento para colorear cuando cambie la posicion */
             this.currencyManager.PositionChanged += new EventHandler(currencyManager_PositionChanged);
         }
 
         private void ValidateMarkup_SizeChanged(object sender, EventArgs e) {
-            this.richTextBox1.Width = this.Size.Width - 30;
-            this.richTextBox2.Width = this.Size.Width - 30;
+            this.richTextBoxOriginal.Width = this.Size.Width - 30;
+            this.richTextBoxMarkup.Width = this.Size.Width - 30;
         }
 
         private void currencyManager_PositionChanged(object sender, EventArgs e) {
             this.colorRefTagsForm(this.structNode, startColor);
+            /* Llamada showNavButtons */
+            this.showNavButtons();
         }
 
         private void richTextBox2_BindingContextChanged(object sender, EventArgs e)
         {
             this.colorRefTagsForm(this.structNode, startColor);
+            /* Llamada showNavButtons */
+            this.showNavButtons();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonFirst_Click(object sender, EventArgs e)
         {
             if (this.currencyManager.Position != 0)
             {
@@ -56,27 +60,60 @@ namespace RegexMarkup
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonPrev_Click(object sender, EventArgs e)
         {
             if (this.currencyManager.Position != 0) {
                 this.currencyManager.Position--;
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void buttonNext_Click(object sender, EventArgs e)
         {
             if (this.currencyManager.Position != (this.citas.Count - 1)) {
                 this.currencyManager.Position++;
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void buttonLast_Click(object sender, EventArgs e)
         {
             if (this.currencyManager.Position != (this.citas.Count - 1))
             {
                 this.currencyManager.Position = this.citas.Count - 1;
             }
         }
+
+        #region showNavButtons
+        /// <summary>
+        /// Habilitamos o desabilitamos los botones Primera, Anterior, Siguiente, Última dependiendo el numero de citas
+        /// </summary>
+        private void showNavButtons() {
+            if (this.citas.Count == 1) { 
+                this.buttonFirst.Enabled = false;
+                this.buttonPrev.Enabled = false;
+                this.buttonNext.Enabled = false;
+                this.buttonLast.Enabled = false;
+            }
+            else if (this.citas.Count > 1 && this.currencyManager.Position == 0) {
+                this.buttonFirst.Enabled = false;
+                this.buttonPrev.Enabled = false;
+                this.buttonNext.Enabled = true;
+                this.buttonLast.Enabled = true;
+            }
+            else if (this.citas.Count > 1 && this.currencyManager.Position == this.citas.Count - 1)
+            {
+                this.buttonFirst.Enabled = true;
+                this.buttonPrev.Enabled = true;
+                this.buttonNext.Enabled = false;
+                this.buttonLast.Enabled = false;
+            }
+            else {
+                this.buttonFirst.Enabled = true;
+                this.buttonPrev.Enabled = true;
+                this.buttonNext.Enabled = true;
+                this.buttonLast.Enabled = true;
+            }
+        }
+        #endregion
 
         #region colorTagsInForm
         /// <summary>
@@ -98,9 +135,9 @@ namespace RegexMarkup
             };
             /* Si el color inicial es -1 formateamos el texto con la fuente estandar y asignamos color=0 */
             if(color == -1){
-                richTextBox2.SelectAll();
-                richTextBox2.SelectionFont = new Font("Verdana", 10, FontStyle.Regular);
-                richTextBox2.SelectionColor = Color.Black;
+                richTextBoxMarkup.SelectAll();
+                richTextBoxMarkup.SelectionFont = new Font("Verdana", 10, FontStyle.Regular);
+                richTextBoxMarkup.SelectionColor = Color.Black;
                 color = 0;
             }
            
@@ -136,15 +173,15 @@ namespace RegexMarkup
                     if (tag.Attributes.GetNamedItem("tag") != null)
                     {
                         tagExp = new Regex("\\[/*" + tag.Name + ".*?\\]", options);
-                        matchResults = tagExp.Match(this.richTextBox2.Text);
+                        matchResults = tagExp.Match(this.richTextBoxMarkup.Text);
                         while (matchResults.Success)
                         {
                             startTag = matchResults.Value;
                             
                             /* Buscamos y coloreamos el inicio o final de la etiqueta(tag) */
-                            this.richTextBox2.Select(matchResults.Index, matchResults.Length);
-                            richTextBox2.SelectionFont = new Font("Arial", 11, FontStyle.Regular);
-                            richTextBox2.SelectionColor = colors[color];
+                            this.richTextBoxMarkup.Select(matchResults.Index, matchResults.Length);
+                            richTextBoxMarkup.SelectionFont = new Font("Arial", 11, FontStyle.Regular);
+                            richTextBoxMarkup.SelectionColor = colors[color];
                             matchResults = matchResults.NextMatch();
                         }
                     }
