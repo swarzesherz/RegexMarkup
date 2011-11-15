@@ -175,7 +175,7 @@ namespace RegexMarkup
                         }
                     }
                     /* Si el atributo indica que es una etiqueta(tag) la coloreamos */
-                    if (tag.Attributes.GetNamedItem("tag") != null)
+                    if (tag.Attributes != null && tag.Attributes.GetNamedItem("tag") != null)
                     {
                         tagExp = new Regex("\\[/*" + tag.Name + ".*?\\]", options);
                         matchResults = tagExp.Match(this.richTextBoxMarkup.Text);
@@ -193,7 +193,7 @@ namespace RegexMarkup
                 }
                 catch (Exception e)
                 {
-                    //MessageBox.Show(e.Message);
+                    MessageBox.Show(e.Message);
                 }
             }
         }

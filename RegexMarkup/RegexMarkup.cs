@@ -172,25 +172,22 @@ namespace RegexMarkup
             Match matchResults = null;
             RegexOptions options = RegexOptions.IgnoreCase;
             /* Inicializamos variables */
-            pattern = "\\[" + tag + ".*?" + attr + "=\"(.*?)\".*?\\]";
+            pattern = "\\[" + tag + ".*?" + attr + "=(\\\".*?\\\"|\\'.*?\\'|[^\\ \\]]*).*?\\]";
             subjectString = ActiveDocument.Content.Text;
             /* Verificamos que haya coincidencia */
-            try
+            regexObj = new Regex(pattern, options);
+            matchResults = regexObj.Match(subjectString);
+            if (matchResults.Success)
             {
-                regexObj = new Regex(pattern, options);
-                matchResults = regexObj.Match(subjectString);
-                if (matchResults.Success)
+                result = matchResults.Groups[1].Value;
+                if (result.EndsWith("\"") || result.EndsWith("'"))
                 {
-                    result = matchResults.Groups[1].Value;
-                }
-                else
-                {
-                    return result;
+                    result = result.Substring(1, result.Length - 2);
                 }
             }
-            catch (ArgumentException e)
+            else
             {
-                // Syntax error in the regular expression
+                return result;
             }
             return result;
         }
@@ -421,7 +418,7 @@ namespace RegexMarkup
                         }
                     }
                     /* Si el atributo indica que es una etiqueta(tag) la coloreamos */
-                    if (tag.Attributes.GetNamedItem("tag") != null)
+                    if (tag.Attributes != null &&tag.Attributes.GetNamedItem("tag") != null)
                     {
                         /* Buscamos y coloreamos el inicio de la etiqueta(tag) */
                         colorizeRange.Find.ClearFormatting();
@@ -448,7 +445,7 @@ namespace RegexMarkup
                             ref missingval, ref missingval, ref missingval, ref missingval);
                     }
                 }catch(Exception e){
-                    //MessageBox.Show(e.Message);
+                    MessageBox.Show(e.Message);
                 }
             }
         }

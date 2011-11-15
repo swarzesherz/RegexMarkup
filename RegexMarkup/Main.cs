@@ -19,28 +19,18 @@ namespace RegexMarkup
        
         }
         private void AddToolbar()
-        {
-            try
-            {
-                commandBarMarkup = Application.CommandBars["Markup SciELO Mexico"];
-            }
-            catch (ArgumentException e)
-            {
-                // Toolbar named Test does not exist so we should create it.
-            }
-
+        {   /* Creando la barra Markup Scielo Mexico */
             if (commandBarMarkup == null)
             {
-                // Add a commandbar named Test.	
                 commandBarMarkup = Application.CommandBars.Add("Markup Scielo Mexico", 1, missing, true);
             }
-
+            else {
+                commandBarMarkup = Application.CommandBars["Markup SciELO Mexico"];
+            }
+            /* Agregando botones a la barra Markup Scielo Mexico */
             try
             {
-                // Add a button to the command bar and an event handler.
-                regexButton = (Office.CommandBarButton)commandBarMarkup.Controls.Add(
-                    1, missing, missing, missing, missing);
-
+                regexButton = (Office.CommandBarButton)commandBarMarkup.Controls.Add(1, missing, missing, missing, missing);
                 regexButton.Style = Office.MsoButtonStyle.msoButtonIconAndCaption;
                 regexButton.Caption = "Markup Regex";
                 regexButton.Tag = "Markup Regex";
