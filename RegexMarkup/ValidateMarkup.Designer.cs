@@ -48,12 +48,13 @@ namespace RegexMarkup
             this.label3 = new System.Windows.Forms.Label();
             this.richTextBoxOriginal = new System.Windows.Forms.RichTextBox();
             this.buttonEnd = new System.Windows.Forms.Button();
+            this.citationOf = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // richTextBoxMarkup
             // 
             this.richTextBoxMarkup.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxMarkup.Location = new System.Drawing.Point(12, 163);
+            this.richTextBoxMarkup.Location = new System.Drawing.Point(12, 168);
             this.richTextBoxMarkup.Name = "richTextBoxMarkup";
             this.richTextBoxMarkup.Size = new System.Drawing.Size(690, 184);
             this.richTextBoxMarkup.TabIndex = 1;
@@ -102,7 +103,7 @@ namespace RegexMarkup
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 2);
+            this.label1.Location = new System.Drawing.Point(9, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 7;
@@ -111,7 +112,7 @@ namespace RegexMarkup
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 143);
+            this.label2.Location = new System.Drawing.Point(9, 148);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 8;
@@ -151,7 +152,7 @@ namespace RegexMarkup
             // richTextBoxOriginal
             // 
             this.richTextBoxOriginal.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxOriginal.Location = new System.Drawing.Point(12, 20);
+            this.richTextBoxOriginal.Location = new System.Drawing.Point(12, 25);
             this.richTextBoxOriginal.Name = "richTextBoxOriginal";
             this.richTextBoxOriginal.ReadOnly = true;
             this.richTextBoxOriginal.Size = new System.Drawing.Size(690, 113);
@@ -168,11 +169,24 @@ namespace RegexMarkup
             this.buttonEnd.UseVisualStyleBackColor = true;
             this.buttonEnd.Click += new System.EventHandler(this.buttonEnd_Click);
             // 
+            // citationOf
+            // 
+            this.citationOf.AutoSize = true;
+            this.citationOf.Dock = System.Windows.Forms.DockStyle.Right;
+            this.citationOf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.citationOf.Location = new System.Drawing.Point(625, 0);
+            this.citationOf.Name = "citationOf";
+            this.citationOf.Padding = new System.Windows.Forms.Padding(0, 3, 12, 0);
+            this.citationOf.Size = new System.Drawing.Size(87, 18);
+            this.citationOf.TabIndex = 16;
+            this.citationOf.Text = "Cita x de n";
+            // 
             // ValidateMarkup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(712, 418);
+            this.Controls.Add(this.citationOf);
             this.Controls.Add(this.buttonEnd);
             this.Controls.Add(this.richTextBoxOriginal);
             this.Controls.Add(this.label3);
@@ -208,5 +222,6 @@ namespace RegexMarkup
         private Label label3;
         private RichTextBox richTextBoxOriginal;
         private Button buttonEnd;
+        private Label citationOf;
     }
 }

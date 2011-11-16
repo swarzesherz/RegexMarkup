@@ -22,10 +22,10 @@ namespace RegexMarkup
         {   /* Creando la barra Markup Scielo Mexico */
             if (commandBarMarkup == null)
             {
-                commandBarMarkup = Application.CommandBars.Add("Markup Scielo Mexico", 1, missing, true);
+                commandBarMarkup = Application.CommandBars.Add("Markup SciELO México", 1, missing, true);
             }
             else {
-                commandBarMarkup = Application.CommandBars["Markup SciELO Mexico"];
+                commandBarMarkup = Application.CommandBars["Markup SciELO México"];
             }
             /* Agregando botones a la barra Markup Scielo Mexico */
             try

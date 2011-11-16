@@ -27,14 +27,13 @@ namespace RegexMarkup
             this.SizeChanged += new EventHandler(ValidateMarkup_SizeChanged);
             this.currencyManager = (CurrencyManager)this.BindingContext[this.citas];
             this.richTextBoxOriginal.DataBindings.Add("Text", this.citas, "OriginalStr");
-            this.richTextBoxMarkup.DataBindings.Add("Text", this.citas, "MarkedStr");
+            this.richTextBoxMarkup.DataBindings.Add("Rtf", this.citas, "MarkedStrRtf");
             this.radioButton1.DataBindings.Add("Checked", this.citas, "Marked", false, DataSourceUpdateMode.OnPropertyChanged);
             this.radioButton2.DataBindings.Add("Checked", this.citas, "MarkedNo", false, DataSourceUpdateMode.OnPropertyChanged);
             /* Evento para colorear en la primera llamada */
-            this.richTextBoxMarkup.BindingContextChanged += new EventHandler(this.richTextBox2_BindingContextChanged);
+            this.richTextBoxMarkup.BindingContextChanged += new EventHandler(this.currencyManager_PositionChanged);
             /* Evento para colorear cuando cambie la posicion */
-            this.currencyManager.PositionChanged += new EventHandler(currencyManager_PositionChanged);
-            /* Quitando opción de cerrar del formulario actual */
+            this.currencyManager.PositionChanged += new EventHandler(this.currencyManager_PositionChanged);
         }
 
         private void ValidateMarkup_SizeChanged(object sender, EventArgs e) {
@@ -46,13 +45,8 @@ namespace RegexMarkup
             this.colorRefTagsForm(this.structNode, startColor);
             /* Llamada showNavButtons */
             this.showNavButtons();
-        }
-
-        private void richTextBox2_BindingContextChanged(object sender, EventArgs e)
-        {
-            this.colorRefTagsForm(this.structNode, startColor);
-            /* Llamada showNavButtons */
-            this.showNavButtons();
+            /* Mostramos la posicion del resultado actual respecto al total */
+            this.citationOf.Text = String.Format("Cita {0} de {1}", (this.currencyManager.Position + 1), this.citas.Count);
         }
 
         private void buttonFirst_Click(object sender, EventArgs e)

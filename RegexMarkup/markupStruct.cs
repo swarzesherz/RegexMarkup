@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
 
 namespace RegexMarkup
 {
     public class markupStruct
     {
         private String originalStr = null;
-        private String markedStr = null;
+        private RichTextBox markedRtb = null;
         private String breakLines = null;
         private Boolean marked = false;
 
         public markupStruct(String originalStr, String markedStr, Boolean marked) {
             this.originalStr = originalStr;
-            this.markedStr = markedStr;
+            /* Creando string rtf */
+            this.markedRtb = new RichTextBox();
+            this.markedRtb.Text = markedStr;
             this.marked = marked;
             this.breakLines = "\r";
         }
@@ -29,10 +32,22 @@ namespace RegexMarkup
 
         public String MarkedStr {
             get {
-                return this.markedStr;
+                return this.markedRtb.Text;
             }
             set {
-                this.markedStr = value;
+                this.markedRtb.Text = value;
+            }
+        }
+
+        public String MarkedStrRtf
+        {
+            get
+            {
+                return this.markedRtb.Rtf;
+            }
+            set
+            {
+                this.markedRtb.Rtf = value;
             }
         }
 
