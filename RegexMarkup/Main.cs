@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using Microsoft.VisualStudio.Tools.Applications.Runtime;
 using Word = Microsoft.Office.Interop.Word;
 using Office = Microsoft.Office.Core;
+using RegexMarkup.Properties;
+using System.Globalization;
 
 namespace RegexMarkup
 {
@@ -10,11 +12,20 @@ namespace RegexMarkup
     {
         Office.CommandBar commandBarMarkup;
         Office.CommandBarButton regexButton;
+        Office.CommandBarButton configButton;
         RegexMarkup objectRegexMarkup = RegexMarkup.Instance;
+        private ConfigRegexMarkup configForm = null;
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-
+            /* Iniciando configuración de idioma */
+            if (Settings.Default.lang != "")
+            {
+                Resources.Culture = new CultureInfo(Settings.Default.lang);
+            }
+            else {
+                Resources.Culture = System.Globalization.CultureInfo.CurrentCulture;
+            }
             AddToolbar();
        
         }
@@ -30,6 +41,7 @@ namespace RegexMarkup
             /* Agregando botones a la barra Markup Scielo Mexico */
             try
             {
+                /* Botón para la marcación automática */
                 regexButton = (Office.CommandBarButton)commandBarMarkup.Controls.Add(1, missing, missing, missing, missing);
                 regexButton.Style = Office.MsoButtonStyle.msoButtonIconAndCaption;
                 regexButton.Caption = "Markup Regex";
@@ -37,7 +49,18 @@ namespace RegexMarkup
                 regexButton.FaceId = 2476;
                 
                 regexButton.Click += new Office._CommandBarButtonEvents_ClickEventHandler(objectRegexMarkup.startMarkup);
+
+                /* Botón para la configuración de RegexMarkup */
+                configButton = (Office.CommandBarButton)commandBarMarkup.Controls.Add(1, missing, missing, missing, missing);
+                configButton.Style = Office.MsoButtonStyle.msoButtonIconAndCaption;
+                configButton.Caption = "Configuración";
+                configButton.Tag = "Configuración";
+                configButton.FaceId = 0584;
+                configButton.Click += new Microsoft.Office.Core._CommandBarButtonEvents_ClickEventHandler(this.call_configRegexMarkup);
+
+                /* Mostramos la barra de herramientas de RegexMarkup */
                 commandBarMarkup.Visible = true;
+
             }
             catch (ArgumentException e)
             {
@@ -45,6 +68,12 @@ namespace RegexMarkup
             }
         }
 
+        private void call_configRegexMarkup(Office.CommandBarButton ctrl, ref bool cancel)
+        {
+            configForm = ConfigRegexMarkup.Instance;
+            configForm.ShowDialog();
+            
+        }
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
         {
         }

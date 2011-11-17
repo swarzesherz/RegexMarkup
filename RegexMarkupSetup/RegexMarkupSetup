@@ -87,6 +87,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_30243A4C4EB7C8CDB9E5F5AA299E61D0"
+        "OwnerKey" = "8:_74F439148923416AB32E7D4D6082DE2F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_379F5E3DD0EF6DC3ACB2078DDECEB207"
         "OwnerKey" = "8:_74F439148923416AB32E7D4D6082DE2F"
         "MsmSig" = "8:_UNDEFINED"
@@ -167,6 +173,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_9E2DF65FFCAB6EB0F96B1942765ED4CD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_30243A4C4EB7C8CDB9E5F5AA299E61D0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -544,6 +556,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_30243A4C4EB7C8CDB9E5F5AA299E61D0"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:SgmlReaderDll, Version=1.8.8.22225, Culture=neutral, PublicKeyToken=46b2db9ca481831b, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_30243A4C4EB7C8CDB9E5F5AA299E61D0"
+                    {
+                    "Name" = "8:SgmlReaderDll.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:SgmlReaderDll.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_B66E847A885744EEA137483D89CC1479"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_379F5E3DD0EF6DC3ACB2078DDECEB207"
             {
             "AssemblyRegister" = "3:1"
@@ -804,7 +847,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:RegexMarkup"
         "ProductCode" = "8:{ACC9E586-F9F0-4043-9FA2-792FAA69DB53}"
-        "PackageCode" = "8:{A313D376-CBF9-4523-BD9C-C636C1D5F1A1}"
+        "PackageCode" = "8:{F7F51F2C-C801-4079-B0AB-3F6E17BE5DC5}"
         "UpgradeCode" = "8:{BC5472F3-90CD-4833-B88F-005C68E7B52B}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
@@ -1624,6 +1667,34 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:ContentFiles"
+            "OutputProjectGuid" = "8:{03A41239-A6D2-4B3C-86ED-E9221067C2FD}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_71BE891A17DB41AEBC260FB3DF7B06A5"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_B66E847A885744EEA137483D89CC1479"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:LocalizedResourceDlls"
             "OutputProjectGuid" = "8:{03A41239-A6D2-4B3C-86ED-E9221067C2FD}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"

@@ -8,6 +8,8 @@ using System.Xml;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
+using RegexMarkup.Properties;
+
 
 namespace RegexMarkup
 {
@@ -20,6 +22,7 @@ namespace RegexMarkup
         private int startColor = -1;
         public ValidateMarkup(ref List<markupStruct> citas, ref XmlNode structNode)
         {
+            MessageBox.Show(Resources.citationOf);
             this.citas = citas;
             this.structNode = structNode;
             InitializeComponent();
@@ -42,7 +45,11 @@ namespace RegexMarkup
         }
 
         private void currencyManager_PositionChanged(object sender, EventArgs e) {
-            this.colorRefTagsForm(this.structNode, startColor);
+            /* Verificamos si la etiquetas de la cita estan coloreadas y si no loas coloreamos */
+            if (!this.citas[this.currencyManager.Position].Colorized) {
+                this.colorRefTagsForm(this.structNode, startColor);
+                this.citas[this.currencyManager.Position].Colorized = true;
+            }
             /* Llamada showNavButtons */
             this.showNavButtons();
             /* Mostramos la posicion del resultado actual respecto al total */

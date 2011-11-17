@@ -130,12 +130,23 @@
      be found.
   -->
   <ItemGroup>
+    <Compile Include="ConfigRegexMarkup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigRegexMarkup.Designer.cs">
+      <DependentUpon>ConfigRegexMarkup.cs</DependentUpon>
+    </Compile>
     <Compile Include="dictionaryDTD.cs" />
     <Compile Include="DTDStruct.cs" />
     <Compile Include="markupStruct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <EmbeddedResource Include="ConfigRegexMarkup.resx">
+      <DependentUpon>ConfigRegexMarkup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.en-US.resx">
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -209,4 +220,8 @@
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\OfficeTools\Microsoft.VisualStudio.Tools.Office.Office2003.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

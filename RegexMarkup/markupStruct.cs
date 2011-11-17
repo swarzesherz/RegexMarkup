@@ -11,6 +11,7 @@ namespace RegexMarkup
         private RichTextBox markedRtb = null;
         private String breakLines = null;
         private Boolean marked = false;
+        private Boolean colorized = false;
 
         public markupStruct(String originalStr, String markedStr, Boolean marked) {
             this.originalStr = originalStr;
@@ -73,11 +74,24 @@ namespace RegexMarkup
                 this.marked = value;
             }
         }
+
         public Boolean MarkedNo
         {
             get
             {
                 return !this.marked;
+            }
+        }
+
+        public Boolean Colorized
+        {
+            get
+            {
+                return this.colorized;
+            }
+            set
+            {
+                this.colorized = value;
             }
         }
     }

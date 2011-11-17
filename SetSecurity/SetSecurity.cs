@@ -81,8 +81,17 @@ namespace CustomActions
                     assemblyPath,
                     assemblyCodeGroupName,
                     assemblyCodeGroupDescription);
-                stateSaver.Add("allUsers", allUsers);
 
+                /* Agregando idiomas a la instalacion */
+                CaspolSecurityPolicyCreator.AddSecurityPolicy(
+                    allUsers,
+                    solutionCodeGroupName,
+                    solutionCodeGroupDescription,
+                    Path.Combine(targetDir + @"\en-US\", Path.ChangeExtension(assemblyName, "resources.dll")),
+                    assemblyCodeGroupName,
+                    assemblyCodeGroupDescription);
+
+                stateSaver.Add("allUsers", allUsers);
             }
             catch (Exception ex)
             {
