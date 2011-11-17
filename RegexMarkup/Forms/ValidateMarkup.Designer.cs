@@ -41,11 +41,11 @@ namespace RegexMarkup
             this.buttonPrev = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
             this.buttonLast = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelOriginal = new System.Windows.Forms.Label();
+            this.labelMarkup = new System.Windows.Forms.Label();
+            this.radioButtonYes = new System.Windows.Forms.RadioButton();
+            this.radioButtonNo = new System.Windows.Forms.RadioButton();
+            this.labelCitationStatus = new System.Windows.Forms.Label();
             this.richTextBoxOriginal = new System.Windows.Forms.RichTextBox();
             this.buttonEnd = new System.Windows.Forms.Button();
             this.citationOf = new System.Windows.Forms.Label();
@@ -100,54 +100,54 @@ namespace RegexMarkup
             this.buttonLast.UseVisualStyleBackColor = true;
             this.buttonLast.Click += new System.EventHandler(this.buttonLast_Click);
             // 
-            // label1
+            // labelOriginal
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Cita original";
+            this.labelOriginal.AutoSize = true;
+            this.labelOriginal.Location = new System.Drawing.Point(9, 7);
+            this.labelOriginal.Name = "labelOriginal";
+            this.labelOriginal.Size = new System.Drawing.Size(61, 13);
+            this.labelOriginal.TabIndex = 7;
+            this.labelOriginal.Text = "Cita original";
             // 
-            // label2
+            // labelMarkup
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 148);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Cita marcada";
+            this.labelMarkup.AutoSize = true;
+            this.labelMarkup.Location = new System.Drawing.Point(9, 148);
+            this.labelMarkup.Name = "labelMarkup";
+            this.labelMarkup.Size = new System.Drawing.Size(69, 13);
+            this.labelMarkup.TabIndex = 8;
+            this.labelMarkup.Text = "Cita marcada";
             // 
-            // radioButton1
+            // radioButtonYes
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(406, 386);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(34, 17);
-            this.radioButton1.TabIndex = 9;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Si";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButtonYes.AutoSize = true;
+            this.radioButtonYes.Location = new System.Drawing.Point(406, 386);
+            this.radioButtonYes.Name = "radioButtonYes";
+            this.radioButtonYes.Size = new System.Drawing.Size(34, 17);
+            this.radioButtonYes.TabIndex = 9;
+            this.radioButtonYes.TabStop = true;
+            this.radioButtonYes.Text = "Si";
+            this.radioButtonYes.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radioButtonNo
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(446, 386);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(39, 17);
-            this.radioButton2.TabIndex = 10;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "No";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButtonNo.AutoSize = true;
+            this.radioButtonNo.Location = new System.Drawing.Point(446, 386);
+            this.radioButtonNo.Name = "radioButtonNo";
+            this.radioButtonNo.Size = new System.Drawing.Size(39, 17);
+            this.radioButtonNo.TabIndex = 10;
+            this.radioButtonNo.TabStop = true;
+            this.radioButtonNo.Text = "No";
+            this.radioButtonNo.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // labelCitationStatus
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(337, 388);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Marcar cita:";
+            this.labelCitationStatus.AutoSize = true;
+            this.labelCitationStatus.Location = new System.Drawing.Point(337, 388);
+            this.labelCitationStatus.Name = "labelCitationStatus";
+            this.labelCitationStatus.Size = new System.Drawing.Size(63, 13);
+            this.labelCitationStatus.TabIndex = 11;
+            this.labelCitationStatus.Text = "Marcar cita:";
             // 
             // richTextBoxOriginal
             // 
@@ -161,6 +161,7 @@ namespace RegexMarkup
             // 
             // buttonEnd
             // 
+            this.buttonEnd.AutoSize = true;
             this.buttonEnd.Location = new System.Drawing.Point(598, 380);
             this.buttonEnd.Name = "buttonEnd";
             this.buttonEnd.Size = new System.Drawing.Size(75, 23);
@@ -189,11 +190,11 @@ namespace RegexMarkup
             this.Controls.Add(this.citationOf);
             this.Controls.Add(this.buttonEnd);
             this.Controls.Add(this.richTextBoxOriginal);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelCitationStatus);
+            this.Controls.Add(this.radioButtonNo);
+            this.Controls.Add(this.radioButtonYes);
+            this.Controls.Add(this.labelMarkup);
+            this.Controls.Add(this.labelOriginal);
             this.Controls.Add(this.buttonLast);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.buttonPrev);
@@ -215,11 +216,11 @@ namespace RegexMarkup
         private Button buttonPrev;
         private Button buttonNext;
         private Button buttonLast;
-        private Label label1;
-        private Label label2;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
-        private Label label3;
+        private Label labelOriginal;
+        private Label labelMarkup;
+        private RadioButton radioButtonYes;
+        private RadioButton radioButtonNo;
+        private Label labelCitationStatus;
         private RichTextBox richTextBoxOriginal;
         private Button buttonEnd;
         private Label citationOf;

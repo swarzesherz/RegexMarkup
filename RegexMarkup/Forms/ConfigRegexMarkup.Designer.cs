@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelLanguage = new System.Windows.Forms.Label();
             this.comboBoxLang = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // label1
+            // labelLanguage
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Idioma:";
+            this.labelLanguage.AutoSize = true;
+            this.labelLanguage.Location = new System.Drawing.Point(12, 36);
+            this.labelLanguage.Name = "labelLanguage";
+            this.labelLanguage.Size = new System.Drawing.Size(41, 13);
+            this.labelLanguage.TabIndex = 0;
+            this.labelLanguage.Text = "Idioma:";
             // 
             // comboBoxLang
             // 
@@ -55,9 +55,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(354, 89);
             this.Controls.Add(this.comboBoxLang);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelLanguage);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ConfigRegexMarkup";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "configRegexMarkup";
+            this.Load += new System.EventHandler(this.ConfigRegexMarkup_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -65,7 +69,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelLanguage;
         private System.Windows.Forms.ComboBox comboBoxLang;
     }
 }

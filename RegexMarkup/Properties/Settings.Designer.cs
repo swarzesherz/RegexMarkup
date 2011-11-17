@@ -26,12 +26,12 @@ namespace RegexMarkup.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string lang {
+        public string language {
             get {
-                return ((string)(this["lang"]));
+                return ((string)(this["language"]));
             }
             set {
-                this["lang"] = value;
+                this["language"] = value;
             }
         }
     }

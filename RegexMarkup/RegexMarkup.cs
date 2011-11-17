@@ -9,6 +9,7 @@ using Office = Microsoft.Office.Core;
 using System.Xml;
 using System.Text.RegularExpressions;
 using System.IO;
+using RegexMarkup.Properties;
 
 namespace RegexMarkup
 {
@@ -67,7 +68,7 @@ namespace RegexMarkup
             /* Leemos y verificamos que el iss exista */
             issn = getAttrValueInTag("article", "issn");
             if (issn == null) {
-                MessageBox.Show("No esta definido issn", "RegexMarkup");
+                MessageBox.Show(Resources.RegexMarkup_issnNotDefined, Resources.RegexMarkup_title);
             } else {
                 //MessageBox.Show(issn, "ISSN");
                 /* Cargamos el archivo xml donde se encuetran los patrones de las revistas */
@@ -83,7 +84,7 @@ namespace RegexMarkup
                 /* Leemos el nodo correspondiente al issn de la revista */
                 objElem = xmlDoc.SelectSingleNode("//*[@issn=\"" + issn + "\"]");
                 if (objElem == null){
-                    MessageBox.Show("No se econtro la revista en el archivo xml", "RegexMarkup");
+                    MessageBox.Show(Resources.RegexMarkup_serilaNotInXML, Resources.RegexMarkup_title);
                 }else { 
                     /* Asignamos los struct en los que se divide la revista */
                     structNode = objElem.SelectSingleNode("struct");
@@ -95,7 +96,7 @@ namespace RegexMarkup
                     Word.Range start = Globals.ThisAddIn.Application.Selection.Range;
                     docSeleccion = Globals.ThisAddIn.Application.Selection;
                     if (docSeleccion.Start != docSeleccion.Paragraphs.First.Range.Start || docSeleccion.End != docSeleccion.Paragraphs.Last.Range.End){
-                        MessageBox.Show("Seleccione la cita(s) completamente");
+                        MessageBox.Show(Resources.RegexMarkup_selectCitationComplete, Resources.RegexMarkup_title);
                     } else {
                         /* Asignamos el texto de la seleccion a subjectString */
                         subjetcString = docSeleccion.Range.Text;

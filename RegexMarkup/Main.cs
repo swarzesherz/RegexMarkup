@@ -19,9 +19,9 @@ namespace RegexMarkup
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             /* Iniciando configuración de idioma */
-            if (Settings.Default.lang != "")
+            if (Settings.Default.language != "")
             {
-                Resources.Culture = new CultureInfo(Settings.Default.lang);
+                Resources.Culture = new CultureInfo(Settings.Default.language);
             }
             else {
                 Resources.Culture = System.Globalization.CultureInfo.CurrentCulture;
@@ -53,9 +53,9 @@ namespace RegexMarkup
                 /* Botón para la configuración de RegexMarkup */
                 configButton = (Office.CommandBarButton)commandBarMarkup.Controls.Add(1, missing, missing, missing, missing);
                 configButton.Style = Office.MsoButtonStyle.msoButtonIconAndCaption;
-                configButton.Caption = "Configuración";
-                configButton.Tag = "Configuración";
-                configButton.FaceId = 0584;
+                configButton.Caption = Resources.Main_configuration;
+                configButton.Tag = Resources.Main_configuration;
+                configButton.FaceId = 0548;
                 configButton.Click += new Microsoft.Office.Core._CommandBarButtonEvents_ClickEventHandler(this.call_configRegexMarkup);
 
                 /* Mostramos la barra de herramientas de RegexMarkup */

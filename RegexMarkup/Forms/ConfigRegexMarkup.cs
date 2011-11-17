@@ -20,19 +20,6 @@ namespace RegexMarkup
         static ConfigRegexMarkup instance = null;
         static readonly object padlock = new object();
 
-        public ConfigRegexMarkup()
-        {
-            InitializeComponent();
-            /* Diccionario con los idiomas disponibles */
-            Dictionary<String, String> languages = new Dictionary<string,string>();
-            languages.Add("es-ES", "Español");
-            languages.Add("en-US", "Ingles");
-            this.comboBoxLang.DataSource = new BindingSource(languages, null);
-            this.comboBoxLang.DisplayMember = "Value";
-            this.comboBoxLang.ValueMember = "Key";
-            this.comboBoxLang.SelectedValueChanged += new EventHandler(comboBoxLang_SelectedValueChanged);
-        }
-
         public static ConfigRegexMarkup Instance
         {
             get
@@ -49,10 +36,40 @@ namespace RegexMarkup
         }
         #endregion
 
+        private Dictionary<String, String> languages = null;
+        public ConfigRegexMarkup()
+        {
+            InitializeComponent();
+            /* Diccionario con los idiomas disponibles */
+            this.languages = new Dictionary<string, string>();
+            languages.Add("es-ES", Resources.configRegexMarkup_esES);
+            languages.Add("en-US", Resources.configRegexMarkup_enUS);
+            /* Agregando los datos del diccionadio al comboBox */
+            this.comboBoxLang.DataSource = new BindingSource(languages, null);
+            this.comboBoxLang.DisplayMember = "Value";
+            this.comboBoxLang.ValueMember = "Key";
+            if (languages.ContainsKey(Settings.Default.language))
+            {
+                this.comboBoxLang.SelectedValue = Settings.Default.language;
+            }
+            this.comboBoxLang.SelectedValueChanged += new EventHandler(comboBoxLang_SelectedValueChanged);
+            /* Textos del formulario */
+            this.labelLanguage.Text = Resources.configRegexMarkup_language;
+            this.Text = Resources.configRegexMarkup_title;
+        }
+
         private void comboBoxLang_SelectedValueChanged(object sender, EventArgs e)
         {
-            Settings.Default.lang = this.comboBoxLang.SelectedValue.ToString();
-            Resources.Culture = new CultureInfo(Settings.Default.lang);
+            /* Gurdando el idioma seleccionado en la configuración y cambiando el idioma actual */
+            Settings.Default.language = this.comboBoxLang.SelectedValue.ToString();
+            Settings.Default.Save();
+            Resources.Culture = new CultureInfo(Settings.Default.language);
+            
+        }
+
+        private void ConfigRegexMarkup_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

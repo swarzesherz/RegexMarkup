@@ -61,11 +61,182 @@ namespace RegexMarkup.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Ingles.
+        /// </summary>
+        internal static string configRegexMarkup_enUS {
+            get {
+                return ResourceManager.GetString("configRegexMarkup_enUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Español.
+        /// </summary>
+        internal static string configRegexMarkup_esES {
+            get {
+                return ResourceManager.GetString("configRegexMarkup_esES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Idioma.
+        /// </summary>
+        internal static string configRegexMarkup_language {
+            get {
+                return ResourceManager.GetString("configRegexMarkup_language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Configuratión RegexMarkup.
+        /// </summary>
+        internal static string configRegexMarkup_title {
+            get {
+                return ResourceManager.GetString("configRegexMarkup_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Configuración.
+        /// </summary>
+        internal static string Main_configuration {
+            get {
+                return ResourceManager.GetString("Main_configuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No esta definido issn.
+        /// </summary>
+        internal static string RegexMarkup_issnNotDefined {
+            get {
+                return ResourceManager.GetString("RegexMarkup_issnNotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Seleccione la cita(s) completamente.
+        /// </summary>
+        internal static string RegexMarkup_selectCitationComplete {
+            get {
+                return ResourceManager.GetString("RegexMarkup_selectCitationComplete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No se econtro la revista en el archivo xml.
+        /// </summary>
+        internal static string RegexMarkup_serilaNotInXML {
+            get {
+                return ResourceManager.GetString("RegexMarkup_serilaNotInXML", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a RegexMarkup.
+        /// </summary>
+        internal static string RegexMarkup_title {
+            get {
+                return ResourceManager.GetString("RegexMarkup_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Finalizar.
+        /// </summary>
+        internal static string ValidateMarkup_buttonEnd {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_buttonEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Primera.
+        /// </summary>
+        internal static string ValidateMarkup_buttonFirst {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_buttonFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Última.
+        /// </summary>
+        internal static string ValidateMarkup_buttonLast {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_buttonLast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Siguiente.
+        /// </summary>
+        internal static string ValidateMarkup_buttonNext {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_buttonNext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Anterior.
+        /// </summary>
+        internal static string ValidateMarkup_buttonPrev {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_buttonPrev", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cita {0} de {1}.
         /// </summary>
-        internal static string citationOf {
+        internal static string ValidateMarkup_citationOf {
             get {
-                return ResourceManager.GetString("citationOf", resourceCulture);
+                return ResourceManager.GetString("ValidateMarkup_citationOf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cita marcada:.
+        /// </summary>
+        internal static string ValidateMarkup_labelmarkup {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_labelmarkup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cita original:.
+        /// </summary>
+        internal static string ValidateMarkup_labelOriginal {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_labelOriginal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Si.
+        /// </summary>
+        internal static string ValidateMarkup_radioButtonNo {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_radioButtonNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No.
+        /// </summary>
+        internal static string ValidateMarkup_radioButtonYes {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_radioButtonYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Validación y marcación de las citas.
+        /// </summary>
+        internal static string ValidateMarkup_title {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_title", resourceCulture);
             }
         }
     }

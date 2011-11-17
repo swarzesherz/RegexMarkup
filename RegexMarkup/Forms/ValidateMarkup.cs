@@ -22,7 +22,6 @@ namespace RegexMarkup
         private int startColor = -1;
         public ValidateMarkup(ref List<markupStruct> citas, ref XmlNode structNode)
         {
-            MessageBox.Show(Resources.citationOf);
             this.citas = citas;
             this.structNode = structNode;
             InitializeComponent();
@@ -31,12 +30,24 @@ namespace RegexMarkup
             this.currencyManager = (CurrencyManager)this.BindingContext[this.citas];
             this.richTextBoxOriginal.DataBindings.Add("Text", this.citas, "OriginalStr");
             this.richTextBoxMarkup.DataBindings.Add("Rtf", this.citas, "MarkedStrRtf");
-            this.radioButton1.DataBindings.Add("Checked", this.citas, "Marked", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.radioButton2.DataBindings.Add("Checked", this.citas, "MarkedNo", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.radioButtonYes.DataBindings.Add("Checked", this.citas, "Marked", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.radioButtonNo.DataBindings.Add("Checked", this.citas, "MarkedNo", false, DataSourceUpdateMode.OnPropertyChanged);
             /* Evento para colorear en la primera llamada */
             this.richTextBoxMarkup.BindingContextChanged += new EventHandler(this.currencyManager_PositionChanged);
             /* Evento para colorear cuando cambie la posicion */
             this.currencyManager.PositionChanged += new EventHandler(this.currencyManager_PositionChanged);
+            /* Textos del formulario */
+            this.Text = Resources.ValidateMarkup_title;
+            this.labelOriginal.Text = Resources.ValidateMarkup_labelOriginal;
+            this.labelMarkup.Text = Resources.ValidateMarkup_labelmarkup;
+            this.buttonFirst.Text = Resources.ValidateMarkup_buttonFirst;
+            this.buttonLast.Text = Resources.ValidateMarkup_buttonLast;
+            this.buttonPrev.Text = Resources.ValidateMarkup_buttonPrev;
+            this.buttonNext.Text = Resources.ValidateMarkup_buttonNext;
+            this.buttonEnd.Text = Resources.ValidateMarkup_buttonEnd;
+            this.radioButtonNo.Text = Resources.ValidateMarkup_radioButtonNo;
+            this.radioButtonYes.Text = Resources.ValidateMarkup_radioButtonYes;
+
         }
 
         private void ValidateMarkup_SizeChanged(object sender, EventArgs e) {
@@ -53,7 +64,7 @@ namespace RegexMarkup
             /* Llamada showNavButtons */
             this.showNavButtons();
             /* Mostramos la posicion del resultado actual respecto al total */
-            this.citationOf.Text = String.Format("Cita {0} de {1}", (this.currencyManager.Position + 1), this.citas.Count);
+            this.citationOf.Text = String.Format(Resources.ValidateMarkup_citationOf, (this.currencyManager.Position + 1), this.citas.Count);
         }
 
         private void buttonFirst_Click(object sender, EventArgs e)

@@ -130,10 +130,10 @@
      be found.
   -->
   <ItemGroup>
-    <Compile Include="ConfigRegexMarkup.cs">
+    <Compile Include="Forms\ConfigRegexMarkup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConfigRegexMarkup.Designer.cs">
+    <Compile Include="Forms\ConfigRegexMarkup.Designer.cs">
       <DependentUpon>ConfigRegexMarkup.cs</DependentUpon>
     </Compile>
     <Compile Include="dictionaryDTD.cs" />
@@ -142,7 +142,7 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <EmbeddedResource Include="ConfigRegexMarkup.resx">
+    <EmbeddedResource Include="Forms\ConfigRegexMarkup.resx">
       <DependentUpon>ConfigRegexMarkup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.en-US.resx">
@@ -152,7 +152,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ValidateMarkup.resx">
+    <EmbeddedResource Include="Forms\ValidateMarkup.resx">
       <DependentUpon>ValidateMarkup.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -181,10 +181,10 @@
     <Compile Include="ThisAddIn.Designer.Designer.cs">
       <DependentUpon>ThisAddIn.Designer.Designer.xml</DependentUpon>
     </Compile>
-    <Compile Include="ValidateMarkup.cs">
+    <Compile Include="Forms\ValidateMarkup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ValidateMarkup.Designer.cs">
+    <Compile Include="Forms\ValidateMarkup.Designer.cs">
       <DependentUpon>ValidateMarkup.cs</DependentUpon>
     </Compile>
     <AppDesigner Include="Properties\" />
