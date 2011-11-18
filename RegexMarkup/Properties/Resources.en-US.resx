@@ -172,10 +172,10 @@
     <value>Original citation:</value>
   </data>
   <data name="ValidateMarkup_radioButtonNo" xml:space="preserve">
-    <value>Yes</value>
+    <value>No</value>
   </data>
   <data name="ValidateMarkup_radioButtonYes" xml:space="preserve">
-    <value>No</value>
+    <value>Yes</value>
   </data>
   <data name="ValidateMarkup_title" xml:space="preserve">
     <value>Validation and marking of citations</value>

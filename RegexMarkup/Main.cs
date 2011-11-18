@@ -25,6 +25,7 @@ namespace RegexMarkup
             }
             else {
                 Resources.Culture = System.Globalization.CultureInfo.CurrentCulture;
+                Settings.Default.language = Resources.Culture.ToString();
             }
             AddToolbar();
        
@@ -70,8 +71,8 @@ namespace RegexMarkup
 
         private void call_configRegexMarkup(Office.CommandBarButton ctrl, ref bool cancel)
         {
-            configForm = ConfigRegexMarkup.Instance;
-            configForm.ShowDialog();
+            this.configForm = ConfigRegexMarkup.Instance;
+            this.configForm.ShowDialog();
             
         }
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)

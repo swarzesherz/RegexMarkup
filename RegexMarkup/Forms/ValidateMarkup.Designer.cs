@@ -36,6 +36,7 @@ namespace RegexMarkup
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ValidateMarkup));
             this.richTextBoxMarkup = new System.Windows.Forms.RichTextBox();
             this.buttonFirst = new System.Windows.Forms.Button();
             this.buttonPrev = new System.Windows.Forms.Button();
@@ -200,6 +201,8 @@ namespace RegexMarkup
             this.Controls.Add(this.buttonPrev);
             this.Controls.Add(this.buttonFirst);
             this.Controls.Add(this.richTextBoxMarkup);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimizeBox = false;
             this.Name = "ValidateMarkup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ValidateMarkup";

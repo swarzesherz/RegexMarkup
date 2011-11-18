@@ -47,7 +47,6 @@ namespace RegexMarkup
             this.buttonEnd.Text = Resources.ValidateMarkup_buttonEnd;
             this.radioButtonNo.Text = Resources.ValidateMarkup_radioButtonNo;
             this.radioButtonYes.Text = Resources.ValidateMarkup_radioButtonYes;
-
         }
 
         private void ValidateMarkup_SizeChanged(object sender, EventArgs e) {
@@ -232,8 +231,6 @@ namespace RegexMarkup
             int menuItemCount = GetMenuItemCount(hMenu);
             /* Quitando boton cerrar "x" */
             RemoveMenu(hMenu, menuItemCount - 1, MF_BYPOSITION);
-            /* Quitando boton minimizar "_" */
-            this.MinimizeBox = false;
         }
         #endregion
 

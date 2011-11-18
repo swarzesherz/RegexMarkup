@@ -169,10 +169,10 @@
     <value>Cita original:</value>
   </data>
   <data name="ValidateMarkup_radioButtonNo" xml:space="preserve">
-    <value>Si</value>
+    <value>No</value>
   </data>
   <data name="ValidateMarkup_radioButtonYes" xml:space="preserve">
-    <value>No</value>
+    <value>Si</value>
   </data>
   <data name="ValidateMarkup_title" xml:space="preserve">
     <value>Validación y marcación de las citas</value>
