@@ -49,6 +49,7 @@ namespace RegexMarkup
         ///</summary>
         public void startMarkup(Office.CommandBarButton ctrl, ref bool cancel)
         {
+            //DTDStruct DTDarticle = new DTDStruct();
             /* Declaracion de variables */
             Boolean marked = true;
             String patternString = null;

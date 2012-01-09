@@ -58,6 +58,7 @@ namespace RegexMarkup
             }
             this.comboBoxLang.SelectedValueChanged += new EventHandler(comboBoxLang_SelectedValueChanged);
             /* Textos del formulario */
+            this.buttonSave.Text = Resources.ValidateMarkup_buttonSave;
             this.labelLanguage.Text = Resources.configRegexMarkup_language;
             this.Text = Resources.configRegexMarkup_title;
             

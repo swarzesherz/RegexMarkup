@@ -180,4 +180,7 @@
   <data name="ValidateMarkup_title" xml:space="preserve">
     <value>Validation and marking of citations</value>
   </data>
+  <data name="ValidateMarkup_buttonSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
 </root>

@@ -76,6 +76,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ConfigRegexMarkup";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "configRegexMarkup";
             this.Load += new System.EventHandler(this.ConfigRegexMarkup_Load);

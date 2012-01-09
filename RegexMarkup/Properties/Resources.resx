@@ -177,4 +177,7 @@
   <data name="ValidateMarkup_title" xml:space="preserve">
     <value>Validación y marcación de las citas</value>
   </data>
+  <data name="ValidateMarkup_buttonSave" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
 </root>

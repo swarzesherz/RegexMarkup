@@ -85,8 +85,68 @@
         </struct>
     </revista>
     <revista issn="0185-3325">
-        <nombre>Salud Mental</nombre>
-        <regex>([0-9]+)\.\ (.+?)\.\ (.+?)(?:\.\ |\?\ )(.*)</regex>
+        <nombre>Salud mental</nombre>
+        <regex>([0-9]+?)(\.\ )(.+?(?:\.\ |\:\ ))(.+?(?:\.\ |\?\ ))(.*)</regex>
+        <struct>
+            <ocitat tag="true">
+                <no tag="true">
+                    <value>$1</value>
+                    <postvalue>$2</postvalue>
+                </no>
+                <autores>
+                    <value>$3</value>
+                    <regex>(.*?)(,\ |\ y\ |\.\ |\ et\ al\.)</regex>
+                    <struct>
+                        <author tag="true">
+                            <value>$1</value>
+                            <multiple>
+                                <opcion>
+                                    <regex>([A-Z]\.\ [A-Z]\.|[A-Z]\.)(\ )(.*)</regex>
+                                    <struct>
+                                        <fname tag="true">
+                                            <value>$1</value>
+                                            <postvalue>$2</postvalue>
+                                        </fname>
+                                        <surname tag="true">
+                                            <value>$3</value>
+                                        </surname>
+                                    </struct>
+                                </opcion>
+                                <opcion>
+                                    <regex>(.*?)(\ )([A-Z]{1,2})$</regex>
+                                    <struct>
+                                        <surname tag="true">
+                                            <value>$1</value>
+                                            <postvalue>$2</postvalue>
+                                        </surname>
+                                        <fname tag="true">
+                                            <value>$3</value>
+                                        </fname>
+                                    </struct>
+                                </opcion>
+                            </multiple>
+                        </author>
+                        <opt>
+                            <value>$2</value>
+                            <regex>(\ )(et\ al)(\.?)</regex>
+                            <struct>
+                                <et-al tag="true">
+                                    <prevalue>$1</prevalue>
+                                    <value>$2</value>
+                                    <postvalue>$3</postvalue>
+                                </et-al>
+                            </struct>
+                        </opt>
+                    </struct>
+                </autores>
+                <title tag="true">
+                    <value>$4</value>
+                </title>
+                <restante>
+                    <value>$5</value>
+                </restante>
+            </ocitat>
+        </struct>
     </revista>
     <revista issn="1405-7743">
         <nombre>Ingeniería, investigación y tecnología</nombre>
