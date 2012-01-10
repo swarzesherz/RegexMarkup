@@ -2,7 +2,58 @@
 <reglas>
     <revista issn="1026-8774">
         <nombre>Revista mexicana de ciencias geológicas</nombre>
-        <regex>(.*?)[,.]\ ((?:19|20)[0-9]{2}[a-z]*)[,.]\ (.*):\ (.*)\.</regex>
+        <regex>(.*?[,.]\ )((?:19|20)[0-9]{2})([a-z]*[,.]\ )(.*)(:\ )(.*)\.</regex>
+        <struct>
+            <ocitat tag="true">
+                <autores>
+                    <value>$1</value>
+                    <regex>(.*?\.)(,\ |\ $)</regex>
+                    <struct>
+                        <author tag="true">
+                            <value>$1</value>
+                            <multiple>
+                                <opcion>
+                                    <regex>(.*?)(,\ )(.*)</regex>
+                                    <struct>
+                                        <surname tag="true">
+                                            <value>$1</value>
+                                            <postvalue>$2</postvalue>
+                                        </surname>
+                                        <fname tag="true">
+                                            <value>$3</value>
+                                        </fname>
+                                    </struct>
+                                </opcion>
+                                <opcion>
+                                    <regex>(.*?)(\ )(.*)</regex>
+                                    <struct>
+                                        <surname tag="true">
+                                            <value>$1</value>
+                                            <postvalue>$2</postvalue>
+                                        </surname>
+                                        <fname tag="true">
+                                            <value>$3</value>
+                                        </fname>
+                                    </struct>
+                                </opcion>
+                            </multiple>
+                            <postvalue>$2</postvalue>
+                        </author>
+                    </struct>
+                </autores>
+                <date tag="true">
+                    <value>$2</value>
+                    <postvalue>$3</postvalue>
+                </date>
+                <title tag="true">
+                    <value>$4</value>
+                    <postvalue>$5</postvalue>
+                </title>
+                <restante>
+                    <value>$6</value>
+                </restante>
+            </ocitat>
+        </struct>
     </revista>
     <revista issn="0185-3880">
         <nombre>Ciencias marinas</nombre>
@@ -86,7 +137,7 @@
     </revista>
     <revista issn="0185-3325">
         <nombre>Salud mental</nombre>
-        <regex>([0-9]+?)(\.\ )(.+?(?:\.\ |\:\ ))(.+?(?:\.\ |\?\ ))(.*)</regex>
+        <regex>([0-9]+?)(\.\ )(.+?(?:\.\ |\:\ ))(.+?)(\.\ |\?\ )(.*)</regex>
         <struct>
             <ocitat tag="true">
                 <no tag="true">
@@ -141,9 +192,10 @@
                 </autores>
                 <title tag="true">
                     <value>$4</value>
+                    <postvalue>$5</postvalue>
                 </title>
                 <restante>
-                    <value>$5</value>
+                    <value>$6</value>
                 </restante>
             </ocitat>
         </struct>
