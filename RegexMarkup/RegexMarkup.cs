@@ -245,8 +245,26 @@ namespace RegexMarkup
                             /* Verificamos si el nodo es una etiqueta(tag) o no */
                             if (itemXML.Attributes.GetNamedItem("tag") != null)
                             {
-
-                                tagStringOpen = "[" + itemXML.Name + "]";
+                                /*Verificamos y agregamos atributos por omisión  a la etiqueta de apertura*/
+                                if (itemXML.SelectSingleNode("attr") == null)
+                                {
+                                    tagStringOpen = "[" + itemXML.Name + "]";
+                                }
+                                else {
+                                    tagStringOpen = "[" + itemXML.Name;
+                                    foreach (XmlNode attrNode in itemXML.SelectSingleNode("attr"))
+                                    {
+                                        if (attrNode.Name == "dateiso" && attrNode.InnerText == "")
+                                        {
+                                            tagStringOpen += " " + attrNode.Name + "=\"" + objRegExp.Replace(refString, itemXML.SelectSingleNode("value").InnerText) +"0000\"";
+                                        }
+                                        else
+                                        {
+                                            tagStringOpen += " " + attrNode.Name + "=\"" + attrNode.InnerText + "\"";
+                                        }
+                                    }
+                                    tagStringOpen += "]";
+                                }
                                 tagStringClose = "[/" + itemXML.Name + "]";
                             }
                             else

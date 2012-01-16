@@ -9,7 +9,10 @@
                     <value>$1</value>
                     <regex>(.*?\.)(,\ |\ $)</regex>
                     <struct>
-                        <author tag="true">
+                        <oauthor tag="true">
+                            <attr>
+                                <role>nd</role>
+                            </attr>
                             <value>$1</value>
                             <multiple>
                                 <opcion>
@@ -38,10 +41,13 @@
                                 </opcion>
                             </multiple>
                             <postvalue>$2</postvalue>
-                        </author>
+                        </oauthor>
                     </struct>
                 </autores>
                 <date tag="true">
+                    <attr>
+                        <dateiso/>
+                    </attr>
                     <value>$2</value>
                     <postvalue>$3</postvalue>
                 </date>
@@ -65,7 +71,10 @@
                         <value>$1</value>
                         <regex>(.*?)(\.\ |,\ )</regex>
                         <struct>
-                            <author tag="true">
+                            <oauthor tag="true">
+                                <attr>
+                                    <role>nd</role>
+                                </attr>
                                 <value tag="true">$1</value>
                                 <regex>(.*?)(\ )(.*)</regex>
                                 <struct>
@@ -78,10 +87,13 @@
                                     </fname>
                                 </struct>
                                 <postvalue>$2</postvalue>
-                            </author>
+                            </oauthor>
                         </struct>
                     </autores>
                     <date tag="true">
+                        <attr>
+                            <dateiso/>
+                        </attr>
                         <value>$2</value>
                         <postvalue>$3</postvalue>
                     </date>
@@ -164,7 +176,10 @@
                         <value>$1</value>
                         <regex>(.*?)(,\ |\ and\ )</regex>
                         <struct>
-                            <author tag="true">
+                            <oauthor tag="true">
+                                <attr>
+                                    <role>nd</role>
+                                </attr>
                                 <value>$1</value>
                                 <multiple>
                                     <opcion>
@@ -193,10 +208,13 @@
                                     </opcion>
                                 </multiple>
                                 <postvalue>$2</postvalue>
-                            </author>
+                            </oauthor>
                         </struct>
                     </autores>
                     <date tag="true">
+                        <attr>
+                            <dateiso/>
+                        </attr>
                         <value>$2</value>
                         <postvalue>$3</postvalue>
                     </date>
@@ -249,7 +267,10 @@
                                     <value>$3</value>
                                     <regex>(.*?)(,\ |\ y\ |\.\ |\ et\ al\.)</regex>
                                     <struct>
-                                        <author tag="true">
+                                        <oauthor tag="true">
+                                            <attr>
+                                                <role>nd</role>
+                                            </attr>
                                             <value>$1</value>
                                             <multiple>
                                                 <opcion>
@@ -277,7 +298,7 @@
                                                     </struct>
                                                 </opcion>
                                             </multiple>
-                                        </author>
+                                        </oauthor>
                                         <opt>
                                             <value>$2</value>
                                             <regex>(\ )(et\ al)(\.?)</regex>
@@ -304,7 +325,10 @@
                                         <value>$1</value>
                                         <regex>(.*?)(,\ |\ y\ |\.\ |\ et\ al\.|\ \(.*?\)\.\ )</regex>
                                         <struct>
-                                            <author tag="true">
+                                            <oauthor tag="true">
+                                                <attr>
+                                                    <role>nd</role>
+                                                </attr>
                                                 <value>$1</value>
                                                 <multiple>
                                                     <opcion>
@@ -332,7 +356,7 @@
                                                         </struct>
                                                     </opcion>
                                                 </multiple>
-                                            </author>
+                                            </oauthor>
                                             <opt>
                                                 <value>$2</value>
                                                 <regex>(\ )(et\ al)(\.?)</regex>
@@ -359,6 +383,9 @@
                                         <postvalue>$7</postvalue>
                                     </pubname>
                                     <date tag="true">
+                                        <attr>
+                                            <dateiso/>
+                                        </attr>
                                         <value>$8</value>
                                         <postvalue>$9</postvalue>
                                     </date>
@@ -378,7 +405,10 @@
                                     <value>$3</value>
                                     <regex>(.*?)(,\ |\ y\ |\.\ |\ et\ al\.)</regex>
                                     <struct>
-                                        <author tag="true">
+                                        <oauthor tag="true">
+                                            <attr>
+                                                <role>nd</role>
+                                            </attr>
                                             <value>$1</value>
                                             <multiple>
                                                 <opcion>
@@ -406,7 +436,7 @@
                                                     </struct>
                                                 </opcion>
                                             </multiple>
-                                        </author>
+                                        </oauthor>
                                         <opt>
                                             <value>$2</value>
                                             <regex>(\ )(et\ al)(\.?)</regex>
@@ -433,6 +463,9 @@
                                     <postvalue>$9</postvalue>
                                 </pubname>
                                 <date tag="true">
+                                    <attr>
+                                        <dateiso/>
+                                    </attr>
                                     <value>$10</value>
                                     <postvalue>$11</postvalue>
                                 </date>
@@ -451,7 +484,10 @@
                                         <value>$3</value>
                                         <regex>(.*?)(,\ |\ y\ |\.\ |\ et\ al\.)</regex>
                                         <struct>
-                                            <author tag="true">
+                                            <oauthor tag="true">
+                                                <attr>
+                                                    <role>nd</role>
+                                                </attr>
                                                 <value>$1</value>
                                                 <multiple>
                                                     <opcion>
@@ -479,7 +515,7 @@
                                                         </struct>
                                                     </opcion>
                                                 </multiple>
-                                            </author>
+                                            </oauthor>
                                             <opt>
                                                 <value>$2</value>
                                                 <regex>(\ )(et\ al)(\.?)</regex>
@@ -498,9 +534,9 @@
                                         <postvalue>$5</postvalue>
                                     </title>
                             </ocontrib>
-                            <restante>
+                            <oiserial tag="true">
                                 <value>$6</value>
-                            </restante>
+                            </oiserial>
                         </struct>
                     </option>
                 </multiple>
