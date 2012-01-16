@@ -180,4 +180,7 @@
   <data name="ValidateMarkup_buttonSave" xml:space="preserve">
     <value>Guardar</value>
   </data>
+  <data name="Waiting_labelWait" xml:space="preserve">
+    <value>Espere por favor</value>
+  </data>
 </root>

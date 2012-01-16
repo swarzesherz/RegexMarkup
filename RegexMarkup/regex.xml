@@ -52,6 +52,9 @@
                     <postvalue>$3</postvalue>
                 </date>
                 <title tag="true">
+                    <attr>
+                        <language>en</language>
+                    </attr>
                     <value>$4</value>
                     <postvalue>$5</postvalue>
                 </title>
@@ -98,6 +101,9 @@
                         <postvalue>$3</postvalue>
                     </date>
                     <title tag="true">
+                        <attr>
+                            <language>en</language>
+                        </attr>
                         <value>$4</value>
                     </title>
                 </contrib>
@@ -117,6 +123,9 @@
                                             <postvalue>$2</postvalue>
                                         </autores>
                                         <title tag="true">
+                                            <attr>
+                                                <language>en</language>
+                                            </attr>
                                             <value>$3</value>
                                             <postvalue>$4</postvalue>
                                         </title>
@@ -219,6 +228,9 @@
                         <postvalue>$3</postvalue>
                     </date>
                     <title tag="true">
+                        <attr>
+                            <language>en</language>
+                        </attr>
                         <value>$4</value>
                     </title>
                 </contrib>
@@ -250,7 +262,7 @@
     </revista>
     <revista issn="0185-3325">
         <nombre>Salud mental</nombre>
-        <regex>(.+)</regex>
+        <regex>(....+)</regex>
         <struct>
             <ocitat tag="true">
                 <value>$1</value>
@@ -313,6 +325,9 @@
                                     </struct>
                                 </autores>
                                 <title tag="true">
+                                    <attr>
+                                        <language>en</language>
+                                    </attr>
                                     <value>$4</value>
                                     <postvalue>$5$6</postvalue>
                                 </title>
@@ -371,6 +386,9 @@
                                         </struct>
                                     </autores>
                                     <title tag="true">
+                                        <attr>
+                                            <language>en</language>
+                                        </attr>
                                         <value>$2</value>
                                         <postvalue>$3</postvalue>
                                     </title>
@@ -451,6 +469,9 @@
                                     </struct>
                                 </autores>
                                 <title tag="true">
+                                    <attr>
+                                        <language>en</language>
+                                    </attr>
                                     <value>$4</value>
                                     <postvalue>$5</postvalue>
                                 </title>
@@ -530,6 +551,9 @@
                                         </struct>
                                     </autores>
                                     <title tag="true">
+                                        <attr>
+                                            <language>en</language>
+                                        </attr>
                                         <value>$4</value>
                                         <postvalue>$5</postvalue>
                                     </title>

@@ -138,12 +138,21 @@
     </Compile>
     <Compile Include="dictionaryDTD.cs" />
     <Compile Include="DTDStruct.cs" />
+    <Compile Include="Forms\Waiting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Waiting.Designer.cs">
+      <DependentUpon>Waiting.cs</DependentUpon>
+    </Compile>
     <Compile Include="markupStruct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <EmbeddedResource Include="Forms\ConfigRegexMarkup.resx">
       <DependentUpon>ConfigRegexMarkup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Waiting.resx">
+      <DependentUpon>Waiting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.en-US.resx">
     </EmbeddedResource>

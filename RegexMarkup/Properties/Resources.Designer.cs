@@ -248,5 +248,14 @@ namespace RegexMarkup.Properties {
                 return ResourceManager.GetString("ValidateMarkup_title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Espere por favor.
+        /// </summary>
+        internal static string Waiting_labelWait {
+            get {
+                return ResourceManager.GetString("Waiting_labelWait", resourceCulture);
+            }
+        }
     }
 }

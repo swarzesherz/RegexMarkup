@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,73 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="citationOf" xml:space="preserve">
-    <value>Citation {0} of {1}</value>
-  </data>
-  <data name="configRegexMarkup_enUS" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="configRegexMarkup_esES" xml:space="preserve">
-    <value>Spanish</value>
-  </data>
-  <data name="configRegexMarkup_language" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="configRegexMarkup_title" xml:space="preserve">
-    <value>Configuration RegexMarkup</value>
-  </data>
-  <data name="Main_configuration" xml:space="preserve">
-    <value>Configuration</value>
-  </data>
-  <data name="RegexMarkup_issnNotDefined" xml:space="preserve">
-    <value>ISSN not defined</value>
-  </data>
-  <data name="RegexMarkup_selectCitationComplete" xml:space="preserve">
-    <value>Select the citation(s) completely</value>
-  </data>
-  <data name="RegexMarkup_serilaNotInXML" xml:space="preserve">
-    <value>Serial not found in the XML file</value>
-  </data>
-  <data name="RegexMarkup_title" xml:space="preserve">
-    <value>RegexMarkup</value>
-  </data>
-  <data name="ValidateMarkup_buttonEnd" xml:space="preserve">
-    <value>End marking</value>
-  </data>
-  <data name="ValidateMarkup_buttonFirst" xml:space="preserve">
-    <value>First</value>
-  </data>
-  <data name="ValidateMarkup_buttonLast" xml:space="preserve">
-    <value>Last</value>
-  </data>
-  <data name="ValidateMarkup_buttonNext" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="ValidateMarkup_buttonPrev" xml:space="preserve">
-    <value>Previous</value>
-  </data>
-  <data name="ValidateMarkup_citationOf" xml:space="preserve">
-    <value>Citation {0} of {1}</value>
-  </data>
-  <data name="ValidateMarkup_labelmarkup" xml:space="preserve">
-    <value>Marked citation:</value>
-  </data>
-  <data name="ValidateMarkup_labelOriginal" xml:space="preserve">
-    <value>Original citation:</value>
-  </data>
-  <data name="ValidateMarkup_radioButtonNo" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="ValidateMarkup_radioButtonYes" xml:space="preserve">
-    <value>Yes</value>
-  </data>
-  <data name="ValidateMarkup_title" xml:space="preserve">
-    <value>Validation and marking of citations</value>
-  </data>
-  <data name="ValidateMarkup_buttonSave" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="Waiting_labelWait" xml:space="preserve">
-    <value>Please wait</value>
-  </data>
 </root>

@@ -10,6 +10,7 @@ using System.Xml;
 using System.Text.RegularExpressions;
 using System.IO;
 using RegexMarkup.Properties;
+using RegexMarkup.Forms;
 
 namespace RegexMarkup
 {
@@ -21,6 +22,7 @@ namespace RegexMarkup
         /// </summary>
         static RegexMarkup instance=null;
         static readonly object padlock = new object();
+
 
         RegexMarkup()
         {
@@ -43,6 +45,7 @@ namespace RegexMarkup
         #endregion
 
         public static Word.Document ActiveDocument = null;
+        private Waiting waitForm = null;
         #region startMarkup
         ///<summary>
         ///Procedimiento al que llamaremos para inciar el proceso de marcación
@@ -145,11 +148,18 @@ namespace RegexMarkup
                         start.SetRange(selectionStart, selectionEnd);
                         start.Select();
                         /* Coloreando Etiquetas (Tags) */
+                        //Globals.ThisAddIn.Application.ScreenUpdating = false;
+                        Globals.ThisAddIn.Application.Visible = false;
+                        waitForm = Waiting.Instance;
+                        waitForm.Show();
                         foreach (Word.Paragraph parrafo in docSeleccion.Paragraphs)
                         {
                             Word.Range refrange = parrafo.Range;
                             this.colorRefTags(ref refrange, structNode, 0);
                         }
+                        //Globals.ThisAddIn.Application.ScreenUpdating = true;
+                        waitForm.Hide();
+                        Globals.ThisAddIn.Application.Visible = true;
                     }
 
                 }
