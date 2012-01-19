@@ -120,7 +120,13 @@ namespace RegexMarkup
                             }
                             else
                             {
-                                markedString = this.markupText(patternString, subjetcString, structNode);
+                                try
+                                {
+                                    markedString = this.markupText(patternString, subjetcString, structNode);
+                                }
+                                catch (Exception e) {
+                                    MessageBox.Show(e.Message);
+                                }
                                 marked = true;
                                 if (subjetcString == markedString)
                                 {
@@ -148,7 +154,6 @@ namespace RegexMarkup
                         start.SetRange(selectionStart, selectionEnd);
                         start.Select();
                         /* Coloreando Etiquetas (Tags) */
-                        //Globals.ThisAddIn.Application.ScreenUpdating = false;
                         Globals.ThisAddIn.Application.Visible = false;
                         waitForm = Waiting.Instance;
                         waitForm.Show();
@@ -157,7 +162,6 @@ namespace RegexMarkup
                             Word.Range refrange = parrafo.Range;
                             this.colorRefTags(ref refrange, structNode, 0);
                         }
-                        //Globals.ThisAddIn.Application.ScreenUpdating = true;
                         waitForm.Hide();
                         Globals.ThisAddIn.Application.Visible = true;
                     }
