@@ -289,8 +289,30 @@ namespace RegexMarkup
                             /* Verificamos si el nodo contiene un valor directo para la etiqueta(tag) o si su valor esta compuesto otras etiquetas(tag) */
                             if (itemXML.SelectSingleNode("value") == null)
                             {
-                                /* Si esta compuesto de otras etiquetas(tag) volvemos a enviar la cadena y el patron con los nodos hijos de la etiqueta(tag) */
-                                resultString += tagStringOpen + this.markupText(refPattern, refString, itemXML) + tagStringClose;
+                                /* Verificamos si hay que poner un valor antes de la etiqueta(tag) */
+                                if (itemXML.SelectSingleNode("prevalue") != null)
+                                {
+                                    backreferencePreValue = itemXML.SelectSingleNode("prevalue").InnerText;
+                                    backreferencePreValueString = objRegExp.Replace(matchResults.Value, backreferencePreValue);
+                                    itemXML.RemoveChild(itemXML.SelectSingleNode("prevalue")); 
+                                    resultString += backreferencePreValueString;
+                                    
+                                }
+                                
+                                /* Verificamos si hay que poner un valor despues de la etiqueta(tag) */
+                                if (itemXML.SelectSingleNode("postvalue") != null)
+                                {
+                                    backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
+                                    backreferencePostValueString = objRegExp.Replace(matchResults.Value, backreferencePostValue);
+                                    itemXML.RemoveChild(itemXML.SelectSingleNode("postvalue"));
+                                    /* Si esta compuesto de otras etiquetas(tag) volvemos a enviar la cadena y el patron con los nodos hijos de la etiqueta(tag) */
+                                    resultString += tagStringOpen + this.markupText(refPattern, refString, itemXML) + tagStringClose;
+                                    resultString += backreferencePostValueString;
+
+                                } else {
+                                    /* Si esta compuesto de otras etiquetas(tag) volvemos a enviar la cadena y el patron con los nodos hijos de la etiqueta(tag) */
+                                    resultString += tagStringOpen + this.markupText(refPattern, refString, itemXML) + tagStringClose;
+                                }
                             }
                             else
                             {
