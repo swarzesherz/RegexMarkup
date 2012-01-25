@@ -256,138 +256,55 @@ namespace RegexMarkup
                         /* Iteramos los nodos dentro del xml que nos dan el contenido de las citas */
                         foreach (XmlNode itemXML in refStruct.ChildNodes)
                         {
-                            /* Verificamos si el nodo es una etiqueta(tag) o no */
-                            if (itemXML.Attributes.GetNamedItem("tag") != null)
+                            /* Verificamos que el nodo hijo sea diferente de prevalue y postvalue */
+                            if (itemXML.Name != "prevalue" && itemXML.Name != "postvalue")
                             {
-                                /*Verificamos y agregamos atributos por omisión  a la etiqueta de apertura*/
-                                if (itemXML.SelectSingleNode("attr") == null)
+                                /* Verificamos si el nodo es una etiqueta(tag) o no */
+                                if (itemXML.Attributes.GetNamedItem("tag") != null)
                                 {
-                                    tagStringOpen = "[" + itemXML.Name + "]";
-                                }
-                                else {
-                                    tagStringOpen = "[" + itemXML.Name;
-                                    foreach (XmlNode attrNode in itemXML.SelectSingleNode("attr"))
+                                    /*Verificamos y agregamos atributos por omisión  a la etiqueta de apertura*/
+                                    if (itemXML.SelectSingleNode("attr") == null)
                                     {
-                                        if (attrNode.Name == "dateiso" && attrNode.InnerText == "")
-                                        {
-                                            tagStringOpen += " " + attrNode.Name + "=\"" + objRegExp.Replace(refString, itemXML.SelectSingleNode("value").InnerText) +"0000\"";
-                                        }
-                                        else
-                                        {
-                                            tagStringOpen += " " + attrNode.Name + "=\"" + attrNode.InnerText + "\"";
-                                        }
+                                        tagStringOpen = "[" + itemXML.Name + "]";
                                     }
-                                    tagStringOpen += "]";
-                                }
-                                tagStringClose = "[/" + itemXML.Name + "]";
-                            }
-                            else
-                            {
-                                tagStringOpen = null;
-                                tagStringClose = null;
-                            }
-                            /* Verificamos si el nodo contiene un valor directo para la etiqueta(tag) o si su valor esta compuesto otras etiquetas(tag) */
-                            if (itemXML.SelectSingleNode("value") == null)
-                            {
-                                /* Verificamos si hay que poner un valor antes de la etiqueta(tag) */
-                                if (itemXML.SelectSingleNode("prevalue") != null)
-                                {
-                                    backreferencePreValue = itemXML.SelectSingleNode("prevalue").InnerText;
-                                    backreferencePreValueString = objRegExp.Replace(matchResults.Value, backreferencePreValue);
-                                    itemXML.RemoveChild(itemXML.SelectSingleNode("prevalue")); 
-                                    resultString += backreferencePreValueString;
-                                    
-                                }
-                                
-                                /* Verificamos si hay que poner un valor despues de la etiqueta(tag) */
-                                if (itemXML.SelectSingleNode("postvalue") != null)
-                                {
-                                    backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
-                                    backreferencePostValueString = objRegExp.Replace(matchResults.Value, backreferencePostValue);
-                                    itemXML.RemoveChild(itemXML.SelectSingleNode("postvalue"));
-                                    /* Si esta compuesto de otras etiquetas(tag) volvemos a enviar la cadena y el patron con los nodos hijos de la etiqueta(tag) */
-                                    resultString += tagStringOpen + this.markupText(refPattern, refString, itemXML) + tagStringClose;
-                                    resultString += backreferencePostValueString;
-
-                                } else {
-                                    /* Si esta compuesto de otras etiquetas(tag) volvemos a enviar la cadena y el patron con los nodos hijos de la etiqueta(tag) */
-                                    resultString += tagStringOpen + this.markupText(refPattern, refString, itemXML) + tagStringClose;
-                                }
-                            }
-                            else
-                            {
-                                /* Deacuerdo al valor que tenemos indicado en el xml extramos la cadena de texto correspondiente */
-                                backreference = itemXML.SelectSingleNode("value").InnerText;
-                                subjectString = objRegExp.Replace(matchResults.Value, backreference);
-                                /* Verificamos si a la cadena de texto resultante tiene multiples opciones, hay  que aplicarle un patron nuevo ó si agregamos las etiquetas(tag) directamente */
-                                if (itemXML.SelectSingleNode("multiple") != null)
-                                {
-                                    /* Inicializamos la variables locales*/
-                                    multipleOptions = itemXML.SelectSingleNode("multiple").ChildNodes;
-                                    multipleOptionPattern = null;
-                                    singleOptionMatch = false;
-                                    /* Armamos la expresion regular para todas las opciones y asignamos un namedgroup a cada una */
-                                    for (int i = 0; i < multipleOptions.Count; i++)
+                                    else
                                     {
-                                        singleOptionPattern = multipleOptions[i].SelectSingleNode("regex").InnerText;
-                                        singleOptionStruct = multipleOptions[i].SelectSingleNode("struct");
-                                        if (i == 0)
+                                        tagStringOpen = "[" + itemXML.Name;
+                                        foreach (XmlNode attrNode in itemXML.SelectSingleNode("attr"))
                                         {
-                                            multipleOptionPattern += "(?<op" + i + ">" + singleOptionPattern + ")";
+                                            if (attrNode.Name == "dateiso" && attrNode.InnerText == "")
+                                            {
+                                                tagStringOpen += " " + attrNode.Name + "=\"" + objRegExp.Replace(refString, itemXML.SelectSingleNode("value").InnerText) + "0000\"";
+                                            }
+                                            else
+                                            {
+                                                tagStringOpen += " " + attrNode.Name + "=\"" + attrNode.InnerText + "\"";
+                                            }
                                         }
-                                        else
-                                        {
-                                            multipleOptionPattern += "|(?<op" + i + ">" + singleOptionPattern + ")";
-                                        }
+                                        tagStringOpen += "]";
                                     }
-                                    /* Inicializamos un nuevo metro para evaluar la expresion regular de todas la opciones */
-                                    multipleOptionRegExp = new Regex(multipleOptionPattern, options);
-                                    multipleOptionsMarchResults = multipleOptionRegExp.Match(subjectString);
-
-                                    /* Verificamos que opcion es la que coincidio*/
-                                    for (int i = 0; i < multipleOptions.Count && !singleOptionMatch; i++)
-                                    {
-                                        if (multipleOptionsMarchResults.Groups["op" + i].Success)
-                                        {
-                                            singleOptionMatched = i;
-                                            singleOptionMatch = true;
-                                        }
-                                    }
-
-                                    singleOptionPattern = multipleOptions[singleOptionMatched].SelectSingleNode("regex").InnerText;
-                                    singleOptionStruct = multipleOptions[singleOptionMatched].SelectSingleNode("struct");
+                                    tagStringClose = "[/" + itemXML.Name + "]";
+                                }
+                                else
+                                {
+                                    tagStringOpen = null;
+                                    tagStringClose = null;
+                                }
+                                /* Verificamos si el nodo contiene un valor directo para la etiqueta(tag) o si su valor esta compuesto otras etiquetas(tag) */
+                                if (itemXML.SelectSingleNode("value") == null)
+                                {
                                     /* Verificamos si hay que poner un valor antes de la etiqueta(tag) */
                                     if (itemXML.SelectSingleNode("prevalue") != null)
                                     {
                                         backreferencePreValue = itemXML.SelectSingleNode("prevalue").InnerText;
                                         backreferencePreValueString = objRegExp.Replace(matchResults.Value, backreferencePreValue);
-                                        resultString += backreferencePreValueString;
-                                    }
-                                    /* Enviamos la expresion regular de la opcion que coincidio junto con el grupo de ordenamiento */
-                                    resultString += tagStringOpen + this.markupText(singleOptionPattern, subjectString, singleOptionStruct) + tagStringClose;
 
+                                        resultString += backreferencePreValueString;
+
+                                    }
+                                    /* Si esta compuesto de otras etiquetas(tag) volvemos a enviar la cadena y el patron con los nodos hijos de la etiqueta(tag) */
+                                    resultString += tagStringOpen + this.markupText(refPattern, refString, itemXML) + tagStringClose;
                                     /* Verificamos si hay que poner un valor despues de la etiqueta(tag) */
-                                    if (itemXML.SelectSingleNode("postvalue") != null)
-                                    {
-                                        backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
-                                        backreferencePostValueString = objRegExp.Replace(matchResults.Value, backreferencePostValue);
-                                        resultString += backreferencePostValueString;
-                                    }
-
-                                }
-                                else if (itemXML.SelectSingleNode("regex") != null)
-                                {
-                                    /* Verificamos si hay que poner un valor antes de la etiqueta(tag) */
-                                    if (itemXML.SelectSingleNode("prevalue") != null)
-                                    {
-                                        backreferencePreValue = itemXML.SelectSingleNode("prevalue").InnerText;
-                                        backreferencePreValueString = objRegExp.Replace(matchResults.Value, backreferencePreValue);
-                                        resultString += backreferencePreValueString;
-                                    }
-                                    structNode = itemXML.SelectSingleNode("struct");
-                                    patternString = itemXML.SelectSingleNode("regex").InnerText;
-                                    /* Enviamos la cadena resultante con el patron nuevo a aplicar y las etiquetas(tag) que debe contener y el resultado lo ponemos dentro de la etiqueta(tag) correspondiente */
-                                    resultString += tagStringOpen + this.markupText(patternString, subjectString, structNode) + tagStringClose;
                                     if (itemXML.SelectSingleNode("postvalue") != null)
                                     {
                                         backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
@@ -397,21 +314,103 @@ namespace RegexMarkup
                                 }
                                 else
                                 {
-                                    replaceString = null;
-                                    /* Verificamos si hay que poner un valor antes de la etiqueta(tag) */
-                                    if (itemXML.SelectSingleNode("prevalue") != null)
+                                    /* Deacuerdo al valor que tenemos indicado en el xml extramos la cadena de texto correspondiente */
+                                    backreference = itemXML.SelectSingleNode("value").InnerText;
+                                    subjectString = objRegExp.Replace(matchResults.Value, backreference);
+                                    /* Verificamos si a la cadena de texto resultante tiene multiples opciones, hay  que aplicarle un patron nuevo ó si agregamos las etiquetas(tag) directamente */
+                                    if (itemXML.SelectSingleNode("multiple") != null)
                                     {
-                                        backreferencePreValue = itemXML.SelectSingleNode("prevalue").InnerText;
-                                        replaceString += backreferencePreValue;
+                                        /* Inicializamos la variables locales*/
+                                        multipleOptions = itemXML.SelectSingleNode("multiple").ChildNodes;
+                                        multipleOptionPattern = null;
+                                        singleOptionMatch = false;
+                                        /* Armamos la expresion regular para todas las opciones y asignamos un namedgroup a cada una */
+                                        for (int i = 0; i < multipleOptions.Count; i++)
+                                        {
+                                            singleOptionPattern = multipleOptions[i].SelectSingleNode("regex").InnerText;
+                                            singleOptionStruct = multipleOptions[i].SelectSingleNode("struct");
+                                            if (i == 0)
+                                            {
+                                                multipleOptionPattern += "(?<op" + i + ">" + singleOptionPattern + ")";
+                                            }
+                                            else
+                                            {
+                                                multipleOptionPattern += "|(?<op" + i + ">" + singleOptionPattern + ")";
+                                            }
+                                        }
+                                        /* Inicializamos un nuevo metro para evaluar la expresion regular de todas la opciones */
+                                        multipleOptionRegExp = new Regex(multipleOptionPattern, options);
+                                        multipleOptionsMarchResults = multipleOptionRegExp.Match(subjectString);
+
+                                        /* Verificamos que opcion es la que coincidio*/
+                                        for (int i = 0; i < multipleOptions.Count && !singleOptionMatch; i++)
+                                        {
+                                            if (multipleOptionsMarchResults.Groups["op" + i].Success)
+                                            {
+                                                singleOptionMatched = i;
+                                                singleOptionMatch = true;
+                                            }
+                                        }
+
+                                        singleOptionPattern = multipleOptions[singleOptionMatched].SelectSingleNode("regex").InnerText;
+                                        singleOptionStruct = multipleOptions[singleOptionMatched].SelectSingleNode("struct");
+                                        /* Verificamos si hay que poner un valor antes de la etiqueta(tag) */
+                                        if (itemXML.SelectSingleNode("prevalue") != null)
+                                        {
+                                            backreferencePreValue = itemXML.SelectSingleNode("prevalue").InnerText;
+                                            backreferencePreValueString = objRegExp.Replace(matchResults.Value, backreferencePreValue);
+                                            resultString += backreferencePreValueString;
+                                        }
+                                        /* Enviamos la expresion regular de la opcion que coincidio junto con el grupo de ordenamiento */
+                                        resultString += tagStringOpen + this.markupText(singleOptionPattern, subjectString, singleOptionStruct) + tagStringClose;
+
+                                        /* Verificamos si hay que poner un valor despues de la etiqueta(tag) */
+                                        if (itemXML.SelectSingleNode("postvalue") != null)
+                                        {
+                                            backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
+                                            backreferencePostValueString = objRegExp.Replace(matchResults.Value, backreferencePostValue);
+                                            resultString += backreferencePostValueString;
+                                        }
+
                                     }
-                                    /* Armamos la etiqueta(tag) con su valor */
-                                    replaceString = replaceString + tagStringOpen + backreference + tagStringClose;
-                                    if (itemXML.SelectSingleNode("postvalue") != null)
+                                    else if (itemXML.SelectSingleNode("regex") != null)
                                     {
-                                        backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
-                                        replaceString += backreferencePostValue;
+                                        /* Verificamos si hay que poner un valor antes de la etiqueta(tag) */
+                                        if (itemXML.SelectSingleNode("prevalue") != null)
+                                        {
+                                            backreferencePreValue = itemXML.SelectSingleNode("prevalue").InnerText;
+                                            backreferencePreValueString = objRegExp.Replace(matchResults.Value, backreferencePreValue);
+                                            resultString += backreferencePreValueString;
+                                        }
+                                        structNode = itemXML.SelectSingleNode("struct");
+                                        patternString = itemXML.SelectSingleNode("regex").InnerText;
+                                        /* Enviamos la cadena resultante con el patron nuevo a aplicar y las etiquetas(tag) que debe contener y el resultado lo ponemos dentro de la etiqueta(tag) correspondiente */
+                                        resultString += tagStringOpen + this.markupText(patternString, subjectString, structNode) + tagStringClose;
+                                        if (itemXML.SelectSingleNode("postvalue") != null)
+                                        {
+                                            backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
+                                            backreferencePostValueString = objRegExp.Replace(matchResults.Value, backreferencePostValue);
+                                            resultString += backreferencePostValueString;
+                                        }
                                     }
-                                    resultString += objRegExp.Replace(refString, replaceString);
+                                    else
+                                    {
+                                        replaceString = null;
+                                        /* Verificamos si hay que poner un valor antes de la etiqueta(tag) */
+                                        if (itemXML.SelectSingleNode("prevalue") != null)
+                                        {
+                                            backreferencePreValue = itemXML.SelectSingleNode("prevalue").InnerText;
+                                            replaceString += backreferencePreValue;
+                                        }
+                                        /* Armamos la etiqueta(tag) con su valor */
+                                        replaceString = replaceString + tagStringOpen + backreference + tagStringClose;
+                                        if (itemXML.SelectSingleNode("postvalue") != null)
+                                        {
+                                            backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
+                                            replaceString += backreferencePostValue;
+                                        }
+                                        resultString += objRegExp.Replace(refString, replaceString);
+                                    }
                                 }
                             }
                         }
