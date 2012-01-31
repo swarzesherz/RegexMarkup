@@ -236,7 +236,7 @@ namespace RegexMarkup
             String singleOptionPattern = null;
             Regex objRegExp = null;
             Regex multipleOptionRegExp = null;
-            RegexOptions options = RegexOptions.IgnoreCase;
+            RegexOptions options = RegexOptions.None;
             Match matchResults = null;
             Match multipleOptionsMarchResults = null;
             XmlNode structNode = null;
