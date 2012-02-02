@@ -62,10 +62,13 @@ namespace RegexMarkup
             String replaceText = null;
             String issn = null;
             String pathXML = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "regex.xml");
+            String pathXMLColor = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tagColors.xml");
             Word.Selection docSeleccion = null;
             XmlDocument xmlDoc = new XmlDocument();
+            XmlDocument xmlDocColor = new XmlDocument();
             XmlNode objElem = null;
             XmlNode structNode = null;
+            XmlNode structNodeColor = null;
             List<markupStruct> citas = null;
             Regex objRegExp = null;
             RegexOptions options = RegexOptions.None;
@@ -179,7 +182,19 @@ namespace RegexMarkup
                                 citas.Add(new markupStruct(subjetcString, FixedMarkedString, marked, ActiveDocument.Range(ref parrafoStart, ref parrafoEnd)));
                             }
                         }
-                        ValidateMarkup formValidate = new ValidateMarkup(ref citas, ref structNode);
+                        /* Cargamos el archivo xml donde se encuetra la lista de etiquetas que se pueden colorear */
+                        try
+                        {
+                            xmlDocColor.Load(pathXMLColor);
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show(e.Message);
+                            return;
+                        }
+                        structNodeColor = xmlDocColor.SelectSingleNode("references");
+                        /* Mandamos llamar al formulario para la validación de las citas*/
+                        ValidateMarkup formValidate = new ValidateMarkup(ref citas, ref structNodeColor);
                         formValidate.ShowDialog();
                         /* Ocultamos la aplicacion durante los procesos de reemplazo y coloreado para hacer mas rapida la aplicacion */
                         Globals.ThisAddIn.Application.Visible = false;
@@ -211,10 +226,11 @@ namespace RegexMarkup
                         start.SetRange(selectionStart, selectionEnd);
                         start.Select();
                         /* Coloreando Etiquetas (Tags) */
+                        
                         foreach (Word.Paragraph parrafo in docSeleccion.Paragraphs)
                         {
                             Word.Range refrange = parrafo.Range;
-                            this.colorRefTags(ref refrange, structNode, 0);
+                            this.colorRefTags(ref refrange, structNodeColor, 0);
                         }
                         /* Mostramos de nuevo la aplicacion */
                         waitForm.Hide();
@@ -501,58 +517,44 @@ namespace RegexMarkup
             };
             object missingval = System.Type.Missing;
             object replaceAll = Word.WdReplace.wdReplaceAll;
-            /* Si la estructura enviada contiene una etiqueta aumentamos el numero de color para las etiquetas hijas */
-            if (structNode.Attributes.GetNamedItem("tag") != null) {
-                color++;
-                /* Si el indice de color llego a 20 lo reiniciamos a 0 */
-                color = color == 5 ? 0 : color;
-            }
+            bool startTagSuccess = false;
+            bool endTagSuccess = false;
+
+            color++;
+            /* Si el indice de color llego a 20 lo reiniciamos a 0 */
+            color = color == 5 ? 0 : color;
             /* Iteramos las etiquetas(tags) hijas*/
             foreach (XmlNode tag in structNode.ChildNodes){
                 try
-                {   
-                    /* Al igual que en marcado analizamos la condiciones existentes en donde se tienen que marcar etiquetas(tags) hijas */
-                    if (tag.SelectSingleNode("value") == null && tag.ChildNodes.Count > 0)
-                    {
+                {
+                    /* Buscamos y coloreamos el inicio de la etiqueta(tag) */
+                    colorizeRange.Find.ClearFormatting();
+                    colorizeRange.Find.Text = "\\[" + tag.Name + "*\\]";
+                    colorizeRange.Find.MatchWildcards = true;
+                    colorizeRange.Find.Replacement.ClearFormatting();
+                    colorizeRange.Find.Replacement.Font.Color = colors[color];
+                    colorizeRange.Find.Replacement.Font.Size = 11;
+                    colorizeRange.Find.Replacement.Font.Name = "Arial";
+                    colorizeRange.Find.Replacement.Font.Bold = 0;
+                    startTagSuccess = colorizeRange.Find.Execute(ref missingval, ref missingval, ref missingval,
+                        ref missingval, ref missingval, ref missingval, ref missingval,
+                        ref missingval, ref missingval, ref missingval, ref replaceAll,
+                        ref missingval, ref missingval, ref missingval, ref missingval);
+                    /* Buscamos y coloreamos el cierre de la etiqueta(tag) */
+                    colorizeRange.Find.ClearFormatting();
+                    colorizeRange.Find.Text = "\\[/" + tag.Name + "\\]";
+                    colorizeRange.Find.Replacement.ClearFormatting();
+                    colorizeRange.Find.Replacement.Font.Color = colors[color];
+                    colorizeRange.Find.Replacement.Font.Size = 11;
+                    colorizeRange.Find.Replacement.Font.Bold = 0;
+                    colorizeRange.Find.Replacement.Font.Name = "Arial";
+                    endTagSuccess = colorizeRange.Find.Execute(ref missingval, ref missingval, ref missingval,
+                        ref missingval, ref missingval, ref missingval, ref missingval,
+                        ref missingval, ref missingval, ref missingval, ref replaceAll,
+                        ref missingval, ref missingval, ref missingval, ref missingval);
+                    /* Si la etiqueta fue encontrada y coloreada con exito coloreamos la etiquetas hijas */
+                    if (startTagSuccess && endTagSuccess) {
                         this.colorRefTags(ref colorizeRange, tag, color);
-                    }
-                    else
-                    {
-                        if (tag.SelectSingleNode("multiple") != null && tag.ChildNodes.Count > 0)
-                        {
-                            this.colorRefTags(ref colorizeRange, tag, color);
-                        }
-                        else if (tag.SelectSingleNode("regex") != null && tag.ChildNodes.Count > 0)
-                        {
-                            this.colorRefTags(ref colorizeRange, tag, color);
-                        }
-                    }
-                    /* Si el atributo indica que es una etiqueta(tag) la coloreamos */
-                    if (tag.Attributes != null &&tag.Attributes.GetNamedItem("tag") != null)
-                    {
-                        /* Buscamos y coloreamos el inicio de la etiqueta(tag) */
-                        colorizeRange.Find.ClearFormatting();
-                        colorizeRange.Find.Text = "\\[" + tag.Name + "*\\]";
-                        colorizeRange.Find.MatchWildcards = true;
-                        colorizeRange.Find.Replacement.ClearFormatting();
-                        colorizeRange.Find.Replacement.Font.Color = colors[color];
-                        colorizeRange.Find.Replacement.Font.Size = 11;
-                        colorizeRange.Find.Replacement.Font.Name = "Arial";
-                        colorizeRange.Find.Execute(ref missingval, ref missingval, ref missingval,
-                            ref missingval, ref missingval, ref missingval, ref missingval,
-                            ref missingval, ref missingval, ref missingval, ref replaceAll,
-                            ref missingval, ref missingval, ref missingval, ref missingval);
-                        /* Buscamos y coloreamos el cierre de la etiqueta(tag) */
-                        colorizeRange.Find.ClearFormatting();
-                        colorizeRange.Find.Text = "\\[/" + tag.Name + "\\]";
-                        colorizeRange.Find.Replacement.ClearFormatting();
-                        colorizeRange.Find.Replacement.Font.Color = colors[color];
-                        colorizeRange.Find.Replacement.Font.Size = 11;
-                        colorizeRange.Find.Replacement.Font.Name = "Arial";
-                        colorizeRange.Find.Execute(ref missingval, ref missingval, ref missingval,
-                            ref missingval, ref missingval, ref missingval, ref missingval,
-                            ref missingval, ref missingval, ref missingval, ref replaceAll,
-                            ref missingval, ref missingval, ref missingval, ref missingval);
                     }
                 }catch(Exception e){
                     MessageBox.Show(e.Message);

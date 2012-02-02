@@ -325,6 +325,9 @@
     <Content Include="regex.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="tagColors.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\sgmlreaderdll\SgmlReaderDll.csproj">

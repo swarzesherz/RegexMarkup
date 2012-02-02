@@ -149,6 +149,7 @@ namespace RegexMarkup
                 Color.Blue,
                 Color.Violet
             };
+            bool TagSuccess = false;
             /* Si el color inicial es -1 formateamos el texto con la fuente estandar y asignamos color=0 */
             if(color == -1){
                 richTextBoxMarkup.SelectAll();
@@ -158,48 +159,30 @@ namespace RegexMarkup
             }
            
             /* Iteramos las etiquetas(tags) hijas*/
-            /* Si la estructura enviada contiene una etiqueta aumentamos el numero de color para las etiquetas hijas */
-            if (structNode.Attributes.GetNamedItem("tag") != null)
-            {
-                color++;
-                /* Si el indice de color llego a 20 lo reiniciamos a 0 */
-                color = color == 5 ? 0 : color;
-            }
+            color++;
+            /* Si el indice de color llego a 20 lo reiniciamos a 0 */
+            color = color == 5 ? 0 : color;
             foreach (XmlNode tag in structNode.ChildNodes)
             {
                 try
                 {
-                    /* Al igual que en marcado analizamos la condiciones existentes en donde se tienen que marcar etiquetas(tags) hijas */
-                    if (tag.SelectSingleNode("value") == null && tag.ChildNodes.Count > 0)
+                    tagExp = new Regex("\\[/*" + tag.Name + ".*?\\]", options);
+                    matchResults = tagExp.Match(this.richTextBoxMarkup.Text);
+                    while (matchResults.Success)
+                    {
+                        startTag = matchResults.Value;
+                        
+                        /* Buscamos y coloreamos el inicio o final de la etiqueta(tag) */
+                        this.richTextBoxMarkup.Select(matchResults.Index, matchResults.Length);
+                        richTextBoxMarkup.SelectionFont = new Font("Arial", 11, FontStyle.Regular);
+                        richTextBoxMarkup.SelectionColor = colors[color];
+                        TagSuccess = true;
+                        matchResults = matchResults.NextMatch();
+                    }
+                    /* Si la etiqueta fue coloreada con exito coloreamos la etiquetas hijas */
+                    if (TagSuccess)
                     {
                         this.colorRefTagsForm(tag, color);
-                    }
-                    else
-                    {
-                        if (tag.SelectSingleNode("multiple") != null && tag.ChildNodes.Count > 0)
-                        {
-                            this.colorRefTagsForm(tag, color);
-                        }
-                        else if (tag.SelectSingleNode("regex") != null && tag.ChildNodes.Count > 0)
-                        {
-                            this.colorRefTagsForm(tag, color);
-                        }
-                    }
-                    /* Si el atributo indica que es una etiqueta(tag) la coloreamos */
-                    if (tag.Attributes != null && tag.Attributes.GetNamedItem("tag") != null)
-                    {
-                        tagExp = new Regex("\\[/*" + tag.Name + ".*?\\]", options);
-                        matchResults = tagExp.Match(this.richTextBoxMarkup.Text);
-                        while (matchResults.Success)
-                        {
-                            startTag = matchResults.Value;
-                            
-                            /* Buscamos y coloreamos el inicio o final de la etiqueta(tag) */
-                            this.richTextBoxMarkup.Select(matchResults.Index, matchResults.Length);
-                            richTextBoxMarkup.SelectionFont = new Font("Arial", 11, FontStyle.Regular);
-                            richTextBoxMarkup.SelectionColor = colors[color];
-                            matchResults = matchResults.NextMatch();
-                        }
                     }
                 }
                 catch (Exception e)
