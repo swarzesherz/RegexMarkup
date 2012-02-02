@@ -58,6 +58,7 @@ namespace RegexMarkup
             String patternString = null;
             String subjetcString = null;
             String markedString = null;
+            String FixedMarkedString = null;
             String replaceText = null;
             String issn = null;
             String pathXML = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "regex.xml");
@@ -66,6 +67,11 @@ namespace RegexMarkup
             XmlNode objElem = null;
             XmlNode structNode = null;
             List<markupStruct> citas = null;
+            Regex objRegExp = null;
+            RegexOptions options = RegexOptions.None;
+            Match matchResults = null;
+            Match matchResults2 = null;
+            objRegExp = new Regex(@"\[[^\]]+?\]", options);
 
             /* Inicializamos variables */
             ActiveDocument = Globals.ThisAddIn.Application.ActiveDocument;
@@ -132,21 +138,72 @@ namespace RegexMarkup
                                 {
                                     marked = false;
                                 }
-                                citas.Add(new markupStruct(subjetcString , markedString , marked));
+                                else {
+                                    /* Relizamos un proceso para verificar que la cita marca sea la misma que la original y agregamos cadenas faltantes*/
+                                    FixedMarkedString = subjetcString;
+                                    /* Se comparara el texto comprendido entre etiquetas*/
+                                    matchResults = objRegExp.Match(markedString);
+                                    matchResults2 = matchResults.NextMatch();
+                                    /* Declaramos una varible para contemplar la longitud de carateres que no estan en la cita marcada */
+                                    int startDiffAdd = 0;
+                                    while (matchResults.Success)
+                                    {
+                                        try
+                                        {
+                                            /* Declaramos varables para saber el final de la etiqueta 1 y el principio de la etiqueta 2*/
+                                            int startMatch = matchResults.Index + startDiffAdd;
+                                            int end = startMatch + matchResults.Length;
+                                            int startMatch2 = matchResults2.Index + startDiffAdd;
+                                            /* Insertamos la etiqueta en su lugar correspondinete con su respectiva diferencia */
+                                            FixedMarkedString = FixedMarkedString.Insert(startMatch, matchResults.Value);
+                                            /* Verificamos si el contenido entre etiquetas es el mismo en la etiqueta marcada y en la reconstruida */
+                                            if (end < startMatch2 && FixedMarkedString.Substring(end, (startMatch2 - end)) != markedString.Substring(end - startDiffAdd, (startMatch2 - end)))
+                                            {
+                                                /* Verificamos donde inicia la diferencia entre las etiquetas*/
+                                                int startDiff = FixedMarkedString.LastIndexOf(markedString.Substring(end, (startMatch2 - end)));
+                                                /* Colocamos la etiqueta en su lugar adecuado en la cita reconstruida */
+                                                FixedMarkedString = FixedMarkedString.Remove(startMatch, matchResults.Length);
+                                                FixedMarkedString = FixedMarkedString.Insert((startDiff - matchResults.Length), matchResults.Value);
+                                                /* Agregamos la longitud de los carateres que se encuentran ya en la cadena reconstruida */
+                                                startDiffAdd += FixedMarkedString.Substring(end, (startDiff - end)).Length;
+                                            }
+                                            matchResults = matchResults.NextMatch();
+                                            matchResults2 = matchResults2.NextMatch();
+                                        }
+                                        catch (Exception e) {
+                                            MessageBox.Show(e.Message);
+                                        }
+                                    }
+                                }
+                                
+                                citas.Add(new markupStruct(subjetcString, FixedMarkedString, marked, ActiveDocument.Range(ref parrafoStart, ref parrafoEnd)));
                             }
                         }
                         ValidateMarkup formValidate = new ValidateMarkup(ref citas, ref structNode);
                         formValidate.ShowDialog();
+                        /* Ocultamos la aplicacion durante los procesos de reemplazo y coloreado para hacer mas rapida la aplicacion */
+                        Globals.ThisAddIn.Application.Visible = false;
+                        waitForm = Waiting.Instance;
+                        waitForm.Show();
                         /* Reemplzando texto original por el marcado */
+                        /* Utilizando el rango de texto de la cita original y agregando las etiquetas en su lugar correspondiente para mantener el formato original */
                         foreach (markupStruct cita in citas) {
                             if(cita.Marked){
+                                matchResults = objRegExp.Match(cita.MarkedStr);
+                                while (matchResults.Success) {
+                                    /* Verificamos el inicio de la cita compandolo con */
+                                    object startrng = cita.RngCita.Start + matchResults.Index;
+                                    object end = cita.RngCita.Start + matchResults.Index;
+                                    Word.Range rng = ActiveDocument.Range(ref startrng, ref end);
+                                    rng.Text = matchResults.Value;
+                                    matchResults = matchResults.NextMatch();
+                                }
                                 replaceText += cita.MarkedStr + cita.BreakLines;
                             }else{
                                 replaceText += cita.OriginalStr + cita.BreakLines;
                             }
                              
                         }
-                        docSeleccion.Range.Text = replaceText;
                         
                         /* Volvemos a seleccionar el texto desde el inicio de la seleccion inicial mas el total de la cadena con etiquetas */
                         int selectionStart = docSeleccion.Range.Start;
@@ -154,14 +211,12 @@ namespace RegexMarkup
                         start.SetRange(selectionStart, selectionEnd);
                         start.Select();
                         /* Coloreando Etiquetas (Tags) */
-                        Globals.ThisAddIn.Application.Visible = false;
-                        waitForm = Waiting.Instance;
-                        waitForm.Show();
                         foreach (Word.Paragraph parrafo in docSeleccion.Paragraphs)
                         {
                             Word.Range refrange = parrafo.Range;
                             this.colorRefTags(ref refrange, structNode, 0);
                         }
+                        /* Mostramos de nuevo la aplicacion */
                         waitForm.Hide();
                         Globals.ThisAddIn.Application.Visible = true;
                     }

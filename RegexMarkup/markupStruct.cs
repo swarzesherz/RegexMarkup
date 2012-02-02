@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace RegexMarkup
 {
@@ -12,13 +13,15 @@ namespace RegexMarkup
         private String breakLines = null;
         private Boolean marked = false;
         private Boolean colorized = false;
+        private Word.Range rngCita = null;
 
-        public markupStruct(String originalStr, String markedStr, Boolean marked) {
+        public markupStruct(String originalStr, String markedStr, Boolean marked, Word.Range rngCita) {
             this.originalStr = originalStr;
             /* Creando string rtf */
             this.markedRtb = new RichTextBox();
             this.markedRtb.Text = markedStr;
             this.marked = marked;
+            this.rngCita = rngCita;
             this.breakLines = "\r";
         }
 
@@ -92,6 +95,15 @@ namespace RegexMarkup
             set
             {
                 this.colorized = value;
+            }
+        }
+
+        public Word.Range RngCita {
+            get {
+                return this.rngCita;
+            }
+            set {
+                this.rngCita = value;
             }
         }
     }
