@@ -46,6 +46,7 @@ namespace RegexMarkup
 
         public static Word.Document ActiveDocument = null;
         private Waiting waitForm = null;
+        public static Object missing = Type.Missing;
         #region startMarkup
         ///<summary>
         ///Procedimiento al que llamaremos para inciar el proceso de marcación
@@ -78,8 +79,12 @@ namespace RegexMarkup
 
             /* Inicializamos variables */
             ActiveDocument = Globals.ThisAddIn.Application.ActiveDocument;
-            /* Leemos y verificamos que el iss exista */
+            /* Leemos y verificamos que el issn exista */
             issn = getAttrValueInTag("article", "issn");
+            /* Hacemos un segundo intento con la etiqueta text en caso de que no haya aparecido con article */
+            if (issn == null) {
+                issn = getAttrValueInTag("text", "issn");
+            }
             if (issn == null) {
                 MessageBox.Show(Resources.RegexMarkup_issnNotDefined, Resources.RegexMarkup_title);
             } else {
@@ -125,7 +130,7 @@ namespace RegexMarkup
                             //MessageBox.Show(subjetcString, "Texto de parrafo");
                             if (subjetcString == null)
                             {
-                                citas[citas.Count - 1].BreakLines += "\r";
+                                citas[citas.Count - 1].BreakLines += "\r\n";
                             }
                             else
                             {
@@ -162,13 +167,19 @@ namespace RegexMarkup
                                             /* Verificamos si el contenido entre etiquetas es el mismo en la etiqueta marcada y en la reconstruida */
                                             if (end < startMatch2 && FixedMarkedString.Substring(end, (startMatch2 - end)) != markedString.Substring(end - startDiffAdd, (startMatch2 - end)))
                                             {
+                                                String strOriginal = FixedMarkedString.Substring(end, (startMatch2 - end));
+                                                String strMaked = markedString.Substring(end - startDiffAdd, (startMatch2 - end));
                                                 /* Verificamos donde inicia la diferencia entre las etiquetas*/
-                                                int startDiff = FixedMarkedString.LastIndexOf(markedString.Substring(end, (startMatch2 - end)));
-                                                /* Colocamos la etiqueta en su lugar adecuado en la cita reconstruida */
-                                                FixedMarkedString = FixedMarkedString.Remove(startMatch, matchResults.Length);
-                                                FixedMarkedString = FixedMarkedString.Insert((startDiff - matchResults.Length), matchResults.Value);
-                                                /* Agregamos la longitud de los carateres que se encuentran ya en la cadena reconstruida */
-                                                startDiffAdd += FixedMarkedString.Substring(end, (startDiff - end)).Length;
+                                                int startDiff = FixedMarkedString.LastIndexOf(markedString.Substring(end, (startMatch2 - end))); 
+                                                if (startDiff > 0)
+                                                {
+                                                    /* Colocamos la etiqueta en su lugar adecuado en la cita reconstruida */
+                                                    FixedMarkedString = FixedMarkedString.Remove(startMatch, matchResults.Length);
+                                                    FixedMarkedString = FixedMarkedString.Insert((startDiff - matchResults.Length), matchResults.Value);
+                                                    /* Agregamos la longitud de los carateres que se encuentran ya en la cadena reconstruida */
+                                                    startDiffAdd += FixedMarkedString.Substring(end, (startDiff - end)).Length;
+                                                }
+                                                
                                             }
                                             matchResults = matchResults.NextMatch();
                                             matchResults2 = matchResults2.NextMatch();
@@ -178,7 +189,7 @@ namespace RegexMarkup
                                         }
                                     }
                                 }
-                                
+                                parrafoEnd = parrafo.Range.End;
                                 citas.Add(new markupStruct(subjetcString, FixedMarkedString, marked, ActiveDocument.Range(ref parrafoStart, ref parrafoEnd)));
                             }
                         }
@@ -203,14 +214,49 @@ namespace RegexMarkup
                         /* Reemplzando texto original por el marcado */
                         /* Utilizando el rango de texto de la cita original y agregando las etiquetas en su lugar correspondiente para mantener el formato original */
                         foreach (markupStruct cita in citas) {
+                            int prevMatchEnd = 0;
+                            object startRng = cita.RngCita.Start;
+                            object endrRng = cita.RngCita.End;
+                            object insertRng = cita.RngCita.Start;
+                            Word.Range rng = null;
                             if(cita.Marked){
                                 matchResults = objRegExp.Match(cita.MarkedStr);
                                 while (matchResults.Success) {
-                                    /* Verificamos el inicio de la cita compandolo con */
-                                    object startrng = cita.RngCita.Start + matchResults.Index;
-                                    object end = cita.RngCita.Start + matchResults.Index;
-                                    Word.Range rng = ActiveDocument.Range(ref startrng, ref end);
-                                    rng.Text = matchResults.Value;
+                                    try
+                                    {
+                                        rng = ActiveDocument.Range(ref startRng, ref endrRng);
+                                        if (prevMatchEnd == matchResults.Index) {
+                                            rng.InsertBefore(matchResults.Value);
+                                            startRng = rng.Start + matchResults.Length;
+                                        }else{
+                                            
+                                            String search = cita.MarkedStr.Substring(prevMatchEnd, matchResults.Index - prevMatchEnd);
+                                            rng.Find.ClearFormatting();
+                                            rng.Find.Text = search;
+                                            bool find = rng.Find.Execute(
+                                            ref missing, ref missing, ref missing, ref missing, ref missing,
+                                            ref missing, ref missing, ref missing, ref missing, ref missing,
+                                            ref missing, ref missing, ref missing, ref missing, ref missing);
+                                            if (find && rng.End <= (int)endrRng)
+                                            {
+                                                insertRng = rng.End;
+                                                
+                                            }
+                                            else {
+                                                insertRng = (int)endrRng;
+                                            }
+                                            rng = ActiveDocument.Range(ref insertRng, ref insertRng);
+                                            rng.Text = matchResults.Value;
+                                            startRng = rng.End;
+                                            
+                                        }
+                                        prevMatchEnd = matchResults.Index + matchResults.Length;
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        MessageBox.Show(e.Message);
+                                    }
+                                    endrRng = cita.RngCita.End;
                                     matchResults = matchResults.NextMatch();
                                 }
                                 replaceText += cita.MarkedStr + cita.BreakLines;
@@ -536,6 +582,7 @@ namespace RegexMarkup
                     colorizeRange.Find.Replacement.Font.Size = 11;
                     colorizeRange.Find.Replacement.Font.Name = "Arial";
                     colorizeRange.Find.Replacement.Font.Bold = 0;
+                    colorizeRange.Find.Replacement.Font.Italic = 0;
                     startTagSuccess = colorizeRange.Find.Execute(ref missingval, ref missingval, ref missingval,
                         ref missingval, ref missingval, ref missingval, ref missingval,
                         ref missingval, ref missingval, ref missingval, ref replaceAll,
@@ -547,6 +594,7 @@ namespace RegexMarkup
                     colorizeRange.Find.Replacement.Font.Color = colors[color];
                     colorizeRange.Find.Replacement.Font.Size = 11;
                     colorizeRange.Find.Replacement.Font.Bold = 0;
+                    colorizeRange.Find.Replacement.Font.Italic = 0;
                     colorizeRange.Find.Replacement.Font.Name = "Arial";
                     endTagSuccess = colorizeRange.Find.Execute(ref missingval, ref missingval, ref missingval,
                         ref missingval, ref missingval, ref missingval, ref missingval,
