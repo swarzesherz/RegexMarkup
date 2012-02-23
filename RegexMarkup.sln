@@ -1,11 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexMarkup", "RegexMarkup\RegexMarkup.csproj", "{03A41239-A6D2-4B3C-86ED-E9221067C2FD}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RegexMarkupSetup", "RegexMarkupSetup\RegexMarkupSetup", "{809F3DC5-FEFC-4514-A57C-A17B441211B5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetSecurity", "SetSecurity\SetSecurity.csproj", "{56E8E807-0807-45E0-B19A-98912AE47630}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexMarkup", "RegexMarkup\RegexMarkup.csproj", "{E3637B7E-8F3C-4F38-B373-D9200D390D04}"
+	ProjectSection(ProjectDependencies) = postProject
+		{499527FF-AE52-450F-B3E3-4AD53E1712AD} = {499527FF-AE52-450F-B3E3-4AD53E1712AD}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SgmlReaderDll", "sgmlreaderdll\SgmlReaderDll.csproj", "{499527FF-AE52-450F-B3E3-4AD53E1712AD}"
 EndProject
@@ -15,16 +14,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{03A41239-A6D2-4B3C-86ED-E9221067C2FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{03A41239-A6D2-4B3C-86ED-E9221067C2FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{03A41239-A6D2-4B3C-86ED-E9221067C2FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{03A41239-A6D2-4B3C-86ED-E9221067C2FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{809F3DC5-FEFC-4514-A57C-A17B441211B5}.Debug|Any CPU.ActiveCfg = Debug
-		{809F3DC5-FEFC-4514-A57C-A17B441211B5}.Release|Any CPU.ActiveCfg = Release
-		{56E8E807-0807-45E0-B19A-98912AE47630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56E8E807-0807-45E0-B19A-98912AE47630}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56E8E807-0807-45E0-B19A-98912AE47630}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56E8E807-0807-45E0-B19A-98912AE47630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3637B7E-8F3C-4F38-B373-D9200D390D04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3637B7E-8F3C-4F38-B373-D9200D390D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3637B7E-8F3C-4F38-B373-D9200D390D04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3637B7E-8F3C-4F38-B373-D9200D390D04}.Release|Any CPU.Build.0 = Release|Any CPU
 		{499527FF-AE52-450F-B3E3-4AD53E1712AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{499527FF-AE52-450F-B3E3-4AD53E1712AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{499527FF-AE52-450F-B3E3-4AD53E1712AD}.Release|Any CPU.ActiveCfg = Release|Any CPU

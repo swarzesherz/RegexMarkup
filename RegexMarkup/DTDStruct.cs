@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using Sgml;
 using System.Windows.Forms;
+using Sgml;
 
 namespace RegexMarkup
 {
