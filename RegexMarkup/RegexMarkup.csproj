@@ -38,7 +38,7 @@
     <PublishUrl>ftp://132.248.9.166/RegexMarkupDist/</PublishUrl>
     <InstallUrl>http://132.248.9.166/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.7.0.3</ApplicationVersion>
+    <ApplicationVersion>0.7.0.7</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -187,6 +187,7 @@
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Deployment" />
   </ItemGroup>
   <!--
     This section defines the user source files that are part of the project.
@@ -199,6 +200,7 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="AssemblyInfoHelper.cs" />
     <Compile Include="dictionaryDTD.cs" />
     <Compile Include="DTDStruct.cs" />
     <Compile Include="Forms\ConfigRegexMarkup.cs">
@@ -276,6 +278,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="markup.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="regex.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
