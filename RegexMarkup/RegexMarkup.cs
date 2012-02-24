@@ -51,7 +51,7 @@ namespace RegexMarkup
         ///<summary>
         ///Procedimiento al que llamaremos para inciar el proceso de marcación
         ///</summary>
-        public void startMarkup(Office.CommandBarButton ctrl, ref bool cancel)
+        public void startMarkup()
         {
             //DTDStruct DTDarticle = new DTDStruct();
             /* Declaracion de variables */

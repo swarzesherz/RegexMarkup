@@ -129,7 +129,7 @@
   <data name="configRegexMarkup_title" xml:space="preserve">
     <value>Configuratión RegexMarkup</value>
   </data>
-  <data name="Main_configuration" xml:space="preserve">
+  <data name="RibbonRegexMarkup_buttonConfiguration" xml:space="preserve">
     <value>Configuración</value>
   </data>
   <data name="RegexMarkup_issnNotDefined" xml:space="preserve">

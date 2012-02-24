@@ -32,13 +32,13 @@
     <IsWebBootstrapper>True</IsWebBootstrapper>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>RegexMarkup.pfx</AssemblyOriginatorKeyFile>
+    <TargetFrameworkSubset>Full</TargetFrameworkSubset>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
-    <BootstrapperComponentsUrl>http://132.248.9.166</BootstrapperComponentsUrl>
+    <BootstrapperComponentsUrl>http://132.248.9.166/</BootstrapperComponentsUrl>
     <PublishUrl>ftp://132.248.9.166/RegexMarkupDist/</PublishUrl>
     <InstallUrl>http://132.248.9.166/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.5.0.13</ApplicationVersion>
+    <ApplicationVersion>0.7.0.3</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -68,7 +68,7 @@
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
+      <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Office.PIARedist.2007">
       <Visible>False</Visible>
@@ -238,9 +238,13 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="RibbonRegexMarkup.resx">
+      <DependentUpon>RibbonRegexMarkup.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
@@ -253,6 +257,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="RegexMarkup.cs" />
+    <Compile Include="RibbonRegexMarkup.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RibbonRegexMarkup.Designer.cs">
+      <DependentUpon>RibbonRegexMarkup.cs</DependentUpon>
+    </Compile>
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -289,7 +299,7 @@
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
         <ProjectProperties HostName="Word" HostPackage="{D2B20FF5-A6E5-47E1-90E8-463C6860CB05}" OfficeVersion="12.0" VstxVersion="3.0" ApplicationType="Word" Language="cs" TemplatesPath="" DebugInfoExeName="#Software\Microsoft\Office\12.0\Word\InstallRoot\Path#WINWORD.EXE" DebugInfoCommandLine="/w" AddItemTemplatesGuid="{147FB6A7-F239-4523-AE65-B6A4E49B361F}" />
         <Host Name="Word" GeneratedCodeNamespace="RegexMarkup" PublishedHash="69C324AB27932AA2FBF2B7EA72250886FF164DE6" IconIndex="0">
-          <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" PublishedHash="03DB9621349CF9D73230EFD70EEEA48FEE0718C5" />
+          <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" PublishedHash="03DB9621349CF9D73230EFD70EEEA48FEE0718C5" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
         </Host>
         <ProjectClient>
           <VSTO_CompatibleProducts ErrorProduct="Este proyecto requiere Microsoft Office Word 2007 y los ensamblados de interoperabilidad primarios registrados, pero no están instalados." ErrorPIA="Este proyecto hace referencia al ensamblado de interoperabilidad primario para Microsoft Office Word 2007, pero este ensamblado no está instalado.">

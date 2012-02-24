@@ -2192,4 +2192,7 @@
         <nombre>Ingeniería, investigación y tecnología</nombre>
         <regex>((?:.+?\ y\ .+?)|.+?)\.\ (.+?)(?:\.\ |\?\ )(.*)</regex>
     </revista>
+    <revista issn="0065-1737">
+        <nombre>Acta zoológica mexicana</nombre>
+    </revista>
 </reglas>
