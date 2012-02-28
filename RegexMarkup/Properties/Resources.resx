@@ -177,10 +177,16 @@
   <data name="ValidateMarkup_title" xml:space="preserve">
     <value>Validación y marcación de las citas</value>
   </data>
-  <data name="ValidateMarkup_buttonSave" xml:space="preserve">
+  <data name="configRegexMarkup_buttonSave" xml:space="preserve">
     <value>Guardar</value>
   </data>
   <data name="Waiting_labelWait" xml:space="preserve">
     <value>Espere por favor</value>
+  </data>
+  <data name="configRegexMarkup_buttonExaminar" xml:space="preserve">
+    <value>Examinar...</value>
+  </data>
+  <data name="configRegexMarkup_labelExternalFile" xml:space="preserve">
+    <value>Usar archivo externo</value>
   </data>
 </root>

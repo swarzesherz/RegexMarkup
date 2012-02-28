@@ -61,6 +61,24 @@ namespace RegexMarkup.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Examinar....
+        /// </summary>
+        internal static string configRegexMarkup_buttonExaminar {
+            get {
+                return ResourceManager.GetString("configRegexMarkup_buttonExaminar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Guardar.
+        /// </summary>
+        internal static string configRegexMarkup_buttonSave {
+            get {
+                return ResourceManager.GetString("configRegexMarkup_buttonSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Ingles.
         /// </summary>
         internal static string configRegexMarkup_enUS {
@@ -75,6 +93,15 @@ namespace RegexMarkup.Properties {
         internal static string configRegexMarkup_esES {
             get {
                 return ResourceManager.GetString("configRegexMarkup_esES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Usar archivo externo.
+        /// </summary>
+        internal static string configRegexMarkup_labelExternalFile {
+            get {
+                return ResourceManager.GetString("configRegexMarkup_labelExternalFile", resourceCulture);
             }
         }
         
@@ -183,15 +210,6 @@ namespace RegexMarkup.Properties {
         internal static string ValidateMarkup_buttonPrev {
             get {
                 return ResourceManager.GetString("ValidateMarkup_buttonPrev", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Guardar.
-        /// </summary>
-        internal static string ValidateMarkup_buttonSave {
-            get {
-                return ResourceManager.GetString("ValidateMarkup_buttonSave", resourceCulture);
             }
         }
         

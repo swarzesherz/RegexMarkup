@@ -38,7 +38,7 @@
     <PublishUrl>ftp://132.248.9.166/RegexMarkupDist/</PublishUrl>
     <InstallUrl>http://132.248.9.166/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.7.0.7</ApplicationVersion>
+    <ApplicationVersion>0.7.0.10</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>

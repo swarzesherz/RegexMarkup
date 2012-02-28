@@ -90,7 +90,8 @@ namespace RegexMarkup
                         i++;
                     }
                 }
-                catch (Exception e) { }
+                catch (Exception e) { 
+                }
             }
         }
         #endregion

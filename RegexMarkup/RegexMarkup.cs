@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using RegexMarkup.Properties;
 using RegexMarkup.Forms;
+using System.Deployment.Application;
 
 namespace RegexMarkup
 {
@@ -62,8 +63,8 @@ namespace RegexMarkup
             String FixedMarkedString = null;
             String replaceText = null;
             String issn = null;
-            String pathXML = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "regex.xml");
-            String pathXMLColor = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tagColors.xml");
+            String pathXML = null;
+            String pathXMLColor = null;
             Word.Selection docSeleccion = null;
             XmlDocument xmlDoc = new XmlDocument();
             XmlDocument xmlDocColor = new XmlDocument();
@@ -76,7 +77,20 @@ namespace RegexMarkup
             Match matchResults = null;
             Match matchResults2 = null;
             objRegExp = new Regex(@"\[[^\]]+?\]", options);
-
+            /*Definiendo directorios de los xml*/
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                pathXML = Path.Combine(ApplicationDeployment.CurrentDeployment.DataDirectory, "regex.xml");
+                pathXMLColor = Path.Combine(ApplicationDeployment.CurrentDeployment.DataDirectory, "tagColors.xml");
+            }
+            else {
+                pathXML = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "regex.xml");
+                pathXMLColor = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tagColors.xml");
+            }
+            /*Verificamos si vamos a usar un archivo externo para las reglas*/
+            if (Settings.Default.useExternalRegexFile) {
+                pathXML = Settings.Default.externalRegexFile;
+            }
             /* Inicializamos variables */
             ActiveDocument = Globals.ThisAddIn.Application.ActiveDocument;
             /* Leemos y verificamos que el issn exista */

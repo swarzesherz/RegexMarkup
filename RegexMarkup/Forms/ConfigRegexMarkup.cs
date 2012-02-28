@@ -58,9 +58,17 @@ namespace RegexMarkup
             }
             this.comboBoxLang.SelectedValueChanged += new EventHandler(comboBoxLang_SelectedValueChanged);
             /* Textos del formulario */
-            this.buttonSave.Text = Resources.ValidateMarkup_buttonSave;
+            this.buttonSave.Text = Resources.configRegexMarkup_buttonSave;
+            this.buttonExaminar.Text = Resources.configRegexMarkup_buttonExaminar;
             this.labelLanguage.Text = Resources.configRegexMarkup_language;
+            this.labelExternalFile.Text = Resources.configRegexMarkup_labelExternalFile;
             this.Text = Resources.configRegexMarkup_title;
+            /*Valores iniciales*/
+            this.checkBoxExternalFile.Checked = Settings.Default.useExternalRegexFile;
+            this.textBoxExternalFile.Text = Settings.Default.externalRegexFile;
+            this.textBoxExternalFile.Enabled = this.checkBoxExternalFile.Checked;
+            this.buttonExaminar.Enabled = this.checkBoxExternalFile.Checked;
+            this.openFileDialogRegex.Filter = "Archivos (*.xml)|*.xml";
             
         }
 
@@ -105,5 +113,23 @@ namespace RegexMarkup
             RemoveMenu(hMenu, menuItemCount - 1, MF_BYPOSITION);
         }
         #endregion
+
+        private void openFileDialogRegex_FileOk(object sender, CancelEventArgs e)
+        {
+            this.textBoxExternalFile.Text = this.openFileDialogRegex.FileName;
+            Settings.Default.externalRegexFile = this.openFileDialogRegex.FileName;
+        }
+
+        private void buttonExaminar_Click(object sender, EventArgs e)
+        {
+            this.openFileDialogRegex.ShowDialog();
+        }
+
+        private void checkBoxExternalFile_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.Default.useExternalRegexFile = this.checkBoxExternalFile.Checked;
+            this.textBoxExternalFile.Enabled = this.checkBoxExternalFile.Checked;
+            this.buttonExaminar.Enabled = this.checkBoxExternalFile.Checked;
+        }
     }
 }
