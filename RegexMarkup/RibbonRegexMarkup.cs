@@ -57,6 +57,7 @@ namespace RegexMarkup
         {
             this.configForm = ConfigRegexMarkup.Instance;
             this.configForm.ShowDialog();
+            this.buttonConfig.Label = Resources.RibbonRegexMarkup_buttonConfiguration;
         }
 
         #region SetAddRemoveProgramsIcon

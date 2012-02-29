@@ -10,7 +10,6 @@ namespace RegexMarkup
     {
         private String originalStr = null;
         private RichTextBox markedRtb = null;
-        private String breakLines = null;
         private Boolean marked = false;
         private Boolean colorized = false;
         private Word.Range rngCita = null;
@@ -22,7 +21,6 @@ namespace RegexMarkup
             this.markedRtb.Text = markedStr;
             this.marked = marked;
             this.rngCita = rngCita;
-            this.breakLines = "\r";
         }
 
         public String OriginalStr {
@@ -52,17 +50,6 @@ namespace RegexMarkup
             set
             {
                 this.markedRtb.Rtf = value;
-            }
-        }
-
-        public String BreakLines {
-            get
-            {
-                return this.breakLines;
-            }
-            set
-            {
-                this.breakLines = value;
             }
         }
 

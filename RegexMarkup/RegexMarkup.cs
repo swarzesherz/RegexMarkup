@@ -142,11 +142,7 @@ namespace RegexMarkup
                             object parrafoEnd = (parrafo.Range.End - 1);
                             subjetcString = ActiveDocument.Range(ref parrafoStart, ref parrafoEnd).Text;
                             //MessageBox.Show(subjetcString, "Texto de parrafo");
-                            if (subjetcString == null)
-                            {
-                                citas[citas.Count - 1].BreakLines += "\r\n";
-                            }
-                            else
+                            if (subjetcString != null)
                             {
                                 try
                                 {
@@ -203,7 +199,6 @@ namespace RegexMarkup
                                         }
                                     }
                                 }
-                                parrafoEnd = parrafo.Range.End;
                                 citas.Add(new markupStruct(subjetcString, FixedMarkedString, marked, ActiveDocument.Range(ref parrafoStart, ref parrafoEnd)));
                             }
                         }
@@ -226,72 +221,17 @@ namespace RegexMarkup
                         waitForm = Waiting.Instance;
                         waitForm.Show();
                         /* Reemplzando texto original por el marcado */
-                        /* Utilizando el rango de texto de la cita original y agregando las etiquetas en su lugar correspondiente para mantener el formato original */
+                        /* Utilizando el rango de texto de la cita original y reemplzado el texto por el marcado */
                         foreach (markupStruct cita in citas) {
-                            int prevMatchEnd = 0;
-                            object startRng = cita.RngCita.Start;
-                            object endrRng = cita.RngCita.End;
-                            object insertRng = cita.RngCita.Start;
-                            Word.Range rng = null;
                             if(cita.Marked){
-                                matchResults = objRegExp.Match(cita.MarkedStr);
-                                while (matchResults.Success) {
-                                    try
-                                    {
-                                        rng = ActiveDocument.Range(ref startRng, ref endrRng);
-                                        if (prevMatchEnd == matchResults.Index) {
-                                            rng.InsertBefore(matchResults.Value);
-                                            startRng = rng.Start + matchResults.Length;
-                                        }else{
-                                            
-                                            String search = cita.MarkedStr.Substring(prevMatchEnd, matchResults.Index - prevMatchEnd);
-                                            rng.Find.ClearFormatting();
-                                            rng.Find.Text = search;
-                                            bool find = rng.Find.Execute(
-                                            ref missing, ref missing, ref missing, ref missing, ref missing,
-                                            ref missing, ref missing, ref missing, ref missing, ref missing,
-                                            ref missing, ref missing, ref missing, ref missing, ref missing);
-                                            if (find && rng.End <= (int)endrRng)
-                                            {
-                                                insertRng = rng.End;
-                                                
-                                            }
-                                            else {
-                                                insertRng = (int)endrRng;
-                                            }
-                                            rng = ActiveDocument.Range(ref insertRng, ref insertRng);
-                                            rng.Text = matchResults.Value;
-                                            startRng = rng.End;
-                                            
-                                        }
-                                        prevMatchEnd = matchResults.Index + matchResults.Length;
-                                    }
-                                    catch (Exception e)
-                                    {
-                                        MessageBox.Show(e.Message);
-                                    }
-                                    endrRng = cita.RngCita.End;
-                                    matchResults = matchResults.NextMatch();
-                                }
-                                replaceText += cita.MarkedStr + cita.BreakLines;
-                            }else{
-                                replaceText += cita.OriginalStr + cita.BreakLines;
+                                cita.RngCita.Text = cita.MarkedStr;
+                                /* Coloreando Etiquetas (Tags) */
+                                Word.Range refrange = cita.RngCita;
+                                this.colorRefTags(ref refrange, structNodeColor, 0);
                             }
                              
                         }
-                        
-                        /* Volvemos a seleccionar el texto desde el inicio de la seleccion inicial mas el total de la cadena con etiquetas */
-                        int selectionStart = docSeleccion.Range.Start;
-                        int selectionEnd = (docSeleccion.Range.Start + replaceText.Length);
-                        start.SetRange(selectionStart, selectionEnd);
-                        start.Select();
-                        /* Coloreando Etiquetas (Tags) */
-                        
-                        foreach (Word.Paragraph parrafo in docSeleccion.Paragraphs)
-                        {
-                            Word.Range refrange = parrafo.Range;
-                            this.colorRefTags(ref refrange, structNodeColor, 0);
-                        }
+                       
                         /* Mostramos de nuevo la aplicacion */
                         waitForm.Hide();
                         Globals.ThisAddIn.Application.Visible = true;
