@@ -123,6 +123,13 @@ namespace RegexMarkup.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap downArrow {
+            get {
+                object obj = ResourceManager.GetObject("downArrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Busca una cadena traducida similar a No esta definido issn.
         /// </summary>
@@ -165,6 +172,13 @@ namespace RegexMarkup.Properties {
         internal static string RibbonRegexMarkup_buttonConfiguration {
             get {
                 return ResourceManager.GetString("RibbonRegexMarkup_buttonConfiguration", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap upArrow {
+            get {
+                object obj = ResourceManager.GetObject("upArrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

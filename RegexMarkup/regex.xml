@@ -724,7 +724,7 @@
                                     <opcion>
                                         <regex>(.+?\),\s*)(.+?)(,\s*)(\d.+?)(,\s*)(\d[^.]+?)(\.\s*$)</regex>
                                         <struct>
-                                            <oiserial tag="true">
+                                            <omonog tag="true">
                                                 <autores>
                                                     <value>$1</value>
                                                     <regex>(.+?\.)(,*\s\(.+?\),\s*|\sy\s|\sand\s|,\s|\s$)</regex>
@@ -772,7 +772,7 @@
                                                     <value>$4</value>
                                                     <multiple>
                                                         <opcion>
-                                                            <regex>(^\d*?)(\s*\()(\d*?|\d*?[-–]\d*)(\))</regex>
+                                                            <regex>(^\d+?)(\s?\()(\d+?|\d+?[-–]\d+)(\)$)</regex>
                                                             <struct>
                                                                 <volid tag="true">
                                                                     <value>$1</value>
@@ -799,7 +799,7 @@
                                                     <value>$6</value>
                                                     <postvalue>$7</postvalue>
                                                 </pages>
-                                            </oiserial>
+                                            </omonog>
                                         </struct>
                                     </opcion>
                                     <opcion>
@@ -985,7 +985,7 @@
                                     <value>$8</value>
                                     <multiple>
                                         <opcion>
-                                            <regex>(^\d*?)(\s*\()(\d*?|\d*?[-–]\d*)(\))</regex>
+                                            <regex>(^\d+?)(\s?\()(\d+?|\d+?[-–]\d+)(\)$)</regex>
                                             <struct>
                                                 <volid tag="true">
                                                     <value>$1</value>
@@ -1152,7 +1152,7 @@
                     </opcion>
                 </multiple>
             </ocitat>
-        </struct>    
+        </struct>
     </revista>
     <revista issn="0185-3880">
         <nombre>Ciencias marinas</nombre>
@@ -1164,7 +1164,7 @@
                     <opcion>
                         <regex>(.+?\.\s*)((?:19|20)[0-9]{2})([a-z]*[,.]\s)(.+?)([.?:]\s[IE]n:\s*)(.*)</regex>
                         <struct>
-                                <contrib tag="true">
+                                <ocontrib tag="true">
                                     <autores>
                                         <value>$1</value>
                                         <regex>(.+?)(\.\ |,\ )</regex>
@@ -1201,7 +1201,7 @@
                                         </attr>
                                         <value>$4</value>
                                     </title>
-                                </contrib>
+                                </ocontrib>
                             <omonog tag="true">
                                 <prevalue>$5</prevalue>
                                 <value>$6</value>

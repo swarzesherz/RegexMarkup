@@ -69,7 +69,6 @@ namespace RegexMarkup
             this.textBoxExternalFile.Enabled = this.checkBoxExternalFile.Checked;
             this.buttonExaminar.Enabled = this.checkBoxExternalFile.Checked;
             this.openFileDialogRegex.Filter = "Archivos (*.xml)|*.xml";
-            
         }
 
         private void comboBoxLang_SelectedValueChanged(object sender, EventArgs e)

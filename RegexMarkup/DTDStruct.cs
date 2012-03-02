@@ -10,41 +10,37 @@ namespace RegexMarkup
     class DTDStruct
     {
         private String name = null;
+        private String description = null;
         private Dictionary<String, DTDStruct> childs = null;
         private DTDStruct parent = null;
+
+        public static SgmlDtd DTDScielo { 
+            get
+            {
+                SgmlReader reader = new SgmlReader();
+                reader.CaseFolding = Sgml.CaseFolding.ToLower;
+                String sgmlArticle = @"C:\Users\Herz\Dropbox\SciELO_Files\Automatas\RegexMarkup\RegexMarkup\SGML\art4_0.dtd";
+                reader.SystemLiteral = sgmlArticle;
+                return reader.Dtd;;
+            }
+        }
 
         public DTDStruct() {
             /* Test Sgml */
             try
             {
-                SgmlReader reader = new SgmlReader();
-                reader.CaseFolding = Sgml.CaseFolding.ToLower;
-                String sgmlArticle = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"SGML\art4_0.dtd");
-                reader.SystemLiteral = sgmlArticle;
-                SgmlDtd DTDScielo = reader.Dtd;
-                ElementDecl article = DTDScielo.FindElement("OAUTHOR");
-                ElementDecl ocitat = DTDScielo.FindElement("FNAME");
-                getChilds();
-                foreach(Object single in article.ContentModel.CurrentModel.CurrentMembers){
-                    //MessageBox.Show(single.GetType().Namespace+"."+single.GetType().Name);
-                    if (single.GetType().Namespace + "." + single.GetType().Name == "Sgml.Group")
-                    {
-                        //MessageBox.Show(subelements.ToString());
-                        foreach (String elemnet in ((Sgml.Group)single).CurrentMembers)
-                        {
-                            MessageBox.Show(elemnet);
-
-                        }
-                    }
-                    else {
-                        MessageBox.Show((String) single);
-                    }
+                this.name = "OCITAT";
+                ElementDecl article = DTDStruct.DTDScielo.FindElement(this.name);
+                if (article.ContentModel.CurrentModel.CurrentMembers.Count > 0)
+                {
+                    this.childs = new Dictionary<string, DTDStruct>();
+                    this.getChilds(article.ContentModel.CurrentModel);
                 }
 
             }
             catch (Exception e)
             {
-                //MessageBox.Show(e.Message);
+                MessageBox.Show(e.Message);
             }
         }
         #region
@@ -53,12 +49,36 @@ namespace RegexMarkup
         /// </summary>
         /// <param name="Name"></param>
         /// 
-        public void getChilds() { 
-            
+        private void getChilds(Sgml.Group model) {
+            foreach (Object child in model.CurrentMembers) {
+                if (child.GetType().Namespace + "." + child.GetType().Name == "Sgml.Group")
+                {
+                    //MessageBox.Show(subelements.ToString());
+                    this.getChilds((Sgml.Group)child);
+                }
+                else
+                {
+                    //MessageBox.Show((String)child);
+                    this.addChild(child.ToString(), new DTDStruct(child.ToString()));
+                }
+            }
         }
         #endregion
         public DTDStruct(String Name) {
             this.name = Name;
+            /* Test Sgml */
+            try
+            {
+                ElementDecl article = DTDStruct.DTDScielo.FindElement(Name);
+                if (article.ContentModel.CurrentModel.CurrentMembers.Count > 0) {
+                    this.childs = new Dictionary<string, DTDStruct>(); 
+                    this.getChilds(article.ContentModel.CurrentModel);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
         public DTDStruct(String Name, DTDStruct Parent)
         {
@@ -95,7 +115,9 @@ namespace RegexMarkup
         }
         public void addChild(String childName, DTDStruct childValue)
         {
-            this.childs.Add(childName, childValue);
+            if (!this.childs.ContainsKey(childName)) {
+                this.childs.Add(childName, childValue);
+            }
         }
         public String Name {
             get {

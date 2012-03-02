@@ -55,15 +55,15 @@ namespace RegexMarkup
             // richTextBoxMarkup
             // 
             this.richTextBoxMarkup.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxMarkup.Location = new System.Drawing.Point(12, 168);
+            this.richTextBoxMarkup.Location = new System.Drawing.Point(12, 221);
             this.richTextBoxMarkup.Name = "richTextBoxMarkup";
-            this.richTextBoxMarkup.Size = new System.Drawing.Size(690, 184);
+            this.richTextBoxMarkup.Size = new System.Drawing.Size(765, 184);
             this.richTextBoxMarkup.TabIndex = 1;
             this.richTextBoxMarkup.Text = "";
             // 
             // buttonFirst
             // 
-            this.buttonFirst.Location = new System.Drawing.Point(13, 383);
+            this.buttonFirst.Location = new System.Drawing.Point(13, 412);
             this.buttonFirst.Name = "buttonFirst";
             this.buttonFirst.Size = new System.Drawing.Size(75, 23);
             this.buttonFirst.TabIndex = 2;
@@ -73,7 +73,7 @@ namespace RegexMarkup
             // 
             // buttonPrev
             // 
-            this.buttonPrev.Location = new System.Drawing.Point(94, 383);
+            this.buttonPrev.Location = new System.Drawing.Point(94, 412);
             this.buttonPrev.Name = "buttonPrev";
             this.buttonPrev.Size = new System.Drawing.Size(75, 23);
             this.buttonPrev.TabIndex = 3;
@@ -83,7 +83,7 @@ namespace RegexMarkup
             // 
             // buttonNext
             // 
-            this.buttonNext.Location = new System.Drawing.Point(175, 383);
+            this.buttonNext.Location = new System.Drawing.Point(175, 412);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(75, 23);
             this.buttonNext.TabIndex = 4;
@@ -93,7 +93,7 @@ namespace RegexMarkup
             // 
             // buttonLast
             // 
-            this.buttonLast.Location = new System.Drawing.Point(256, 383);
+            this.buttonLast.Location = new System.Drawing.Point(256, 412);
             this.buttonLast.Name = "buttonLast";
             this.buttonLast.Size = new System.Drawing.Size(75, 23);
             this.buttonLast.TabIndex = 5;
@@ -113,7 +113,7 @@ namespace RegexMarkup
             // labelMarkup
             // 
             this.labelMarkup.AutoSize = true;
-            this.labelMarkup.Location = new System.Drawing.Point(9, 148);
+            this.labelMarkup.Location = new System.Drawing.Point(9, 147);
             this.labelMarkup.Name = "labelMarkup";
             this.labelMarkup.Size = new System.Drawing.Size(69, 13);
             this.labelMarkup.TabIndex = 8;
@@ -122,7 +122,7 @@ namespace RegexMarkup
             // radioButtonYes
             // 
             this.radioButtonYes.AutoSize = true;
-            this.radioButtonYes.Location = new System.Drawing.Point(406, 386);
+            this.radioButtonYes.Location = new System.Drawing.Point(406, 415);
             this.radioButtonYes.Name = "radioButtonYes";
             this.radioButtonYes.Size = new System.Drawing.Size(34, 17);
             this.radioButtonYes.TabIndex = 9;
@@ -133,7 +133,7 @@ namespace RegexMarkup
             // radioButtonNo
             // 
             this.radioButtonNo.AutoSize = true;
-            this.radioButtonNo.Location = new System.Drawing.Point(446, 386);
+            this.radioButtonNo.Location = new System.Drawing.Point(446, 415);
             this.radioButtonNo.Name = "radioButtonNo";
             this.radioButtonNo.Size = new System.Drawing.Size(39, 17);
             this.radioButtonNo.TabIndex = 10;
@@ -144,7 +144,7 @@ namespace RegexMarkup
             // labelCitationStatus
             // 
             this.labelCitationStatus.AutoSize = true;
-            this.labelCitationStatus.Location = new System.Drawing.Point(337, 388);
+            this.labelCitationStatus.Location = new System.Drawing.Point(337, 417);
             this.labelCitationStatus.Name = "labelCitationStatus";
             this.labelCitationStatus.Size = new System.Drawing.Size(63, 13);
             this.labelCitationStatus.TabIndex = 11;
@@ -156,14 +156,14 @@ namespace RegexMarkup
             this.richTextBoxOriginal.Location = new System.Drawing.Point(12, 25);
             this.richTextBoxOriginal.Name = "richTextBoxOriginal";
             this.richTextBoxOriginal.ReadOnly = true;
-            this.richTextBoxOriginal.Size = new System.Drawing.Size(690, 113);
+            this.richTextBoxOriginal.Size = new System.Drawing.Size(765, 113);
             this.richTextBoxOriginal.TabIndex = 13;
             this.richTextBoxOriginal.Text = "";
             // 
             // buttonEnd
             // 
             this.buttonEnd.AutoSize = true;
-            this.buttonEnd.Location = new System.Drawing.Point(598, 380);
+            this.buttonEnd.Location = new System.Drawing.Point(702, 412);
             this.buttonEnd.Name = "buttonEnd";
             this.buttonEnd.Size = new System.Drawing.Size(75, 23);
             this.buttonEnd.TabIndex = 14;
@@ -176,7 +176,7 @@ namespace RegexMarkup
             this.citationOf.AutoSize = true;
             this.citationOf.Dock = System.Windows.Forms.DockStyle.Right;
             this.citationOf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.citationOf.Location = new System.Drawing.Point(625, 0);
+            this.citationOf.Location = new System.Drawing.Point(697, 0);
             this.citationOf.Name = "citationOf";
             this.citationOf.Padding = new System.Windows.Forms.Padding(0, 3, 12, 0);
             this.citationOf.Size = new System.Drawing.Size(87, 18);
@@ -187,7 +187,7 @@ namespace RegexMarkup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 418);
+            this.ClientSize = new System.Drawing.Size(784, 444);
             this.Controls.Add(this.citationOf);
             this.Controls.Add(this.buttonEnd);
             this.Controls.Add(this.richTextBoxOriginal);

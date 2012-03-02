@@ -60,8 +60,7 @@ namespace RegexMarkup
             String patternString = null;
             String subjetcString = null;
             String markedString = null;
-            String FixedMarkedString = null;
-            String replaceText = null;
+            String fixedMarkedString = null;
             String issn = null;
             String pathXML = null;
             String pathXMLColor = null;
@@ -158,7 +157,7 @@ namespace RegexMarkup
                                 }
                                 else {
                                     /* Relizamos un proceso para verificar que la cita marca sea la misma que la original y agregamos cadenas faltantes*/
-                                    FixedMarkedString = subjetcString;
+                                    fixedMarkedString = subjetcString;
                                     /* Se comparara el texto comprendido entre etiquetas*/
                                     matchResults = objRegExp.Match(markedString);
                                     matchResults2 = matchResults.NextMatch();
@@ -173,21 +172,22 @@ namespace RegexMarkup
                                             int end = startMatch + matchResults.Length;
                                             int startMatch2 = matchResults2.Index + startDiffAdd;
                                             /* Insertamos la etiqueta en su lugar correspondinete con su respectiva diferencia */
-                                            FixedMarkedString = FixedMarkedString.Insert(startMatch, matchResults.Value);
+                                            fixedMarkedString = fixedMarkedString.Insert(startMatch, matchResults.Value);
                                             /* Verificamos si el contenido entre etiquetas es el mismo en la etiqueta marcada y en la reconstruida */
-                                            if (end < startMatch2 && FixedMarkedString.Substring(end, (startMatch2 - end)) != markedString.Substring(end - startDiffAdd, (startMatch2 - end)))
+                                            if (end < startMatch2 && fixedMarkedString.Substring(end, (startMatch2 - end)) != markedString.Substring(end - startDiffAdd, (startMatch2 - end)))
                                             {
-                                                String strOriginal = FixedMarkedString.Substring(end, (startMatch2 - end));
-                                                String strMaked = markedString.Substring(end - startDiffAdd, (startMatch2 - end));
+                                                String strOriginal = fixedMarkedString.Substring(end, (startMatch2 - end));
+                                                String strMarked = markedString.Substring(end - startDiffAdd, (startMatch2 - end));
+                                                String searchDiff = fixedMarkedString.Substring(end);
                                                 /* Verificamos donde inicia la diferencia entre las etiquetas*/
-                                                int startDiff = FixedMarkedString.LastIndexOf(markedString.Substring(end, (startMatch2 - end))); 
+                                                int startDiff = searchDiff.IndexOf(strMarked) + end; 
                                                 if (startDiff > 0)
                                                 {
                                                     /* Colocamos la etiqueta en su lugar adecuado en la cita reconstruida */
-                                                    FixedMarkedString = FixedMarkedString.Remove(startMatch, matchResults.Length);
-                                                    FixedMarkedString = FixedMarkedString.Insert((startDiff - matchResults.Length), matchResults.Value);
+                                                    fixedMarkedString = fixedMarkedString.Remove(startMatch, matchResults.Length);
+                                                    fixedMarkedString = fixedMarkedString.Insert((startDiff - matchResults.Length), matchResults.Value);
                                                     /* Agregamos la longitud de los carateres que se encuentran ya en la cadena reconstruida */
-                                                    startDiffAdd += FixedMarkedString.Substring(end, (startDiff - end)).Length;
+                                                    startDiffAdd += fixedMarkedString.Substring(end, (startDiff - end)).Length;
                                                 }
                                                 
                                             }
@@ -199,7 +199,7 @@ namespace RegexMarkup
                                         }
                                     }
                                 }
-                                citas.Add(new markupStruct(subjetcString, FixedMarkedString, marked, ActiveDocument.Range(ref parrafoStart, ref parrafoEnd)));
+                                citas.Add(new markupStruct(subjetcString, fixedMarkedString, marked, ActiveDocument.Range(ref parrafoStart, ref parrafoEnd)));
                             }
                         }
                         /* Cargamos el archivo xml donde se encuetra la lista de etiquetas que se pueden colorear */
