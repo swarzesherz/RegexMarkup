@@ -50,29 +50,33 @@ namespace RegexMarkup
             this.buttonEnd.Text = Resources.ValidateMarkup_buttonEnd;
             this.radioButtonNo.Text = Resources.ValidateMarkup_radioButtonNo;
             this.radioButtonYes.Text = Resources.ValidateMarkup_radioButtonYes;
-            this.addMarkupButtons("other", null);
+            this.addMarkupButtons("article", null);
         }
-        /*Coloca los botones de forma dinamica en el formulario a partir de un nodo padre*/
-        public void addMarkupButtons(String node, String parentNode) {
+
+        #region addMarkupButtons
+        /// <summary>
+        /// Coloca los botones de forma dinamica en el formulario a partir de un nodo padre
+        /// </summary>
+        public void addMarkupButtons(String node, String parentGroup) {
             node = node.ToLower();
             /* Verificamos si existe el grupo de botoes y si no lo creamos y agregamos los botones correspondientes*/
             if (!this.groupMarkupButtons.ContainsKey(node))
             {
                 ElementDecl article = DTDStruct.DTDScielo.FindElement(node);
-                List<MarkupButton> childs = new List<MarkupButton>();
-                /*Agregamos un boton para ver los botones del nodo padre*/
-                if (parentNode != null)
+                Dictionary<String, MarkupButton> childs = new Dictionary<String, MarkupButton>();
+                /*Agregamos un boton para regresar al grupo al que pertenece el nodo padre*/
+                if (parentGroup != null)
                 {
-                    childs.Add(new MarkupButton());
-                    childs[0].Markup = new Button();
-                    childs[0].Markup.AutoSize = true;
-                    childs[0].Markup.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-                    childs[0].Markup.Name = parentNode + "Parent";
-                    childs[0].Markup.Image = Resources.upArrow;
-                    childs[0].Markup.FlatStyle = FlatStyle.Flat;
-                    childs[0].Markup.FlatAppearance.BorderSize = 0;
-                    childs[0].Markup.Click += new EventHandler(this.buttonReturnParent_Click);
-                    this.toolTipInfo.SetToolTip(childs[0].Markup, "Regresar al nivel superior " + parentNode);
+                    childs.Add("parentGroup", new MarkupButton());
+                    childs["parentGroup"].Markup = new Button();
+                    childs["parentGroup"].Markup.AutoSize = true;
+                    childs["parentGroup"].Markup.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                    childs["parentGroup"].Markup.Name = parentGroup + "ParentGrp";
+                    childs["parentGroup"].Markup.Image = Resources.upArrow;
+                    childs["parentGroup"].Markup.FlatStyle = FlatStyle.Flat;
+                    childs["parentGroup"].Markup.FlatAppearance.BorderSize = 0;
+                    childs["parentGroup"].Markup.Click += new EventHandler(this.buttonParentGroup_Click);
+                    this.toolTipInfo.SetToolTip(childs["parentGroup"].Markup, "Regresar al nivel superior " + parentGroup);
                 }
                 getChilds(article.ContentModel.CurrentModel, ref childs);
                 /*Creamos el grupo que sera el almacen de los botones del nodo*/
@@ -87,16 +91,17 @@ namespace RegexMarkup
                 /*Posicion de los botones dentro del grupo*/
                 int botonesPosY = 10;
                 /* Agregamos los botones al grupo*/
-                for (int i = 0; i < childs.Count; i++)
-                {
-                    childs[i].Markup.Location = new Point(botonesPosY, 15);
-                    this.groupMarkupButtons[node].Controls.Add(childs[i].Markup);
-                    botonesPosY += childs[i].Markup.Size.Width;
-                    if (childs[i].Childs != null)
+                foreach(String childName in childs.Keys){
+                    /*Agregamos el boton de la etiqueta*/
+                    childs[childName].Markup.Location = new Point(botonesPosY, 15);
+                    this.groupMarkupButtons[node].Controls.Add(childs[childName].Markup);
+                    botonesPosY += childs[childName].Markup.Size.Width;
+                    /*Si la etiqueta tiene nodos hijos y el nodo padre no es el mismo que la tiqueta agregamos el botón para mostrar los nodos hijos*/
+                    if (childs[childName].Childs != null && node != childs[childName].Markup.Name)
                     {
-                        childs[i].Childs.Location = new Point(botonesPosY, 15);
-                        this.groupMarkupButtons[node].Controls.Add(childs[i].Childs);
-                        botonesPosY += childs[i].Childs.Size.Width + 5;
+                        childs[childName].Childs.Location = new Point(botonesPosY, 15);
+                        this.groupMarkupButtons[node].Controls.Add(childs[childName].Childs);
+                        botonesPosY += childs[childName].Childs.Size.Width + 5;
                     }
                     else
                     {
@@ -107,15 +112,21 @@ namespace RegexMarkup
             else {
                 this.groupMarkupButtons[node].Visible = true;
                 /*Si el nodo padre no es nulo y ademas es diferente del actual lo actualizamos*/
-                if (parentNode != null && parentNode != this.groupMarkupButtons[node].Controls[0].Name) {
-                    this.groupMarkupButtons[node].Controls[0].Name = parentNode + "Parent";
-                    this.toolTipInfo.SetToolTip(this.groupMarkupButtons[node].Controls[0], "Regresar al nivel superior " + parentNode);
+                if (parentGroup != null && parentGroup != this.groupMarkupButtons[node].Controls[0].Name) {
+                    this.groupMarkupButtons[node].Controls[0].Name = parentGroup + "ParentGrp";
+                    this.toolTipInfo.SetToolTip(this.groupMarkupButtons[node].Controls[0], "Regresar al nivel superior " + parentGroup);
                 }
             }
-            
+
         }
-        /*Llena una lista con los nodos hijos como botones así como la creacíon de un boton para acceder a los nodos hijos de alguna etiqueta si fuera posible*/
-        private void getChilds(Sgml.Group model, ref List<MarkupButton> childs)
+
+        #endregion
+
+        #region getChilds
+        /// <summary
+        /// Llena una lista con los nodos hijos como botones así como la creacíon de un boton para acceder a los nodos hijos de alguna etiqueta si fuera posible
+        /// </summary>
+        private void getChilds(Sgml.Group model, ref Dictionary<String, MarkupButton> childs)
         {
             foreach (Object child in model.CurrentMembers)
             {
@@ -125,61 +136,49 @@ namespace RegexMarkup
                 }
                 else
                 {
-                    childs.Add(new MarkupButton());
-                    int currentChild = childs.Count - 1;
                     String childName = child.ToString().ToLower();
-                    childs[currentChild].Markup = new Button();
-                    childs[currentChild].Markup.AutoSize = true;
-                    childs[currentChild].Markup.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-                    childs[currentChild].Markup.Name = childName;
-                    childs[currentChild].Markup.Text = childName;
-                    childs[currentChild].Markup.Tag = childName;
-                    childs[currentChild].Markup.FlatStyle = FlatStyle.Flat;
-                    childs[currentChild].Markup.FlatAppearance.BorderSize = 0;
-                    childs[currentChild].Markup.Click += new EventHandler(this.markupButtonTag_Click);
-                    if (DTDStruct.DTDScielo.FindElement(childName).ContentModel.CurrentModel.CurrentMembers.Count > 0) {
-                        childs[currentChild].Childs = new Button();
-                        childs[currentChild].Childs.AutoSize = true;
-                        childs[currentChild].Childs.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-                        childs[currentChild].Childs.Name = childName + "Childs";
-                        childs[currentChild].Childs.Image = Resources.downArrow;
-                        childs[currentChild].Childs.FlatStyle = FlatStyle.Flat;
-                        childs[currentChild].Childs.FlatAppearance.BorderSize = 0;
-                        childs[currentChild].Childs.Click += new EventHandler(this.buttonGetChilds_Click);
-                        this.toolTipInfo.SetToolTip(childs[currentChild].Childs, "Nodos dentro de la etiqueta " + childName);
+                    if (!childs.ContainsKey(childName))
+                    {
+                        childs.Add(childName, new MarkupButton());
+                        childs[childName].Markup = new Button();
+                        childs[childName].Markup.AutoSize = true;
+                        childs[childName].Markup.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                        childs[childName].Markup.Name = childName;
+                        childs[childName].Markup.Text = childName;
+                        childs[childName].Markup.Tag = childName;
+                        childs[childName].Markup.FlatStyle = FlatStyle.Flat;
+                        childs[childName].Markup.FlatAppearance.BorderSize = 0;
+                        childs[childName].Markup.Click += new EventHandler(this.markupButtonTag_Click);
+                        if (DTDStruct.DTDScielo.FindElement(childName).ContentModel.CurrentModel.CurrentMembers.Count > 0)
+                        {
+                            childs[childName].Childs = new Button();
+                            childs[childName].Childs.AutoSize = true;
+                            childs[childName].Childs.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                            childs[childName].Childs.Name = childName + "Childs";
+                            childs[childName].Childs.Image = Resources.downArrow;
+                            childs[childName].Childs.FlatStyle = FlatStyle.Flat;
+                            childs[childName].Childs.FlatAppearance.BorderSize = 0;
+                            childs[childName].Childs.Click += new EventHandler(this.buttonGetChilds_Click);
+                            this.toolTipInfo.SetToolTip(childs[childName].Childs, "Nodos dentro de la etiqueta " + childName);
+                        }
                     }
                 }
             }
         }
-        /*Funcion para para el evento click del boton que muestra los nodos hijos de la etiqueta*/
-        private void buttonGetChilds_Click(object sender, EventArgs e) {
-            Button senderChildsButton = (Button)sender;
-            senderChildsButton.Parent.Visible = false;
-            this.addMarkupButtons(senderChildsButton.Name.Replace("Childs", ""), senderChildsButton.Parent.Name);
-        }
-        /*Funcion para para el evento click del boton que muestra el nodo padre*/
-        private void buttonReturnParent_Click(object sender, EventArgs e)
-        {
-            Button senderButton = (Button)sender;
-            senderButton.Parent.Visible = false;
-            this.addMarkupButtons(senderButton.Name.Replace("Parent", ""), null);
-        }
+        #endregion
+
+        #region General event functions
+        /// <summary>
+        /// Funciones para diferentes tipos de eventos
+        /// </summary>
+
         /*Funcion que ajusta la altura de un groupBox cuando cambia de tamaño*/
         private void groupMarkupButton_SizeChanged(object sender, EventArgs e)
         {
             GroupBox senderGroupBox = (GroupBox)sender;
             this.groupMarkupButtons[senderGroupBox.Name].Height = 45;
         }
-        /*Funcion que marca el texto seleccionado con la etiqueta*/
-        private void markupButtonTag_Click(object sender, EventArgs e) {
-            Button senderMarkupButton = (Button)sender;
-            String openTag = "[" + senderMarkupButton.Name + "]";
-            String closeTag = "[/" + senderMarkupButton.Name + "]";
-            if (this.richTextBoxMarkup.SelectedText != "" && this.richTextBoxMarkup.SelectedText != null) {
-                this.richTextBoxMarkup.SelectedText = openTag + this.richTextBoxMarkup.SelectedText + closeTag;
-                this.currencyManager.Position = this.currencyManager.Position;
-            }
-        }
+        
         /*Funcion que ajusta el tamaño de las cajas de texto cuando el formulario cambia de tamaño*/
         private void ValidateMarkup_SizeChanged(object sender, EventArgs e) {
             this.richTextBoxOriginal.Width = this.Size.Width - 30;
@@ -197,7 +196,39 @@ namespace RegexMarkup
             /* Mostramos la posicion del resultado actual respecto al total */
             this.citationOf.Text = String.Format(Resources.ValidateMarkup_citationOf, (this.currencyManager.Position + 1), this.citas.Count);
         }
+        #endregion
 
+        #region Click events function
+        /// <summary>
+        /// Conjuntos de funciones para los eventos click de los botones
+        /// </summary>
+
+        /*Funcion para para el evento click del boton que muestra los nodos hijos de la etiqueta*/
+        private void buttonGetChilds_Click(object sender, EventArgs e)
+        {
+            Button senderChildsButton = (Button)sender;
+            senderChildsButton.Parent.Visible = false;
+            this.addMarkupButtons(senderChildsButton.Name.Replace("Childs", ""), senderChildsButton.Parent.Name);
+        }
+        /*Funcion para para el evento click del boton que muestra el grupo donde esta el nodo padre*/
+        private void buttonParentGroup_Click(object sender, EventArgs e)
+        {
+            Button senderButton = (Button)sender;
+            senderButton.Parent.Visible = false;
+            this.addMarkupButtons(senderButton.Name.Replace("ParentGrp", ""), null);
+        }
+        /*Funcion que marca el texto seleccionado con la etiqueta*/
+        private void markupButtonTag_Click(object sender, EventArgs e)
+        {
+            Button senderMarkupButton = (Button)sender;
+            String openTag = "[" + senderMarkupButton.Name + "]";
+            String closeTag = "[/" + senderMarkupButton.Name + "]";
+            if (this.richTextBoxMarkup.SelectedText != "" && this.richTextBoxMarkup.SelectedText != null)
+            {
+                this.richTextBoxMarkup.SelectedText = openTag + this.richTextBoxMarkup.SelectedText + closeTag;
+                this.currencyManager.Position = this.currencyManager.Position;
+            }
+        }
         private void buttonFirst_Click(object sender, EventArgs e)
         {
             if (this.currencyManager.Position != 0)
@@ -227,6 +258,12 @@ namespace RegexMarkup
                 this.currencyManager.Position = this.citas.Count - 1;
             }
         }
+        private void buttonEnd_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
 
         #region showNavButtons
         /// <summary>
@@ -348,11 +385,6 @@ namespace RegexMarkup
             RemoveMenu(hMenu, menuItemCount - 1, MF_BYPOSITION);
         }
         #endregion
-
-        private void buttonEnd_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
     }
 }

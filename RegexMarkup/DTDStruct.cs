@@ -10,7 +10,6 @@ namespace RegexMarkup
     class DTDStruct
     {
         private String name = null;
-        private String description = null;
         private Dictionary<String, DTDStruct> childs = null;
         private DTDStruct parent = null;
 
@@ -21,7 +20,7 @@ namespace RegexMarkup
                 reader.CaseFolding = Sgml.CaseFolding.ToLower;
                 String sgmlArticle = @"C:\Users\Herz\Dropbox\SciELO_Files\Automatas\RegexMarkup\RegexMarkup\SGML\art4_0.dtd";
                 reader.SystemLiteral = sgmlArticle;
-                return reader.Dtd;;
+                return reader.Dtd;
             }
         }
 
