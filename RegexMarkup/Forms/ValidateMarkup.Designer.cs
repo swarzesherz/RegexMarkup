@@ -36,6 +36,7 @@ namespace RegexMarkup
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ValidateMarkup));
             this.richTextBoxMarkup = new System.Windows.Forms.RichTextBox();
             this.buttonFirst = new System.Windows.Forms.Button();
@@ -50,6 +51,7 @@ namespace RegexMarkup
             this.richTextBoxOriginal = new System.Windows.Forms.RichTextBox();
             this.buttonEnd = new System.Windows.Forms.Button();
             this.citationOf = new System.Windows.Forms.Label();
+            this.toolTipInfo = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // richTextBoxMarkup
@@ -228,5 +230,6 @@ namespace RegexMarkup
         private RichTextBox richTextBoxOriginal;
         private Button buttonEnd;
         private Label citationOf;
+        private ToolTip toolTipInfo;
     }
 }

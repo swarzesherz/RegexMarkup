@@ -22,7 +22,7 @@ namespace RegexMarkup
         private XmlNode structNode = null;
         private int startColor = -1;
         private Dictionary<String, GroupBox> groupMarkupButtons = new Dictionary<String, GroupBox>();
-        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ValidateMarkup));
+        
         public ValidateMarkup(ref List<markupStruct> citas, ref XmlNode structNode)
         {
             this.citas = citas;
@@ -69,10 +69,10 @@ namespace RegexMarkup
                     childs[0].Markup.AutoSizeMode = AutoSizeMode.GrowAndShrink;
                     childs[0].Markup.Name = parentNode + "Parent";
                     childs[0].Markup.Image = Resources.upArrow;
-                    childs[0].Markup.Tag = "Ir al nivel superior de" + parentNode;
                     childs[0].Markup.FlatStyle = FlatStyle.Flat;
                     childs[0].Markup.FlatAppearance.BorderSize = 0;
                     childs[0].Markup.Click += new EventHandler(this.buttonReturnParent_Click);
+                    this.toolTipInfo.SetToolTip(childs[0].Markup, "Regresar al nivel superior " + parentNode);
                 }
                 getChilds(article.ContentModel.CurrentModel, ref childs);
                 /*Creamos el grupo que sera el almacen de los botones del nodo*/
@@ -106,6 +106,11 @@ namespace RegexMarkup
             }
             else {
                 this.groupMarkupButtons[node].Visible = true;
+                /*Si el nodo padre no es nulo y ademas es diferente del actual lo actualizamos*/
+                if (parentNode != null && parentNode != this.groupMarkupButtons[node].Controls[0].Name) {
+                    this.groupMarkupButtons[node].Controls[0].Name = parentNode + "Parent";
+                    this.toolTipInfo.SetToolTip(this.groupMarkupButtons[node].Controls[0], "Regresar al nivel superior " + parentNode);
+                }
             }
             
         }
@@ -131,38 +136,49 @@ namespace RegexMarkup
                     childs[currentChild].Markup.Tag = childName;
                     childs[currentChild].Markup.FlatStyle = FlatStyle.Flat;
                     childs[currentChild].Markup.FlatAppearance.BorderSize = 0;
+                    childs[currentChild].Markup.Click += new EventHandler(this.markupButtonTag_Click);
                     if (DTDStruct.DTDScielo.FindElement(childName).ContentModel.CurrentModel.CurrentMembers.Count > 0) {
                         childs[currentChild].Childs = new Button();
                         childs[currentChild].Childs.AutoSize = true;
                         childs[currentChild].Childs.AutoSizeMode = AutoSizeMode.GrowAndShrink;
                         childs[currentChild].Childs.Name = childName + "Childs";
                         childs[currentChild].Childs.Image = Resources.downArrow;
-                        childs[currentChild].Childs.Tag = "Nodos dentro de la etiqueta" + childName;
                         childs[currentChild].Childs.FlatStyle = FlatStyle.Flat;
                         childs[currentChild].Childs.FlatAppearance.BorderSize = 0;
                         childs[currentChild].Childs.Click += new EventHandler(this.buttonGetChilds_Click);
+                        this.toolTipInfo.SetToolTip(childs[currentChild].Childs, "Nodos dentro de la etiqueta " + childName);
                     }
                 }
             }
         }
         /*Funcion para para el evento click del boton que muestra los nodos hijos de la etiqueta*/
         private void buttonGetChilds_Click(object sender, EventArgs e) {
-            Button senderButton = (Button)sender;
-            senderButton.Parent.Visible = false;
-            this.addMarkupButtons(senderButton.Name.Replace("Childs", ""), senderButton.Parent.Name);
+            Button senderChildsButton = (Button)sender;
+            senderChildsButton.Parent.Visible = false;
+            this.addMarkupButtons(senderChildsButton.Name.Replace("Childs", ""), senderChildsButton.Parent.Name);
         }
         /*Funcion para para el evento click del boton que muestra el nodo padre*/
         private void buttonReturnParent_Click(object sender, EventArgs e)
         {
             Button senderButton = (Button)sender;
             senderButton.Parent.Visible = false;
-            this.addMarkupButtons(senderButton.Name.Replace("Parent", ""), senderButton.Parent.Name);
+            this.addMarkupButtons(senderButton.Name.Replace("Parent", ""), null);
         }
         /*Funcion que ajusta la altura de un groupBox cuando cambia de tamaño*/
         private void groupMarkupButton_SizeChanged(object sender, EventArgs e)
         {
             GroupBox senderGroupBox = (GroupBox)sender;
             this.groupMarkupButtons[senderGroupBox.Name].Height = 45;
+        }
+        /*Funcion que marca el texto seleccionado con la etiqueta*/
+        private void markupButtonTag_Click(object sender, EventArgs e) {
+            Button senderMarkupButton = (Button)sender;
+            String openTag = "[" + senderMarkupButton.Name + "]";
+            String closeTag = "[/" + senderMarkupButton.Name + "]";
+            if (this.richTextBoxMarkup.SelectedText != "" && this.richTextBoxMarkup.SelectedText != null) {
+                this.richTextBoxMarkup.SelectedText = openTag + this.richTextBoxMarkup.SelectedText + closeTag;
+                this.currencyManager.Position = this.currencyManager.Position;
+            }
         }
         /*Funcion que ajusta el tamaño de las cajas de texto cuando el formulario cambia de tamaño*/
         private void ValidateMarkup_SizeChanged(object sender, EventArgs e) {

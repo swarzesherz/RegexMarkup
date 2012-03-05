@@ -139,66 +139,64 @@
                                     <opcion>
                                         <regex>(.*?[.])(\s)([^.]*)(,\spp[.,]\s)([^,.]*?)([.,]\s)([^,]*?)(,\s)([^,]*$)</regex>
                                         <struct>
-                                            <omonog>
-                                                <autores>
-                                                    <value>$1</value>
-                                                    <regex>(.+?\.)(,*\sy\s|,*\sand\s|.\s|\s\(.*?\)|\sEd\.|$)</regex>
-                                                    <struct>
-                                                        <oauthor tag="true">
-                                                            <attr>
-                                                                <role>nd</role>
-                                                            </attr>
-                                                            <value>$1</value>
-                                                            <multiple>
-                                                                <opcion>
-                                                                    <regex>(.*?)(\ )([A-Z]{1,2}\.*)$</regex>
-                                                                    <struct>
-                                                                        <surname tag="true">
-                                                                            <value>$1</value>
-                                                                            <postvalue>$2</postvalue>
-                                                                        </surname>
-                                                                        <fname tag="true">
-                                                                            <value>$3</value>
-                                                                        </fname>
-                                                                    </struct>
-                                                                </opcion>
-                                                                <opcion>
-                                                                    <regex>(.*?)(\s)(.*)</regex>
-                                                                    <struct>
-                                                                        <surname tag="true">
-                                                                            <value>$1</value>
-                                                                            <postvalue>$2</postvalue>
-                                                                        </surname>
-                                                                        <fname tag="true">
-                                                                            <value>$3</value>
-                                                                        </fname>
-                                                                    </struct>
-                                                                </opcion>
-                                                            </multiple>
-                                                            <postvalue>$2</postvalue>
-                                                        </oauthor>
-                                                    </struct>
-                                                    <postvalue>$2</postvalue>
-                                                </autores>
-                                                <title tag="true">
-                                                    <attr>
-                                                      <language>en</language>
-                                                    </attr>
-                                                    <value>$3</value>
-                                                    <postvalue>$4</postvalue>
-                                                </title>
-                                                <pages tag="true">
-                                                    <value>$5</value>
-                                                    <postvalue>$6</postvalue>
-                                                </pages>
-                                                <pubname tag="true">
-                                                    <value>$7</value>
-                                                    <postvalue>$8</postvalue>
-                                                </pubname>
-                                                <city tag="true">
-                                                    <value>$9</value>
-                                                </city>
-                                            </omonog>
+                                            <autores>
+                                                <value>$1</value>
+                                                <regex>(.+?\.)(,*\sy\s|,*\sand\s|.\s|\s\(.*?\)|\sEd\.|$)</regex>
+                                                <struct>
+                                                    <oauthor tag="true">
+                                                        <attr>
+                                                            <role>nd</role>
+                                                        </attr>
+                                                        <value>$1</value>
+                                                        <multiple>
+                                                            <opcion>
+                                                                <regex>(.*?)(\ )([A-Z]{1,2}\.*)$</regex>
+                                                                <struct>
+                                                                    <surname tag="true">
+                                                                        <value>$1</value>
+                                                                        <postvalue>$2</postvalue>
+                                                                    </surname>
+                                                                    <fname tag="true">
+                                                                        <value>$3</value>
+                                                                    </fname>
+                                                                </struct>
+                                                            </opcion>
+                                                            <opcion>
+                                                                <regex>(.*?)(\s)(.*)</regex>
+                                                                <struct>
+                                                                    <surname tag="true">
+                                                                        <value>$1</value>
+                                                                        <postvalue>$2</postvalue>
+                                                                    </surname>
+                                                                    <fname tag="true">
+                                                                        <value>$3</value>
+                                                                    </fname>
+                                                                </struct>
+                                                            </opcion>
+                                                        </multiple>
+                                                        <postvalue>$2</postvalue>
+                                                    </oauthor>
+                                                </struct>
+                                                <postvalue>$2</postvalue>
+                                            </autores>
+                                            <title tag="true">
+                                                <attr>
+                                                  <language>en</language>
+                                                </attr>
+                                                <value>$3</value>
+                                                <postvalue>$4</postvalue>
+                                            </title>
+                                            <pages tag="true">
+                                                <value>$5</value>
+                                                <postvalue>$6</postvalue>
+                                            </pages>
+                                            <pubname tag="true">
+                                                <value>$7</value>
+                                                <postvalue>$8</postvalue>
+                                            </pubname>
+                                            <city tag="true">
+                                                <value>$9</value>
+                                            </city>
                                         </struct>
                                     </opcion>
                                 </multiple>
