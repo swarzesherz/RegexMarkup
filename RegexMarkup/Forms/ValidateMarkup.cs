@@ -50,7 +50,7 @@ namespace RegexMarkup
             this.buttonEnd.Text = Resources.ValidateMarkup_buttonEnd;
             this.radioButtonNo.Text = Resources.ValidateMarkup_radioButtonNo;
             this.radioButtonYes.Text = Resources.ValidateMarkup_radioButtonYes;
-            this.addMarkupButtons("article", null);
+            this.addMarkupButtons("other", null);
         }
 
         #region addMarkupButtons
@@ -62,7 +62,7 @@ namespace RegexMarkup
             /* Verificamos si existe el grupo de botoes y si no lo creamos y agregamos los botones correspondientes*/
             if (!this.groupMarkupButtons.ContainsKey(node))
             {
-                ElementDecl article = DTDStruct.DTDScielo.FindElement(node);
+                ElementDecl article = DTDSciELO.Article.FindElement(node);
                 Dictionary<String, MarkupButton> childs = new Dictionary<String, MarkupButton>();
                 /*Agregamos un boton para regresar al grupo al que pertenece el nodo padre*/
                 if (parentGroup != null)
@@ -149,7 +149,7 @@ namespace RegexMarkup
                         childs[childName].Markup.FlatStyle = FlatStyle.Flat;
                         childs[childName].Markup.FlatAppearance.BorderSize = 0;
                         childs[childName].Markup.Click += new EventHandler(this.markupButtonTag_Click);
-                        if (DTDStruct.DTDScielo.FindElement(childName).ContentModel.CurrentModel.CurrentMembers.Count > 0)
+                        if (DTDSciELO.Article.FindElement(childName).ContentModel.CurrentModel.CurrentMembers.Count > 0)
                         {
                             childs[childName].Childs = new Button();
                             childs[childName].Childs.AutoSize = true;
@@ -348,7 +348,7 @@ namespace RegexMarkup
                         TagSuccess = true;
                         matchResults = matchResults.NextMatch();
                     }
-                    /* Si la etiqueta fue coloreada con exito coloreamos la etiquetas hijas */
+                    /* Si la etiqueta fue coloreada con exito coloreamos las etiquetas hijas */
                     if (TagSuccess)
                     {
                         this.colorRefTagsForm(tag, color);

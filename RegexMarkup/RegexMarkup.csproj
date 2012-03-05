@@ -38,7 +38,7 @@
     <PublishUrl>ftp://132.248.9.166/RegexMarkupDist/</PublishUrl>
     <InstallUrl>http://132.248.9.166/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.7.0.15</ApplicationVersion>
+    <ApplicationVersion>0.7.5.5</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -202,7 +202,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfoHelper.cs" />
     <Compile Include="dictionaryDTD.cs" />
-    <Compile Include="DTDStruct.cs" />
+    <Compile Include="DTDSciELO.cs" />
     <Compile Include="Forms\ConfigRegexMarkup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -270,6 +270,93 @@
       <SubType>Code</SubType>
     </Compile>
     <None Include="RegexMarkup.pfx" />
+    <None Include="SGML\art1_1.dtd" />
+    <None Include="SGML\art2_0.dtd" />
+    <None Include="SGML\art3_0.dtd" />
+    <None Include="SGML\art3_0.pts" />
+    <None Include="SGML\art3_1.dtd" />
+    <Content Include="SGML\art4_0.dtd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="SGML\art4_0.pts" />
+    <None Include="SGML\citation31.dtd" />
+    <Content Include="SGML\citation4_0.dtd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="SGML\common2.dtd" />
+    <None Include="SGML\common3.dtd" />
+    <None Include="SGML\common31.dtd" />
+    <Content Include="SGML\common4_0.dtd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOamsa.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOamsb.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOamsc.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOamsn.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOamso.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOamsr.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISObox.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOcyr1.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOcyr2.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOdia.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOgrk1.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOgrk2.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOgrk3.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOgrk4.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOlat1.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOlat2.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOnum.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOpub.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\ISOtech.sgm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="SGML\ser1_0.dtd" />
+    <None Include="SGML\ser2_0.dtd" />
+    <None Include="SGML\ser3_0.dtd" />
+    <None Include="SGML\Stdole2.tlb" />
+    <None Include="SGML\text1_0.dtd" />
+    <None Include="SGML\text3_0.dtd" />
+    <None Include="SGML\text3_1.dtd" />
+    <Content Include="SGML\text4_0.dtd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="SGML\transl3_1.dtd" />
     <None Include="ThisAddIn.Designer.xml">
       <DependentUpon>ThisAddIn.cs</DependentUpon>
     </None>

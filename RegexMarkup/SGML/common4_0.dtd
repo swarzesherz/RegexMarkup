@@ -8,7 +8,7 @@
 <!--   Common Models                                                      -->
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-<!ENTITY % i.float  "aff | ign | tabwrap | figgrp | cltrial | xref | uri | graphic " > 
+<!ENTITY % i.float  "aff | ign | tabwrap | figgrp | cltrial | xref | uri | sciname" > 
 <!ENTITY % m.name   "(fname? & surname)" >
 <!ENTITY % m.org    "(orgname? & orgdiv?)" >
 <!ENTITY % m.title  "title, subtitle?" >
@@ -40,15 +40,19 @@
 <!ELEMENT state   - - (#PCDATA)>
 <!ELEMENT country   - - (#PCDATA)>
 
-<!ELEMENT tabwrap - - ( (label?, caption,(table | graphic)) | ((table | graphic), label?, caption)  )  >
+<!ELEMENT tabwrap - - ( ((label?, caption,(table | graphic)) | ((table | graphic), label?, caption)), notes*  )  >
 <!ATTLIST tabwrap
           id       CDATA #REQUIRED
-          filename       CDATA #IMPLIED >
+filename       CDATA #IMPLIED >
 
 <!ELEMENT label - - (#PCDATA) >
 <!ELEMENT caption - - (#PCDATA) >
 
-<!ELEMENT figgrp - - (  graphic , ( label?, caption)   )   >
+<!ELEMENT figgrps - - ( label?,caption?, figgrp+   )   >
+<!ATTLIST figgrps
+          id       CDATA #REQUIRED
+          >
+<!ELEMENT figgrp - - (  graphic , ( label?, caption), notes?   )   >
 <!ATTLIST figgrp
           id       CDATA #REQUIRED
           ftype       CDATA #REQUIRED 
@@ -84,7 +88,12 @@
 <!ELEMENT tr - - (td+)    >
 <!ELEMENT td - - (p+)    >
 
+<!ELEMENT sciname - - (#PCDATA)>
 
+<!ELEMENT fngrp - - (#PCDATA) +(%i.float;) >
+<!ATTLIST fngrp
+          fntype       CDATA    #REQUIRED 
+	 >
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 <!--    Deposit                                                        -->
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -183,13 +192,19 @@
 
 
 <!ELEMENT xmlbody  - - (sec|p)+  >
-<!ELEMENT sec  - - (sectitle, (subsec | p)+ )  >
+<!ELEMENT sec  - - (sectitle, (subsec | p | list )+ )  >
 <!ATTLIST sec
           sec-type  CDATA #IMPLIED >
-<!ELEMENT subsec  - - (sectitle, (subsec | p)+ )  >
+<!ELEMENT subsec  - - (sectitle, (subsec | p | list )+ )  >
 
 <!ELEMENT sectitle - - (#PCDATA)  +(%i.float;) >
-<!ELEMENT p - - ((#PCDATA) | (label,caption) )  +(%i.float;) >
+<!--ELEMENT p - - ((#PCDATA) | (label,caption) | list )  +(%i.float;) -->
+<!ELEMENT p - - (#PCDATA)   +(%i.float;) >
+<!ELEMENT list  - - (li)+  >
+<!ATTLIST list
+          listtype  CDATA #REQUIRED
+           >
+<!ELEMENT li  - - (#PCDATA) >
 
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 <!--    license                                                           -->
@@ -198,6 +213,6 @@
 <!ELEMENT license  - - (licensep)  >
 <!ATTLIST license
           language  CDATA #REQUIRED
-          lictype  CDATA #REQUIRED
-          href  CDATA #REQUIRED >
+          lictype   CDATA #REQUIRED
+          href      CDATA #REQUIRED >
 <!ELEMENT licensep  - - (#PCDATA)  >
