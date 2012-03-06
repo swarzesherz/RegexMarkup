@@ -6,7 +6,7 @@ using Word = Microsoft.Office.Interop.Word;
 
 namespace RegexMarkup
 {
-    public class markupStruct
+    public class MarkupStruct
     {
         private String originalStr = null;
         private RichTextBox markedRtb = null;
@@ -14,7 +14,7 @@ namespace RegexMarkup
         private Boolean colorized = false;
         private Word.Range rngCita = null;
 
-        public markupStruct(String originalStr, String markedStr, Boolean marked, Word.Range rngCita) {
+        public MarkupStruct(String originalStr, String markedStr, Boolean marked, Word.Range rngCita) {
             this.originalStr = originalStr;
             /* Creando string rtf */
             this.markedRtb = new RichTextBox();

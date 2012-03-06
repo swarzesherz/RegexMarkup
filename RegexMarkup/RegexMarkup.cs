@@ -70,7 +70,7 @@ namespace RegexMarkup
             XmlNode objElem = null;
             XmlNode structNode = null;
             XmlNode structNodeColor = null;
-            List<markupStruct> citas = null;
+            List<MarkupStruct> citas = null;
             Regex objRegExp = null;
             RegexOptions options = RegexOptions.None;
             Match matchResults = null;
@@ -133,7 +133,7 @@ namespace RegexMarkup
                         subjetcString = docSeleccion.Range.Text;
                         //MessageBox.Show(subjetcString, "Texto Seleccionado");
                         /* Inicializando arratlist de citas */
-                        citas = new List<markupStruct>();
+                        citas = new List<MarkupStruct>();
                         /* Buscando parrafo por parrafo */
                         foreach (Word.Paragraph parrafo in docSeleccion.Paragraphs){
                             /* Mandamos el texto de cada parrafo a una funcion que nos lo regresara marcado y quitamos el salto linea */
@@ -199,7 +199,7 @@ namespace RegexMarkup
                                         }
                                     }
                                 }
-                                citas.Add(new markupStruct(subjetcString, fixedMarkedString, marked, ActiveDocument.Range(ref parrafoStart, ref parrafoEnd)));
+                                citas.Add(new MarkupStruct(subjetcString, fixedMarkedString, marked, ActiveDocument.Range(ref parrafoStart, ref parrafoEnd)));
                             }
                         }
                         /* Cargamos el archivo xml donde se encuetra la lista de etiquetas que se pueden colorear */
@@ -222,8 +222,9 @@ namespace RegexMarkup
                         waitForm.Show();
                         /* Reemplzando texto original por el marcado */
                         /* Utilizando el rango de texto de la cita original y reemplzado el texto por el marcado */
-                        foreach (markupStruct cita in citas) {
+                        foreach (MarkupStruct cita in citas) {
                             if(cita.Marked){
+                                /*Reemplazamos el texto de la cita y agregamos el salto de linea que quitamos previamente*/
                                 cita.RngCita.Text = cita.MarkedStr;
                                 /* Coloreando Etiquetas (Tags) */
                                 Word.Range refrange = cita.RngCita;

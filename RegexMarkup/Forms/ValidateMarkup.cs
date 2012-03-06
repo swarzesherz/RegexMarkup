@@ -17,13 +17,14 @@ namespace RegexMarkup
     public partial class ValidateMarkup : Form
     {
         const int MF_BYPOSITION = 0x400;
-        private List<markupStruct> citas;
+        private List<MarkupStruct> citas;
         private CurrencyManager currencyManager = null;
         private XmlNode structNode = null;
         private int startColor = -1;
         private Dictionary<String, GroupBox> groupMarkupButtons = new Dictionary<String, GroupBox>();
-        
-        public ValidateMarkup(ref List<markupStruct> citas, ref XmlNode structNode)
+        private DescriptionTags descriptionTags = DescriptionTags.Instance;
+
+        public ValidateMarkup(ref List<MarkupStruct> citas, ref XmlNode structNode)
         {
             this.citas = citas;
             this.structNode = structNode;
@@ -58,12 +59,25 @@ namespace RegexMarkup
         /// Coloca los botones de forma dinamica en el formulario a partir de un nodo padre
         /// </summary>
         public void addMarkupButtons(String node, String parentGroup) {
+            ElementDecl article = null;
+            Dictionary<String, MarkupButton> childs = null;
             node = node.ToLower();
             /* Verificamos si existe el grupo de botoes y si no lo creamos y agregamos los botones correspondientes*/
             if (!this.groupMarkupButtons.ContainsKey(node))
             {
-                ElementDecl article = DTDSciELO.Article.FindElement(node);
-                Dictionary<String, MarkupButton> childs = new Dictionary<String, MarkupButton>();
+                /*Creamos el grupo que sera el almacen de los botones del nodo*/
+                this.groupMarkupButtons.Add(node, new GroupBox());
+                this.groupMarkupButtons[node].AutoSize = true;
+                this.groupMarkupButtons[node].AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                this.groupMarkupButtons[node].SizeChanged += new EventHandler(groupMarkupButton_SizeChanged);
+                this.groupMarkupButtons[node].Name = node;
+                this.groupMarkupButtons[node].Text = node;
+                this.groupMarkupButtons[node].Location = new Point(10, 165);
+                this.Controls.Add(this.groupMarkupButtons[node]);
+                /*Posicion de los botones dentro del grupo*/
+                int botonesPosY = 10;
+                /*Instanciamos el Dictionary<String, MarkupButton>*/
+                childs = new Dictionary<String, MarkupButton>();
                 /*Agregamos un boton para regresar al grupo al que pertenece el nodo padre*/
                 if (parentGroup != null)
                 {
@@ -78,18 +92,9 @@ namespace RegexMarkup
                     childs["parentGroup"].Markup.Click += new EventHandler(this.buttonParentGroup_Click);
                     this.toolTipInfo.SetToolTip(childs["parentGroup"].Markup, "Regresar al nivel superior " + parentGroup);
                 }
+                /*Lenamos un diccionario con los nodos hijos*/
+                article = DTDSciELO.Article.FindElement(node);
                 getChilds(article.ContentModel.CurrentModel, ref childs);
-                /*Creamos el grupo que sera el almacen de los botones del nodo*/
-                this.groupMarkupButtons.Add(node, new GroupBox());
-                this.groupMarkupButtons[node].AutoSize = true;
-                this.groupMarkupButtons[node].AutoSizeMode = AutoSizeMode.GrowAndShrink;
-                this.groupMarkupButtons[node].SizeChanged += new EventHandler(groupMarkupButton_SizeChanged);
-                this.groupMarkupButtons[node].Name = node;
-                this.groupMarkupButtons[node].Text = node;
-                this.groupMarkupButtons[node].Location = new Point(10, 165);
-                this.Controls.Add(this.groupMarkupButtons[node]);
-                /*Posicion de los botones dentro del grupo*/
-                int botonesPosY = 10;
                 /* Agregamos los botones al grupo*/
                 foreach(String childName in childs.Keys){
                     /*Agregamos el boton de la etiqueta*/
@@ -128,6 +133,7 @@ namespace RegexMarkup
         /// </summary>
         private void getChilds(Sgml.Group model, ref Dictionary<String, MarkupButton> childs)
         {
+            String childName = null;
             foreach (Object child in model.CurrentMembers)
             {
                 if (child.GetType().Namespace + "." + child.GetType().Name == "Sgml.Group")
@@ -136,7 +142,7 @@ namespace RegexMarkup
                 }
                 else
                 {
-                    String childName = child.ToString().ToLower();
+                    childName = child.ToString().ToLower();
                     if (!childs.ContainsKey(childName))
                     {
                         childs.Add(childName, new MarkupButton());
@@ -149,6 +155,7 @@ namespace RegexMarkup
                         childs[childName].Markup.FlatStyle = FlatStyle.Flat;
                         childs[childName].Markup.FlatAppearance.BorderSize = 0;
                         childs[childName].Markup.Click += new EventHandler(this.markupButtonTag_Click);
+                        this.toolTipInfo.SetToolTip(childs[childName].Markup, descriptionTags.getDescription(childName));
                         if (DTDSciELO.Article.FindElement(childName).ContentModel.CurrentModel.CurrentMembers.Count > 0)
                         {
                             childs[childName].Childs = new Button();

@@ -4,7 +4,6 @@ using System.Text;
 using System.IO;
 using System.Windows.Forms;
 using Sgml;
-using System.Deployment.Application;
 
 namespace RegexMarkup
 {
