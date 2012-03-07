@@ -130,6 +130,13 @@ namespace RegexMarkup.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap pencil {
+            get {
+                object obj = ResourceManager.GetObject("pencil", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Busca una cadena traducida similar a No esta definido issn.
         /// </summary>
@@ -175,10 +182,35 @@ namespace RegexMarkup.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap trash {
+            get {
+                object obj = ResourceManager.GetObject("trash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap upArrow {
             get {
                 object obj = ResourceManager.GetObject("upArrow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Elimina la etiqueta seleccionada.
+        /// </summary>
+        internal static string ValidateMarkup_buttonClearTagToolTip {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_buttonClearTagToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Editar atributos de la etiqueta seleccionada.
+        /// </summary>
+        internal static string ValidateMarkup_buttonEditAttrToolTip {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_buttonEditAttrToolTip", resourceCulture);
             }
         }
         
@@ -239,18 +271,36 @@ namespace RegexMarkup.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a Cita marcada:.
         /// </summary>
-        internal static string ValidateMarkup_labelmarkup {
+        internal static string ValidateMarkup_groupBoxMarkup {
             get {
-                return ResourceManager.GetString("ValidateMarkup_labelmarkup", resourceCulture);
+                return ResourceManager.GetString("ValidateMarkup_groupBoxMarkup", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Cita original:.
         /// </summary>
-        internal static string ValidateMarkup_labelOriginal {
+        internal static string ValidateMarkup_groupBoxOriginal {
             get {
-                return ResourceManager.GetString("ValidateMarkup_labelOriginal", resourceCulture);
+                return ResourceManager.GetString("ValidateMarkup_groupBoxOriginal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Herramientas.
+        /// </summary>
+        internal static string ValidateMarkup_groupBoxTools {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_groupBoxTools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Marcar cita.
+        /// </summary>
+        internal static string ValidateMarkup_labelCitationStatus {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_labelCitationStatus", resourceCulture);
             }
         }
         

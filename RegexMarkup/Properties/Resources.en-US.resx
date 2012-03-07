@@ -165,10 +165,10 @@
   <data name="ValidateMarkup_citationOf" xml:space="preserve">
     <value>Citation {0} of {1}</value>
   </data>
-  <data name="ValidateMarkup_labelmarkup" xml:space="preserve">
+  <data name="ValidateMarkup_groupBoxMarkup" xml:space="preserve">
     <value>Marked citation:</value>
   </data>
-  <data name="ValidateMarkup_labelOriginal" xml:space="preserve">
+  <data name="ValidateMarkup_groupBoxOriginal" xml:space="preserve">
     <value>Original citation:</value>
   </data>
   <data name="ValidateMarkup_radioButtonNo" xml:space="preserve">
@@ -191,5 +191,17 @@
   </data>
   <data name="configRegexMarkup_labelExternalFile" xml:space="preserve">
     <value>Using external file</value>
+  </data>
+  <data name="ValidateMarkup_buttonClearTagToolTip" xml:space="preserve">
+    <value>Delete selected tag</value>
+  </data>
+  <data name="ValidateMarkup_buttonEditAttrToolTip" xml:space="preserve">
+    <value>Edit attributes from selected tag</value>
+  </data>
+  <data name="ValidateMarkup_groupBoxTools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="ValidateMarkup_labelCitationStatus" xml:space="preserve">
+    <value>Mark citation</value>
   </data>
 </root>

@@ -376,6 +376,10 @@
     <Content Include="regex.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\trash.ico" />
+    <None Include="Resources\pencil.ico" />
+    <Content Include="Resources\downArrow.ico" />
+    <Content Include="Resources\upArrow.ico" />
     <Content Include="tagColors.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -385,9 +389,6 @@
       <Project>{499527FF-AE52-450F-B3E3-4AD53E1712AD}</Project>
       <Name>SgmlReaderDll</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

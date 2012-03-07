@@ -43,8 +43,6 @@ namespace RegexMarkup
             this.buttonPrev = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
             this.buttonLast = new System.Windows.Forms.Button();
-            this.labelOriginal = new System.Windows.Forms.Label();
-            this.labelMarkup = new System.Windows.Forms.Label();
             this.radioButtonYes = new System.Windows.Forms.RadioButton();
             this.radioButtonNo = new System.Windows.Forms.RadioButton();
             this.labelCitationStatus = new System.Windows.Forms.Label();
@@ -52,20 +50,30 @@ namespace RegexMarkup
             this.buttonEnd = new System.Windows.Forms.Button();
             this.citationOf = new System.Windows.Forms.Label();
             this.toolTipInfo = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBoxTools = new System.Windows.Forms.GroupBox();
+            this.buttonEditAttr = new System.Windows.Forms.Button();
+            this.buttonClearTag = new System.Windows.Forms.Button();
+            this.groupBoxOriginal = new System.Windows.Forms.GroupBox();
+            this.groupBoxMarkup = new System.Windows.Forms.GroupBox();
+            this.groupBoxTools.SuspendLayout();
+            this.groupBoxOriginal.SuspendLayout();
+            this.groupBoxMarkup.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBoxMarkup
             // 
+            this.richTextBoxMarkup.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxMarkup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxMarkup.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxMarkup.Location = new System.Drawing.Point(12, 221);
+            this.richTextBoxMarkup.Location = new System.Drawing.Point(3, 16);
             this.richTextBoxMarkup.Name = "richTextBoxMarkup";
-            this.richTextBoxMarkup.Size = new System.Drawing.Size(765, 184);
+            this.richTextBoxMarkup.Size = new System.Drawing.Size(759, 165);
             this.richTextBoxMarkup.TabIndex = 1;
             this.richTextBoxMarkup.Text = "";
             // 
             // buttonFirst
             // 
-            this.buttonFirst.Location = new System.Drawing.Point(13, 412);
+            this.buttonFirst.Location = new System.Drawing.Point(10, 422);
             this.buttonFirst.Name = "buttonFirst";
             this.buttonFirst.Size = new System.Drawing.Size(75, 23);
             this.buttonFirst.TabIndex = 2;
@@ -75,7 +83,7 @@ namespace RegexMarkup
             // 
             // buttonPrev
             // 
-            this.buttonPrev.Location = new System.Drawing.Point(94, 412);
+            this.buttonPrev.Location = new System.Drawing.Point(91, 422);
             this.buttonPrev.Name = "buttonPrev";
             this.buttonPrev.Size = new System.Drawing.Size(75, 23);
             this.buttonPrev.TabIndex = 3;
@@ -85,7 +93,7 @@ namespace RegexMarkup
             // 
             // buttonNext
             // 
-            this.buttonNext.Location = new System.Drawing.Point(175, 412);
+            this.buttonNext.Location = new System.Drawing.Point(172, 422);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(75, 23);
             this.buttonNext.TabIndex = 4;
@@ -95,7 +103,7 @@ namespace RegexMarkup
             // 
             // buttonLast
             // 
-            this.buttonLast.Location = new System.Drawing.Point(256, 412);
+            this.buttonLast.Location = new System.Drawing.Point(253, 422);
             this.buttonLast.Name = "buttonLast";
             this.buttonLast.Size = new System.Drawing.Size(75, 23);
             this.buttonLast.TabIndex = 5;
@@ -103,28 +111,10 @@ namespace RegexMarkup
             this.buttonLast.UseVisualStyleBackColor = true;
             this.buttonLast.Click += new System.EventHandler(this.buttonLast_Click);
             // 
-            // labelOriginal
-            // 
-            this.labelOriginal.AutoSize = true;
-            this.labelOriginal.Location = new System.Drawing.Point(9, 7);
-            this.labelOriginal.Name = "labelOriginal";
-            this.labelOriginal.Size = new System.Drawing.Size(61, 13);
-            this.labelOriginal.TabIndex = 7;
-            this.labelOriginal.Text = "Cita original";
-            // 
-            // labelMarkup
-            // 
-            this.labelMarkup.AutoSize = true;
-            this.labelMarkup.Location = new System.Drawing.Point(9, 147);
-            this.labelMarkup.Name = "labelMarkup";
-            this.labelMarkup.Size = new System.Drawing.Size(69, 13);
-            this.labelMarkup.TabIndex = 8;
-            this.labelMarkup.Text = "Cita marcada";
-            // 
             // radioButtonYes
             // 
             this.radioButtonYes.AutoSize = true;
-            this.radioButtonYes.Location = new System.Drawing.Point(406, 415);
+            this.radioButtonYes.Location = new System.Drawing.Point(403, 425);
             this.radioButtonYes.Name = "radioButtonYes";
             this.radioButtonYes.Size = new System.Drawing.Size(34, 17);
             this.radioButtonYes.TabIndex = 9;
@@ -135,7 +125,7 @@ namespace RegexMarkup
             // radioButtonNo
             // 
             this.radioButtonNo.AutoSize = true;
-            this.radioButtonNo.Location = new System.Drawing.Point(446, 415);
+            this.radioButtonNo.Location = new System.Drawing.Point(443, 425);
             this.radioButtonNo.Name = "radioButtonNo";
             this.radioButtonNo.Size = new System.Drawing.Size(39, 17);
             this.radioButtonNo.TabIndex = 10;
@@ -146,7 +136,7 @@ namespace RegexMarkup
             // labelCitationStatus
             // 
             this.labelCitationStatus.AutoSize = true;
-            this.labelCitationStatus.Location = new System.Drawing.Point(337, 417);
+            this.labelCitationStatus.Location = new System.Drawing.Point(334, 427);
             this.labelCitationStatus.Name = "labelCitationStatus";
             this.labelCitationStatus.Size = new System.Drawing.Size(63, 13);
             this.labelCitationStatus.TabIndex = 11;
@@ -154,20 +144,23 @@ namespace RegexMarkup
             // 
             // richTextBoxOriginal
             // 
+            this.richTextBoxOriginal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxOriginal.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxOriginal.Location = new System.Drawing.Point(12, 25);
+            this.richTextBoxOriginal.Location = new System.Drawing.Point(3, 16);
             this.richTextBoxOriginal.Name = "richTextBoxOriginal";
             this.richTextBoxOriginal.ReadOnly = true;
-            this.richTextBoxOriginal.Size = new System.Drawing.Size(765, 113);
+            this.richTextBoxOriginal.Size = new System.Drawing.Size(759, 112);
             this.richTextBoxOriginal.TabIndex = 13;
+            this.richTextBoxOriginal.Tag = "";
             this.richTextBoxOriginal.Text = "";
             // 
             // buttonEnd
             // 
             this.buttonEnd.AutoSize = true;
-            this.buttonEnd.Location = new System.Drawing.Point(702, 412);
+            this.buttonEnd.Location = new System.Drawing.Point(699, 422);
             this.buttonEnd.Name = "buttonEnd";
-            this.buttonEnd.Size = new System.Drawing.Size(75, 23);
+            this.buttonEnd.Size = new System.Drawing.Size(75, 25);
             this.buttonEnd.TabIndex = 14;
             this.buttonEnd.Text = "Finalizar";
             this.buttonEnd.UseVisualStyleBackColor = true;
@@ -185,24 +178,78 @@ namespace RegexMarkup
             this.citationOf.TabIndex = 16;
             this.citationOf.Text = "Cita x de n";
             // 
+            // groupBoxTools
+            // 
+            this.groupBoxTools.Controls.Add(this.buttonEditAttr);
+            this.groupBoxTools.Controls.Add(this.buttonClearTag);
+            this.groupBoxTools.Location = new System.Drawing.Point(10, 140);
+            this.groupBoxTools.Name = "groupBoxTools";
+            this.groupBoxTools.Size = new System.Drawing.Size(85, 45);
+            this.groupBoxTools.TabIndex = 17;
+            this.groupBoxTools.TabStop = false;
+            this.groupBoxTools.Text = "Herramientas";
+            // 
+            // buttonEditAttr
+            // 
+            this.buttonEditAttr.AutoSize = true;
+            this.buttonEditAttr.FlatAppearance.BorderSize = 0;
+            this.buttonEditAttr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEditAttr.Image = global::RegexMarkup.Properties.Resources.pencil;
+            this.buttonEditAttr.Location = new System.Drawing.Point(38, 15);
+            this.buttonEditAttr.Name = "buttonEditAttr";
+            this.buttonEditAttr.Size = new System.Drawing.Size(22, 24);
+            this.buttonEditAttr.TabIndex = 1;
+            this.buttonEditAttr.UseVisualStyleBackColor = true;
+            // 
+            // buttonClearTag
+            // 
+            this.buttonClearTag.AutoSize = true;
+            this.buttonClearTag.FlatAppearance.BorderSize = 0;
+            this.buttonClearTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClearTag.Image = global::RegexMarkup.Properties.Resources.trash;
+            this.buttonClearTag.Location = new System.Drawing.Point(10, 15);
+            this.buttonClearTag.Name = "buttonClearTag";
+            this.buttonClearTag.Size = new System.Drawing.Size(22, 23);
+            this.buttonClearTag.TabIndex = 0;
+            this.buttonClearTag.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxOriginal
+            // 
+            this.groupBoxOriginal.Controls.Add(this.richTextBoxOriginal);
+            this.groupBoxOriginal.Location = new System.Drawing.Point(10, 7);
+            this.groupBoxOriginal.Name = "groupBoxOriginal";
+            this.groupBoxOriginal.Size = new System.Drawing.Size(765, 131);
+            this.groupBoxOriginal.TabIndex = 18;
+            this.groupBoxOriginal.TabStop = false;
+            this.groupBoxOriginal.Text = "Cita original";
+            // 
+            // groupBoxMarkup
+            // 
+            this.groupBoxMarkup.Controls.Add(this.richTextBoxMarkup);
+            this.groupBoxMarkup.Location = new System.Drawing.Point(10, 234);
+            this.groupBoxMarkup.Name = "groupBoxMarkup";
+            this.groupBoxMarkup.Size = new System.Drawing.Size(765, 184);
+            this.groupBoxMarkup.TabIndex = 19;
+            this.groupBoxMarkup.TabStop = false;
+            this.groupBoxMarkup.Text = "Cita marcada";
+            // 
             // ValidateMarkup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 444);
+            this.ClientSize = new System.Drawing.Size(784, 454);
+            this.Controls.Add(this.groupBoxMarkup);
+            this.Controls.Add(this.groupBoxOriginal);
+            this.Controls.Add(this.groupBoxTools);
             this.Controls.Add(this.citationOf);
             this.Controls.Add(this.buttonEnd);
-            this.Controls.Add(this.richTextBoxOriginal);
             this.Controls.Add(this.labelCitationStatus);
             this.Controls.Add(this.radioButtonNo);
             this.Controls.Add(this.radioButtonYes);
-            this.Controls.Add(this.labelMarkup);
-            this.Controls.Add(this.labelOriginal);
             this.Controls.Add(this.buttonLast);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.buttonPrev);
             this.Controls.Add(this.buttonFirst);
-            this.Controls.Add(this.richTextBoxMarkup);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "ValidateMarkup";
@@ -210,6 +257,10 @@ namespace RegexMarkup
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ValidateMarkup";
             this.Load += new System.EventHandler(this.ValidateMarkup_Load);
+            this.groupBoxTools.ResumeLayout(false);
+            this.groupBoxTools.PerformLayout();
+            this.groupBoxOriginal.ResumeLayout(false);
+            this.groupBoxMarkup.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,8 +273,6 @@ namespace RegexMarkup
         private Button buttonPrev;
         private Button buttonNext;
         private Button buttonLast;
-        private Label labelOriginal;
-        private Label labelMarkup;
         private RadioButton radioButtonYes;
         private RadioButton radioButtonNo;
         private Label labelCitationStatus;
@@ -231,5 +280,10 @@ namespace RegexMarkup
         private Button buttonEnd;
         private Label citationOf;
         private ToolTip toolTipInfo;
+        private GroupBox groupBoxTools;
+        private Button buttonClearTag;
+        private Button buttonEditAttr;
+        private GroupBox groupBoxOriginal;
+        private GroupBox groupBoxMarkup;
     }
 }
