@@ -38,7 +38,7 @@
     <PublishUrl>ftp://132.248.9.166/RegexMarkupDist/</PublishUrl>
     <InstallUrl>http://132.248.9.166/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.7.5.13</ApplicationVersion>
+    <ApplicationVersion>0.7.5.14</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -267,6 +267,8 @@
     <Compile Include="RibbonRegexMarkup.Designer.cs">
       <DependentUpon>RibbonRegexMarkup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tags.cs" />
+    <Compile Include="TagStruct.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -378,8 +380,8 @@
     </Content>
     <None Include="Resources\trash.ico" />
     <None Include="Resources\pencil.ico" />
-    <Content Include="Resources\downArrow.ico" />
-    <Content Include="Resources\upArrow.ico" />
+    <None Include="Resources\downArrow.ico" />
+    <None Include="Resources\upArrow.ico" />
     <Content Include="tagColors.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

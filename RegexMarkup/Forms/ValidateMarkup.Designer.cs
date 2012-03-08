@@ -212,6 +212,7 @@ namespace RegexMarkup
             this.buttonClearTag.Size = new System.Drawing.Size(22, 23);
             this.buttonClearTag.TabIndex = 0;
             this.buttonClearTag.UseVisualStyleBackColor = true;
+            this.buttonClearTag.Click += new System.EventHandler(this.buttonClearTag_Click);
             // 
             // groupBoxOriginal
             // 

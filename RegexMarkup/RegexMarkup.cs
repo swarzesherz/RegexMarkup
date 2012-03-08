@@ -48,6 +48,8 @@ namespace RegexMarkup
         public static Word.Document ActiveDocument = null;
         private Waiting waitForm = null;
         public static Object missing = Type.Missing;
+        private String dtdVersion = null;
+        private String dtdType = "article";
         #region startMarkup
         ///<summary>
         ///Procedimiento al que llamaremos para inciar el proceso de marcación
@@ -96,12 +98,14 @@ namespace RegexMarkup
             issn = getAttrValueInTag("article", "issn");
             /* Hacemos un segundo intento con la etiqueta text en caso de que no haya aparecido con article */
             if (issn == null) {
-                issn = getAttrValueInTag("text", "issn");
+                issn = this.getAttrValueInTag("text", "issn");
+                this.dtdType = "text";
             }
             if (issn == null) {
                 MessageBox.Show(Resources.RegexMarkup_issnNotDefined, Resources.RegexMarkup_title);
             } else {
-                //MessageBox.Show(issn, "ISSN");
+                /*Asignamos el numero de version*/
+                this.dtdVersion = this.getAttrValueInTag(this.dtdType, "version");
                 /* Cargamos el archivo xml donde se encuetran los patrones de las revistas */
                 try
                 {

@@ -23,6 +23,9 @@ namespace RegexMarkup
         private int startColor = -1;
         private Dictionary<String, GroupBox> groupMarkupButtons = new Dictionary<String, GroupBox>();
         private DescriptionTags descriptionTags = DescriptionTags.Instance;
+        private DTDSciELO dtdSciELO = DTDSciELO.Instance;
+        private SgmlDtd dtd = null;
+        private Tags tags = Tags.Instance;
 
         public ValidateMarkup(ref List<MarkupStruct> citas, ref XmlNode structNode)
         {
@@ -56,8 +59,12 @@ namespace RegexMarkup
             /*Tooltip para los botones*/
             this.toolTipInfo.SetToolTip(this.buttonClearTag, Resources.ValidateMarkup_buttonClearTagToolTip);
             this.toolTipInfo.SetToolTip(this.buttonEditAttr, Resources.ValidateMarkup_buttonEditAttrToolTip);
+            /**/
+            this.dtd = dtdSciELO.getDTD("4.0", "article");
+            this.tags.Dtd = this.dtd;
             /*Creando barra de herramientas para las etiquetas*/
             this.addMarkupButtons("other", null);
+            List<String> childs = this.tags.getChilds("other");
         }
 
         #region addMarkupButtons
@@ -102,8 +109,43 @@ namespace RegexMarkup
                     this.toolTipInfo.SetToolTip(childs["parentGroup"].Markup, "Regresar al nivel superior " + parentGroup);
                 }
                 /*Lenamos un diccionario con los nodos hijos*/
-                article = DTDSciELO.Article.FindElement(node);
-                getChilds(article.ContentModel.CurrentModel, ref childs);
+                dtd = dtdSciELO.getDTD("4.0", "article");
+                article = dtd.FindElement(node);
+                this.tags.getChilds(node);
+                foreach(String childName in this.tags.Tag[node].Childs){
+                    if (!childs.ContainsKey(childName))
+                    {
+                        childs.Add(childName, new MarkupButton());
+                        childs[childName].Markup = new Button();
+                        childs[childName].Markup.AutoSize = true;
+                        childs[childName].Markup.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                        childs[childName].Markup.AutoEllipsis = false;
+                        childs[childName].Markup.Margin = new System.Windows.Forms.Padding(0);
+                        childs[childName].Markup.Padding = new System.Windows.Forms.Padding(0);
+                        childs[childName].Markup.Name = childName;
+                        childs[childName].Markup.Text = childName;
+                        childs[childName].Markup.Tag = childName;
+                        childs[childName].Markup.FlatStyle = FlatStyle.Flat;
+                        childs[childName].Markup.FlatAppearance.BorderSize = 0;
+                        childs[childName].Markup.Click += new EventHandler(this.markupButtonTag_Click);
+                        this.toolTipInfo.SetToolTip(childs[childName].Markup, tags.getDescription(childName));
+                        if (this.tags.Tag[node].ChildNodes)
+                        {
+                            childs[childName].Childs = new Button();
+                            childs[childName].Childs.AutoSize = true;
+                            childs[childName].Childs.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                            childs[childName].Childs.AutoEllipsis = false;
+                            childs[childName].Childs.Margin = new System.Windows.Forms.Padding(0);
+                            childs[childName].Childs.Padding = new System.Windows.Forms.Padding(0);
+                            childs[childName].Childs.Name = childName + "Childs";
+                            childs[childName].Childs.Image = Resources.downArrow;
+                            childs[childName].Childs.FlatStyle = FlatStyle.Flat;
+                            childs[childName].Childs.FlatAppearance.BorderSize = 0;
+                            childs[childName].Childs.Click += new EventHandler(this.buttonGetChilds_Click);
+                            this.toolTipInfo.SetToolTip(childs[childName].Childs, "Nodos dentro de la etiqueta " + childName);
+                        }
+                    }
+                }
                 /* Agregamos los botones al grupo*/
                 foreach(String childName in childs.Keys){
                     /*Agregamos el boton de la etiqueta*/
@@ -132,56 +174,30 @@ namespace RegexMarkup
 
         #endregion
 
-        #region getChilds
-        /// <summary
-        /// Llena una lista con los nodos hijos como botones así como la creacíon de un boton para acceder a los nodos hijos de alguna etiqueta si fuera posible
+        #region 
+        /// <summary>
+        /// Funcion que limpia las etiquetas dentro de una cadena
         /// </summary>
-        private void getChilds(Sgml.Group model, ref Dictionary<String, MarkupButton> childs)
-        {
-            String childName = null;
-            foreach (Object child in model.CurrentMembers)
-            {
-                if (child.GetType().Namespace + "." + child.GetType().Name == "Sgml.Group")
-                {
-                    this.getChilds((Sgml.Group)child, ref childs);
-                }
-                else
-                {
-                    childName = child.ToString().ToLower();
-                    if (!childs.ContainsKey(childName))
-                    {
-                        childs.Add(childName, new MarkupButton());
-                        childs[childName].Markup = new Button();
-                        childs[childName].Markup.AutoSize = true;
-                        childs[childName].Markup.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-                        childs[childName].Markup.AutoEllipsis = false;
-                        childs[childName].Markup.Margin = new System.Windows.Forms.Padding(0);
-                        childs[childName].Markup.Padding = new System.Windows.Forms.Padding(0);
-                        childs[childName].Markup.Name = childName;
-                        childs[childName].Markup.Text = childName;
-                        childs[childName].Markup.Tag = childName;
-                        childs[childName].Markup.FlatStyle = FlatStyle.Flat;
-                        childs[childName].Markup.FlatAppearance.BorderSize = 0;
-                        childs[childName].Markup.Click += new EventHandler(this.markupButtonTag_Click);
-                        this.toolTipInfo.SetToolTip(childs[childName].Markup, descriptionTags.getDescription(childName));
-                        if (DTDSciELO.Article.FindElement(childName).ContentModel.CurrentModel.CurrentMembers.Count > 0)
-                        {
-                            childs[childName].Childs = new Button();
-                            childs[childName].Childs.AutoSize = true;
-                            childs[childName].Childs.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-                            childs[childName].Childs.AutoEllipsis = false;
-                            childs[childName].Childs.Margin = new System.Windows.Forms.Padding(0);
-                            childs[childName].Childs.Padding = new System.Windows.Forms.Padding(0);
-                            childs[childName].Childs.Name = childName + "Childs";
-                            childs[childName].Childs.Image = Resources.downArrow;
-                            childs[childName].Childs.FlatStyle = FlatStyle.Flat;
-                            childs[childName].Childs.FlatAppearance.BorderSize = 0;
-                            childs[childName].Childs.Click += new EventHandler(this.buttonGetChilds_Click);
-                            this.toolTipInfo.SetToolTip(childs[childName].Childs, "Nodos dentro de la etiqueta " + childName);
-                        }
-                    }
-                }
+        /// <param name="originalString">La cadena a la que se le quitaran la etiqueta</param>
+        /// <param name="tag">La etiqueta que eliminaremos</param>
+        /// <returns></returns>
+
+        private String clearTag(String originalString, String tag){
+            Regex objRegExp = null;
+            RegexOptions options = RegexOptions.None;
+            Match matchResults = null;
+            bool tagReplaced = false;
+            objRegExp = new Regex(@"\[/?" + tag + @"[^\]]*?\]", options);
+            matchResults = objRegExp.Match(originalString);
+            while (matchResults.Success) {
+                originalString = originalString.Replace(matchResults.Value, "");
+                tagReplaced = true;
+                matchResults = matchResults.NextMatch();
             }
+            if (tagReplaced) { 
+                
+            }
+            return originalString;
         }
         #endregion
 
@@ -240,6 +256,42 @@ namespace RegexMarkup
                 this.currencyManager.Position = this.currencyManager.Position;
             }
         }
+        /*Funcion encargada de eliminar la etiqueta seleccionada al dar click al buttonClearTag*/
+        private void buttonClearTag_Click(object sender, EventArgs e)
+        {
+            String selectedTag = this.richTextBoxMarkup.SelectedText.Trim();
+            String endTag = null;
+            int startOriginalSelection = 0;
+            int startSelection = 0;
+            int endSelection = 0;
+            /*Verificamos si el texto seleccionado no es nulo y ademas corresponde a un etiqueta*/
+            if (selectedTag != null && this.dtd.FindElement(selectedTag) != null)
+            {
+                startOriginalSelection = this.richTextBoxMarkup.SelectionStart;
+                this.richTextBoxMarkup.Select(startOriginalSelection - 1, 1);
+                if (this.richTextBoxMarkup.SelectedText == "[")
+                {
+                    endTag = "[/" + selectedTag + "]";
+                    startSelection = this.richTextBoxMarkup.SelectionStart;
+                    endSelection = this.richTextBoxMarkup.Find(endTag, startOriginalSelection, RichTextBoxFinds.None) + endTag.Length;
+                }
+                else {
+                    startSelection = this.richTextBoxMarkup.Find("[" + selectedTag, 0, startOriginalSelection, RichTextBoxFinds.Reverse);
+                    endSelection = this.richTextBoxMarkup.Find("]", startOriginalSelection, RichTextBoxFinds.None) + 1;
+                }
+                this.richTextBoxMarkup.Select(startSelection, endSelection - startSelection);
+                MessageBox.Show(this.richTextBoxMarkup.SelectedText);
+                 MessageBox.Show(this.clearTag(this.richTextBoxMarkup.SelectedText, selectedTag));
+                /*Buscando el inicio de la etiqueta seleccionada*/
+                /*Seleccionando cadena que comprende a la etiqueta seleccionada*/
+
+            }
+            else {
+                MessageBox.Show("La seleccion no corresponde a una etiqueta");
+            }
+            
+        }
+
         private void buttonFirst_Click(object sender, EventArgs e)
         {
             if (this.currencyManager.Position != 0)
