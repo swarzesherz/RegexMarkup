@@ -90,8 +90,8 @@ namespace RegexMarkup
                 }
                 langReader.Close();
             }
-            /*Si la etiqueta existe en el diccionario devolvemos su descripción de lo contrario regregamos el nombre de la etiqueta*/
-            if (this.tag.ContainsKey(node) && this.tag[node].Description.ContainsKey(language))
+            /*Si la etiqueta existe en el diccionario devolvemos su descripción de lo contrario agregamos el nombre de la etiqueta*/
+            if (this.tag.ContainsKey(node) && this.tag[node].Description != null && this.tag[node].Description.ContainsKey(language))
             {
                 return this.tag[node].Description[language];
             }
@@ -109,11 +109,11 @@ namespace RegexMarkup
                 this.tag.Add(node, new TagStruct());
             }
             /*Verificamos que el nodo tenga hijos*/
-            int childNodes = this.dtd.FindElement(node).ContentModel.CurrentModel.CurrentMembers.Count;
-            if (childNodes > 0 && this.tag[node].Childs == null)
+            Sgml.Group nodeGroup = this.dtd.FindElement(node).ContentModel.CurrentModel;
+            if (nodeGroup.CurrentMembers.Count > 0 && this.tag[node].Childs == null)
             {
                 childs = new List<string>();
-                this.setChilds(this.dtd.FindElement(node).ContentModel.CurrentModel, ref childs);
+                this.setChilds(nodeGroup, ref childs);
                 this.tag[node].Childs = childs;
                 this.tag[node].ChildNodes = true;
             }
@@ -133,9 +133,24 @@ namespace RegexMarkup
                 else
                 {
                     childName = child.ToString().ToLower();
+                    /*Si el nodo no existe en la lista lo agregamos ademas tambien verificamos que exista tambien en el diccionario*/
                     if (!childs.Contains(childName))
                     {
                         childs.Add(childName);
+                    }
+                    if (!this.tag.ContainsKey(childName))
+                    {
+                        try
+                        {
+                            this.tag.Add(childName, new TagStruct());
+                        }
+                        catch (Exception e) {
+                            System.Windows.Forms.MessageBox.Show(e.Message);
+                        }
+                    }
+                    /*Verificamos si el nodo tiene hijos y si es asi lo marcamos*/
+                    if (this.dtd.FindElement(childName).ContentModel.CurrentModel.CurrentMembers.Count > 0) { 
+                        this.tag[childName].ChildNodes = true;
                     }
                 }
             }

@@ -201,7 +201,6 @@
   -->
   <ItemGroup>
     <Compile Include="AssemblyInfoHelper.cs" />
-    <Compile Include="DescriptionTags.cs" />
     <Compile Include="dictionaryDTD.cs" />
     <Compile Include="DTDSciELO.cs" />
     <Compile Include="Forms\ConfigRegexMarkup.cs">

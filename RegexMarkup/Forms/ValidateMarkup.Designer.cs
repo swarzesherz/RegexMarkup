@@ -26,6 +26,7 @@ namespace RegexMarkup
                 components.Dispose();
             }
             base.Dispose(disposing);
+            instance = null;
         }
 
         #region Windows Form Designer generated code
@@ -73,7 +74,7 @@ namespace RegexMarkup
             // 
             // buttonFirst
             // 
-            this.buttonFirst.Location = new System.Drawing.Point(10, 422);
+            this.buttonFirst.Location = new System.Drawing.Point(10, 431);
             this.buttonFirst.Name = "buttonFirst";
             this.buttonFirst.Size = new System.Drawing.Size(75, 23);
             this.buttonFirst.TabIndex = 2;
@@ -83,7 +84,7 @@ namespace RegexMarkup
             // 
             // buttonPrev
             // 
-            this.buttonPrev.Location = new System.Drawing.Point(91, 422);
+            this.buttonPrev.Location = new System.Drawing.Point(91, 431);
             this.buttonPrev.Name = "buttonPrev";
             this.buttonPrev.Size = new System.Drawing.Size(75, 23);
             this.buttonPrev.TabIndex = 3;
@@ -93,7 +94,7 @@ namespace RegexMarkup
             // 
             // buttonNext
             // 
-            this.buttonNext.Location = new System.Drawing.Point(172, 422);
+            this.buttonNext.Location = new System.Drawing.Point(172, 431);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(75, 23);
             this.buttonNext.TabIndex = 4;
@@ -103,7 +104,7 @@ namespace RegexMarkup
             // 
             // buttonLast
             // 
-            this.buttonLast.Location = new System.Drawing.Point(253, 422);
+            this.buttonLast.Location = new System.Drawing.Point(253, 431);
             this.buttonLast.Name = "buttonLast";
             this.buttonLast.Size = new System.Drawing.Size(75, 23);
             this.buttonLast.TabIndex = 5;
@@ -114,7 +115,7 @@ namespace RegexMarkup
             // radioButtonYes
             // 
             this.radioButtonYes.AutoSize = true;
-            this.radioButtonYes.Location = new System.Drawing.Point(403, 425);
+            this.radioButtonYes.Location = new System.Drawing.Point(403, 434);
             this.radioButtonYes.Name = "radioButtonYes";
             this.radioButtonYes.Size = new System.Drawing.Size(34, 17);
             this.radioButtonYes.TabIndex = 9;
@@ -125,7 +126,7 @@ namespace RegexMarkup
             // radioButtonNo
             // 
             this.radioButtonNo.AutoSize = true;
-            this.radioButtonNo.Location = new System.Drawing.Point(443, 425);
+            this.radioButtonNo.Location = new System.Drawing.Point(443, 434);
             this.radioButtonNo.Name = "radioButtonNo";
             this.radioButtonNo.Size = new System.Drawing.Size(39, 17);
             this.radioButtonNo.TabIndex = 10;
@@ -136,7 +137,7 @@ namespace RegexMarkup
             // labelCitationStatus
             // 
             this.labelCitationStatus.AutoSize = true;
-            this.labelCitationStatus.Location = new System.Drawing.Point(334, 427);
+            this.labelCitationStatus.Location = new System.Drawing.Point(334, 436);
             this.labelCitationStatus.Name = "labelCitationStatus";
             this.labelCitationStatus.Size = new System.Drawing.Size(63, 13);
             this.labelCitationStatus.TabIndex = 11;
@@ -158,7 +159,7 @@ namespace RegexMarkup
             // buttonEnd
             // 
             this.buttonEnd.AutoSize = true;
-            this.buttonEnd.Location = new System.Drawing.Point(699, 422);
+            this.buttonEnd.Location = new System.Drawing.Point(699, 431);
             this.buttonEnd.Name = "buttonEnd";
             this.buttonEnd.Size = new System.Drawing.Size(75, 25);
             this.buttonEnd.TabIndex = 14;
@@ -171,7 +172,7 @@ namespace RegexMarkup
             this.citationOf.AutoSize = true;
             this.citationOf.Dock = System.Windows.Forms.DockStyle.Right;
             this.citationOf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.citationOf.Location = new System.Drawing.Point(697, 0);
+            this.citationOf.Location = new System.Drawing.Point(696, 0);
             this.citationOf.Name = "citationOf";
             this.citationOf.Padding = new System.Windows.Forms.Padding(0, 3, 12, 0);
             this.citationOf.Size = new System.Drawing.Size(87, 18);
@@ -182,7 +183,7 @@ namespace RegexMarkup
             // 
             this.groupBoxTools.Controls.Add(this.buttonEditAttr);
             this.groupBoxTools.Controls.Add(this.buttonClearTag);
-            this.groupBoxTools.Location = new System.Drawing.Point(10, 140);
+            this.groupBoxTools.Location = new System.Drawing.Point(10, 149);
             this.groupBoxTools.Name = "groupBoxTools";
             this.groupBoxTools.Size = new System.Drawing.Size(85, 45);
             this.groupBoxTools.TabIndex = 17;
@@ -217,7 +218,7 @@ namespace RegexMarkup
             // groupBoxOriginal
             // 
             this.groupBoxOriginal.Controls.Add(this.richTextBoxOriginal);
-            this.groupBoxOriginal.Location = new System.Drawing.Point(10, 7);
+            this.groupBoxOriginal.Location = new System.Drawing.Point(10, 16);
             this.groupBoxOriginal.Name = "groupBoxOriginal";
             this.groupBoxOriginal.Size = new System.Drawing.Size(765, 131);
             this.groupBoxOriginal.TabIndex = 18;
@@ -227,7 +228,7 @@ namespace RegexMarkup
             // groupBoxMarkup
             // 
             this.groupBoxMarkup.Controls.Add(this.richTextBoxMarkup);
-            this.groupBoxMarkup.Location = new System.Drawing.Point(10, 234);
+            this.groupBoxMarkup.Location = new System.Drawing.Point(10, 243);
             this.groupBoxMarkup.Name = "groupBoxMarkup";
             this.groupBoxMarkup.Size = new System.Drawing.Size(765, 184);
             this.groupBoxMarkup.TabIndex = 19;
@@ -238,7 +239,7 @@ namespace RegexMarkup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 454);
+            this.ClientSize = new System.Drawing.Size(783, 477);
             this.Controls.Add(this.groupBoxMarkup);
             this.Controls.Add(this.groupBoxOriginal);
             this.Controls.Add(this.groupBoxTools);

@@ -39,6 +39,8 @@ namespace RegexMarkup
 
         private Dictionary<String, String> languages = null;
         private BindingSource comboBoxLangDS = null;
+        private String originalLanguage = null;
+        private ValidateMarkup validateMarkup = null;
         public ConfigRegexMarkup()
         {
             InitializeComponent();
@@ -69,6 +71,8 @@ namespace RegexMarkup
             this.textBoxExternalFile.Enabled = this.checkBoxExternalFile.Checked;
             this.buttonExaminar.Enabled = this.checkBoxExternalFile.Checked;
             this.openFileDialogRegex.Filter = "Archivos (*.xml)|*.xml";
+            /*Variable para controlar el cambio de idioma*/
+            this.originalLanguage = Settings.Default.language;
         }
 
         private void comboBoxLang_SelectedValueChanged(object sender, EventArgs e)
@@ -86,7 +90,12 @@ namespace RegexMarkup
         {
             Settings.Default.Save();
             this.Close();
-            this.Dispose();
+            /*Si hay un cambio en el idioma eliminamos las intancias de los formularios*/
+            if (this.originalLanguage != Settings.Default.language) {
+                this.Dispose();
+                this.validateMarkup = ValidateMarkup.Instance;
+                this.validateMarkup.Dispose();
+            }
         }
 
         #region Disable close button

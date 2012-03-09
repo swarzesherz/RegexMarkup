@@ -260,6 +260,15 @@ namespace RegexMarkup.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Nodos dentro de la etiqueta {0}.
+        /// </summary>
+        internal static string ValidateMarkup_childTags {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_childTags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cita {0} de {1}.
         /// </summary>
         internal static string ValidateMarkup_citationOf {
@@ -301,6 +310,15 @@ namespace RegexMarkup.Properties {
         internal static string ValidateMarkup_labelCitationStatus {
             get {
                 return ResourceManager.GetString("ValidateMarkup_labelCitationStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Regresar al nivel superior {0}.
+        /// </summary>
+        internal static string ValidateMarkup_parentTag {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_parentTag", resourceCulture);
             }
         }
         

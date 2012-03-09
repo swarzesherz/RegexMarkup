@@ -214,4 +214,10 @@
   <data name="ValidateMarkup_buttonEditAttrToolTip" xml:space="preserve">
     <value>Editar atributos de la etiqueta seleccionada</value>
   </data>
+  <data name="ValidateMarkup_childTags" xml:space="preserve">
+    <value>Nodos dentro de la etiqueta {0}</value>
+  </data>
+  <data name="ValidateMarkup_parentTag" xml:space="preserve">
+    <value>Regresar al nivel superior {0}</value>
+  </data>
 </root>

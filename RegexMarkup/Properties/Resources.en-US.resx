@@ -198,10 +198,16 @@
   <data name="ValidateMarkup_buttonEditAttrToolTip" xml:space="preserve">
     <value>Edit attributes from selected tag</value>
   </data>
+  <data name="ValidateMarkup_childTags" xml:space="preserve">
+    <value>Nodes within the tag {0}</value>
+  </data>
   <data name="ValidateMarkup_groupBoxTools" xml:space="preserve">
     <value>Tools</value>
   </data>
   <data name="ValidateMarkup_labelCitationStatus" xml:space="preserve">
     <value>Mark citation</value>
+  </data>
+  <data name="ValidateMarkup_parentTag" xml:space="preserve">
+    <value>Back to top level {0}</value>
   </data>
 </root>

@@ -48,8 +48,11 @@ namespace RegexMarkup
         public static Word.Document ActiveDocument = null;
         private Waiting waitForm = null;
         public static Object missing = Type.Missing;
+        private String citationStyle = "other";
         private String dtdVersion = null;
         private String dtdType = "article";
+        private ValidateMarkup formValidate = null;
+        private Tags tags = Tags.Instance;
         #region startMarkup
         ///<summary>
         ///Procedimiento al que llamaremos para inciar el proceso de marcación
@@ -104,7 +107,7 @@ namespace RegexMarkup
             if (issn == null) {
                 MessageBox.Show(Resources.RegexMarkup_issnNotDefined, Resources.RegexMarkup_title);
             } else {
-                /*Asignamos el numero de version*/
+                /*Asignamos el numero de version de la DTD*/
                 this.dtdVersion = this.getAttrValueInTag(this.dtdType, "version");
                 /* Cargamos el archivo xml donde se encuetran los patrones de las revistas */
                 try
@@ -218,8 +221,11 @@ namespace RegexMarkup
                         }
                         structNodeColor = xmlDocColor.SelectSingleNode("references");
                         /* Mandamos llamar al formulario para la validación de las citas*/
-                        ValidateMarkup formValidate = new ValidateMarkup(ref citas, ref structNodeColor);
-                        formValidate.ShowDialog();
+                        this.formValidate = ValidateMarkup.Instance;
+                        this.formValidate.DtdVersion = this.dtdVersion;
+                        this.formValidate.DtdType = this.dtdType;
+                        this.formValidate.startValidate(ref citas);
+                        this.formValidate.ShowDialog();
                         /* Ocultamos la aplicacion durante los procesos de reemplazo y coloreado para hacer mas rapida la aplicacion */
                         Globals.ThisAddIn.Application.Visible = false;
                         waitForm = Waiting.Instance;
@@ -232,7 +238,7 @@ namespace RegexMarkup
                                 cita.RngCita.Text = cita.MarkedStr;
                                 /* Coloreando Etiquetas (Tags) */
                                 Word.Range refrange = cita.RngCita;
-                                this.colorRefTags(ref refrange, structNodeColor, 0);
+                                this.colorRefTags(ref refrange, this.citationStyle, 0);
                             }
                              
                         }
@@ -511,7 +517,7 @@ namespace RegexMarkup
         /// <param name="colorizeRange">Rango donde se coloreara el texto</param>
         /// <param name="structNode">Contenido de la etiqueta actual con sus hijos</param>
         /// <param name="color">Color de la etiqueta {0,...,4}</param>
-        public void colorRefTags(ref Word.Range colorizeRange, XmlNode structNode, int color) {
+        public void colorRefTags(ref Word.Range colorizeRange, String node, int color) {
             /* Definimos y asignamos el arreglo de colores para las etiquetas */
             Microsoft.Office.Interop.Word.WdColor[] colors = new Microsoft.Office.Interop.Word.WdColor[]{
                 Word.WdColor.wdColorDarkBlue,
@@ -529,12 +535,12 @@ namespace RegexMarkup
             /* Si el indice de color llego a 20 lo reiniciamos a 0 */
             color = color == 5 ? 0 : color;
             /* Iteramos las etiquetas(tags) hijas*/
-            foreach (XmlNode tag in structNode.ChildNodes){
+            foreach (String tagName in this.tags.getChilds(node)){
                 try
                 {
                     /* Buscamos y coloreamos el inicio de la etiqueta(tag) */
                     colorizeRange.Find.ClearFormatting();
-                    colorizeRange.Find.Text = "\\[" + tag.Name + "*\\]";
+                    colorizeRange.Find.Text = "\\[" + tagName + "*\\]";
                     colorizeRange.Find.MatchWildcards = true;
                     colorizeRange.Find.Replacement.ClearFormatting();
                     colorizeRange.Find.Replacement.Font.Color = colors[color];
@@ -548,7 +554,7 @@ namespace RegexMarkup
                         ref missingval, ref missingval, ref missingval, ref missingval);
                     /* Buscamos y coloreamos el cierre de la etiqueta(tag) */
                     colorizeRange.Find.ClearFormatting();
-                    colorizeRange.Find.Text = "\\[/" + tag.Name + "\\]";
+                    colorizeRange.Find.Text = "\\[/" + tagName + "\\]";
                     colorizeRange.Find.Replacement.ClearFormatting();
                     colorizeRange.Find.Replacement.Font.Color = colors[color];
                     colorizeRange.Find.Replacement.Font.Size = 11;
@@ -560,8 +566,8 @@ namespace RegexMarkup
                         ref missingval, ref missingval, ref missingval, ref replaceAll,
                         ref missingval, ref missingval, ref missingval, ref missingval);
                     /* Si la etiqueta fue encontrada y coloreada con exito coloreamos la etiquetas hijas */
-                    if (startTagSuccess && endTagSuccess) {
-                        this.colorRefTags(ref colorizeRange, tag, color);
+                    if (startTagSuccess && endTagSuccess && this.tags.Tag[tagName].ChildNodes) {
+                        this.colorRefTags(ref colorizeRange, tagName, color);
                     }
                 }catch(Exception e){
                     MessageBox.Show(e.Message);
