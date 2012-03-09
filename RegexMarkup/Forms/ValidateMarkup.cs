@@ -73,6 +73,8 @@ namespace RegexMarkup
             /*Tooltip para los botones*/
             this.toolTipInfo.SetToolTip(this.buttonClearTag, Resources.ValidateMarkup_buttonClearTagToolTip);
             this.toolTipInfo.SetToolTip(this.buttonEditAttr, Resources.ValidateMarkup_buttonEditAttrToolTip);
+            this.toolTipInfo.SetToolTip(this.buttonUndo, Resources.ValidateMarkup_buttonUndo);
+            this.toolTipInfo.SetToolTip(this.buttonRedo, Resources.ValidateMarkup_buttonRedo);
         }
 
         public void startValidate(ref List<MarkupStruct> citas)
@@ -122,7 +124,7 @@ namespace RegexMarkup
                 this.groupMarkupButtons[node].AutoSize = true;
                 this.groupMarkupButtons[node].AutoSizeMode = AutoSizeMode.GrowAndShrink;
                 this.groupMarkupButtons[node].MaximumSize = new System.Drawing.Size(this.Size.Width - 34, 45);
-                this.groupMarkupButtons[node].Location = new Point(10, 196);
+                this.groupMarkupButtons[node].Location = new Point(10, 49);
                 this.Controls.Add(this.groupMarkupButtons[node]);
                 /*Posicion de los botones dentro del grupo*/
                 int botonesPosY = 10;
@@ -330,6 +332,16 @@ namespace RegexMarkup
             
         }
 
+        private void buttonUndo_Click(object sender, EventArgs e)
+        {
+            this.richTextBoxMarkup.Undo();
+        }
+
+        private void buttonRedo_Click(object sender, EventArgs e)
+        {
+            this.richTextBoxMarkup.Redo();
+        }
+
         private void buttonFirst_Click(object sender, EventArgs e)
         {
             if (this.currencyManager.Position != 0)
@@ -508,5 +520,6 @@ namespace RegexMarkup
         }
 
         #endregion
+
     }
 }

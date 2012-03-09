@@ -38,7 +38,7 @@
     <PublishUrl>ftp://132.248.9.166/RegexMarkupDist/</PublishUrl>
     <InstallUrl>http://132.248.9.166/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.7.5.14</ApplicationVersion>
+    <ApplicationVersion>0.7.5.19</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -377,13 +377,12 @@
     <Content Include="regex.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\undo.ico" />
+    <None Include="Resources\redo.ico" />
     <None Include="Resources\trash.ico" />
     <None Include="Resources\pencil.ico" />
     <None Include="Resources\downArrow.ico" />
     <None Include="Resources\upArrow.ico" />
-    <Content Include="tagColors.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\sgmlreaderdll\SgmlReaderDll.csproj">

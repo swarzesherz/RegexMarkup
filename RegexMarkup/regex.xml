@@ -1743,12 +1743,12 @@
                 <value>$1</value>
                 <multiple>
                     <opcion>
-                        <regex>(.+?[.,]\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[,.]\s*)(.+?\.\s[EI]n\s.+?)(,\s)(.+)</regex>
+                        <regex>(.+?[.,]\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[,.]\s*)(.+?)(\.\s[EI]n\s)(.+?$)</regex>
                         <struct>
                             <ocontrib tag="true">
                                 <autores>
                                     <value>$1</value>
-                                    <regex>((?:.+?,\s[A-Z.\s]+?|.+?))(\sand\s|\sy\s|,\s|\s\(.+?\)|\s$|$)</regex>
+                                    <regex>((?:.+?,\s[A-Z.\s]+?|.+?))(\sand\s|\sy\s|,\s|\s\(.+?\)|\.\s$|$)</regex>
                                     <struct>
                                         <oauthor tag="true">
                                             <attr>
@@ -1769,7 +1769,7 @@
                                                     </struct>
                                                 </opcion>
                                                 <opcion>
-                                                    <regex>([A-Zh.]+?\s[A-Zh.]+?|[A-Zh.]+?|.+?)(\s)(.+$)</regex>
+                                                    <regex>([A-Zh.]+?\s[A-Zh.]+?\s[A-Zh.]+?|[A-Zh.]+?\s[A-Zh.]+?|[A-Zh.]+?|.+?)(\s)(.+$)</regex>
                                                     <struct>
                                                         <fname tag="true">
                                                             <value>$1</value>
@@ -1798,15 +1798,23 @@
                                     </attr>
                                     <value>$4</value>
                                 </title>
+                            </ocontrib>
                                 <omonog tag="true">
                                     <prevalue>$5</prevalue>
                                     <value>$6</value>
                                     <multiple>
                                         <opcion>
-                                            <regex>(.+?\(.+?\))(\.*\s|\.\s*)(.+?)(\sp{1,2})(\.*\s|\.\s*)(.+?)(\.$|$)</regex>
+                                            <regex>(.+?)(,\s)(.+?)(\s\(e.+\)\.*\s)(.+?)(,\s)(.+?)(\.*\sp\.\s*)(.+?)(\.$|$)</regex>
                                             <struct>
+                                               <title tag="true">
+                                                     <attr>
+                                                        <language>en</language>
+                                                       </attr>
+                                                       <value>$1</value>
+                                                       <postvalue>$2</postvalue>
+                                                </title>
                                                 <autores>
-                                                    <value>$1</value>
+                                                    <value>$3</value>
                                                     <regex>((?:.+?,\s[A-Z.\s]+?|.+?))(\sand\s|\sy\s|,\s|\s\(.+?\)|\s$|$)</regex>
                                                     <struct>
                                                         <oauthor tag="true">
@@ -1844,25 +1852,32 @@
                                                         </oauthor>
                                                     </struct>
                                                 </autores>
+                                <pubname tag="true">
+                                   <prevalue>$4</prevalue>
+                                    <value>$5</value>
+                                    <postvalue>$6</postvalue>
+                                </pubname>
+                                <city tag="true">
+                                    <value>$7</value>
+                                    <postvalue>$8</postvalue>
+                                </city>
                                                 <pages tag="true">
-                                                    <prevalue>$2$3$4$5</prevalue>
-                                                    <value>$6</value>
-                                                    <postvalue>$7</postvalue>
+                                                    <value>$9</value>
+                                                    <postvalue>$10</postvalue>
                                                 </pages>
                                             </struct>
                                         </opcion>
                                     </multiple>
                                 </omonog>
-                            </ocontrib>
                         </struct>
                     </opcion>
                     <opcion>
                         <regex>(.+?[.,]\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[,.]\s*)(.+)([.?]\s*)(.+)(\s)([^a-z]+?)(:\s*)(.+?)(\.$)</regex>
                         <struct>
                             <ocontrib tag="true">
-                                <auores>
+                                <autores>
                                     <value>$1</value>
-                                    <regex>((?:.+?,\s[A-Z.\s]+?|.+?))(\sand\s|\sy\s|,\s|\s\(.+?\)|\s$|$)</regex>
+                                    <regex>((?:.+?,\s[A-Z.\s]+?|.+?))(\sand\s|\sy\s|\se\s|,\s|\s\(.+?\)|\.\s$|$)</regex>
                                     <struct>
                                         <oauthor tag="true">
                                             <attr>
@@ -1883,7 +1898,7 @@
                                                     </struct>
                                                 </opcion>
                                                 <opcion>
-                                                    <regex>([A-Zh.]+?\s[A-Zh.]+?|[A-Zh.]+?|.+?)(\s)(.+$)</regex>
+                                                    <regex>([A-Zh.]+?\s[A-Zh.]+?\s[A-Zh.]+?|[A-Zh.]+?\s[A-Zh.]+?|[A-Zh.]+?|.+?)(\s)(.+$)</regex>
                                                     <struct>
                                                         <fname tag="true">
                                                             <value>$1</value>
@@ -1898,7 +1913,7 @@
                                             <postvalue>$2</postvalue>
                                         </oauthor>
                                     </struct>
-                                </auores>
+                                </autores>
                                 <date tag="true">
                                     <attr>
                                         <dateiso/>
@@ -1959,7 +1974,7 @@
                             <omonog tag="true">
                                 <autores>
                                     <value>$1</value>
-                                    <regex>((?:.+?,\s[A-Z.\s]+?|.+?))(\sand\s|\sy\s|,\s|\s\(.+?\)|\s$|$)</regex>
+                                    <regex>((?:.+?,\s[A-Z.\s]+?|.+?))(\sand\s|\sy\s|,\s|\s\(.+?\)|\.\s$|$)</regex>
                                     <struct>
                                         <oauthor tag="true">
                                             <attr>
@@ -2031,7 +2046,7 @@
                             <omonog tag="true">
                                 <autores>
                                     <value>$1</value>
-                                    <regex>((?:.+?,\s[A-Z.\s]+?|.+?))(\sand\s|\sy\s|,\s|\s\(.+?\)|\s$|$)</regex>
+                                    <regex>((?:.+?,\s[A-Z.\s]+?|.+?))(\sand\s|\sy\s|,\s|\s\(.+?\)|\.\s$|$)</regex>
                                     <struct>
                                         <oauthor tag="true">
                                             <attr>

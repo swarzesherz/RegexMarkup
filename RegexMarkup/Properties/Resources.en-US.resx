@@ -198,6 +198,12 @@
   <data name="ValidateMarkup_buttonEditAttrToolTip" xml:space="preserve">
     <value>Edit attributes from selected tag</value>
   </data>
+  <data name="ValidateMarkup_buttonRedo" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="ValidateMarkup_buttonUndo" xml:space="preserve">
+    <value>Undo</value>
+  </data>
   <data name="ValidateMarkup_childTags" xml:space="preserve">
     <value>Nodes within the tag {0}</value>
   </data>

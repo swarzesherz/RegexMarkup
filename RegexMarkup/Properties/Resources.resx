@@ -117,107 +117,119 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="RibbonRegexMarkup_buttonConfiguration" xml:space="preserve">
+    <value>Configuración</value>
+  </data>
   <data name="ValidateMarkup_groupBoxTools" xml:space="preserve">
     <value>Herramientas</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="upArrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\upArrow.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ValidateMarkup_citationOf" xml:space="preserve">
-    <value>Cita {0} de {1}</value>
   </data>
   <data name="RegexMarkup_serilaNotInXML" xml:space="preserve">
     <value>No se econtro la revista en el archivo xml</value>
   </data>
-  <data name="configRegexMarkup_enUS" xml:space="preserve">
-    <value>Ingles</value>
-  </data>
-  <data name="ValidateMarkup_radioButtonNo" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="ValidateMarkup_radioButtonYes" xml:space="preserve">
-    <value>Si</value>
-  </data>
-  <data name="ValidateMarkup_buttonPrev" xml:space="preserve">
-    <value>Anterior</value>
-  </data>
-  <data name="RegexMarkup_selectCitationComplete" xml:space="preserve">
-    <value>Seleccione la cita(s) completamente</value>
-  </data>
-  <data name="ValidateMarkup_groupBoxMarkup" xml:space="preserve">
-    <value>Cita marcada:</value>
-  </data>
-  <data name="downArrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\downArrow.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ValidateMarkup_buttonFirst" xml:space="preserve">
-    <value>Primera</value>
-  </data>
-  <data name="configRegexMarkup_labelExternalFile" xml:space="preserve">
-    <value>Usar archivo externo</value>
-  </data>
-  <data name="configRegexMarkup_title" xml:space="preserve">
-    <value>Configuratión RegexMarkup</value>
-  </data>
-  <data name="RibbonRegexMarkup_buttonConfiguration" xml:space="preserve">
-    <value>Configuración</value>
-  </data>
-  <data name="RegexMarkup_title" xml:space="preserve">
-    <value>RegexMarkup</value>
-  </data>
-  <data name="configRegexMarkup_language" xml:space="preserve">
-    <value>Idioma</value>
-  </data>
-  <data name="ValidateMarkup_buttonLast" xml:space="preserve">
-    <value>Última</value>
-  </data>
-  <data name="ValidateMarkup_title" xml:space="preserve">
-    <value>Validación y marcación de las citas</value>
-  </data>
   <data name="ValidateMarkup_buttonEnd" xml:space="preserve">
     <value>Finalizar</value>
-  </data>
-  <data name="ValidateMarkup_buttonNext" xml:space="preserve">
-    <value>Siguiente</value>
-  </data>
-  <data name="Waiting_labelWait" xml:space="preserve">
-    <value>Espere por favor</value>
-  </data>
-  <data name="configRegexMarkup_buttonSave" xml:space="preserve">
-    <value>Guardar</value>
-  </data>
-  <data name="RegexMarkup_issnNotDefined" xml:space="preserve">
-    <value>No esta definido issn</value>
-  </data>
-  <data name="ValidateMarkup_labelCitationStatus" xml:space="preserve">
-    <value>Marcar cita</value>
-  </data>
-  <data name="configRegexMarkup_buttonExaminar" xml:space="preserve">
-    <value>Examinar...</value>
-  </data>
-  <data name="configRegexMarkup_esES" xml:space="preserve">
-    <value>Español</value>
-  </data>
-  <data name="ValidateMarkup_groupBoxOriginal" xml:space="preserve">
-    <value>Cita original:</value>
-  </data>
-  <data name="trash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\trash.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pencil" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pencil.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ValidateMarkup_buttonClearTagToolTip" xml:space="preserve">
     <value>Elimina la etiqueta seleccionada</value>
   </data>
+  <data name="ValidateMarkup_parentTag" xml:space="preserve">
+    <value>Regresar al nivel superior {0}</value>
+  </data>
+  <data name="configRegexMarkup_buttonExaminar" xml:space="preserve">
+    <value>Examinar...</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="downArrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\downArrow.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ValidateMarkup_buttonEditAttrToolTip" xml:space="preserve">
     <value>Editar atributos de la etiqueta seleccionada</value>
+  </data>
+  <data name="configRegexMarkup_language" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="trash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trash.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ValidateMarkup_title" xml:space="preserve">
+    <value>Validación y marcación de las citas</value>
+  </data>
+  <data name="Waiting_labelWait" xml:space="preserve">
+    <value>Espere por favor</value>
+  </data>
+  <data name="ValidateMarkup_labelCitationStatus" xml:space="preserve">
+    <value>Marcar cita</value>
+  </data>
+  <data name="configRegexMarkup_enUS" xml:space="preserve">
+    <value>Ingles</value>
+  </data>
+  <data name="ValidateMarkup_buttonPrev" xml:space="preserve">
+    <value>Anterior</value>
+  </data>
+  <data name="ValidateMarkup_buttonNext" xml:space="preserve">
+    <value>Siguiente</value>
+  </data>
+  <data name="ValidateMarkup_buttonLast" xml:space="preserve">
+    <value>Última</value>
+  </data>
+  <data name="ValidateMarkup_radioButtonNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="configRegexMarkup_labelExternalFile" xml:space="preserve">
+    <value>Usar archivo externo</value>
+  </data>
+  <data name="ValidateMarkup_radioButtonYes" xml:space="preserve">
+    <value>Si</value>
+  </data>
+  <data name="RegexMarkup_title" xml:space="preserve">
+    <value>RegexMarkup</value>
+  </data>
+  <data name="pencil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pencil.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ValidateMarkup_groupBoxMarkup" xml:space="preserve">
+    <value>Cita marcada:</value>
+  </data>
+  <data name="RegexMarkup_selectCitationComplete" xml:space="preserve">
+    <value>Seleccione la cita(s) completamente</value>
+  </data>
+  <data name="ValidateMarkup_buttonFirst" xml:space="preserve">
+    <value>Primera</value>
   </data>
   <data name="ValidateMarkup_childTags" xml:space="preserve">
     <value>Nodos dentro de la etiqueta {0}</value>
   </data>
-  <data name="ValidateMarkup_parentTag" xml:space="preserve">
-    <value>Regresar al nivel superior {0}</value>
+  <data name="upArrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\upArrow.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ValidateMarkup_groupBoxOriginal" xml:space="preserve">
+    <value>Cita original:</value>
+  </data>
+  <data name="configRegexMarkup_title" xml:space="preserve">
+    <value>Configuratión RegexMarkup</value>
+  </data>
+  <data name="RegexMarkup_issnNotDefined" xml:space="preserve">
+    <value>No esta definido issn</value>
+  </data>
+  <data name="configRegexMarkup_buttonSave" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="configRegexMarkup_esES" xml:space="preserve">
+    <value>Español</value>
+  </data>
+  <data name="ValidateMarkup_citationOf" xml:space="preserve">
+    <value>Cita {0} de {1}</value>
+  </data>
+  <data name="redo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\redo.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="undo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\undo.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ValidateMarkup_buttonRedo" xml:space="preserve">
+    <value>Rehacer</value>
+  </data>
+  <data name="ValidateMarkup_buttonUndo" xml:space="preserve">
+    <value>Deshacer</value>
   </data>
 </root>

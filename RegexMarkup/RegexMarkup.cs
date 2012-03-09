@@ -68,13 +68,10 @@ namespace RegexMarkup
             String fixedMarkedString = null;
             String issn = null;
             String pathXML = null;
-            String pathXMLColor = null;
             Word.Selection docSeleccion = null;
             XmlDocument xmlDoc = new XmlDocument();
-            XmlDocument xmlDocColor = new XmlDocument();
             XmlNode objElem = null;
             XmlNode structNode = null;
-            XmlNode structNodeColor = null;
             List<MarkupStruct> citas = null;
             Regex objRegExp = null;
             RegexOptions options = RegexOptions.None;
@@ -85,11 +82,9 @@ namespace RegexMarkup
             if (ApplicationDeployment.IsNetworkDeployed)
             {
                 pathXML = Path.Combine(ApplicationDeployment.CurrentDeployment.DataDirectory, "regex.xml");
-                pathXMLColor = Path.Combine(ApplicationDeployment.CurrentDeployment.DataDirectory, "tagColors.xml");
             }
             else {
                 pathXML = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "regex.xml");
-                pathXMLColor = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tagColors.xml");
             }
             /*Verificamos si vamos a usar un archivo externo para las reglas*/
             if (Settings.Default.useExternalRegexFile) {
@@ -209,17 +204,6 @@ namespace RegexMarkup
                                 citas.Add(new MarkupStruct(subjetcString, fixedMarkedString, marked, ActiveDocument.Range(ref parrafoStart, ref parrafoEnd)));
                             }
                         }
-                        /* Cargamos el archivo xml donde se encuetra la lista de etiquetas que se pueden colorear */
-                        try
-                        {
-                            xmlDocColor.Load(pathXMLColor);
-                        }
-                        catch (Exception e)
-                        {
-                            MessageBox.Show(e.Message);
-                            return;
-                        }
-                        structNodeColor = xmlDocColor.SelectSingleNode("references");
                         /* Mandamos llamar al formulario para la validación de las citas*/
                         this.formValidate = ValidateMarkup.Instance;
                         this.formValidate.DtdVersion = this.dtdVersion;

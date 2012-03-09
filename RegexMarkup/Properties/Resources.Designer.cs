@@ -137,6 +137,13 @@ namespace RegexMarkup.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap redo {
+            get {
+                object obj = ResourceManager.GetObject("redo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Busca una cadena traducida similar a No esta definido issn.
         /// </summary>
@@ -185,6 +192,13 @@ namespace RegexMarkup.Properties {
         internal static System.Drawing.Bitmap trash {
             get {
                 object obj = ResourceManager.GetObject("trash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap undo {
+            get {
+                object obj = ResourceManager.GetObject("undo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -256,6 +270,24 @@ namespace RegexMarkup.Properties {
         internal static string ValidateMarkup_buttonPrev {
             get {
                 return ResourceManager.GetString("ValidateMarkup_buttonPrev", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Rehacer.
+        /// </summary>
+        internal static string ValidateMarkup_buttonRedo {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_buttonRedo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Deshacer.
+        /// </summary>
+        internal static string ValidateMarkup_buttonUndo {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_buttonUndo", resourceCulture);
             }
         }
         

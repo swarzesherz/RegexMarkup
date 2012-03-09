@@ -52,6 +52,8 @@ namespace RegexMarkup
             this.citationOf = new System.Windows.Forms.Label();
             this.toolTipInfo = new System.Windows.Forms.ToolTip(this.components);
             this.groupBoxTools = new System.Windows.Forms.GroupBox();
+            this.buttonRedo = new System.Windows.Forms.Button();
+            this.buttonUndo = new System.Windows.Forms.Button();
             this.buttonEditAttr = new System.Windows.Forms.Button();
             this.buttonClearTag = new System.Windows.Forms.Button();
             this.groupBoxOriginal = new System.Windows.Forms.GroupBox();
@@ -74,7 +76,7 @@ namespace RegexMarkup
             // 
             // buttonFirst
             // 
-            this.buttonFirst.Location = new System.Drawing.Point(10, 431);
+            this.buttonFirst.Location = new System.Drawing.Point(10, 418);
             this.buttonFirst.Name = "buttonFirst";
             this.buttonFirst.Size = new System.Drawing.Size(75, 23);
             this.buttonFirst.TabIndex = 2;
@@ -84,7 +86,7 @@ namespace RegexMarkup
             // 
             // buttonPrev
             // 
-            this.buttonPrev.Location = new System.Drawing.Point(91, 431);
+            this.buttonPrev.Location = new System.Drawing.Point(91, 418);
             this.buttonPrev.Name = "buttonPrev";
             this.buttonPrev.Size = new System.Drawing.Size(75, 23);
             this.buttonPrev.TabIndex = 3;
@@ -94,7 +96,7 @@ namespace RegexMarkup
             // 
             // buttonNext
             // 
-            this.buttonNext.Location = new System.Drawing.Point(172, 431);
+            this.buttonNext.Location = new System.Drawing.Point(172, 418);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(75, 23);
             this.buttonNext.TabIndex = 4;
@@ -104,7 +106,7 @@ namespace RegexMarkup
             // 
             // buttonLast
             // 
-            this.buttonLast.Location = new System.Drawing.Point(253, 431);
+            this.buttonLast.Location = new System.Drawing.Point(253, 418);
             this.buttonLast.Name = "buttonLast";
             this.buttonLast.Size = new System.Drawing.Size(75, 23);
             this.buttonLast.TabIndex = 5;
@@ -115,7 +117,7 @@ namespace RegexMarkup
             // radioButtonYes
             // 
             this.radioButtonYes.AutoSize = true;
-            this.radioButtonYes.Location = new System.Drawing.Point(403, 434);
+            this.radioButtonYes.Location = new System.Drawing.Point(403, 421);
             this.radioButtonYes.Name = "radioButtonYes";
             this.radioButtonYes.Size = new System.Drawing.Size(34, 17);
             this.radioButtonYes.TabIndex = 9;
@@ -126,7 +128,7 @@ namespace RegexMarkup
             // radioButtonNo
             // 
             this.radioButtonNo.AutoSize = true;
-            this.radioButtonNo.Location = new System.Drawing.Point(443, 434);
+            this.radioButtonNo.Location = new System.Drawing.Point(443, 421);
             this.radioButtonNo.Name = "radioButtonNo";
             this.radioButtonNo.Size = new System.Drawing.Size(39, 17);
             this.radioButtonNo.TabIndex = 10;
@@ -137,7 +139,7 @@ namespace RegexMarkup
             // labelCitationStatus
             // 
             this.labelCitationStatus.AutoSize = true;
-            this.labelCitationStatus.Location = new System.Drawing.Point(334, 436);
+            this.labelCitationStatus.Location = new System.Drawing.Point(334, 423);
             this.labelCitationStatus.Name = "labelCitationStatus";
             this.labelCitationStatus.Size = new System.Drawing.Size(63, 13);
             this.labelCitationStatus.TabIndex = 11;
@@ -151,7 +153,7 @@ namespace RegexMarkup
             this.richTextBoxOriginal.Location = new System.Drawing.Point(3, 16);
             this.richTextBoxOriginal.Name = "richTextBoxOriginal";
             this.richTextBoxOriginal.ReadOnly = true;
-            this.richTextBoxOriginal.Size = new System.Drawing.Size(759, 112);
+            this.richTextBoxOriginal.Size = new System.Drawing.Size(759, 113);
             this.richTextBoxOriginal.TabIndex = 13;
             this.richTextBoxOriginal.Tag = "";
             this.richTextBoxOriginal.Text = "";
@@ -159,7 +161,7 @@ namespace RegexMarkup
             // buttonEnd
             // 
             this.buttonEnd.AutoSize = true;
-            this.buttonEnd.Location = new System.Drawing.Point(699, 431);
+            this.buttonEnd.Location = new System.Drawing.Point(699, 418);
             this.buttonEnd.Name = "buttonEnd";
             this.buttonEnd.Size = new System.Drawing.Size(75, 25);
             this.buttonEnd.TabIndex = 14;
@@ -181,14 +183,42 @@ namespace RegexMarkup
             // 
             // groupBoxTools
             // 
+            this.groupBoxTools.Controls.Add(this.buttonRedo);
+            this.groupBoxTools.Controls.Add(this.buttonUndo);
             this.groupBoxTools.Controls.Add(this.buttonEditAttr);
             this.groupBoxTools.Controls.Add(this.buttonClearTag);
-            this.groupBoxTools.Location = new System.Drawing.Point(10, 149);
+            this.groupBoxTools.Location = new System.Drawing.Point(10, 2);
             this.groupBoxTools.Name = "groupBoxTools";
-            this.groupBoxTools.Size = new System.Drawing.Size(85, 45);
+            this.groupBoxTools.Size = new System.Drawing.Size(126, 45);
             this.groupBoxTools.TabIndex = 17;
             this.groupBoxTools.TabStop = false;
             this.groupBoxTools.Text = "Herramientas";
+            // 
+            // buttonRedo
+            // 
+            this.buttonRedo.AutoSize = true;
+            this.buttonRedo.FlatAppearance.BorderSize = 0;
+            this.buttonRedo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRedo.Image = global::RegexMarkup.Properties.Resources.redo;
+            this.buttonRedo.Location = new System.Drawing.Point(94, 15);
+            this.buttonRedo.Name = "buttonRedo";
+            this.buttonRedo.Size = new System.Drawing.Size(22, 22);
+            this.buttonRedo.TabIndex = 3;
+            this.buttonRedo.UseVisualStyleBackColor = true;
+            this.buttonRedo.Click += new System.EventHandler(this.buttonRedo_Click);
+            // 
+            // buttonUndo
+            // 
+            this.buttonUndo.AutoSize = true;
+            this.buttonUndo.FlatAppearance.BorderSize = 0;
+            this.buttonUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUndo.Image = global::RegexMarkup.Properties.Resources.undo;
+            this.buttonUndo.Location = new System.Drawing.Point(66, 15);
+            this.buttonUndo.Name = "buttonUndo";
+            this.buttonUndo.Size = new System.Drawing.Size(22, 22);
+            this.buttonUndo.TabIndex = 2;
+            this.buttonUndo.UseVisualStyleBackColor = true;
+            this.buttonUndo.Click += new System.EventHandler(this.buttonUndo_Click);
             // 
             // buttonEditAttr
             // 
@@ -218,9 +248,9 @@ namespace RegexMarkup
             // groupBoxOriginal
             // 
             this.groupBoxOriginal.Controls.Add(this.richTextBoxOriginal);
-            this.groupBoxOriginal.Location = new System.Drawing.Point(10, 16);
+            this.groupBoxOriginal.Location = new System.Drawing.Point(10, 282);
             this.groupBoxOriginal.Name = "groupBoxOriginal";
-            this.groupBoxOriginal.Size = new System.Drawing.Size(765, 131);
+            this.groupBoxOriginal.Size = new System.Drawing.Size(765, 132);
             this.groupBoxOriginal.TabIndex = 18;
             this.groupBoxOriginal.TabStop = false;
             this.groupBoxOriginal.Text = "Cita original";
@@ -228,7 +258,7 @@ namespace RegexMarkup
             // groupBoxMarkup
             // 
             this.groupBoxMarkup.Controls.Add(this.richTextBoxMarkup);
-            this.groupBoxMarkup.Location = new System.Drawing.Point(10, 243);
+            this.groupBoxMarkup.Location = new System.Drawing.Point(10, 96);
             this.groupBoxMarkup.Name = "groupBoxMarkup";
             this.groupBoxMarkup.Size = new System.Drawing.Size(765, 184);
             this.groupBoxMarkup.TabIndex = 19;
@@ -239,7 +269,7 @@ namespace RegexMarkup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 477);
+            this.ClientSize = new System.Drawing.Size(783, 449);
             this.Controls.Add(this.groupBoxMarkup);
             this.Controls.Add(this.groupBoxOriginal);
             this.Controls.Add(this.groupBoxTools);
@@ -287,5 +317,7 @@ namespace RegexMarkup
         private Button buttonEditAttr;
         private GroupBox groupBoxOriginal;
         private GroupBox groupBoxMarkup;
+        private Button buttonUndo;
+        private Button buttonRedo;
     }
 }
