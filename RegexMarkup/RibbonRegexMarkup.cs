@@ -50,13 +50,7 @@ namespace RegexMarkup
 
         private void buttonRegexMarkup_Click(object sender, RibbonControlEventArgs e)
         {
-            try
-            {
-                this.objectRegexMarkup.startMarkup();
-            }
-            catch (Exception error) {
-                System.Windows.Forms.MessageBox.Show(error.Message);
-            }
+            this.objectRegexMarkup.startMarkup();
         }
 
         private void buttonConfig_Click(object sender, RibbonControlEventArgs e)

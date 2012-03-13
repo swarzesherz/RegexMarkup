@@ -1522,6 +1522,13 @@ namespace Sgml {
         private string[] m_exclusions;
         private Dictionary<string, AttDef> m_attList;
 
+        public Dictionary<string, AttDef> AttList
+        {
+            get { return m_attList; }
+            set { m_attList = value; }
+        }
+
+
         /// <summary>
         /// Initialises a new element declaration instance.
         /// </summary>

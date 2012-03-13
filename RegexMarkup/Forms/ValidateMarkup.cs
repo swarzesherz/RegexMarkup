@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
 using RegexMarkup.Properties;
 using Sgml;
+using RegexMarkup.Forms;
 
 
 namespace RegexMarkup
@@ -51,6 +52,7 @@ namespace RegexMarkup
         private String dtdVersion = null;
         private String dtdType = null;
         private String currentGroupTag = null;
+        private EditAttribute editAttribute = null;
 
         public ValidateMarkup()
         {
@@ -127,7 +129,7 @@ namespace RegexMarkup
                 this.groupMarkupButtons[node].Location = new Point(10, 49);
                 this.Controls.Add(this.groupMarkupButtons[node]);
                 /*Posicion de los botones dentro del grupo*/
-                int botonesPosY = 10;
+                int botonesPosX = 10;
                 /*Instanciamos el Dictionary<String, MarkupButton>*/
                 childs = new Dictionary<String, MarkupButton>();
                 /*Agregamos un boton para regresar al grupo al que pertenece el nodo padre*/
@@ -186,15 +188,15 @@ namespace RegexMarkup
                 /* Agregamos los botones al grupo*/
                 foreach(String childName in childs.Keys){
                     /*Agregamos el boton de la etiqueta*/
-                    childs[childName].Markup.Location = new Point(botonesPosY, 15);
+                    childs[childName].Markup.Location = new Point(botonesPosX, 15);
                     this.groupMarkupButtons[node].Controls.Add(childs[childName].Markup);
-                    botonesPosY += childs[childName].Markup.Size.Width;
+                    botonesPosX += childs[childName].Markup.Size.Width;
                     /*Si la etiqueta tiene nodos hijos y el nodo padre no es el mismo que la tiqueta agregamos el botón para mostrar los nodos hijos*/
                     if (childs[childName].Childs != null && node != childs[childName].Markup.Name)
                     {
-                        childs[childName].Childs.Location = new Point(botonesPosY, 15);
+                        childs[childName].Childs.Location = new Point(botonesPosX, 15);
                         this.groupMarkupButtons[node].Controls.Add(childs[childName].Childs);
-                        botonesPosY += childs[childName].Childs.Size.Width;
+                        botonesPosX += childs[childName].Childs.Size.Width;
                     }
                 }
             }
@@ -264,6 +266,28 @@ namespace RegexMarkup
         }
         #endregion
 
+        private void selectTagContent(String node) {
+            String endTag = null;
+            int startOriginalSelection = 0;
+            int startSelection = 0;
+            int endSelection = 0;
+            /*Buscando el inicio de la etiqueta seleccionada*/
+            startOriginalSelection = this.richTextBoxMarkup.SelectionStart;
+            this.richTextBoxMarkup.Select(startOriginalSelection - 1, 1);
+            if (this.richTextBoxMarkup.SelectedText == "[")
+            {
+                endTag = "[/" + node + "]";
+                startSelection = this.richTextBoxMarkup.SelectionStart;
+                endSelection = this.richTextBoxMarkup.Find(endTag, startOriginalSelection, RichTextBoxFinds.None) + endTag.Length;
+            }
+            else
+            {
+                startSelection = this.richTextBoxMarkup.Find("[" + node, 0, startOriginalSelection, RichTextBoxFinds.Reverse);
+                endSelection = this.richTextBoxMarkup.Find("]", startOriginalSelection, RichTextBoxFinds.None) + 1;
+            }
+            /*Seleccionando cadena que comprende a la etiqueta seleccionada*/
+            this.richTextBoxMarkup.Select(startSelection, endSelection - startSelection);
+        }
         #region Click events function
         /// <summary>
         /// Conjuntos de funciones para los eventos click de los botones
@@ -299,28 +323,11 @@ namespace RegexMarkup
         private void buttonClearTag_Click(object sender, EventArgs e)
         {
             String selectedTag = this.richTextBoxMarkup.SelectedText.Trim();
-            String endTag = null;
-            int startOriginalSelection = 0;
-            int startSelection = 0;
-            int endSelection = 0;
             /*Verificamos si el texto seleccionado no es nulo y ademas corresponde a un etiqueta*/
             if (selectedTag != null && this.dtd.FindElement(selectedTag) != null)
             {
-                /*Buscando el inicio de la etiqueta seleccionada*/
-                startOriginalSelection = this.richTextBoxMarkup.SelectionStart;
-                this.richTextBoxMarkup.Select(startOriginalSelection - 1, 1);
-                if (this.richTextBoxMarkup.SelectedText == "[")
-                {
-                    endTag = "[/" + selectedTag + "]";
-                    startSelection = this.richTextBoxMarkup.SelectionStart;
-                    endSelection = this.richTextBoxMarkup.Find(endTag, startOriginalSelection, RichTextBoxFinds.None) + endTag.Length;
-                }
-                else {
-                    startSelection = this.richTextBoxMarkup.Find("[" + selectedTag, 0, startOriginalSelection, RichTextBoxFinds.Reverse);
-                    endSelection = this.richTextBoxMarkup.Find("]", startOriginalSelection, RichTextBoxFinds.None) + 1;
-                }
-                /*Seleccionando cadena que comprende a la etiqueta seleccionada*/
-                this.richTextBoxMarkup.Select(startSelection, endSelection - startSelection);
+                /*Seleccionamos el texto comprendido entre la etiqueta*/
+                this.selectTagContent(selectedTag);
                 /*Quitamos la o las etiquetas*/
                 this.richTextBoxMarkup.SelectionFont = new Font("Verdana", 10, FontStyle.Regular);
                 this.richTextBoxMarkup.SelectionColor = Color.Black;
@@ -330,6 +337,29 @@ namespace RegexMarkup
                 MessageBox.Show("La seleccion no corresponde a una etiqueta");
             }
             
+        }
+
+        private void buttonEditAttr_Click(object sender, EventArgs e)
+        {
+            String selectedTag = this.richTextBoxMarkup.SelectedText.Trim();
+            if (selectedTag != null && this.dtd.FindElement(selectedTag) != null) {
+                if (this.tags.getAttributes(selectedTag) != null)
+                {
+                    this.selectTagContent(selectedTag);
+                    this.editAttribute = EditAttribute.Instance;
+                    this.editAttribute.TagName = selectedTag;
+                    this.editAttribute.SelectedRtb = this.richTextBoxMarkup.SelectedRtf;
+                    this.editAttribute.startEditAttribute();
+                    this.editAttribute.ShowDialog();
+                }
+                else {
+                    MessageBox.Show("La etiqueta seleccionada no contiene atributos");
+                }
+            }
+            else
+            {
+                MessageBox.Show("La seleccion no corresponde a una etiqueta");
+            }
         }
 
         private void buttonUndo_Click(object sender, EventArgs e)
@@ -520,6 +550,5 @@ namespace RegexMarkup
         }
 
         #endregion
-
     }
 }

@@ -231,6 +231,7 @@ namespace RegexMarkup
             this.buttonEditAttr.Size = new System.Drawing.Size(22, 24);
             this.buttonEditAttr.TabIndex = 1;
             this.buttonEditAttr.UseVisualStyleBackColor = true;
+            this.buttonEditAttr.Click += new System.EventHandler(this.buttonEditAttr_Click);
             // 
             // buttonClearTag
             // 

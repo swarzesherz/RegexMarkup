@@ -38,7 +38,7 @@
     <PublishUrl>ftp://132.248.9.166/RegexMarkupDist/</PublishUrl>
     <InstallUrl>http://132.248.9.166/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.7.5.19</ApplicationVersion>
+    <ApplicationVersion>0.7.5.20</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -201,6 +201,7 @@
   -->
   <ItemGroup>
     <Compile Include="AssemblyInfoHelper.cs" />
+    <Compile Include="AttrTagStruct.cs" />
     <Compile Include="dictionaryDTD.cs" />
     <Compile Include="DTDSciELO.cs" />
     <Compile Include="Forms\ConfigRegexMarkup.cs">
@@ -208,6 +209,12 @@
     </Compile>
     <Compile Include="Forms\ConfigRegexMarkup.Designer.cs">
       <DependentUpon>ConfigRegexMarkup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditAttribute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditAttribute.Designer.cs">
+      <DependentUpon>EditAttribute.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ValidateMarkup.cs">
       <SubType>Form</SubType>
@@ -228,6 +235,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\ConfigRegexMarkup.resx">
       <DependentUpon>ConfigRegexMarkup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditAttribute.resx">
+      <DependentUpon>EditAttribute.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ValidateMarkup.resx">
       <DependentUpon>ValidateMarkup.cs</DependentUpon>
@@ -346,10 +356,10 @@
     <Content Include="SGML\ISOtech.sgm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SGML\es-ES_bars.tr">
+    <Content Include="SGML\es_bars.tr">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SGML\en-US_bars.tr">
+    <Content Include="SGML\en_bars.tr">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="SGML\ser1_0.dtd" />
@@ -383,6 +393,12 @@
     <None Include="Resources\pencil.ico" />
     <None Include="Resources\downArrow.ico" />
     <None Include="Resources\upArrow.ico" />
+    <Content Include="SGML\en_attb.mds">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\es_attb.mds">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\sgmlreaderdll\SgmlReaderDll.csproj">
