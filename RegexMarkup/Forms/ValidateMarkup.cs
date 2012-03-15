@@ -73,21 +73,21 @@ namespace RegexMarkup
             this.Text = Resources.ValidateMarkup_title;
             this.groupBoxOriginal.Text = Resources.ValidateMarkup_groupBoxOriginal;
             this.groupBoxMarkup.Text = Resources.ValidateMarkup_groupBoxMarkup;
-            this.buttonFirst.Text = Resources.ValidateMarkup_buttonFirst;
-            this.buttonLast.Text = Resources.ValidateMarkup_buttonLast;
-            this.buttonPrev.Text = Resources.ValidateMarkup_buttonPrev;
-            this.buttonNext.Text = Resources.ValidateMarkup_buttonNext;
-            this.buttonCancel.Text = Resources.ValidateMarkup_buttonCancel;
-            this.buttonEnd.Text = Resources.ValidateMarkup_buttonEnd;
             this.radioButtonNo.Text = Resources.ValidateMarkup_radioButtonNo;
             this.radioButtonYes.Text = Resources.ValidateMarkup_radioButtonYes;
             this.labelCitationStatus.Text = Resources.ValidateMarkup_labelCitationStatus;
             this.groupBoxTools.Text = Resources.ValidateMarkup_groupBoxTools;
             /*Tooltip para los botones*/
+            this.toolTipInfo.SetToolTip(this.buttonEnd, Resources.ValidateMarkup_buttonEndToolTip);
+            this.toolTipInfo.SetToolTip(this.buttonCancel, Resources.ValidateMarkup_buttonCancelToolTip);
             this.toolTipInfo.SetToolTip(this.buttonClearTag, Resources.ValidateMarkup_buttonClearTagToolTip);
             this.toolTipInfo.SetToolTip(this.buttonEditAttr, Resources.ValidateMarkup_buttonEditAttrToolTip);
             this.toolTipInfo.SetToolTip(this.buttonUndo, Resources.ValidateMarkup_buttonUndo);
             this.toolTipInfo.SetToolTip(this.buttonRedo, Resources.ValidateMarkup_buttonRedo);
+            this.toolTipInfo.SetToolTip(this.buttonFirst, Resources.ValidateMarkup_buttonFirstToolTip);
+            this.toolTipInfo.SetToolTip(this.buttonPrev, Resources.ValidateMarkup_buttonPrevToolTip);
+            this.toolTipInfo.SetToolTip(this.buttonNext, Resources.ValidateMarkup_buttonNextToolTip);
+            this.toolTipInfo.SetToolTip(this.buttonLast, Resources.ValidateMarkup_buttonLastToolTip);
             /*Configuracion de los controles*/
             this.richTextBoxOriginal.DetectUrls = false; 
             this.richTextBoxMarkup.DetectUrls = false;
@@ -265,8 +265,11 @@ namespace RegexMarkup
         
         /*Funcion que ajusta el tamaño de las cajas de texto cuando el formulario cambia de tamaño*/
         private void ValidateMarkup_SizeChanged(object sender, EventArgs e) {
+            int panelNavigationY = this.panelNavigation.Location.Y;
+            int panelNavigationX = (this.Size.Width - this.panelNavigation.Size.Width) / 2;
             this.groupBoxOriginal.Width = this.Size.Width - 35;
             this.groupBoxMarkup.Width = this.Size.Width - 35;
+            this.panelNavigation.Location = new System.Drawing.Point(panelNavigationX, panelNavigationY);
         }
 
         private void currencyManager_PositionChanged(object sender, EventArgs e) {

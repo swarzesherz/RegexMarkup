@@ -38,7 +38,7 @@
     <PublishUrl>ftp://132.248.9.166/RegexMarkupDist/</PublishUrl>
     <InstallUrl>http://132.248.9.166/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.7.5.21</ApplicationVersion>
+    <ApplicationVersion>0.7.5.22</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -393,6 +393,13 @@
     <None Include="Resources\pencil.ico" />
     <None Include="Resources\downArrow.ico" />
     <None Include="Resources\upArrow.ico" />
+    <None Include="Resources\edit.ico" />
+    <None Include="Resources\cancel.ico" />
+    <None Include="Resources\save.ico" />
+    <None Include="Resources\prev.ico" />
+    <None Include="Resources\next.ico" />
+    <None Include="Resources\last.ico" />
+    <None Include="Resources\first.ico" />
     <Content Include="SGML\en_attb.mds">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -147,23 +147,23 @@
   <data name="RegexMarkup_title" xml:space="preserve">
     <value>RegexMarkup</value>
   </data>
-  <data name="ValidateMarkup_buttonEnd" xml:space="preserve">
-    <value>End marking</value>
+  <data name="ValidateMarkup_buttonEndToolTip" xml:space="preserve">
+    <value>Save marked citations</value>
   </data>
-  <data name="ValidateMarkup_buttonFirst" xml:space="preserve">
-    <value>First</value>
+  <data name="ValidateMarkup_buttonFirstToolTip" xml:space="preserve">
+    <value>Go to first citation</value>
   </data>
-  <data name="ValidateMarkup_buttonLast" xml:space="preserve">
-    <value>Last</value>
+  <data name="ValidateMarkup_buttonLastToolTip" xml:space="preserve">
+    <value>Go to last citation</value>
   </data>
-  <data name="ValidateMarkup_buttonNext" xml:space="preserve">
-    <value>Next</value>
+  <data name="ValidateMarkup_buttonNextToolTip" xml:space="preserve">
+    <value>Go to next citation</value>
   </data>
-  <data name="ValidateMarkup_buttonPrev" xml:space="preserve">
-    <value>Previous</value>
+  <data name="ValidateMarkup_buttonPrevToolTip" xml:space="preserve">
+    <value>Go to previous citation</value>
   </data>
   <data name="ValidateMarkup_citationOf" xml:space="preserve">
-    <value>Citation {0} of {1}</value>
+    <value>{0} of {1}</value>
   </data>
   <data name="ValidateMarkup_groupBoxMarkup" xml:space="preserve">
     <value>Marked citation:</value>
@@ -216,7 +216,7 @@
   <data name="ValidateMarkup_parentTag" xml:space="preserve">
     <value>Back to top level {0}</value>
   </data>
-  <data name="ValidateMarkup_buttonCancel" xml:space="preserve">
+  <data name="ValidateMarkup_buttonCancelToolTip" xml:space="preserve">
     <value>Cancel</value>
   </data>
   <data name="EditAttribute_buttonCancel" xml:space="preserve">

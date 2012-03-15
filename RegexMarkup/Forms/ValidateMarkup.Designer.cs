@@ -52,16 +52,18 @@ namespace RegexMarkup
             this.citationOf = new System.Windows.Forms.Label();
             this.toolTipInfo = new System.Windows.Forms.ToolTip(this.components);
             this.groupBoxTools = new System.Windows.Forms.GroupBox();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonRedo = new System.Windows.Forms.Button();
             this.buttonUndo = new System.Windows.Forms.Button();
             this.buttonEditAttr = new System.Windows.Forms.Button();
             this.buttonClearTag = new System.Windows.Forms.Button();
             this.groupBoxOriginal = new System.Windows.Forms.GroupBox();
             this.groupBoxMarkup = new System.Windows.Forms.GroupBox();
-            this.buttonCancel = new System.Windows.Forms.Button();
+            this.panelNavigation = new System.Windows.Forms.Panel();
             this.groupBoxTools.SuspendLayout();
             this.groupBoxOriginal.SuspendLayout();
             this.groupBoxMarkup.SuspendLayout();
+            this.panelNavigation.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBoxMarkup
@@ -77,48 +79,56 @@ namespace RegexMarkup
             // 
             // buttonFirst
             // 
-            this.buttonFirst.Location = new System.Drawing.Point(10, 418);
+            this.buttonFirst.FlatAppearance.BorderSize = 0;
+            this.buttonFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFirst.Image = global::RegexMarkup.Properties.Resources.first;
+            this.buttonFirst.Location = new System.Drawing.Point(10, 9);
             this.buttonFirst.Name = "buttonFirst";
-            this.buttonFirst.Size = new System.Drawing.Size(75, 23);
+            this.buttonFirst.Size = new System.Drawing.Size(23, 23);
             this.buttonFirst.TabIndex = 2;
-            this.buttonFirst.Text = "Primera";
             this.buttonFirst.UseVisualStyleBackColor = true;
             this.buttonFirst.Click += new System.EventHandler(this.buttonFirst_Click);
             // 
             // buttonPrev
             // 
-            this.buttonPrev.Location = new System.Drawing.Point(91, 418);
+            this.buttonPrev.FlatAppearance.BorderSize = 0;
+            this.buttonPrev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPrev.Image = global::RegexMarkup.Properties.Resources.prev;
+            this.buttonPrev.Location = new System.Drawing.Point(44, 9);
             this.buttonPrev.Name = "buttonPrev";
-            this.buttonPrev.Size = new System.Drawing.Size(75, 23);
+            this.buttonPrev.Size = new System.Drawing.Size(23, 23);
             this.buttonPrev.TabIndex = 3;
-            this.buttonPrev.Text = "Anterior";
             this.buttonPrev.UseVisualStyleBackColor = true;
             this.buttonPrev.Click += new System.EventHandler(this.buttonPrev_Click);
             // 
             // buttonNext
             // 
-            this.buttonNext.Location = new System.Drawing.Point(172, 418);
+            this.buttonNext.FlatAppearance.BorderSize = 0;
+            this.buttonNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNext.Image = global::RegexMarkup.Properties.Resources.next;
+            this.buttonNext.Location = new System.Drawing.Point(172, 9);
             this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(75, 23);
+            this.buttonNext.Size = new System.Drawing.Size(23, 23);
             this.buttonNext.TabIndex = 4;
-            this.buttonNext.Text = "Siguiente";
             this.buttonNext.UseVisualStyleBackColor = true;
             this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
             // buttonLast
             // 
-            this.buttonLast.Location = new System.Drawing.Point(253, 418);
+            this.buttonLast.FlatAppearance.BorderSize = 0;
+            this.buttonLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLast.Image = global::RegexMarkup.Properties.Resources.last;
+            this.buttonLast.Location = new System.Drawing.Point(206, 9);
             this.buttonLast.Name = "buttonLast";
-            this.buttonLast.Size = new System.Drawing.Size(75, 23);
+            this.buttonLast.Size = new System.Drawing.Size(23, 23);
             this.buttonLast.TabIndex = 5;
-            this.buttonLast.Text = "Última";
             this.buttonLast.UseVisualStyleBackColor = true;
             this.buttonLast.Click += new System.EventHandler(this.buttonLast_Click);
             // 
             // radioButtonYes
             // 
             this.radioButtonYes.AutoSize = true;
-            this.radioButtonYes.Location = new System.Drawing.Point(403, 421);
+            this.radioButtonYes.Location = new System.Drawing.Point(283, 21);
             this.radioButtonYes.Name = "radioButtonYes";
             this.radioButtonYes.Size = new System.Drawing.Size(34, 17);
             this.radioButtonYes.TabIndex = 9;
@@ -129,7 +139,7 @@ namespace RegexMarkup
             // radioButtonNo
             // 
             this.radioButtonNo.AutoSize = true;
-            this.radioButtonNo.Location = new System.Drawing.Point(443, 421);
+            this.radioButtonNo.Location = new System.Drawing.Point(323, 21);
             this.radioButtonNo.Name = "radioButtonNo";
             this.radioButtonNo.Size = new System.Drawing.Size(39, 17);
             this.radioButtonNo.TabIndex = 10;
@@ -140,7 +150,7 @@ namespace RegexMarkup
             // labelCitationStatus
             // 
             this.labelCitationStatus.AutoSize = true;
-            this.labelCitationStatus.Location = new System.Drawing.Point(334, 423);
+            this.labelCitationStatus.Location = new System.Drawing.Point(214, 23);
             this.labelCitationStatus.Name = "labelCitationStatus";
             this.labelCitationStatus.Size = new System.Drawing.Size(63, 13);
             this.labelCitationStatus.TabIndex = 11;
@@ -162,38 +172,53 @@ namespace RegexMarkup
             // buttonEnd
             // 
             this.buttonEnd.AutoSize = true;
-            this.buttonEnd.Location = new System.Drawing.Point(699, 418);
+            this.buttonEnd.FlatAppearance.BorderSize = 0;
+            this.buttonEnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEnd.Image = global::RegexMarkup.Properties.Resources.save;
+            this.buttonEnd.Location = new System.Drawing.Point(10, 15);
             this.buttonEnd.Name = "buttonEnd";
-            this.buttonEnd.Size = new System.Drawing.Size(75, 25);
+            this.buttonEnd.Size = new System.Drawing.Size(23, 23);
             this.buttonEnd.TabIndex = 14;
-            this.buttonEnd.Text = "Finalizar";
             this.buttonEnd.UseVisualStyleBackColor = true;
             this.buttonEnd.Click += new System.EventHandler(this.buttonEnd_Click);
             // 
             // citationOf
             // 
-            this.citationOf.AutoSize = true;
-            this.citationOf.Dock = System.Windows.Forms.DockStyle.Right;
             this.citationOf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.citationOf.Location = new System.Drawing.Point(696, 0);
+            this.citationOf.Location = new System.Drawing.Point(72, 12);
             this.citationOf.Name = "citationOf";
-            this.citationOf.Padding = new System.Windows.Forms.Padding(0, 3, 12, 0);
-            this.citationOf.Size = new System.Drawing.Size(87, 18);
+            this.citationOf.Size = new System.Drawing.Size(100, 18);
             this.citationOf.TabIndex = 16;
-            this.citationOf.Text = "Cita x de n";
+            this.citationOf.Text = "x de n";
+            this.citationOf.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBoxTools
             // 
+            this.groupBoxTools.Controls.Add(this.buttonCancel);
             this.groupBoxTools.Controls.Add(this.buttonRedo);
             this.groupBoxTools.Controls.Add(this.buttonUndo);
             this.groupBoxTools.Controls.Add(this.buttonEditAttr);
             this.groupBoxTools.Controls.Add(this.buttonClearTag);
+            this.groupBoxTools.Controls.Add(this.buttonEnd);
             this.groupBoxTools.Location = new System.Drawing.Point(10, 2);
             this.groupBoxTools.Name = "groupBoxTools";
-            this.groupBoxTools.Size = new System.Drawing.Size(126, 45);
+            this.groupBoxTools.Size = new System.Drawing.Size(198, 45);
             this.groupBoxTools.TabIndex = 17;
             this.groupBoxTools.TabStop = false;
             this.groupBoxTools.Text = "Herramientas";
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.AutoSize = true;
+            this.buttonCancel.FlatAppearance.BorderSize = 0;
+            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCancel.Image = global::RegexMarkup.Properties.Resources.cancel;
+            this.buttonCancel.Location = new System.Drawing.Point(38, 15);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(23, 23);
+            this.buttonCancel.TabIndex = 20;
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonRedo
             // 
@@ -201,9 +226,9 @@ namespace RegexMarkup
             this.buttonRedo.FlatAppearance.BorderSize = 0;
             this.buttonRedo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRedo.Image = global::RegexMarkup.Properties.Resources.redo;
-            this.buttonRedo.Location = new System.Drawing.Point(94, 15);
+            this.buttonRedo.Location = new System.Drawing.Point(164, 15);
             this.buttonRedo.Name = "buttonRedo";
-            this.buttonRedo.Size = new System.Drawing.Size(22, 22);
+            this.buttonRedo.Size = new System.Drawing.Size(23, 23);
             this.buttonRedo.TabIndex = 3;
             this.buttonRedo.UseVisualStyleBackColor = true;
             this.buttonRedo.Click += new System.EventHandler(this.buttonRedo_Click);
@@ -214,9 +239,9 @@ namespace RegexMarkup
             this.buttonUndo.FlatAppearance.BorderSize = 0;
             this.buttonUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUndo.Image = global::RegexMarkup.Properties.Resources.undo;
-            this.buttonUndo.Location = new System.Drawing.Point(66, 15);
+            this.buttonUndo.Location = new System.Drawing.Point(136, 15);
             this.buttonUndo.Name = "buttonUndo";
-            this.buttonUndo.Size = new System.Drawing.Size(22, 22);
+            this.buttonUndo.Size = new System.Drawing.Size(23, 23);
             this.buttonUndo.TabIndex = 2;
             this.buttonUndo.UseVisualStyleBackColor = true;
             this.buttonUndo.Click += new System.EventHandler(this.buttonUndo_Click);
@@ -227,9 +252,9 @@ namespace RegexMarkup
             this.buttonEditAttr.FlatAppearance.BorderSize = 0;
             this.buttonEditAttr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEditAttr.Image = global::RegexMarkup.Properties.Resources.pencil;
-            this.buttonEditAttr.Location = new System.Drawing.Point(38, 15);
+            this.buttonEditAttr.Location = new System.Drawing.Point(108, 15);
             this.buttonEditAttr.Name = "buttonEditAttr";
-            this.buttonEditAttr.Size = new System.Drawing.Size(22, 24);
+            this.buttonEditAttr.Size = new System.Drawing.Size(23, 23);
             this.buttonEditAttr.TabIndex = 1;
             this.buttonEditAttr.UseVisualStyleBackColor = true;
             this.buttonEditAttr.Click += new System.EventHandler(this.buttonEditAttr_Click);
@@ -240,9 +265,9 @@ namespace RegexMarkup
             this.buttonClearTag.FlatAppearance.BorderSize = 0;
             this.buttonClearTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClearTag.Image = global::RegexMarkup.Properties.Resources.trash;
-            this.buttonClearTag.Location = new System.Drawing.Point(10, 15);
+            this.buttonClearTag.Location = new System.Drawing.Point(80, 15);
             this.buttonClearTag.Name = "buttonClearTag";
-            this.buttonClearTag.Size = new System.Drawing.Size(22, 23);
+            this.buttonClearTag.Size = new System.Drawing.Size(23, 23);
             this.buttonClearTag.TabIndex = 0;
             this.buttonClearTag.UseVisualStyleBackColor = true;
             this.buttonClearTag.Click += new System.EventHandler(this.buttonClearTag_Click);
@@ -267,35 +292,30 @@ namespace RegexMarkup
             this.groupBoxMarkup.TabStop = false;
             this.groupBoxMarkup.Text = "Cita marcada";
             // 
-            // buttonCancel
+            // panelNavigation
             // 
-            this.buttonCancel.AutoSize = true;
-            this.buttonCancel.Location = new System.Drawing.Point(618, 418);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 25);
-            this.buttonCancel.TabIndex = 20;
-            this.buttonCancel.Text = "Cancelar";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            this.panelNavigation.Controls.Add(this.buttonFirst);
+            this.panelNavigation.Controls.Add(this.buttonPrev);
+            this.panelNavigation.Controls.Add(this.citationOf);
+            this.panelNavigation.Controls.Add(this.buttonNext);
+            this.panelNavigation.Controls.Add(this.buttonLast);
+            this.panelNavigation.Location = new System.Drawing.Point(278, 416);
+            this.panelNavigation.Name = "panelNavigation";
+            this.panelNavigation.Size = new System.Drawing.Size(244, 40);
+            this.panelNavigation.TabIndex = 22;
             // 
             // ValidateMarkup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 449);
-            this.Controls.Add(this.buttonCancel);
+            this.ClientSize = new System.Drawing.Size(784, 462);
+            this.Controls.Add(this.panelNavigation);
             this.Controls.Add(this.groupBoxMarkup);
             this.Controls.Add(this.groupBoxOriginal);
             this.Controls.Add(this.groupBoxTools);
-            this.Controls.Add(this.citationOf);
-            this.Controls.Add(this.buttonEnd);
             this.Controls.Add(this.labelCitationStatus);
             this.Controls.Add(this.radioButtonNo);
             this.Controls.Add(this.radioButtonYes);
-            this.Controls.Add(this.buttonLast);
-            this.Controls.Add(this.buttonNext);
-            this.Controls.Add(this.buttonPrev);
-            this.Controls.Add(this.buttonFirst);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "ValidateMarkup";
@@ -307,6 +327,7 @@ namespace RegexMarkup
             this.groupBoxTools.PerformLayout();
             this.groupBoxOriginal.ResumeLayout(false);
             this.groupBoxMarkup.ResumeLayout(false);
+            this.panelNavigation.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,5 +355,6 @@ namespace RegexMarkup
         private Button buttonUndo;
         private Button buttonRedo;
         private Button buttonCancel;
+        private Panel panelNavigation;
     }
 }

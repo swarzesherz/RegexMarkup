@@ -60,6 +60,13 @@ namespace RegexMarkup.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap cancel {
+            get {
+                object obj = ResourceManager.GetObject("cancel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Busca una cadena traducida similar a Examinar....
         /// </summary>
@@ -130,6 +137,13 @@ namespace RegexMarkup.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap edit {
+            get {
+                object obj = ResourceManager.GetObject("edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Busca una cadena traducida similar a Cancelar.
         /// </summary>
@@ -157,9 +171,37 @@ namespace RegexMarkup.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap first {
+            get {
+                object obj = ResourceManager.GetObject("first", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap last {
+            get {
+                object obj = ResourceManager.GetObject("last", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap next {
+            get {
+                object obj = ResourceManager.GetObject("next", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap pencil {
             get {
                 object obj = ResourceManager.GetObject("pencil", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap prev {
+            get {
+                object obj = ResourceManager.GetObject("prev", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,6 +258,13 @@ namespace RegexMarkup.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap save {
+            get {
+                object obj = ResourceManager.GetObject("save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap trash {
             get {
                 object obj = ResourceManager.GetObject("trash", resourceCulture);
@@ -240,9 +289,9 @@ namespace RegexMarkup.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a Cancelar.
         /// </summary>
-        internal static string ValidateMarkup_buttonCancel {
+        internal static string ValidateMarkup_buttonCancelToolTip {
             get {
-                return ResourceManager.GetString("ValidateMarkup_buttonCancel", resourceCulture);
+                return ResourceManager.GetString("ValidateMarkup_buttonCancelToolTip", resourceCulture);
             }
         }
         
@@ -265,47 +314,47 @@ namespace RegexMarkup.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Finalizar.
+        ///   Busca una cadena traducida similar a Guardar las citas marcadas.
         /// </summary>
-        internal static string ValidateMarkup_buttonEnd {
+        internal static string ValidateMarkup_buttonEndToolTip {
             get {
-                return ResourceManager.GetString("ValidateMarkup_buttonEnd", resourceCulture);
+                return ResourceManager.GetString("ValidateMarkup_buttonEndToolTip", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Primera.
+        ///   Busca una cadena traducida similar a Ir a la primer cita.
         /// </summary>
-        internal static string ValidateMarkup_buttonFirst {
+        internal static string ValidateMarkup_buttonFirstToolTip {
             get {
-                return ResourceManager.GetString("ValidateMarkup_buttonFirst", resourceCulture);
+                return ResourceManager.GetString("ValidateMarkup_buttonFirstToolTip", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Última.
+        ///   Busca una cadena traducida similar a Ir a la última.
         /// </summary>
-        internal static string ValidateMarkup_buttonLast {
+        internal static string ValidateMarkup_buttonLastToolTip {
             get {
-                return ResourceManager.GetString("ValidateMarkup_buttonLast", resourceCulture);
+                return ResourceManager.GetString("ValidateMarkup_buttonLastToolTip", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Siguiente.
+        ///   Busca una cadena traducida similar a Ir a la siguiente cita.
         /// </summary>
-        internal static string ValidateMarkup_buttonNext {
+        internal static string ValidateMarkup_buttonNextToolTip {
             get {
-                return ResourceManager.GetString("ValidateMarkup_buttonNext", resourceCulture);
+                return ResourceManager.GetString("ValidateMarkup_buttonNextToolTip", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Anterior.
+        ///   Busca una cadena traducida similar a Ir a la cita anterior.
         /// </summary>
-        internal static string ValidateMarkup_buttonPrev {
+        internal static string ValidateMarkup_buttonPrevToolTip {
             get {
-                return ResourceManager.GetString("ValidateMarkup_buttonPrev", resourceCulture);
+                return ResourceManager.GetString("ValidateMarkup_buttonPrevToolTip", resourceCulture);
             }
         }
         
@@ -337,7 +386,7 @@ namespace RegexMarkup.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Cita {0} de {1}.
+        ///   Busca una cadena traducida similar a {0} de {1}.
         /// </summary>
         internal static string ValidateMarkup_citationOf {
             get {
