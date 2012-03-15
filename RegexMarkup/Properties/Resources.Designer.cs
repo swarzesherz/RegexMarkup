@@ -211,6 +211,15 @@ namespace RegexMarkup.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Cancelar.
+        /// </summary>
+        internal static string ValidateMarkup_buttonCancel {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_buttonCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Elimina la etiqueta seleccionada.
         /// </summary>
         internal static string ValidateMarkup_buttonClearTagToolTip {

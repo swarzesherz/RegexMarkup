@@ -232,4 +232,7 @@
   <data name="ValidateMarkup_buttonUndo" xml:space="preserve">
     <value>Deshacer</value>
   </data>
+  <data name="ValidateMarkup_buttonCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
 </root>

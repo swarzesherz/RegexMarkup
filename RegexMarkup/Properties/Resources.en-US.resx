@@ -216,4 +216,7 @@
   <data name="ValidateMarkup_parentTag" xml:space="preserve">
     <value>Back to top level {0}</value>
   </data>
+  <data name="ValidateMarkup_buttonCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
 </root>

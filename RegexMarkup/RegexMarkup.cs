@@ -222,7 +222,7 @@ namespace RegexMarkup
                                 cita.RngCita.Text = cita.MarkedStr;
                                 /* Coloreando Etiquetas (Tags) */
                                 Word.Range refrange = cita.RngCita;
-                                this.colorRefTags(ref refrange, this.citationStyle, 0);
+                                this.colorRefTags(ref refrange, this.citationStyle, -1);
                             }
                              
                         }

@@ -53,6 +53,15 @@ namespace RegexMarkup
         private String dtdType = null;
         private String currentGroupTag = null;
         private EditAttribute editAttribute = null;
+        private RichTextBox richTextBoxAddTag = new RichTextBox();
+        private int indexColorTag = 0;
+        /* Definimos y asignamos el arreglo de colores para las etiquetas */
+        private Color[] colors = new Color[]{
+                Color.DarkBlue,
+                Color.Teal,
+                Color.Gray,
+                Color.Blue,
+                Color.Violet};
 
         public ValidateMarkup()
         {
@@ -67,6 +76,7 @@ namespace RegexMarkup
             this.buttonLast.Text = Resources.ValidateMarkup_buttonLast;
             this.buttonPrev.Text = Resources.ValidateMarkup_buttonPrev;
             this.buttonNext.Text = Resources.ValidateMarkup_buttonNext;
+            this.buttonCancel.Text = Resources.ValidateMarkup_buttonCancel;
             this.buttonEnd.Text = Resources.ValidateMarkup_buttonEnd;
             this.radioButtonNo.Text = Resources.ValidateMarkup_radioButtonNo;
             this.radioButtonYes.Text = Resources.ValidateMarkup_radioButtonYes;
@@ -77,6 +87,10 @@ namespace RegexMarkup
             this.toolTipInfo.SetToolTip(this.buttonEditAttr, Resources.ValidateMarkup_buttonEditAttrToolTip);
             this.toolTipInfo.SetToolTip(this.buttonUndo, Resources.ValidateMarkup_buttonUndo);
             this.toolTipInfo.SetToolTip(this.buttonRedo, Resources.ValidateMarkup_buttonRedo);
+            /*Configuracion de los controles*/
+            this.richTextBoxOriginal.DetectUrls = false; 
+            this.richTextBoxMarkup.DetectUrls = false;
+            this.richTextBoxAddTag.DetectUrls = false;
         }
 
         public void startValidate(ref List<MarkupStruct> citas)
@@ -150,7 +164,7 @@ namespace RegexMarkup
                     this.toolTipInfo.SetToolTip(childs["parentGroup"].Markup, String.Format(Resources.ValidateMarkup_parentTag, parentGroup));
                 }
                 /*Llenamos un diccionario con los nodos hijos*/
-                article = dtd.FindElement(node);
+                article = this.dtd.FindElement(node);
                 foreach(String childName in this.tags.getChilds(node)){
                     if (!childs.ContainsKey(childName))
                     {
@@ -288,6 +302,15 @@ namespace RegexMarkup
             /*Seleccionando cadena que comprende a la etiqueta seleccionada*/
             this.richTextBoxMarkup.Select(startSelection, endSelection - startSelection);
         }
+
+        private void updateIndexColorTag(int increment) {
+
+            this.indexColorTag += increment;
+            if (this.indexColorTag > 4 || this.indexColorTag < 0) {
+                this.indexColorTag = 0;
+            }
+        }
+
         #region Click events function
         /// <summary>
         /// Conjuntos de funciones para los eventos click de los botones
@@ -298,6 +321,11 @@ namespace RegexMarkup
         {
             Button senderChildsButton = (Button)sender;
             senderChildsButton.Parent.Visible = false;
+            /*Matenemos el foco en el richTexBox que contiene la cita marcada*/
+            this.richTextBoxMarkup.Focus();
+            /*Actualizamos el valor de indexColorTag*/
+            this.updateIndexColorTag(1);
+            /*Lamamos al grupo de etiquetas del nodo*/
             this.addMarkupButtons(senderChildsButton.Name.Replace("Childs", ""), senderChildsButton.Parent.Name);
         }
         /*Funcion para para el evento click del boton que muestra el grupo donde esta el nodo padre*/
@@ -305,18 +333,46 @@ namespace RegexMarkup
         {
             Button senderButton = (Button)sender;
             senderButton.Parent.Visible = false;
+            /*Matenemos el foco en el richTexBox que contiene la cita marcada*/
+            this.richTextBoxMarkup.Focus();
+            /*Actualizamos el valor de indexColorTag*/
+            this.updateIndexColorTag(-1);
+            /*Lamamos al grupo de etiquetas padre*/
             this.addMarkupButtons(senderButton.Name.Replace("ParentGrp", ""), null);
         }
         /*Funcion que marca el texto seleccionado con la etiqueta*/
         private void markupButtonTag_Click(object sender, EventArgs e)
         {
             Button senderMarkupButton = (Button)sender;
+            String tagName = senderMarkupButton.Name;
             String openTag = "[" + senderMarkupButton.Name + "]";
             String closeTag = "[/" + senderMarkupButton.Name + "]";
             if (this.richTextBoxMarkup.SelectedText != "" && this.richTextBoxMarkup.SelectedText != null)
             {
-                this.richTextBoxMarkup.SelectedText = openTag + this.richTextBoxMarkup.SelectedText + closeTag;
-                this.currencyManager.Position = this.currencyManager.Position;
+                /*Creamos la apertura y cierre de etiqueta con color*/
+                this.richTextBoxAddTag.Clear();
+                this.richTextBoxAddTag.Font = new Font("Arial", 11, FontStyle.Regular);
+                this.richTextBoxAddTag.ForeColor = this.colors[indexColorTag];
+                this.richTextBoxAddTag.Text = openTag + closeTag;
+                /*Insetamos la seleccion entre las etiquetas*/
+                this.richTextBoxAddTag.Select(openTag.Length, 0);
+                this.richTextBoxAddTag.SelectedRtf = this.richTextBoxMarkup.SelectedRtf;
+                this.richTextBoxAddTag.SelectAll();
+                /*Si la etiqueta tiene atributos los editamos en caso contrario solo reemplazamos*/
+                if (this.tags.getAttributes(tagName) != null)
+                {
+                    this.editAttribute = EditAttribute.Instance;
+                    this.editAttribute.TagName = tagName;
+                    this.editAttribute.SelectedRtb.Rtf = this.richTextBoxAddTag.SelectedRtf;
+                    this.editAttribute.startEditAttribute();
+                    this.editAttribute.ShowDialog();
+                    /*Reeplazamos*/
+                    this.richTextBoxMarkup.SelectedRtf = this.editAttribute.SelectedRtb.SelectedRtf;
+                }
+                else 
+                {
+                    this.richTextBoxMarkup.SelectedRtf = this.richTextBoxAddTag.SelectedRtf;
+                }
             }
         }
         /*Funcion encargada de eliminar la etiqueta seleccionada al dar click al buttonClearTag*/
@@ -348,9 +404,11 @@ namespace RegexMarkup
                     this.selectTagContent(selectedTag);
                     this.editAttribute = EditAttribute.Instance;
                     this.editAttribute.TagName = selectedTag;
-                    this.editAttribute.SelectedRtb = this.richTextBoxMarkup.SelectedRtf;
+                    this.editAttribute.SelectedRtb.Rtf = this.richTextBoxMarkup.SelectedRtf;
                     this.editAttribute.startEditAttribute();
                     this.editAttribute.ShowDialog();
+                    /*Reeplazamos*/
+                    this.richTextBoxMarkup.SelectedRtf = this.editAttribute.SelectedRtb.SelectedRtf;
                 }
                 else {
                     MessageBox.Show("La etiqueta seleccionada no contiene atributos");
@@ -406,6 +464,15 @@ namespace RegexMarkup
             this.Close();
         }
 
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            foreach (MarkupStruct cita in this.citas)
+            {
+                cita.Marked = false;
+            }
+            this.Close();
+        }
+
         #endregion
 
         #region showNavButtons
@@ -453,25 +520,20 @@ namespace RegexMarkup
             RegexOptions options = RegexOptions.IgnoreCase;
             Match matchResults = null;
             String startTag = null;
-            /* Definimos y asignamos el arreglo de colores para las etiquetas */
-            Color[] colors = new Color[]{
-                Color.DarkBlue,
-                Color.Teal,
-                Color.Gray,
-                Color.Blue,
-                Color.Violet
-            };
             bool TagSuccess = false;
             /* Si el color inicial es -1 formateamos el texto con la fuente estandar y asignamos color=0 */
-            if(color == -1){
+            if (color == -1)
+            {
                 this.richTextBoxMarkup.SelectAll();
                 this.richTextBoxMarkup.SelectionFont = new Font("Verdana", 10, FontStyle.Regular);
                 this.richTextBoxMarkup.SelectionColor = Color.Black;
                 color = 0;
             }
-           
-            /* Iteramos las etiquetas(tags) hijas*/
-            color++;
+            else
+            {
+                /* Iteramos las etiquetas(tags) hijas*/
+                color++;
+            }
             /* Si el indice de color llego a 20 lo reiniciamos a 0 */
             color = color == 5 ? 0 : color;
             foreach (String tag in this.tags.getChilds(node))
@@ -487,7 +549,7 @@ namespace RegexMarkup
                         /* Buscamos y coloreamos el inicio o final de la etiqueta(tag) */
                         this.richTextBoxMarkup.Select(matchResults.Index, matchResults.Length);
                         this.richTextBoxMarkup.SelectionFont = new Font("Arial", 11, FontStyle.Regular);
-                        this.richTextBoxMarkup.SelectionColor = colors[color];
+                        this.richTextBoxMarkup.SelectionColor = this.colors[color];
                         TagSuccess = true;
                         matchResults = matchResults.NextMatch();
                     }
@@ -550,5 +612,6 @@ namespace RegexMarkup
         }
 
         #endregion
+
     }
 }

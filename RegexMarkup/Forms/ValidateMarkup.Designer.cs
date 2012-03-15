@@ -58,6 +58,7 @@ namespace RegexMarkup
             this.buttonClearTag = new System.Windows.Forms.Button();
             this.groupBoxOriginal = new System.Windows.Forms.GroupBox();
             this.groupBoxMarkup = new System.Windows.Forms.GroupBox();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.groupBoxTools.SuspendLayout();
             this.groupBoxOriginal.SuspendLayout();
             this.groupBoxMarkup.SuspendLayout();
@@ -266,11 +267,23 @@ namespace RegexMarkup
             this.groupBoxMarkup.TabStop = false;
             this.groupBoxMarkup.Text = "Cita marcada";
             // 
+            // buttonCancel
+            // 
+            this.buttonCancel.AutoSize = true;
+            this.buttonCancel.Location = new System.Drawing.Point(618, 418);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 25);
+            this.buttonCancel.TabIndex = 20;
+            this.buttonCancel.Text = "Cancelar";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
             // ValidateMarkup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 449);
+            this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.groupBoxMarkup);
             this.Controls.Add(this.groupBoxOriginal);
             this.Controls.Add(this.groupBoxTools);
@@ -320,5 +333,6 @@ namespace RegexMarkup
         private GroupBox groupBoxMarkup;
         private Button buttonUndo;
         private Button buttonRedo;
+        private Button buttonCancel;
     }
 }
