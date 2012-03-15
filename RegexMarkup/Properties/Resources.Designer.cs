@@ -130,6 +130,33 @@ namespace RegexMarkup.Properties {
             }
         }
         
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cancelar.
+        /// </summary>
+        internal static string EditAttribute_buttonCancel {
+            get {
+                return ResourceManager.GetString("EditAttribute_buttonCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Editar.
+        /// </summary>
+        internal static string EditAttribute_buttonEdit {
+            get {
+                return ResourceManager.GetString("EditAttribute_buttonEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Edición de atributos.
+        /// </summary>
+        internal static string EditAttribute_title {
+            get {
+                return ResourceManager.GetString("EditAttribute_title", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap pencil {
             get {
                 object obj = ResourceManager.GetObject("pencil", resourceCulture);
@@ -319,6 +346,24 @@ namespace RegexMarkup.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Eliminando etiqueta .
+        /// </summary>
+        internal static string ValidateMarkup_deleteTagCaption {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_deleteTagCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Esta seguro de eliminar la etiqueta &quot;{0}&quot;?.
+        /// </summary>
+        internal static string ValidateMarkup_deleteTagMessage {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_deleteTagMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cita marcada:.
         /// </summary>
         internal static string ValidateMarkup_groupBoxMarkup {
@@ -351,6 +396,24 @@ namespace RegexMarkup.Properties {
         internal static string ValidateMarkup_labelCitationStatus {
             get {
                 return ResourceManager.GetString("ValidateMarkup_labelCitationStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La seleccion no corresponde a una etiqueta.
+        /// </summary>
+        internal static string ValidateMarkup_messageNoTagSelection {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_messageNoTagSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La etiqueta seleccionada no contiene atributos.
+        /// </summary>
+        internal static string ValidateMarkup_messageTagWithoutAttr {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_messageTagWithoutAttr", resourceCulture);
             }
         }
         

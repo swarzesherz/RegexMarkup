@@ -219,4 +219,25 @@
   <data name="ValidateMarkup_buttonCancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="EditAttribute_buttonCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="EditAttribute_buttonEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditAttribute_title" xml:space="preserve">
+    <value>Editing attributes</value>
+  </data>
+  <data name="ValidateMarkup_deleteTagCaption" xml:space="preserve">
+    <value>Deleting tag </value>
+  </data>
+  <data name="ValidateMarkup_deleteTagMessage" xml:space="preserve">
+    <value>Are you sure to delete tag "{0}"?</value>
+  </data>
+  <data name="ValidateMarkup_messageNoTagSelection" xml:space="preserve">
+    <value>The selection not correspond a tag</value>
+  </data>
+  <data name="ValidateMarkup_messageTagWithoutAttr" xml:space="preserve">
+    <value>Selected tag without attributes</value>
+  </data>
 </root>

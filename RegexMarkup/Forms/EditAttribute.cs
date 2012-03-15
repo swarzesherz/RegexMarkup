@@ -48,6 +48,10 @@ namespace RegexMarkup.Forms
         public EditAttribute()
         {
             InitializeComponent();
+            /*Textos*/
+            this.Text = Resources.EditAttribute_title;
+            this.buttonEdit.Text = Resources.EditAttribute_buttonEdit;
+            this.buttonCancel.Text = Resources.EditAttribute_buttonCancel;
             /*Configuración de los controles*/
             this.selectedRtb.DetectUrls = false;
         }
