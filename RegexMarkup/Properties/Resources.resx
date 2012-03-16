@@ -155,7 +155,7 @@
     <value>Idioma</value>
   </data>
   <data name="ValidateMarkup_buttonCancelToolTip" xml:space="preserve">
-    <value>Cancelar</value>
+    <value>Cancelar todo</value>
   </data>
   <data name="trash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\trash.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,7 +175,7 @@
   <data name="ValidateMarkup_labelCitationStatus" xml:space="preserve">
     <value>Marcar cita</value>
   </data>
-  <data name="EditAttribute_buttonEdit" xml:space="preserve">
+  <data name="EditAttribute_buttonEditToolTip" xml:space="preserve">
     <value>Editar</value>
   </data>
   <data name="ValidateMarkup_groupBoxTools" xml:space="preserve">
@@ -187,7 +187,7 @@
   <data name="ValidateMarkup_buttonPrevToolTip" xml:space="preserve">
     <value>Ir a la cita anterior</value>
   </data>
-  <data name="EditAttribute_buttonCancel" xml:space="preserve">
+  <data name="EditAttribute_buttonCancelToolTip" xml:space="preserve">
     <value>Cancelar</value>
   </data>
   <data name="configRegexMarkup_enUS" xml:space="preserve">
@@ -203,7 +203,7 @@
     <value>..\Resources\cancel.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ValidateMarkup_messageNoTagSelection" xml:space="preserve">
-    <value>La seleccion no corresponde a una etiqueta</value>
+    <value>La selección no corresponde a una etiqueta</value>
   </data>
   <data name="ValidateMarkup_buttonLastToolTip" xml:space="preserve">
     <value>Ir a la última</value>
@@ -276,5 +276,15 @@
   </data>
   <data name="first" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\first.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RegexMarkup_messageOnlyRead" xml:space="preserve">
+    <value>No se pueden guardar los cambios.
+El documento está en modo solo lectura</value>
+  </data>
+  <data name="ValidateMarkup_messageConfirmation" xml:space="preserve">
+    <value>Esta seguro de aplicar y guardar los cambios de las citas: {0}</value>
+  </data>
+  <data name="ValidateMarkup_messageConfirmationCaption" xml:space="preserve">
+    <value>Confirmación</value>
   </data>
 </root>

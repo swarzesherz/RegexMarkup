@@ -147,18 +147,18 @@ namespace RegexMarkup.Properties {
         /// <summary>
         ///   Busca una cadena traducida similar a Cancelar.
         /// </summary>
-        internal static string EditAttribute_buttonCancel {
+        internal static string EditAttribute_buttonCancelToolTip {
             get {
-                return ResourceManager.GetString("EditAttribute_buttonCancel", resourceCulture);
+                return ResourceManager.GetString("EditAttribute_buttonCancelToolTip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Editar.
         /// </summary>
-        internal static string EditAttribute_buttonEdit {
+        internal static string EditAttribute_buttonEditToolTip {
             get {
-                return ResourceManager.GetString("EditAttribute_buttonEdit", resourceCulture);
+                return ResourceManager.GetString("EditAttribute_buttonEditToolTip", resourceCulture);
             }
         }
         
@@ -219,6 +219,16 @@ namespace RegexMarkup.Properties {
         internal static string RegexMarkup_issnNotDefined {
             get {
                 return ResourceManager.GetString("RegexMarkup_issnNotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No se pueden guardar los cambios.
+        ///El documento está en modo solo lectura.
+        /// </summary>
+        internal static string RegexMarkup_messageOnlyRead {
+            get {
+                return ResourceManager.GetString("RegexMarkup_messageOnlyRead", resourceCulture);
             }
         }
         
@@ -287,7 +297,7 @@ namespace RegexMarkup.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Cancelar.
+        ///   Busca una cadena traducida similar a Cancelar todo.
         /// </summary>
         internal static string ValidateMarkup_buttonCancelToolTip {
             get {
@@ -449,7 +459,25 @@ namespace RegexMarkup.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a La seleccion no corresponde a una etiqueta.
+        ///   Busca una cadena traducida similar a Esta seguro de aplicar y guardar los cambios de las citas: {0}.
+        /// </summary>
+        internal static string ValidateMarkup_messageConfirmation {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_messageConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirmación.
+        /// </summary>
+        internal static string ValidateMarkup_messageConfirmationCaption {
+            get {
+                return ResourceManager.GetString("ValidateMarkup_messageConfirmationCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La selección no corresponde a una etiqueta.
         /// </summary>
         internal static string ValidateMarkup_messageNoTagSelection {
             get {

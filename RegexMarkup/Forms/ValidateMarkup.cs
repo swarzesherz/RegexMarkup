@@ -116,9 +116,6 @@ namespace RegexMarkup
             this.dtd = dtdSciELO.getDTD(this.dtdVersion, this.dtdType);
             this.tags.Dtd = this.dtd;
             /*Creando barra de herramientas para las etiquetas*/
-            if (this.currentGroupTag != null) {
-                this.groupMarkupButtons[this.currentGroupTag].Visible = false;
-            }
             this.addMarkupButtons(this.citationStyle, null);
         }
 
@@ -130,6 +127,10 @@ namespace RegexMarkup
             ElementDecl article = null;
             Dictionary<String, MarkupButton> childs = null;
             node = node.ToLower();
+            if (this.currentGroupTag != null)
+            {
+                this.groupMarkupButtons[this.currentGroupTag].Visible = false;
+            }
             /*Asignamos el valor del grupo de etiquetas actual*/
             this.currentGroupTag = node;
             /* Verificamos si existe el grupo de botoes y si no lo creamos y agregamos los botones correspondientes*/
@@ -269,6 +270,7 @@ namespace RegexMarkup
             int panelNavigationX = (this.Size.Width - this.panelNavigation.Size.Width) / 2;
             this.groupBoxOriginal.Width = this.Size.Width - 35;
             this.groupBoxMarkup.Width = this.Size.Width - 35;
+            this.groupMarkupButtons[this.currentGroupTag].MaximumSize = new System.Drawing.Size(this.Size.Width - 34, 45);
             this.panelNavigation.Location = new System.Drawing.Point(panelNavigationX, panelNavigationY);
         }
 
@@ -406,7 +408,7 @@ namespace RegexMarkup
                         TagSuccess = true;
                         matchResults = matchResults.NextMatch();
                     }
-                    /* Si la etiqueta fue coloreada con exito coloreamos y generamos las etiquetas hijas */
+                    /* Si la etiqueta fue coloreada con exito coloreamos y el nodo tiene etiquetas hijas */
                     if (TagSuccess && this.tags.Tag[tag].ChildNodes)
                     {
                         this.colorRefTagsForm(tag, color);
@@ -429,17 +431,15 @@ namespace RegexMarkup
         private void buttonGetChilds_Click(object sender, EventArgs e)
         {
             Button senderChildsButton = (Button)sender;
-            senderChildsButton.Parent.Visible = false;
             /*Actualizamos el valor de indexColorTag*/
             this.updateIndexColorTag(1);
             /*Lamamos al grupo de etiquetas del nodo*/
-            this.addMarkupButtons(senderChildsButton.Name.Replace("Childs", ""), senderChildsButton.Parent.Name);
+            this.addMarkupButtons(senderChildsButton.Name.Replace("Childs", ""), this.groupMarkupButtons[this.currentGroupTag].Name);
         }
         /*Funcion para para el evento click del boton que muestra el grupo donde esta el nodo padre*/
         private void buttonParentGroup_Click(object sender, EventArgs e)
         {
             Button senderButton = (Button)sender;
-            senderButton.Parent.Visible = false;
             /*Actualizamos el valor de indexColorTag*/
             this.updateIndexColorTag(-1);
             /*Lamamos al grupo de etiquetas padre*/
@@ -519,9 +519,11 @@ namespace RegexMarkup
                     this.editAttribute.TagName = selectedTag;
                     this.editAttribute.SelectedRtb.Rtf = this.richTextBoxMarkup.SelectedRtf;
                     this.editAttribute.startEditAttribute();
-                    this.editAttribute.ShowDialog();
                     /*Reeplazamos*/
-                    this.richTextBoxMarkup.SelectedRtf = this.editAttribute.SelectedRtb.SelectedRtf;
+                    if (this.editAttribute.ShowDialog() == DialogResult.OK)
+                    {
+                        this.richTextBoxMarkup.SelectedRtf = this.editAttribute.SelectedRtb.SelectedRtf;
+                    }
                 }
                 else
                 {
@@ -577,7 +579,24 @@ namespace RegexMarkup
         }
         private void buttonEnd_Click(object sender, EventArgs e)
         {
-            this.Close();
+            String confirmCitations = null;
+            confirmCitations = "\n{";
+            int citaActual = 1;
+            foreach (MarkupStruct cita in this.citas) {
+                if(cita.Marked && cita.Colorized){
+                    confirmCitations += citaActual + ", ";
+                }
+                citaActual++;
+            }
+            confirmCitations = confirmCitations.Remove(confirmCitations.Length - 2);
+            confirmCitations += "}";
+            if (MessageBox.Show( String.Format(Resources.ValidateMarkup_messageConfirmation, confirmCitations), Resources.ValidateMarkup_messageConfirmationCaption, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                /*Actualizamos la última posición para que se guarden los cambios*/
+                this.currencyManager.Position = this.currencyManager.Position;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -586,6 +605,7 @@ namespace RegexMarkup
             {
                 cita.Marked = false;
             }
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 

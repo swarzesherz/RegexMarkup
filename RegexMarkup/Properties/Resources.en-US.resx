@@ -217,22 +217,32 @@
     <value>Back to top level {0}</value>
   </data>
   <data name="ValidateMarkup_buttonCancelToolTip" xml:space="preserve">
+    <value>Cancel all</value>
+  </data>
+  <data name="EditAttribute_buttonCancelToolTip" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="EditAttribute_buttonCancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="EditAttribute_buttonEdit" xml:space="preserve">
+  <data name="EditAttribute_buttonEditToolTip" xml:space="preserve">
     <value>Edit</value>
   </data>
   <data name="EditAttribute_title" xml:space="preserve">
     <value>Editing attributes</value>
+  </data>
+  <data name="RegexMarkup_messageOnlyRead" xml:space="preserve">
+    <value>You can not save the changes.
+The document is read-only mode</value>
   </data>
   <data name="ValidateMarkup_deleteTagCaption" xml:space="preserve">
     <value>Deleting tag </value>
   </data>
   <data name="ValidateMarkup_deleteTagMessage" xml:space="preserve">
     <value>Are you sure to delete tag "{0}"?</value>
+  </data>
+  <data name="ValidateMarkup_messageConfirmation" xml:space="preserve">
+    <value>Are you sure to apply and save changes to the citations: {0}</value>
+  </data>
+  <data name="ValidateMarkup_messageConfirmationCaption" xml:space="preserve">
+    <value>Confirmation</value>
   </data>
   <data name="ValidateMarkup_messageNoTagSelection" xml:space="preserve">
     <value>The selection not correspond a tag</value>

@@ -32,6 +32,16 @@ namespace RegexMarkup
             }
         }
 
+        public RichTextBox MarkedRtb
+        {
+            get { 
+                return markedRtb; 
+            }
+            set { 
+                markedRtb = value; 
+            }
+        }
+
         public String MarkedStr {
             get {
                 return this.markedRtb.Text;

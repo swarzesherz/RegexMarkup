@@ -50,8 +50,9 @@ namespace RegexMarkup.Forms
             InitializeComponent();
             /*Textos*/
             this.Text = Resources.EditAttribute_title;
-            this.buttonEdit.Text = Resources.EditAttribute_buttonEdit;
-            this.buttonCancel.Text = Resources.EditAttribute_buttonCancel;
+            /*Tooltip para los botones*/
+            this.toolTipInfo.SetToolTip(this.buttonEdit, Resources.EditAttribute_buttonEditToolTip);
+            this.toolTipInfo.SetToolTip(this.buttonCancel, Resources.EditAttribute_buttonCancelToolTip);
             /*Configuración de los controles*/
             this.selectedRtb.DetectUrls = false;
         }
@@ -94,8 +95,8 @@ namespace RegexMarkup.Forms
                 this.groupAtributes[this.tagName].Name = this.tagName;
                 this.groupAtributes[this.tagName].AutoSize = true;
                 this.groupAtributes[this.tagName].AutoSizeMode = AutoSizeMode.GrowAndShrink;
-                this.groupAtributes[this.tagName].MinimumSize = new System.Drawing.Size(100, 45);
-                this.groupAtributes[this.tagName].Location = new Point(10, 104);
+                this.groupAtributes[this.tagName].MinimumSize = new System.Drawing.Size(this.Size.Width - 34, 45);
+                this.groupAtributes[this.tagName].Location = new Point(10, 151);
                 this.Controls.Add(this.groupAtributes[this.tagName]);
                 int botonesPosY = 25;
                 foreach (KeyValuePair<String, AttrTagStruct> singleAttr in this.tags.Tag[this.tagName].Attributes)
@@ -201,6 +202,7 @@ namespace RegexMarkup.Forms
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -237,6 +239,7 @@ namespace RegexMarkup.Forms
             this.selectedRtb.SelectedText = openTag;
             this.selectedRtb.SelectAll();
             /*Cerramos este formulario*/
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
