@@ -38,8 +38,8 @@
     <PublishUrl>ftp://132.248.9.166/RegexMarkupDist/</PublishUrl>
     <InstallUrl>http://132.248.9.166/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.7.5.26</ApplicationVersion>
-    <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
+    <ApplicationVersion>0.7.5.30</ApplicationVersion>
+    <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
@@ -400,6 +400,7 @@
     <None Include="Resources\next.ico" />
     <None Include="Resources\last.ico" />
     <None Include="Resources\first.ico" />
+    <None Include="Resources\requiredAttribute.Icon.ico" />
     <Content Include="SGML\en_attb.mds">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -408,6 +409,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CustomValidation\CustomValidation.csproj">
+      <Project>{637D0C98-311F-4E90-8D2B-8A98489098A3}</Project>
+      <Name>CustomValidation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\sgmlreaderdll\SgmlReaderDll.csproj">
       <Project>{499527FF-AE52-450F-B3E3-4AD53E1712AD}</Project>
       <Name>SgmlReaderDll</Name>

@@ -238,7 +238,7 @@ namespace RegexMarkup
         /// <param name="tag">La etiqueta que eliminaremos</param>
         /// <returns></returns>
 
-        private String clearTag(String originalString, String node){
+        public String clearTag(String originalString, String node){
             Regex objRegExp = null;
             RegexOptions options = RegexOptions.None;
             Match matchResults = null;

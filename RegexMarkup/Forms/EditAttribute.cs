@@ -41,6 +41,7 @@ namespace RegexMarkup.Forms
         private String tagName = null;
         private RichTextBox selectedRtb = new RichTextBox();
         private Dictionary<String, GroupBox> groupAtributes = new Dictionary<String, GroupBox>();
+        private Dictionary<String, CustomValidation.ContainerValidator> groupAttributesValidate = new Dictionary<string, CustomValidation.ContainerValidator>();
         private String actualAttibuteControl = null;
         private int startSelection = 0;
         private int lenghtSelection = 0;
@@ -83,7 +84,9 @@ namespace RegexMarkup.Forms
         /// </summary>
 
         private void showAttributeControls() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditAttribute));
             String language = Resources.Culture.TwoLetterISOLanguageName;
+
             if (this.actualAttibuteControl != null) {
                 this.groupAtributes[this.actualAttibuteControl].Visible = false;
             }
@@ -91,6 +94,7 @@ namespace RegexMarkup.Forms
             /*Verificamos si el control no se ha creado anteriormente*/
             if (!this.groupAtributes.ContainsKey(this.tagName))
             {
+                /*Agregamos el groupBox que contendra los atributos*/
                 this.groupAtributes.Add(this.tagName, new GroupBox());
                 this.groupAtributes[this.tagName].Name = this.tagName;
                 this.groupAtributes[this.tagName].AutoSize = true;
@@ -99,9 +103,17 @@ namespace RegexMarkup.Forms
                 this.groupAtributes[this.tagName].Location = new Point(10, 151);
                 this.Controls.Add(this.groupAtributes[this.tagName]);
                 int botonesPosY = 25;
+                /*Creamos la validación para el grupo*/
+                this.groupAttributesValidate.Add(this.tagName, new CustomValidation.ContainerValidator());
+                this.groupAttributesValidate[this.tagName].ContainerToValidate = this.groupAtributes[this.tagName];
+                this.groupAttributesValidate[this.tagName].HostingForm = this;
+                /*Buscamos y agregamos los atributos al groupBox*/
                 foreach (KeyValuePair<String, AttrTagStruct> singleAttr in this.tags.Tag[this.tagName].Attributes)
                 {
                     Label etiqueta = new Label();
+                    TextBox textAttr = null;
+                    ComboBox comboBoxAttr = null;
+
                     etiqueta.AutoSize = true;
                     etiqueta.Location = new System.Drawing.Point(10, botonesPosY);
                     etiqueta.TextAlign = ContentAlignment.MiddleLeft;
@@ -113,7 +125,7 @@ namespace RegexMarkup.Forms
                     /*Agregamos los controles necesarios deacuerdo a los valores de los atributos*/
                     if (this.tags.Tag[TagName].Attributes[singleAttr.Key].Values == null)
                     {
-                        TextBox textAttr = new TextBox();
+                        textAttr = new TextBox();
                         textAttr.Location = new System.Drawing.Point(70, botonesPosY);
                         textAttr.Size = new System.Drawing.Size(200, 13);
                         textAttr.TextAlign = HorizontalAlignment.Center;
@@ -122,7 +134,7 @@ namespace RegexMarkup.Forms
                     }
                     else if (this.tags.Tag[TagName].Attributes[singleAttr.Key].Values[language].Count == 1)
                     {
-                        TextBox textAttr = new TextBox();
+                        textAttr = new TextBox();
                         textAttr.Location = new System.Drawing.Point(70, botonesPosY);
                         textAttr.Size = new System.Drawing.Size(200, 13);
                         textAttr.TextAlign = HorizontalAlignment.Center;
@@ -137,7 +149,7 @@ namespace RegexMarkup.Forms
                     {
                         BindingSource comboBoxAttrDS = null;
                         comboBoxAttrDS = new BindingSource(this.tags.Tag[TagName].Attributes[singleAttr.Key].Values[language], null);
-                        ComboBox comboBoxAttr = new ComboBox();
+                        comboBoxAttr = new ComboBox();
                         comboBoxAttr.Location = new System.Drawing.Point(70, botonesPosY);
                         comboBoxAttr.Name = "comboBox" + singleAttr.Key;
                         comboBoxAttr.BindingContext = new BindingContext();
@@ -146,6 +158,24 @@ namespace RegexMarkup.Forms
                         comboBoxAttr.DataSource = comboBoxAttrDS;
                         comboBoxAttr.Size = new System.Drawing.Size(this.dropDownWidth(comboBoxAttr), 13);
                         this.groupAtributes[this.tagName].Controls.Add(comboBoxAttr);
+                    }
+                    /*Si al atributo es requerido agregamos una validacion*/
+                    if (singleAttr.Value.Presence == Sgml.AttributePresence.Required) {
+                        CustomValidation.RequiredFieldValidator requiredAttribute = new CustomValidation.RequiredFieldValidator();
+                        ((System.ComponentModel.ISupportInitialize)(requiredAttribute)).BeginInit();
+                        /*Agregamos los controles necesarios deacuerdo a los valores de los atributos*/
+                        if (this.tags.Tag[TagName].Attributes[singleAttr.Key].Values == null) {
+                            requiredAttribute.ControlToValidate = textAttr;
+                        }
+                        else if (this.tags.Tag[TagName].Attributes[singleAttr.Key].Values[language].Count == 1) {
+                            requiredAttribute.ControlToValidate = textAttr;
+                        }
+                        else if (this.tags.Tag[TagName].Attributes[singleAttr.Key].Values[language].Count > 1) {
+                            requiredAttribute.ControlToValidate = comboBoxAttr;
+                        }
+                        requiredAttribute.ErrorMessage = "Atributo Requerido";
+                        requiredAttribute.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredAttribute.Icon")));
+                        ((System.ComponentModel.ISupportInitialize)(requiredAttribute)).EndInit();
                     }
                     /*Incrementamos el la posicion en el eje Y*/
                     botonesPosY += etiqueta.Size.Height + 15;
@@ -211,36 +241,43 @@ namespace RegexMarkup.Forms
             String attributeName = null;
             String attributeValue = null;
             openTag = "[" + this.tagName;
-            /*Agregando atributos a la etiqueta de apertura*/
-            foreach(Control attribute in this.groupAtributes[this.tagName].Controls){
-                attributeName = null;
-                attributeValue = null;
-                if (attribute.GetType().Name == "ComboBox") {
-                    attributeName = ((ComboBox)attribute).Name.Replace("comboBox", "");
-                    attributeValue = ((ComboBox)attribute).SelectedValue.ToString();
-                    if (attributeValue != null && attributeValue != "")
-                    {
-                        openTag += " " + attributeName + "=\"" + attributeValue + "\"";
-                    }
-                }
-                else if (attribute.GetType().Name == "TextBox")
+            /*Verficamos los atributos requeridos*/
+            this.groupAttributesValidate[this.actualAttibuteControl].Validate();
+            if (this.groupAttributesValidate[this.actualAttibuteControl].IsValid) {
+                /*Agregando atributos a la etiqueta de apertura*/
+                foreach (Control attribute in this.groupAtributes[this.tagName].Controls)
                 {
-                    attributeName = ((TextBox)attribute).Name.Replace("textBox", "");
-                    attributeValue = ((TextBox)attribute).Text;
-                    if (attributeValue != null && attributeValue != "")
+                    attributeName = null;
+                    attributeValue = null;
+                    if (attribute.GetType().Name == "ComboBox")
                     {
-                        openTag += " " + attributeName + "=\"" + attributeValue + "\"";
+                        attributeName = ((ComboBox)attribute).Name.Replace("comboBox", "");
+                        attributeValue = ((ComboBox)attribute).SelectedValue.ToString();
+                        if (attributeValue != null && attributeValue != "")
+                        {
+                            openTag += " " + attributeName + "=\"" + attributeValue + "\"";
+                        }
+                    }
+                    else if (attribute.GetType().Name == "TextBox")
+                    {
+                        attributeName = ((TextBox)attribute).Name.Replace("textBox", "");
+                        attributeValue = ((TextBox)attribute).Text;
+                        if (attributeValue != null && attributeValue != "")
+                        {
+                            openTag += " " + attributeName + "=\"" + attributeValue + "\"";
+                        }
                     }
                 }
+                openTag += "]";
+                /*Agregando la etiqueta con los atributos editados a selectedRtb*/
+                this.selectedRtb.Select(0, this.startSelection);
+                this.selectedRtb.SelectedText = openTag;
+                this.selectedRtb.SelectAll();
+                /*Cerramos este formulario*/
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-            openTag += "]";
-            /*Agregando la etiqueta con los atributos editados a selectedRtb*/
-            this.selectedRtb.Select(0, this.startSelection);
-            this.selectedRtb.SelectedText = openTag;
-            this.selectedRtb.SelectAll();
-            /*Cerramos este formulario*/
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            
         }
 
         #region Disable close button

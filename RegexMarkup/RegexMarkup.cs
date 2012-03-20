@@ -68,6 +68,7 @@ namespace RegexMarkup
             String fixedMarkedString = null;
             String issn = null;
             String pathXML = null;
+            String clearTag = null;
             Word.Selection docSeleccion = null;
             XmlDocument xmlDoc = new XmlDocument();
             XmlNode objElem = null;
@@ -119,6 +120,8 @@ namespace RegexMarkup
                 if (objElem == null){
                     MessageBox.Show(Resources.RegexMarkup_serilaNotInXML, Resources.RegexMarkup_title);
                 }else { 
+                    /* Asignamos el estilo de la citación */
+                    this.citationStyle = objElem.SelectSingleNode("norm").InnerText.Trim();
                     /* Asignamos los struct en los que se divide la revista */
                     structNode = objElem.SelectSingleNode("struct");
                     /* Patrón de búsqueda */
@@ -144,60 +147,76 @@ namespace RegexMarkup
                             subjetcString = ActiveDocument.Range(ref parrafoStart, ref parrafoEnd).Text;
                             //MessageBox.Show(subjetcString, "Texto de parrafo");
                             if (subjetcString != null)
-                            {
-                                try
-                                {
-                                    markedString = this.markupText(patternString, subjetcString, structNode);
-                                }
-                                catch (Exception e) {
-                                    MessageBox.Show(e.Message);
-                                }
+                            {   
                                 marked = true;
-                                if (subjetcString == markedString)
+                                /*Verificamos si la cadena original ya esta marcada*/
+                                if (subjetcString.IndexOf("[") == 0 && subjetcString.LastIndexOf("]") == subjetcString.Length - 1)
                                 {
-                                    marked = false;
-                                }
-                                else {
-                                    /* Relizamos un proceso para verificar que la cita marca sea la misma que la original y agregamos cadenas faltantes*/
+                                    this.formValidate = ValidateMarkup.Instance;
                                     fixedMarkedString = subjetcString;
-                                    /* Se comparara el texto comprendido entre etiquetas*/
-                                    matchResults = objRegExp.Match(markedString);
-                                    matchResults2 = matchResults.NextMatch();
-                                    /* Declaramos una varible para contemplar la longitud de carateres que no estan en la cita marcada */
-                                    int startDiffAdd = 0;
-                                    while (matchResults.Success)
+                                    clearTag = fixedMarkedString.Substring(1, fixedMarkedString.IndexOf("]") - 1);
+                                    /*Nos aseguramos de que la etiqueta no contenga algun atributo buscando un espacio*/
+                                    if(clearTag.IndexOf(" ") > 0){
+                                        clearTag = clearTag.Substring(clearTag.IndexOf(" "));
+                                    }
+                                    subjetcString = this.formValidate.clearTag(fixedMarkedString, clearTag);
+                                }
+                                else
+                                {
+
+                                    try
                                     {
-                                        try
+                                        markedString = this.markupText(patternString, subjetcString, structNode);
+                                    }
+                                    catch (Exception e) {
+                                        MessageBox.Show(e.Message);
+                                    }
+                                    if (subjetcString == markedString)
+                                    {
+                                        marked = false;
+                                    }
+                                    else {
+                                        /* Relizamos un proceso para verificar que la cita marca sea la misma que la original y agregamos cadenas faltantes*/
+                                        fixedMarkedString = subjetcString;
+                                        /* Se comparara el texto comprendido entre etiquetas*/
+                                        matchResults = objRegExp.Match(markedString);
+                                        matchResults2 = matchResults.NextMatch();
+                                        /* Declaramos una varible para contemplar la longitud de carateres que no estan en la cita marcada */
+                                        int startDiffAdd = 0;
+                                        while (matchResults.Success)
                                         {
-                                            /* Declaramos varables para saber el final de la etiqueta 1 y el principio de la etiqueta 2*/
-                                            int startMatch = matchResults.Index + startDiffAdd;
-                                            int end = startMatch + matchResults.Length;
-                                            int startMatch2 = matchResults2.Index + startDiffAdd;
-                                            /* Insertamos la etiqueta en su lugar correspondinete con su respectiva diferencia */
-                                            fixedMarkedString = fixedMarkedString.Insert(startMatch, matchResults.Value);
-                                            /* Verificamos si el contenido entre etiquetas es el mismo en la etiqueta marcada y en la reconstruida */
-                                            if (end < startMatch2 && fixedMarkedString.Substring(end, (startMatch2 - end)) != markedString.Substring(end - startDiffAdd, (startMatch2 - end)))
+                                            try
                                             {
-                                                String strOriginal = fixedMarkedString.Substring(end, (startMatch2 - end));
-                                                String strMarked = markedString.Substring(end - startDiffAdd, (startMatch2 - end));
-                                                String searchDiff = fixedMarkedString.Substring(end);
-                                                /* Verificamos donde inicia la diferencia entre las etiquetas*/
-                                                int startDiff = searchDiff.IndexOf(strMarked) + end; 
-                                                if (startDiff > 0)
+                                                /* Declaramos varables para saber el final de la etiqueta 1 y el principio de la etiqueta 2*/
+                                                int startMatch = matchResults.Index + startDiffAdd;
+                                                int end = startMatch + matchResults.Length;
+                                                int startMatch2 = matchResults2.Index + startDiffAdd;
+                                                /* Insertamos la etiqueta en su lugar correspondinete con su respectiva diferencia */
+                                                fixedMarkedString = fixedMarkedString.Insert(startMatch, matchResults.Value);
+                                                /* Verificamos si el contenido entre etiquetas es el mismo en la etiqueta marcada y en la reconstruida */
+                                                if (end < startMatch2 && fixedMarkedString.Substring(end, (startMatch2 - end)) != markedString.Substring(end - startDiffAdd, (startMatch2 - end)))
                                                 {
-                                                    /* Colocamos la etiqueta en su lugar adecuado en la cita reconstruida */
-                                                    fixedMarkedString = fixedMarkedString.Remove(startMatch, matchResults.Length);
-                                                    fixedMarkedString = fixedMarkedString.Insert((startDiff - matchResults.Length), matchResults.Value);
-                                                    /* Agregamos la longitud de los carateres que se encuentran ya en la cadena reconstruida */
-                                                    startDiffAdd += fixedMarkedString.Substring(end, (startDiff - end)).Length;
+                                                    String strOriginal = fixedMarkedString.Substring(end, (startMatch2 - end));
+                                                    String strMarked = markedString.Substring(end - startDiffAdd, (startMatch2 - end));
+                                                    String searchDiff = fixedMarkedString.Substring(end);
+                                                    /* Verificamos donde inicia la diferencia entre las etiquetas*/
+                                                    int startDiff = searchDiff.IndexOf(strMarked) + end; 
+                                                    if (startDiff > 0)
+                                                    {
+                                                        /* Colocamos la etiqueta en su lugar adecuado en la cita reconstruida */
+                                                        fixedMarkedString = fixedMarkedString.Remove(startMatch, matchResults.Length);
+                                                        fixedMarkedString = fixedMarkedString.Insert((startDiff - matchResults.Length), matchResults.Value);
+                                                        /* Agregamos la longitud de los carateres que se encuentran ya en la cadena reconstruida */
+                                                        startDiffAdd += fixedMarkedString.Substring(end, (startDiff - end)).Length;
+                                                    }
+                                                    
                                                 }
-                                                
+                                                matchResults = matchResults.NextMatch();
+                                                matchResults2 = matchResults2.NextMatch();
                                             }
-                                            matchResults = matchResults.NextMatch();
-                                            matchResults2 = matchResults2.NextMatch();
-                                        }
-                                        catch (Exception e) {
-                                            MessageBox.Show(e.Message);
+                                            catch (Exception e) {
+                                                MessageBox.Show(e.Message);
+                                            }
                                         }
                                     }
                                 }
@@ -206,6 +225,7 @@ namespace RegexMarkup
                         }
                         /* Mandamos llamar al formulario para la validación de las citas*/
                         this.formValidate = ValidateMarkup.Instance;
+                        this.formValidate.CitationStyle = this.citationStyle;
                         this.formValidate.DtdVersion = this.dtdVersion;
                         this.formValidate.DtdType = this.dtdType;
                         this.formValidate.startValidate(ref citas);
