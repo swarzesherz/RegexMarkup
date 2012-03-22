@@ -84,8 +84,8 @@ namespace RegexMarkup.Forms
         /// </summary>
 
         private void showAttributeControls() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditAttribute));
             String language = Resources.Culture.TwoLetterISOLanguageName;
+            bool groupWithValidation = false;
 
             if (this.actualAttibuteControl != null) {
                 this.groupAtributes[this.actualAttibuteControl].Visible = false;
@@ -103,10 +103,6 @@ namespace RegexMarkup.Forms
                 this.groupAtributes[this.tagName].Location = new Point(10, 151);
                 this.Controls.Add(this.groupAtributes[this.tagName]);
                 int botonesPosY = 25;
-                /*Creamos la validación para el grupo*/
-                this.groupAttributesValidate.Add(this.tagName, new CustomValidation.ContainerValidator());
-                this.groupAttributesValidate[this.tagName].ContainerToValidate = this.groupAtributes[this.tagName];
-                this.groupAttributesValidate[this.tagName].HostingForm = this;
                 /*Buscamos y agregamos los atributos al groupBox*/
                 foreach (KeyValuePair<String, AttrTagStruct> singleAttr in this.tags.Tag[this.tagName].Attributes)
                 {
@@ -160,7 +156,8 @@ namespace RegexMarkup.Forms
                         this.groupAtributes[this.tagName].Controls.Add(comboBoxAttr);
                     }
                     /*Si al atributo es requerido agregamos una validacion*/
-                    if (singleAttr.Value.Presence == Sgml.AttributePresence.Required) {
+                    if (singleAttr.Value.Presence == Sgml.AttributePresence.Required || 1 == 1) {
+                        groupWithValidation = true;
                         CustomValidation.RequiredFieldValidator requiredAttribute = new CustomValidation.RequiredFieldValidator();
                         ((System.ComponentModel.ISupportInitialize)(requiredAttribute)).BeginInit();
                         /*Agregamos los controles necesarios deacuerdo a los valores de los atributos*/
@@ -174,11 +171,19 @@ namespace RegexMarkup.Forms
                             requiredAttribute.ControlToValidate = comboBoxAttr;
                         }
                         requiredAttribute.ErrorMessage = "Atributo Requerido";
-                        requiredAttribute.Icon = ((System.Drawing.Icon)(resources.GetObject("requiredAttribute.Icon")));
+                        requiredAttribute.Icon = Resources.requiredAttribute_Icon;
                         ((System.ComponentModel.ISupportInitialize)(requiredAttribute)).EndInit();
                     }
                     /*Incrementamos el la posicion en el eje Y*/
                     botonesPosY += etiqueta.Size.Height + 15;
+                }
+                /*Creamos la validación para el grupo si es requerida*/
+                if (groupWithValidation)
+                {
+                    this.groupAttributesValidate.Add(this.tagName, new CustomValidation.ContainerValidator());
+                    this.groupAttributesValidate[this.tagName].ContainerToValidate = this.groupAtributes[this.tagName];
+                    this.groupAttributesValidate[this.tagName].HostingForm = this;
+                    this.groupAttributesValidate[this.tagName].ValidationDepth = CustomValidation.ValidationDepth.ContainerOnly;
                 }
             }
             else {
@@ -241,9 +246,19 @@ namespace RegexMarkup.Forms
             String attributeName = null;
             String attributeValue = null;
             openTag = "[" + this.tagName;
+            bool groupWithoutValidation = false;
             /*Verficamos los atributos requeridos*/
-            this.groupAttributesValidate[this.actualAttibuteControl].Validate();
-            if (this.groupAttributesValidate[this.actualAttibuteControl].IsValid) {
+            if (this.groupAttributesValidate.ContainsKey(this.actualAttibuteControl))
+            {
+                this.groupAttributesValidate[this.actualAttibuteControl].Validate();
+            }
+            else 
+            {
+                groupWithoutValidation = true;
+            }
+
+            if (groupWithoutValidation || this.groupAttributesValidate[this.actualAttibuteControl].IsValid)
+            {
                 /*Agregando atributos a la etiqueta de apertura*/
                 foreach (Control attribute in this.groupAtributes[this.tagName].Controls)
                 {

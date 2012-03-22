@@ -259,6 +259,13 @@ namespace RegexMarkup.Properties {
             }
         }
         
+        internal static System.Drawing.Icon requiredAttribute_Icon {
+            get {
+                object obj = ResourceManager.GetObject("requiredAttribute.Icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Busca una cadena traducida similar a Configuración.
         /// </summary>

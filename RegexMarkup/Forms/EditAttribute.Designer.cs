@@ -37,10 +37,8 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.groupBoxTools = new System.Windows.Forms.GroupBox();
             this.toolTipInfo = new System.Windows.Forms.ToolTip(this.components);
-            this.formValidator = new CustomValidation.FormValidator();
             this.groupBoxTag.SuspendLayout();
             this.groupBoxTools.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.formValidator)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxTag
@@ -99,10 +97,6 @@
             this.groupBoxTools.TabStop = false;
             this.groupBoxTools.Text = "Herramientas";
             // 
-            // formValidator
-            // 
-            this.formValidator.HostingForm = this;
-            // 
             // EditAttribute
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -121,7 +115,6 @@
             this.Load += new System.EventHandler(this.EditAttribute_Load);
             this.groupBoxTag.ResumeLayout(false);
             this.groupBoxTools.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.formValidator)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -134,6 +127,5 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.GroupBox groupBoxTools;
         private System.Windows.Forms.ToolTip toolTipInfo;
-        private CustomValidation.FormValidator formValidator;
     }
 }

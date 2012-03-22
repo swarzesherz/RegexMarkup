@@ -257,6 +257,8 @@ namespace CustomValidation
     }  
     private void HostingForm_Closed(object sender, EventArgs e) {
       // DeRegister from ValidatorCollection
+      Form hostingForm =(Form)sender;
+      hostingForm.Closed -= new EventHandler(HostingForm_Closed);
       ValidatorManager.DeRegister(this, (Form)sender);
     }
   }
