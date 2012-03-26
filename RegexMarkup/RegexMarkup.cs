@@ -59,7 +59,6 @@ namespace RegexMarkup
         ///</summary>
         public void startMarkup()
         {
-            //DTDStruct DTDarticle = new DTDStruct();
             /* Declaracion de variables */
             Boolean marked = true;
             String patternString = null;
@@ -136,9 +135,14 @@ namespace RegexMarkup
                     } else {
                         /* Asignamos el texto de la seleccion a subjectString */
                         subjetcString = docSeleccion.Range.Text;
-                        //MessageBox.Show(subjetcString, "Texto Seleccionado");
                         /* Inicializando arratlist de citas */
                         citas = new List<MarkupStruct>();
+                        /*Creamos una instancia del formulario*/
+                        this.formValidate = ValidateMarkup.Instance;
+                        this.formValidate.CitationStyle = this.citationStyle;
+                        this.formValidate.DtdVersion = this.dtdVersion;
+                        this.formValidate.DtdType = this.dtdType;
+                        this.formValidate.updateDTDInfo();
                         /* Buscando parrafo por parrafo */
                         foreach (Word.Paragraph parrafo in docSeleccion.Paragraphs){
                             /* Mandamos el texto de cada parrafo a una funcion que nos lo regresara marcado y quitamos el salto linea */
@@ -152,13 +156,14 @@ namespace RegexMarkup
                                 /*Verificamos si la cadena original ya esta marcada*/
                                 if (subjetcString.IndexOf("[") == 0 && subjetcString.LastIndexOf("]") == subjetcString.Length - 1)
                                 {
-                                    this.formValidate = ValidateMarkup.Instance;
                                     fixedMarkedString = subjetcString;
                                     clearTag = fixedMarkedString.Substring(1, fixedMarkedString.IndexOf("]") - 1);
                                     /*Nos aseguramos de que la etiqueta no contenga algun atributo buscando un espacio*/
                                     if(clearTag.IndexOf(" ") > 0){
                                         clearTag = clearTag.Substring(clearTag.IndexOf(" "));
                                     }
+                                    /*Con la ayuda de la instancia del formulario limpiamos la cadena marcada*/
+                                    this.tags.getChilds(clearTag);
                                     subjetcString = this.formValidate.clearTag(fixedMarkedString, clearTag);
                                 }
                                 else
@@ -224,10 +229,6 @@ namespace RegexMarkup
                             }
                         }
                         /* Mandamos llamar al formulario para la validación de las citas*/
-                        this.formValidate = ValidateMarkup.Instance;
-                        this.formValidate.CitationStyle = this.citationStyle;
-                        this.formValidate.DtdVersion = this.dtdVersion;
-                        this.formValidate.DtdType = this.dtdType;
                         this.formValidate.startValidate(ref citas);
                         if (this.formValidate.ShowDialog() == DialogResult.OK)
                         {
@@ -252,7 +253,14 @@ namespace RegexMarkup
                             /*Guardamos los cambios*/
                             if (!ActiveDocument.ReadOnly)
                             {
-                                ActiveDocument.Save();
+                                object FileName = ActiveDocument.Name;
+                                object FileFormat = Word.WdSaveFormat.wdFormatFilteredHTML;
+                                ActiveDocument.SaveAs(ref FileName, ref FileFormat, ref missing,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing,
+                                        ref missing, ref missing,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing);
                             }
                             else
                             {

@@ -156,7 +156,7 @@ namespace RegexMarkup.Forms
                         this.groupAtributes[this.tagName].Controls.Add(comboBoxAttr);
                     }
                     /*Si al atributo es requerido agregamos una validacion*/
-                    if (singleAttr.Value.Presence == Sgml.AttributePresence.Required || 1 == 1) {
+                    if (singleAttr.Value.Presence == Sgml.AttributePresence.Required) {
                         groupWithValidation = true;
                         CustomValidation.RequiredFieldValidator requiredAttribute = new CustomValidation.RequiredFieldValidator();
                         ((System.ComponentModel.ISupportInitialize)(requiredAttribute)).BeginInit();
@@ -171,7 +171,7 @@ namespace RegexMarkup.Forms
                             requiredAttribute.ControlToValidate = comboBoxAttr;
                         }
                         requiredAttribute.ErrorMessage = "Atributo Requerido";
-                        requiredAttribute.Icon = Resources.requiredAttribute_Icon;
+                        requiredAttribute.Icon = Resources.requiredAttribute;
                         ((System.ComponentModel.ISupportInitialize)(requiredAttribute)).EndInit();
                     }
                     /*Incrementamos el la posicion en el eje Y*/

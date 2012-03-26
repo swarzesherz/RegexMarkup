@@ -259,9 +259,9 @@ namespace RegexMarkup.Properties {
             }
         }
         
-        internal static System.Drawing.Icon requiredAttribute_Icon {
+        internal static System.Drawing.Icon requiredAttribute {
             get {
-                object obj = ResourceManager.GetObject("requiredAttribute.Icon", resourceCulture);
+                object obj = ResourceManager.GetObject("requiredAttribute", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

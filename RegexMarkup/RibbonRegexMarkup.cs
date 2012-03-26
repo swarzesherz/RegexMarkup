@@ -86,6 +86,7 @@ namespace RegexMarkup
                         {
                             myKey.SetValue("DisplayIcon", iconSourcePath);
                             myKey.SetValue("Publisher", AssemblyInfoHelper.Company);
+                            myKey.SetValue("UrlUpdateInfo", ApplicationDeployment.CurrentDeployment.UpdateLocation.AbsoluteUri);
                             keyFound = true;
                         }
                         i++;

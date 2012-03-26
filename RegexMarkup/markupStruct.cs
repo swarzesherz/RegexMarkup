@@ -18,6 +18,7 @@ namespace RegexMarkup
             this.originalStr = originalStr;
             /* Creando string rtf */
             this.markedRtb = new RichTextBox();
+            this.markedRtb.DetectUrls = false;
             this.markedRtb.Text = markedStr;
             this.marked = marked;
             this.rngCita = rngCita;

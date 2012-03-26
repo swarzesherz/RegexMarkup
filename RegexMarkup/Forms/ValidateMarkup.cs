@@ -46,7 +46,6 @@ namespace RegexMarkup
         private int startColor = -1;
         private Dictionary<String, GroupBox> groupMarkupButtons = new Dictionary<String, GroupBox>();
         private DTDSciELO dtdSciELO = DTDSciELO.Instance;
-        private SgmlDtd dtd = null;
         private Tags tags = Tags.Instance;
         private String citationStyle = "other";
         private String dtdVersion = null;
@@ -113,10 +112,13 @@ namespace RegexMarkup
             /* Evento para colorear cuando cambie la posicion */
             this.currencyManager.PositionChanged += new EventHandler(this.currencyManager_PositionChanged);
             /*Actualizamos la información de la DTD*/
-            this.dtd = dtdSciELO.getDTD(this.dtdVersion, this.dtdType);
-            this.tags.Dtd = this.dtd;
+            this.tags.Dtd = dtdSciELO.getDTD(this.dtdVersion, this.dtdType);
             /*Creando barra de herramientas para las etiquetas*/
             this.addMarkupButtons(this.citationStyle, null);
+        }
+
+        public void updateDTDInfo() {
+            this.tags.Dtd = dtdSciELO.getDTD(this.dtdVersion, this.dtdType);
         }
 
         #region addMarkupButtons
@@ -167,7 +169,7 @@ namespace RegexMarkup
                     this.toolTipInfo.SetToolTip(childs["parentGroup"].Markup, String.Format(Resources.ValidateMarkup_parentTag, parentGroup));
                 }
                 /*Llenamos un diccionario con los nodos hijos*/
-                article = this.dtd.FindElement(node);
+                article = this.tags.Dtd.FindElement(node);
                 foreach(String childName in this.tags.getChilds(node)){
                     if (!childs.ContainsKey(childName))
                     {
@@ -251,7 +253,7 @@ namespace RegexMarkup
                 matchResults = matchResults.NextMatch();
             }
             if (tagReplaced && this.tags.Tag[node].ChildNodes) {
-                foreach (String tagName in this.tags.Tag[node].Childs) {
+                foreach (String tagName in this.tags.getChilds(node)) {
                     originalString = this.clearTag(originalString, tagName);
                 }
             }
@@ -485,7 +487,7 @@ namespace RegexMarkup
         {
             String selectedTag = this.richTextBoxMarkup.SelectedText.Trim();
             /*Verificamos si el texto seleccionado no es nulo y ademas corresponde a un etiqueta*/
-            if (selectedTag != null && this.dtd.FindElement(selectedTag) != null)
+            if (selectedTag != null && this.tags.Dtd.FindElement(selectedTag) != null)
             {
                 if (MessageBox.Show(String.Format(Resources.ValidateMarkup_deleteTagMessage, selectedTag), Resources.ValidateMarkup_deleteTagCaption + selectedTag, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
@@ -510,7 +512,7 @@ namespace RegexMarkup
         private void buttonEditAttr_Click(object sender, EventArgs e)
         {
             String selectedTag = this.richTextBoxMarkup.SelectedText.Trim();
-            if (selectedTag != null && this.dtd.FindElement(selectedTag) != null)
+            if (selectedTag != null && this.tags.Dtd.FindElement(selectedTag) != null)
             {
                 if (this.tags.getAttributes(selectedTag) != null)
                 {

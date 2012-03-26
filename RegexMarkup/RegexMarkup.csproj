@@ -36,9 +36,9 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsUrl>http://132.248.9.166/</BootstrapperComponentsUrl>
     <PublishUrl>ftp://132.248.9.166/RegexMarkupDist/</PublishUrl>
-    <InstallUrl>http://132.248.9.166/</InstallUrl>
+    <InstallUrl>http://scielo.no-ip.org/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.7.5.30</ApplicationVersion>
+    <ApplicationVersion>0.7.5.36</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -202,7 +202,6 @@
   <ItemGroup>
     <Compile Include="AssemblyInfoHelper.cs" />
     <Compile Include="AttrTagStruct.cs" />
-    <Compile Include="dictionaryDTD.cs" />
     <Compile Include="DTDSciELO.cs" />
     <Compile Include="Forms\ConfigRegexMarkup.cs">
       <SubType>Form</SubType>
@@ -245,7 +244,8 @@
     <EmbeddedResource Include="Forms\Waiting.resx">
       <DependentUpon>Waiting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.en-US.resx" />
+    <EmbeddedResource Include="Properties\Resources.en-US.resx">
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

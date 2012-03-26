@@ -9,6 +9,7 @@ using System.Collections.Specialized;
 using RegexMarkup.Properties;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using RegexMarkup.Forms;
 
 namespace RegexMarkup
 {
@@ -41,6 +42,8 @@ namespace RegexMarkup
         private BindingSource comboBoxLangDS = null;
         private String originalLanguage = null;
         private ValidateMarkup validateMarkup = null;
+        private Waiting waitForm = null;
+
         public ConfigRegexMarkup()
         {
             InitializeComponent();
@@ -95,6 +98,8 @@ namespace RegexMarkup
                 this.Dispose();
                 this.validateMarkup = ValidateMarkup.Instance;
                 this.validateMarkup.Dispose();
+                this.waitForm = Waiting.Instance;
+                this.waitForm.Dispose();
             }
         }
 
