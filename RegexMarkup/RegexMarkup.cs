@@ -12,6 +12,8 @@ using System.IO;
 using RegexMarkup.Properties;
 using RegexMarkup.Forms;
 using System.Deployment.Application;
+using log4net;
+using log4net.Config;
 
 namespace RegexMarkup
 {
@@ -53,12 +55,14 @@ namespace RegexMarkup
         private String dtdType = "article";
         private ValidateMarkup formValidate = null;
         private Tags tags = Tags.Instance;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         #region startMarkup
         ///<summary>
         ///Procedimiento al que llamaremos para inciar el proceso de marcación
         ///</summary>
         public void startMarkup()
         {
+            if (log.IsInfoEnabled) log.Info("Begin");
             /* Declaracion de variables */
             Boolean marked = true;
             String patternString = null;
@@ -134,6 +138,7 @@ namespace RegexMarkup
                         MessageBox.Show(Resources.RegexMarkup_selectCitationComplete, Resources.RegexMarkup_title);
                     } else {
                         /* Asignamos el texto de la seleccion a subjectString */
+                        if (log.IsInfoEnabled) log.Info("Select paragraphs");
                         subjetcString = docSeleccion.Range.Text;
                         /* Inicializando arratlist de citas */
                         citas = new List<MarkupStruct>();
@@ -273,6 +278,7 @@ namespace RegexMarkup
                 }
 
             }
+            if (log.IsInfoEnabled) log.Info("End");
         }
         #endregion
 

@@ -7,9 +7,6 @@ using Word = Microsoft.Office.Interop.Word;
 using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
-using RegexMarkup.Properties;
-using System.Globalization;
-using System.Windows.Forms;
 
 namespace RegexMarkup
 {
