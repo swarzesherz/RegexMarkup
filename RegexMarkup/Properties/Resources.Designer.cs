@@ -130,6 +130,13 @@ namespace RegexMarkup.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap debug {
+            get {
+                object obj = ResourceManager.GetObject("debug", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap downArrow {
             get {
                 object obj = ResourceManager.GetObject("downArrow", resourceCulture);
@@ -272,6 +279,15 @@ namespace RegexMarkup.Properties {
         internal static string RibbonRegexMarkup_buttonConfiguration {
             get {
                 return ResourceManager.GetString("RibbonRegexMarkup_buttonConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Bítacora.
+        /// </summary>
+        internal static string RibbonRegexMarkup_buttonDebug {
+            get {
+                return ResourceManager.GetString("RibbonRegexMarkup_buttonDebug", resourceCulture);
             }
         }
         

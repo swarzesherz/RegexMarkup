@@ -10,7 +10,6 @@ using RegexMarkup.Properties;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using RegexMarkup.Forms;
-
 namespace RegexMarkup
 {
     public partial class ConfigRegexMarkup : Form

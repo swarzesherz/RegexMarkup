@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using System.Windows.Forms;
 using Sgml;
+using log4net;
 
 namespace RegexMarkup
 {
@@ -39,8 +40,10 @@ namespace RegexMarkup
 
         private Dictionary<String, Dictionary<String, SgmlDtd>> version = new Dictionary<string, Dictionary<string, SgmlDtd>>();
         private Dictionary<String, String> availableVersion = new Dictionary<string, string>();
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public SgmlDtd getDTD(String version, String DTD) {
+            if (log.IsDebugEnabled) log.Debug("getDTD(version= " + version + ", DTD= " + DTD + ")");
             SgmlReader reader = null;
             Dictionary<String, SgmlDtd> dtd = null;
             if (this.checkAvailableVersion(DTD+version) && !this.version.ContainsKey(version)) { 

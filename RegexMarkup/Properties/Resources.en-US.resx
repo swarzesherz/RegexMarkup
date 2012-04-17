@@ -250,4 +250,7 @@ The document is read-only mode</value>
   <data name="ValidateMarkup_messageTagWithoutAttr" xml:space="preserve">
     <value>Selected tag without attributes</value>
   </data>
+  <data name="RibbonRegexMarkup_buttonDebug" xml:space="preserve">
+    <value>Logbook</value>
+  </data>
 </root>

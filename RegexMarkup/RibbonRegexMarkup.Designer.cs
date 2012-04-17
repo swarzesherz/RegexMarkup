@@ -34,6 +34,7 @@ namespace RegexMarkup
             this.groupRegexMarkup = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
             this.buttonRegexMarkup = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.buttonConfig = new Microsoft.Office.Tools.Ribbon.RibbonButton();
+            this.buttonDebug = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.tab1.SuspendLayout();
             this.groupRegexMarkup.SuspendLayout();
             this.SuspendLayout();
@@ -48,6 +49,7 @@ namespace RegexMarkup
             // groupRegexMarkup
             // 
             this.groupRegexMarkup.Items.Add(this.buttonRegexMarkup);
+            this.groupRegexMarkup.Items.Add(this.buttonDebug);
             this.groupRegexMarkup.Items.Add(this.buttonConfig);
             this.groupRegexMarkup.Label = "RegexMarkup";
             this.groupRegexMarkup.Name = "groupRegexMarkup";
@@ -67,6 +69,14 @@ namespace RegexMarkup
             this.buttonConfig.Name = "buttonConfig";
             this.buttonConfig.ShowImage = true;
             this.buttonConfig.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.buttonConfig_Click);
+            // 
+            // buttonDebug
+            // 
+            this.buttonDebug.Image = global::RegexMarkup.Properties.Resources.debug;
+            this.buttonDebug.Label = "Bítacora";
+            this.buttonDebug.Name = "buttonDebug";
+            this.buttonDebug.ShowImage = true;
+            this.buttonDebug.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.buttonDebug_Click);
             // 
             // RibbonRegexMarkup
             // 
@@ -88,6 +98,7 @@ namespace RegexMarkup
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup groupRegexMarkup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonRegexMarkup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonConfig;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonDebug;
     }
 
     partial class ThisRibbonCollection : Microsoft.Office.Tools.Ribbon.RibbonReadOnlyCollection

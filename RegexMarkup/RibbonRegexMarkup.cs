@@ -9,6 +9,9 @@ using System.Deployment.Application;
 using System.IO;
 using Microsoft.Win32;
 using System.Reflection;
+using log4net;
+using log4net.Config;
+using RegexMarkup.Forms;
 
 namespace RegexMarkup
 {
@@ -16,7 +19,7 @@ namespace RegexMarkup
     {
         private RegexMarkup objectRegexMarkup = RegexMarkup.Instance;
         private ConfigRegexMarkup configForm = null;
-
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public RibbonRegexMarkup()
         {
             /*Agregando icono para Add/Remove Software*/
@@ -33,6 +36,7 @@ namespace RegexMarkup
             }
             InitializeComponent();
             this.buttonConfig.Label = Resources.RibbonRegexMarkup_buttonConfiguration;
+            this.buttonDebug.Label = Resources.RibbonRegexMarkup_buttonDebug;
             /*Verificando el número de versión*/
             if (ApplicationDeployment.IsNetworkDeployed)
             {
@@ -50,7 +54,13 @@ namespace RegexMarkup
 
         private void buttonRegexMarkup_Click(object sender, RibbonControlEventArgs e)
         {
-            this.objectRegexMarkup.startMarkup();
+            try
+            {
+                this.objectRegexMarkup.startMarkup();
+            }
+            catch (Exception ex) {
+                if (log.IsErrorEnabled) log.Error(ex.Message + "\r\n" + ex.StackTrace);
+            }
         }
 
         private void buttonConfig_Click(object sender, RibbonControlEventArgs e)
@@ -58,6 +68,7 @@ namespace RegexMarkup
             this.configForm = ConfigRegexMarkup.Instance;
             this.configForm.ShowDialog();
             this.buttonConfig.Label = Resources.RibbonRegexMarkup_buttonConfiguration;
+            this.buttonDebug.Label = Resources.RibbonRegexMarkup_buttonDebug;
         }
 
         #region SetAddRemoveProgramsIcon
@@ -92,11 +103,18 @@ namespace RegexMarkup
                         i++;
                     }
                 }
-                catch (Exception e) { 
+                catch (Exception e) {
+                    if (log.IsErrorEnabled) log.Error(e.Message + "\r\n" + e.StackTrace);
                 }
             }
         }
         #endregion
+
+        private void buttonDebug_Click(object sender, RibbonControlEventArgs e)
+        {
+            Debug debugForm = new Debug();
+            debugForm.Show();
+        }
 
     }
 }

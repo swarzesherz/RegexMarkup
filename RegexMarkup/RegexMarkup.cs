@@ -247,9 +247,11 @@ namespace RegexMarkup
                             {
                                 if (cita.Marked && cita.Colorized)
                                 {
+                                    Clipboard.Clear();
                                     cita.MarkedRtb.SelectAll();
-                                    cita.MarkedRtb.Copy();
+                                    Clipboard.SetText(cita.MarkedRtb.SelectedRtf, TextDataFormat.Rtf);
                                     cita.RngCita.Paste();
+                                    Clipboard.Clear();
                                 }
                             }
                             /* Mostramos de nuevo la aplicacion */
@@ -290,6 +292,7 @@ namespace RegexMarkup
         /// <param name="attr">Atributo a buscar</param>
         /// <returns>El valor del atributo buscado</returns>
         private String getAttrValueInTag(String tag, String attr) {
+            if (log.IsInfoEnabled) log.Info("Begin");
             /* Declaración de variables */
             String subjectString = null;
             String result = null;
@@ -315,6 +318,7 @@ namespace RegexMarkup
             {
                 return result;
             }
+            if (log.IsInfoEnabled) log.Info("End");
             return result;
         }
         #endregion
@@ -328,6 +332,7 @@ namespace RegexMarkup
         /// <param name="refStruct">Instrucciones de marcado</param>
         /// <returns>La cadena marcada</returns>
         private String markupText(String refPattern, String refString, XmlNode refStruct) {
+            if (log.IsInfoEnabled) log.Info("Begin");
             /* Definición de variables */
             bool singleOptionMatch = false;
             int  singleOptionMatched = 0;
@@ -534,6 +539,7 @@ namespace RegexMarkup
             } else {
                 resultString +=  refString;
             }
+            if (log.IsInfoEnabled) log.Info("End");
             return resultString;
         }
         #endregion
