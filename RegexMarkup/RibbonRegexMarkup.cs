@@ -10,8 +10,9 @@ using System.IO;
 using Microsoft.Win32;
 using System.Reflection;
 using log4net;
-using log4net.Config;
+using log4net.Config;   
 using RegexMarkup.Forms;
+using log4net.Appender;
 
 namespace RegexMarkup
 {
@@ -22,6 +23,33 @@ namespace RegexMarkup
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public RibbonRegexMarkup()
         {
+            /*Actualizando directorios para los archivos usados por log4net*/
+            String dataDirectory = null;
+            String appenderType = null;
+            dataDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            foreach (Object appender in LogManager.GetRepository().GetAppenders())
+            {
+                appenderType = appender.GetType().Name;
+                log.Debug("appenderType = " + appenderType);
+                switch (appenderType)
+                {
+                    case "RollingFileAppender":
+                        log.Debug("((RollingFileAppender)appender).File = " + ((RollingFileAppender)appender).File);
+                        ((RollingFileAppender)appender).File = ((RollingFileAppender)appender).File.Replace(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), dataDirectory);
+                        log.Debug("((RollingFileAppender)appender).File = " + ((RollingFileAppender)appender).File);
+                        ((RollingFileAppender)appender).ActivateOptions();
+                        log.Debug("((RollingFileAppender)appender).File = " + ((RollingFileAppender)appender).File);
+                        break;
+                    case "AdoNetAppender":
+                        log.Debug("((AdoNetAppender)appender).ConnectionString = " + ((AdoNetAppender)appender).ConnectionString);
+                        ((AdoNetAppender)appender).ConnectionString = ((AdoNetAppender)appender).ConnectionString.Replace(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), dataDirectory);
+                        log.Debug("((AdoNetAppender)appender).ConnectionString = " + ((AdoNetAppender)appender).ConnectionString);
+                        ((AdoNetAppender)appender).ActivateOptions();
+                        log.Debug("((AdoNetAppender)appender).ConnectionString = " + ((AdoNetAppender)appender).ConnectionString);
+                        break;
+                }
+            }
             /*Agregando icono para Add/Remove Software*/
             this.SetAddRemoveProgramsIcon();
             /* Iniciando configuración de idioma */
@@ -35,6 +63,7 @@ namespace RegexMarkup
                 Settings.Default.language = Resources.Culture.ToString();
             }
             InitializeComponent();
+            /*Actualizando textos*/
             this.buttonConfig.Label = Resources.RibbonRegexMarkup_buttonConfiguration;
             this.buttonDebug.Label = Resources.RibbonRegexMarkup_buttonDebug;
             /*Verificando el número de versión*/
@@ -67,8 +96,15 @@ namespace RegexMarkup
         {
             this.configForm = ConfigRegexMarkup.Instance;
             this.configForm.ShowDialog();
+            /*Actualizando textos*/
             this.buttonConfig.Label = Resources.RibbonRegexMarkup_buttonConfiguration;
             this.buttonDebug.Label = Resources.RibbonRegexMarkup_buttonDebug;
+        }
+
+        private void buttonDebug_Click(object sender, RibbonControlEventArgs e)
+        {
+            Debug debugForm = new Debug();
+            debugForm.Show();
         }
 
         #region SetAddRemoveProgramsIcon
@@ -109,12 +145,6 @@ namespace RegexMarkup
             }
         }
         #endregion
-
-        private void buttonDebug_Click(object sender, RibbonControlEventArgs e)
-        {
-            Debug debugForm = new Debug();
-            debugForm.Show();
-        }
 
     }
 }

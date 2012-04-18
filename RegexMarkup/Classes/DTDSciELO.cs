@@ -43,7 +43,7 @@ namespace RegexMarkup
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public SgmlDtd getDTD(String version, String DTD) {
-            if (log.IsDebugEnabled) log.Debug("getDTD(version= " + version + ", DTD= " + DTD + ")");
+            if (log.IsDebugEnabled) log.Debug("getDTD(version: " + version + ", DTD: " + DTD + ")");
             SgmlReader reader = null;
             Dictionary<String, SgmlDtd> dtd = null;
             if (this.checkAvailableVersion(DTD+version) && !this.version.ContainsKey(version)) { 
@@ -60,6 +60,7 @@ namespace RegexMarkup
         }
 
         private bool checkAvailableVersion(String version) {
+            if (log.IsDebugEnabled) log.Debug("checkAvailableVersion(version: " + version + ")");
             if (this.availableVersion.Count <= 0)
             {
                 this.availableVersion.Add("article4.0", "SGML/art4_0.dtd");

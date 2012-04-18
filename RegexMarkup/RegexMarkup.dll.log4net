@@ -53,7 +53,7 @@
             </parameter>
         </appender>
         <logger name="RegexMarkup">
-            <level value="ALL" />
+            <level value="DEBUG" />
             <appender-ref ref="AdoNetAppender" />
         </logger>
     </log4net>

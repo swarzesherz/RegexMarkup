@@ -9,7 +9,6 @@ using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
 using System.Deployment.Application;
 using log4net;
-using log4net.Appender;
 
 namespace RegexMarkup
 {
@@ -19,31 +18,7 @@ namespace RegexMarkup
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            String dataDirectory = null;
-            String appenderType = null;
-            dataDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
-            foreach (Object appender in LogManager.GetRepository().GetAppenders())
-            {
-                appenderType = appender.GetType().Name;
-                log.Debug("appenderType = " + appenderType);
-                switch (appenderType) { 
-                    case "RollingFileAppender":
-                        log.Debug("((RollingFileAppender)appender).File = " + ((RollingFileAppender)appender).File); 
-                        ((RollingFileAppender)appender).File = ((RollingFileAppender)appender).File.Replace(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), dataDirectory);
-                        log.Debug("((RollingFileAppender)appender).File = " + ((RollingFileAppender)appender).File); 
-                        ((RollingFileAppender)appender).ActivateOptions();
-                        log.Debug("((RollingFileAppender)appender).File = " + ((RollingFileAppender)appender).File); 
-                        break;
-                    case "AdoNetAppender":
-                        log.Debug("((AdoNetAppender)appender).ConnectionString = " + ((AdoNetAppender)appender).ConnectionString); 
-                        ((AdoNetAppender)appender).ConnectionString = ((AdoNetAppender)appender).ConnectionString.Replace(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), dataDirectory);
-                        log.Debug("((AdoNetAppender)appender).ConnectionString = " + ((AdoNetAppender)appender).ConnectionString);
-                        ((AdoNetAppender)appender).ActivateOptions();
-                        log.Debug("((AdoNetAppender)appender).ConnectionString = " + ((AdoNetAppender)appender).ConnectionString);
-                        break;
-                }
-            }
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)

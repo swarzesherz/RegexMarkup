@@ -30,21 +30,21 @@ namespace RegexMarkup
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RibbonRegexMarkup));
-            this.tab1 = new Microsoft.Office.Tools.Ribbon.RibbonTab();
+            this.su = new Microsoft.Office.Tools.Ribbon.RibbonTab();
             this.groupRegexMarkup = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
             this.buttonRegexMarkup = new Microsoft.Office.Tools.Ribbon.RibbonButton();
-            this.buttonConfig = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.buttonDebug = new Microsoft.Office.Tools.Ribbon.RibbonButton();
-            this.tab1.SuspendLayout();
+            this.buttonConfig = new Microsoft.Office.Tools.Ribbon.RibbonButton();
+            this.su.SuspendLayout();
             this.groupRegexMarkup.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tab1
+            // su
             // 
-            this.tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
-            this.tab1.Groups.Add(this.groupRegexMarkup);
-            this.tab1.Label = "TabAddIns";
-            this.tab1.Name = "tab1";
+            this.su.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
+            this.su.Groups.Add(this.groupRegexMarkup);
+            this.su.Label = "TabAddIns";
+            this.su.Name = "su";
             // 
             // groupRegexMarkup
             // 
@@ -62,14 +62,6 @@ namespace RegexMarkup
             this.buttonRegexMarkup.ShowImage = true;
             this.buttonRegexMarkup.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.buttonRegexMarkup_Click);
             // 
-            // buttonConfig
-            // 
-            this.buttonConfig.Image = ((System.Drawing.Image)(resources.GetObject("buttonConfig.Image")));
-            this.buttonConfig.Label = "Configuración";
-            this.buttonConfig.Name = "buttonConfig";
-            this.buttonConfig.ShowImage = true;
-            this.buttonConfig.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.buttonConfig_Click);
-            // 
             // buttonDebug
             // 
             this.buttonDebug.Image = global::RegexMarkup.Properties.Resources.debug;
@@ -78,14 +70,22 @@ namespace RegexMarkup
             this.buttonDebug.ShowImage = true;
             this.buttonDebug.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.buttonDebug_Click);
             // 
+            // buttonConfig
+            // 
+            this.buttonConfig.Image = ((System.Drawing.Image)(resources.GetObject("buttonConfig.Image")));
+            this.buttonConfig.Label = "Configuración";
+            this.buttonConfig.Name = "buttonConfig";
+            this.buttonConfig.ShowImage = true;
+            this.buttonConfig.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.buttonConfig_Click);
+            // 
             // RibbonRegexMarkup
             // 
             this.Name = "RibbonRegexMarkup";
             this.RibbonType = "Microsoft.Word.Document";
-            this.Tabs.Add(this.tab1);
+            this.Tabs.Add(this.su);
             this.Load += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonUIEventArgs>(this.RibbonRegexMarkup_Load);
-            this.tab1.ResumeLayout(false);
-            this.tab1.PerformLayout();
+            this.su.ResumeLayout(false);
+            this.su.PerformLayout();
             this.groupRegexMarkup.ResumeLayout(false);
             this.groupRegexMarkup.PerformLayout();
             this.ResumeLayout(false);
@@ -94,7 +94,7 @@ namespace RegexMarkup
 
         #endregion
 
-        internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonTab su;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup groupRegexMarkup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonRegexMarkup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonConfig;

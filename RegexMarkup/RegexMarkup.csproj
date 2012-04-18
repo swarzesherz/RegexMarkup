@@ -38,7 +38,7 @@
     <PublishUrl>ftp://132.248.9.166/RegexMarkupDist/</PublishUrl>
     <InstallUrl>http://scielo.no-ip.org/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.7.5.58</ApplicationVersion>
+    <ApplicationVersion>0.7.5.60</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -214,7 +214,7 @@
   -->
   <ItemGroup>
     <Compile Include="AssemblyInfoHelper.cs" />
-    <Compile Include="AttrTagStruct.cs" />
+    <Compile Include="Structs\AttrTagStruct.cs" />
     <Compile Include="DTDSciELO.cs" />
     <Compile Include="Forms\ConfigRegexMarkup.cs">
       <SubType>Form</SubType>
@@ -246,8 +246,8 @@
     <Compile Include="Forms\Waiting.Designer.cs">
       <DependentUpon>Waiting.cs</DependentUpon>
     </Compile>
-    <Compile Include="MarkupButton.cs" />
-    <Compile Include="MarkupStruct.cs" />
+    <Compile Include="Structs\MarkupButton.cs" />
+    <Compile Include="Structs\MarkupStruct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -300,7 +300,7 @@
       <DependentUpon>RibbonRegexMarkup.cs</DependentUpon>
     </Compile>
     <Compile Include="Tags.cs" />
-    <Compile Include="TagStruct.cs" />
+    <Compile Include="Structs\TagStruct.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
