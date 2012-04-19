@@ -2403,7 +2403,7 @@
                                                 <role>nd</role>
                                             </attr>
                                             <value>$1</value>
-                                            <regex>(.+?)(,\s)(.+)$</regex>
+                                            <regex>(.+?)(,\s)(.+$)</regex>
                                             <struct>
                                                 <surname tag="true">
                                                     <value>$1</value>
