@@ -9,7 +9,7 @@
                 <value>$1</value>
                 <multiple>
                     <opcion>
-                        <regex>(.*?[.)])(\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[.]\s*)(.+?)([.?]\s[EI]n:\s*)(.+)</regex>
+                        <regex>(.+?[.)])(\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[.]\s*)(.+?)([.?]\s[EI]n:\s*)(.+)</regex>
                         <struct>
                             <ocontrib tag="true">
                                 <autores>
@@ -23,7 +23,7 @@
                                             <value>$1</value>
                                             <multiple>
                                                 <opcion>
-                                                    <regex>(.*?)(\ )([A-Z]{1,2}\.*)$</regex>
+                                                    <regex>(.+?)(\ )([A-Z]{1,2}\.*)$</regex>
                                                     <struct>
                                                         <surname tag="true">
                                                             <value>$1</value>
@@ -35,7 +35,7 @@
                                                     </struct>
                                                 </opcion>
                                                 <opcion>
-                                                    <regex>(.*?)(\s)(.*)</regex>
+                                                    <regex>(.+?)(\s)(.*)</regex>
                                                     <struct>
                                                         <surname tag="true">
                                                             <value>$1</value>
@@ -71,7 +71,7 @@
                                 <value>$7</value>
                                 <multiple>
                                     <opcion>
-                                        <regex>(.*?[.])(\s)([^.]*)(,\spp[.,]\s)([^,.]*?)([.,]\s)([^,]*?)(,\s)([^,]*)(,\s)([^,]*$)</regex>
+                                        <regex>(.+?[.])(\s)([^.]*)(,\spp[.,]\s)([^,.]*?)([.,]\s)([^,]*?)(,\s)([^,]*)(,\s)([^,]*$)</regex>
                                         <struct>
                                             <autores>
                                                 <value>$1</value>
@@ -84,7 +84,7 @@
                                                         <value>$1</value>
                                                         <multiple>
                                                             <opcion>
-                                                                <regex>(.*?)(\ )([A-Z]{1,2}\.*)$</regex>
+                                                                <regex>(.+?)(\ )([A-Z]{1,2}\.*)$</regex>
                                                                 <struct>
                                                                     <surname tag="true">
                                                                         <value>$1</value>
@@ -96,7 +96,7 @@
                                                                 </struct>
                                                             </opcion>
                                                             <opcion>
-                                                                <regex>(.*?)(\s)(.*)</regex>
+                                                                <regex>(.+?)(\s)(.*)</regex>
                                                                 <struct>
                                                                     <surname tag="true">
                                                                         <value>$1</value>
@@ -138,7 +138,7 @@
                                         </struct>
                                     </opcion>
                                     <opcion>
-                                        <regex>(.*?[.])(\s)([^.]*)(,\spp[.,]\s)([^,.]*?)([.,]\s)([^,]*?)(,\s)([^,]*$)</regex>
+                                        <regex>(.+?[.])(\s)([^.]*)(,\spp[.,]\s)([^,.]*?)([.,]\s)([^,]*?)(,\s)([^,]*$)</regex>
                                         <struct>
                                             <autores>
                                                 <value>$1</value>
@@ -151,7 +151,7 @@
                                                         <value>$1</value>
                                                         <multiple>
                                                             <opcion>
-                                                                <regex>(.*?)(\ )([A-Z]{1,2}\.*)$</regex>
+                                                                <regex>(.+?)(\ )([A-Z]{1,2}\.*)$</regex>
                                                                 <struct>
                                                                     <surname tag="true">
                                                                         <value>$1</value>
@@ -163,7 +163,7 @@
                                                                 </struct>
                                                             </opcion>
                                                             <opcion>
-                                                                <regex>(.*?)(\s)(.*)</regex>
+                                                                <regex>(.+?)(\s)(.*)</regex>
                                                                 <struct>
                                                                     <surname tag="true">
                                                                         <value>$1</value>
@@ -539,7 +539,7 @@
                         </struct>
                     </opcion>
                     <opcion>
-                        <regex>(^[0-9]+?)(\.\s)(.+?(?:[.:;]\s))(.+?)(\.\s*|\?\s*)(.*?)(\s|\.\s)((?:19|20)[0-9]{2}.*)(;\s*)(.*?)(:\s*)([SHe]*\d*?[-–][SHe]*\d*|[SHe]*d*)(\.$|$)</regex>
+                        <regex>(^[0-9]+?)(\.\s)(.+?(?:[.:;]\s))(.+?)(\.\s*|\?\s*)(.+?)(\.\s|\s)((?:19|20)[0-9]{2}.*)(;\s*)(.+?)(:\s*)([SHe]*\d*?[-–][SHe]*\d*|[SHe]*d*)(\.$|$)</regex>
                         <struct>
                             <no tag="true">
                                 <value>$1</value>
@@ -1017,7 +1017,7 @@
                         </struct>
                     </opcion>
                     <opcion>
-                        <regex>(.+?[,.]\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[,.]\s*)(.*)([:.]\s*)([^,]+?)(,\s*)([^,]+?)(,\s*)([^,]+?)(\s*p{1,2}\.\s*$)</regex>
+                        <regex>(.+?[,.]\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[,.]\s*)(.+)([:.]\s*)([^,]+?)(,\s*)([^,]+?)(,\s*)([^,]+?)(\s*p{1,2}\.\s*$)</regex>
                         <struct>
                             <omonog tag="true">
                                 <autores>
@@ -1089,7 +1089,7 @@
                         </struct>
                     </opcion>
                     <opcion>
-                        <regex>(.+?[,.]\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[,.]\s*)(.*)([:]\s*)(.+)</regex>
+                        <regex>(.+?[,.]\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[,.]\s*)(.+)([:]\s*)(.+)</regex>
                         <struct>
                             <ocontrib tag="true">
                                 <autores>
@@ -1207,7 +1207,7 @@
                             <omonog tag="true">
                                 <prevalue>$5</prevalue>
                                 <value>$6</value>
-                                <regex>(.*,)(\ )(.*?\.)(\ )(.*?)(,\ )(.*?)(,\ pp\.\ )([0-9]*?[–-–][0-9]*)(.*)</regex>
+                                <regex>(.+,)(\ )(.+?\.)(\ )(.+?)(,\ )(.+?)(,\ pp\.\ )([0-9]*?[–-–][0-9]*)(.*)</regex>
                                 <struct>
                                     <autores>
                                         <value>$1</value>
@@ -1452,7 +1452,7 @@
                             <omonog tag="true">
                                 <prevalue>$5$6</prevalue>
                                 <value>$7</value>
-                                <regex>(.*?(?:\(.*?\)\.\s|\.\s))(.*?)(\.\s)([^:]*?)(:\s)([^;]*?)(;\s|,\s)((?:19|20)[0-9]{2})(.*)</regex>
+                                <regex>(.+?(?:\(.+?\)\.\s|\.\s))(.+?)(\.\s)([^:]+?)(:\s)([^;]+?)(;\s|,\s)((?:19|20)[0-9]{2})(.*)</regex>
                                 <struct>
                                     <autores>
                                         <value>$1</value>
@@ -1540,7 +1540,7 @@
                         </struct>
                     </opcion>
                     <opcion>
-                        <regex>([0-9]+?)(\.\s)(.+?(?:\.\s|\:\ ))(.+?)(\.\s|\?\s)(.*?)(:\s*)(.*?)(;\s*|:\s*)((?:18|19|20)[0-9]{2})(.*)</regex>
+                        <regex>([0-9]+?)(\.\s)(.+?(?:\.\s|\:\ ))(.+?)(\.\s|\?\s)(.+?)(:\s*)(.+?)(;\s*|:\s*)((?:18|19|20)[0-9]{2})(.*)</regex>
                         <struct>
                             <no tag="true">
                                 <value>$1</value>
@@ -1688,7 +1688,7 @@
                             <oiserial tag="true">
                                 <prevalue>$5</prevalue>
                                 <value>$6</value>
-                                <regex>(.*)(\ )((?:19|20)[0-9]{2})(;)(.*?)(:\ *)([0-9]*?[–-][0-9]*)(.*)</regex>
+                                <regex>(.+)(\ )((?:19|20)[0-9]{2})(;)(.+?)(:\ *)([0-9]*?[–-][0-9]*)(.*)</regex>
                                 <struct>
                                     <stitle tag="true">
                                         <value>$1</value>
@@ -2125,7 +2125,7 @@
     <revista issn="0187-6236">
         <name>Atmósfera</name>
         <norm>other</norm>
-        <regex>(.+?,\ )((?:19|20)[0-9]{2})([a-z]*[,.]\ )(.*?)(\.\ In:\ |\.\ )(.*)</regex>
+        <regex>(.+?,\ )((?:19|20)[0-9]{2})([a-z]*[,.]\ )(.+?)(\.\ In:\ |\.\ )(.*)</regex>
         <struct>
             <ocitat tag="true">
                 <contrib tag="true">
@@ -2343,7 +2343,7 @@
                         </struct>
                     </opcion>
                     <opcion>
-                        <regex>(.*?[.)])(\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[.]\s*)(.+?)(\.\s)(.+?)(\.\s)([\d-]+)(\sp{1,2}\.)</regex>
+                        <regex>(.+?[.)])(\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[.]\s*)(.+?)(\.\s)(.+?)(\.\s)([\d-]+)(\sp{1,2}\.)</regex>
                         <struct>
                             <omonog tag="true">
                                 <autores>
@@ -2355,7 +2355,7 @@
                                                 <role>nd</role>
                                             </attr>
                                             <value>$1</value>
-                                            <regex>(.*?)(,\s)(.+)$</regex>
+                                            <regex>(.+?)(,\s)(.+)$</regex>
                                             <struct>
                                                 <surname tag="true">
                                                     <value>$1</value>
@@ -2391,7 +2391,7 @@
                         </struct>
                     </opcion>
                     <opcion>
-                        <regex>(.+?[.)])(\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[.]\s*)(.+?)(\.\s)(.*\.?)(\s)(.+?)([0-9]*?[–-][0-9]*)(.*)</regex>
+                        <regex>(.+?[.)])(\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[.]\s*)(.+?)(\.\s)(.+?\.)(\s)(.+?)([0-9]+?[–-][0-9]+)(.*)</regex>
                         <struct>
                             <ocontrib tag="true">
                                 <autores>
@@ -2403,7 +2403,7 @@
                                                 <role>nd</role>
                                             </attr>
                                             <value>$1</value>
-                                            <regex>(.*?)(,\s)(.+)$</regex>
+                                            <regex>(.+?)(,\s)(.+)$</regex>
                                             <struct>
                                                 <surname tag="true">
                                                     <value>$1</value>
@@ -2441,7 +2441,7 @@
                                     <value>$9</value>
                                     <multiple>
                                         <opcion>
-                                            <regex>(\d*?)(\s*\()(\d+)(.*)</regex>
+                                            <regex>(\d+?)(\s*\()(\d+)(.*)</regex>
                                             <struct>
                                                 <volid tag="true">
                                                     <value>$1</value>

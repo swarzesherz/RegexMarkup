@@ -213,9 +213,9 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="AssemblyInfoHelper.cs" />
+    <Compile Include="Classes\AssemblyInfoHelper.cs" />
     <Compile Include="Structs\AttrTagStruct.cs" />
-    <Compile Include="DTDSciELO.cs" />
+    <Compile Include="Classes\DTDSciELO.cs" />
     <Compile Include="Forms\ConfigRegexMarkup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -292,14 +292,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="RegexMarkup.cs" />
+    <Compile Include="Classes\RegexMarkup.cs" />
     <Compile Include="RibbonRegexMarkup.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="RibbonRegexMarkup.Designer.cs">
       <DependentUpon>RibbonRegexMarkup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tags.cs" />
+    <Compile Include="Classes\Tags.cs" />
     <Compile Include="Structs\TagStruct.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
