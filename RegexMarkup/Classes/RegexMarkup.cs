@@ -346,9 +346,7 @@ namespace RegexMarkup
             String tagStringClose = null;
             String backreference = null;
             String backreferencePostValue = null;
-            String backreferencePostValueString = null;
             String backreferencePreValue = null;
-            String backreferencePreValueString = null;
             String replaceString = null;
             String resultString = "";
             String multipleOptionPattern = null;
@@ -417,9 +415,7 @@ namespace RegexMarkup
                                     if (itemXML.SelectSingleNode("prevalue") != null)
                                     {
                                         backreferencePreValue = itemXML.SelectSingleNode("prevalue").InnerText;
-                                        backreferencePreValueString = objRegExp.Replace(matchResults.Value, backreferencePreValue);
-
-                                        replaceGeneral += backreferencePreValueString;
+                                        replaceGeneral += backreferencePreValue;
 
                                     }
                                     /* Si esta compuesto de otras etiquetas(tag) volvemos a enviar la cadena y el patron con los nodos hijos de la etiqueta(tag) */
@@ -428,15 +424,14 @@ namespace RegexMarkup
                                     if (itemXML.SelectSingleNode("postvalue") != null)
                                     {
                                         backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
-                                        backreferencePostValueString = objRegExp.Replace(matchResults.Value, backreferencePostValue);
-                                        replaceGeneral += backreferencePostValueString;
+                                        replaceGeneral += backreferencePostValue;
                                     }
                                 }
                                 else
                                 {
                                     /* Deacuerdo al valor que tenemos indicado en el xml extramos la cadena de texto correspondiente */
                                     backreference = itemXML.SelectSingleNode("value").InnerText;
-                                    subjectString = matchResults.Groups[backreference.Replace("$", "")].Value;
+                                    subjectString = objRegExp.Replace(matchResults.Value, backreference);
                                     /* Verificamos si a la cadena de texto resultante tiene multiples opciones, hay  que aplicarle un patron nuevo ó si agregamos las etiquetas(tag) directamente */
                                     if (itemXML.SelectSingleNode("multiple") != null)
                                     {
@@ -478,8 +473,7 @@ namespace RegexMarkup
                                         if (itemXML.SelectSingleNode("prevalue") != null)
                                         {
                                             backreferencePreValue = itemXML.SelectSingleNode("prevalue").InnerText;
-                                            backreferencePreValueString = objRegExp.Replace(matchResults.Value, backreferencePreValue);
-                                            replaceGeneral += backreferencePreValueString;
+                                            replaceGeneral += backreferencePreValue;
                                         }
                                         /* Enviamos la expresion regular de la opcion que coincidio junto con el grupo de ordenamiento */
                                         replaceGeneral += tagStringOpen + this.markupText(singleOptionPattern, subjectString, singleOptionStruct) + tagStringClose;
@@ -488,8 +482,7 @@ namespace RegexMarkup
                                         if (itemXML.SelectSingleNode("postvalue") != null)
                                         {
                                             backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
-                                            backreferencePostValueString = objRegExp.Replace(matchResults.Value, backreferencePostValue);
-                                            replaceGeneral += backreferencePostValueString;
+                                            replaceGeneral += backreferencePostValue;
                                         }
 
                                     }
@@ -499,8 +492,7 @@ namespace RegexMarkup
                                         if (itemXML.SelectSingleNode("prevalue") != null)
                                         {
                                             backreferencePreValue = itemXML.SelectSingleNode("prevalue").InnerText;
-                                            backreferencePreValueString = objRegExp.Replace(matchResults.Value, backreferencePreValue);
-                                            replaceGeneral += backreferencePreValueString;
+                                            replaceGeneral += backreferencePreValue;
                                         }
                                         structNode = itemXML.SelectSingleNode("struct");
                                         patternString = itemXML.SelectSingleNode("regex").InnerText;
@@ -509,8 +501,7 @@ namespace RegexMarkup
                                         if (itemXML.SelectSingleNode("postvalue") != null)
                                         {
                                             backreferencePostValue = itemXML.SelectSingleNode("postvalue").InnerText;
-                                            backreferencePostValueString = objRegExp.Replace(matchResults.Value, backreferencePostValue);
-                                            replaceGeneral += backreferencePostValueString;
+                                            replaceGeneral += backreferencePostValue;
                                         }
                                     }
                                     else
