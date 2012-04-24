@@ -10,13 +10,16 @@ using System.IO;
 using System.Data.SQLite;
 using log4net;
 using RegexMarkup.Properties;
+using System.Net.Mail;
+using System.IO.Compression;
+using log4net.Appender;
 
 namespace RegexMarkup.Forms
 {
     public partial class Debug : Form
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        private String debugFileDB;
         private SQLiteConnection connection;
         private int curretPage;
         private int totalPages;
@@ -25,8 +28,17 @@ namespace RegexMarkup.Forms
         {
             InitializeComponent();
             this.SizeChanged += new EventHandler(Debug_SizeChanged);
-            String debugFileDB = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "log4net.db");
-            connection = new SQLiteConnection(@"Data Source=" + debugFileDB + "; Version=3; Compress=True;");
+            this.debugFileDB = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "log4net.db");
+            foreach (Object appender in LogManager.GetRepository().GetAppenders())
+            {
+                String appenderType = appender.GetType().Name;
+                switch (appenderType)
+                {
+                    case "AdoNetAppender":
+                        connection = new SQLiteConnection(((AdoNetAppender)appender).ConnectionString);
+                        break;
+                }
+            }
             this.constructPaginator();
             this.paginateLog();
         }
@@ -131,6 +143,72 @@ namespace RegexMarkup.Forms
             this.paginateLog();
         }
 
+        private void Debug_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sendDebugMail() {
+            try
+            {
+                 
+                Mail Cr = new Mail();
+                using(MailMessage message = new MailMessage())  
+                {
+                    message.Subject = "Regexmarkup.Debug";
+                    message.To.Add(new MailAddress("achwazer@gmail.com"));
+                    message.From = new MailAddress("scielo.regexmarkup@gmail.com", "RegexMarkup SciELO");
+                    /* Comprimiendo y adjuntado archivo de la bítacora */
+                    this.compressFile(this.debugFileDB, this.debugFileDB + ".gz");
+                    /*Adjuntando archivo con compresion*/
+                    message.Attachments.Add(new Attachment(this.debugFileDB + ".gz"));
+                    message.Body = "  Mensaje de Prueba \n\n Enviado desde C#\n\n *VER EL ARCHIVO ADJUNTO*";
+
+                    /* Enviar */
+                    Cr.send(message);
+                } 
+                
+
+                MessageBox.Show("El Mail se ha Enviado Correctamente", "Listo!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void compressFile(String sourceFile, String destFile) {
+
+            if (File.Exists(destFile)) {
+                FileInfo fi = new FileInfo(destFile);
+                File.Delete(destFile); 
+            }
+            /*Creando archivo temporal de la bítacora*/
+            String tempFile = sourceFile + ".tmp";
+            File.Copy(this.debugFileDB, tempFile, true);
+            /*Comprimiendo el archivo temporal*/
+            byte[] b;
+            using (FileStream f = new FileStream(tempFile, FileMode.Open))
+            {
+                b = new byte[f.Length];
+                f.Read(b, 0, (int)f.Length);
+            }
+
+            // C.
+            // Use GZipStream to write compressed bytes to target file.
+            using (FileStream f2 = new FileStream(destFile, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite))
+            using (GZipStream gz = new GZipStream(f2, CompressionMode.Compress, false))
+            {
+                gz.Write(b, 0, b.Length);
+            }
+
+            if (File.Exists(tempFile)) File.Delete(tempFile);
+        }
+
+        private void buttonSendMail_Click(object sender, EventArgs e)
+        {
+            this.sendDebugMail();
+        }
 
     }
 }

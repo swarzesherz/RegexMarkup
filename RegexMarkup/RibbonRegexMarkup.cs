@@ -13,6 +13,7 @@ using log4net;
 using log4net.Config;   
 using RegexMarkup.Forms;
 using log4net.Appender;
+using System.Data.SQLite;
 
 namespace RegexMarkup
 {
@@ -23,33 +24,8 @@ namespace RegexMarkup
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public RibbonRegexMarkup()
         {
-            /*Actualizando directorios para los archivos usados por log4net*/
-            String dataDirectory = null;
-            String appenderType = null;
-            dataDirectory = AppDomain.CurrentDomain.BaseDirectory;
-
-            foreach (Object appender in LogManager.GetRepository().GetAppenders())
-            {
-                appenderType = appender.GetType().Name;
-                log.Debug("appenderType = " + appenderType);
-                switch (appenderType)
-                {
-                    case "RollingFileAppender":
-                        log.Debug("((RollingFileAppender)appender).File = " + ((RollingFileAppender)appender).File);
-                        ((RollingFileAppender)appender).File = ((RollingFileAppender)appender).File.Replace(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), dataDirectory);
-                        log.Debug("((RollingFileAppender)appender).File = " + ((RollingFileAppender)appender).File);
-                        ((RollingFileAppender)appender).ActivateOptions();
-                        log.Debug("((RollingFileAppender)appender).File = " + ((RollingFileAppender)appender).File);
-                        break;
-                    case "AdoNetAppender":
-                        log.Debug("((AdoNetAppender)appender).ConnectionString = " + ((AdoNetAppender)appender).ConnectionString);
-                        ((AdoNetAppender)appender).ConnectionString = ((AdoNetAppender)appender).ConnectionString.Replace(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), dataDirectory);
-                        log.Debug("((AdoNetAppender)appender).ConnectionString = " + ((AdoNetAppender)appender).ConnectionString);
-                        ((AdoNetAppender)appender).ActivateOptions();
-                        log.Debug("((AdoNetAppender)appender).ConnectionString = " + ((AdoNetAppender)appender).ConnectionString);
-                        break;
-                }
-            }
+            /*Actualizando configuración de log4net*/
+            this.updateSourceLogFiles();
             /*Agregando icono para Add/Remove Software*/
             this.SetAddRemoveProgramsIcon();
             /* Iniciando configuración de idioma */
@@ -141,6 +117,78 @@ namespace RegexMarkup
                 }
                 catch (Exception e) {
                     if (log.IsErrorEnabled) log.Error(e.Message + "\r\n" + e.StackTrace);
+                }
+            }
+        }
+        #endregion
+
+        #region
+        /// <summary>
+        /// Función para actualizar la configuración de lo4net
+        /// </summary>
+        private void updateSourceLogFiles() {
+            /*Actualizando directorios para los archivos usados por log4net*/
+            String dataDirectory = null;
+            String appenderType = null;
+            String query = null;
+            String pathDB = null;
+            String pathLogFile = null;
+            SQLiteConnection connection = null;
+            SQLiteCommand cmd = null;
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                dataDirectory = ApplicationDeployment.CurrentDeployment.DataDirectory;
+            }
+            else
+            {
+                dataDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            }
+
+            foreach (Object appender in LogManager.GetRepository().GetAppenders())
+            {
+                appenderType = appender.GetType().Name;
+                log.Debug("appenderType = " + appenderType);
+                switch (appenderType)
+                {
+                    case "RollingFileAppender":
+                        pathLogFile = Path.Combine(dataDirectory, @"logs\RegexMarkup.log");
+                        log.Debug("((RollingFileAppender)appender).File = " + ((RollingFileAppender)appender).File);
+                        ((RollingFileAppender)appender).File = pathLogFile;
+                        log.Debug("((RollingFileAppender)appender).File = " + ((RollingFileAppender)appender).File);
+                        ((RollingFileAppender)appender).ActivateOptions();
+                        log.Debug("((RollingFileAppender)appender).File = " + ((RollingFileAppender)appender).File);
+                        break;
+                    case "AdoNetAppender":
+                        pathDB = Path.Combine(dataDirectory, @"log4net.db");
+                        /*Creamos la BD si no existe*/
+                        connection = new SQLiteConnection("Data Source=" + pathDB + "; Version=3; Compress=True;");
+                        connection.Open();
+                        query = "CREATE TABLE IF NOT EXISTS [Log] (" +
+                                        "[LogId] INTEGER  PRIMARY KEY NULL," +
+                                        "[Date] DATETIME  NOT NULL," +
+                                        "[Level] VARCHAR(50)  NOT NULL," +
+                                        "[Class] VARCHAR(255)  NOT NULL," +
+                                        "[Method] VARCHAR(255)  NULL," +
+                                        "[Message] TEXT  NULL" +
+                                        ")";
+                        cmd = new SQLiteCommand(query, connection);
+                        cmd.ExecuteNonQuery();
+                        /*Creamo un trigger para limitar los registros a 15000*/
+                        query = "CREATE TRIGGER IF NOT EXISTS delteLogRow AFTER INSERT ON Log " +
+                                    "WHEN ((SELECT count() FROM Log) > 15000) " +
+                                    "BEGIN " +
+                                    "DELETE FROM Log WHERE LogId=(SELECT LogId FROM Log LIMIT 1); " +
+                                    "END;";
+                        cmd = new SQLiteCommand(query, connection);
+                        cmd.ExecuteNonQuery();
+                        connection.Close();
+
+                        log.Debug("((AdoNetAppender)appender).ConnectionString = " + ((AdoNetAppender)appender).ConnectionString);
+                        ((AdoNetAppender)appender).ConnectionString = ((AdoNetAppender)appender).ConnectionString.Replace("{SourceDB}", pathDB);
+                        log.Debug("((AdoNetAppender)appender).ConnectionString = " + ((AdoNetAppender)appender).ConnectionString);
+                        ((AdoNetAppender)appender).ActivateOptions();
+                        log.Debug("((AdoNetAppender)appender).ConnectionString = " + ((AdoNetAppender)appender).ConnectionString);
+                        break;
                 }
             }
         }

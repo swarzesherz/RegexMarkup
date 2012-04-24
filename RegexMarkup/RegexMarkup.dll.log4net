@@ -2,7 +2,7 @@
 <configuration>
     <log4net>
         <appender name="RollingFileAppender" type="log4net.Appender.RollingFileAppender">
-            <file value="${LOCALAPPDATA}\logs\RegexMarkup.log" />
+            <file value="logs\RegexMarkup.log" />
             <appendToFile value="true" />
             <maximumFileSize value="100KB" />
             <maxSizeRollBackups value="5" />
@@ -15,7 +15,7 @@
         <appender name="AdoNetAppender" type="log4net.Appender.AdoNetAppender">
             <bufferSize value="1" />
             <connectionType value="System.Data.SQLite.SQLiteConnection, System.Data.SQLite, Version=1.0.80.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139" />
-            <connectionString value="Data Source=${LOCALAPPDATA}\log4net.db; Version=3; Compress=True;" />
+            <connectionString value="Data Source={SourceDB}; Version=3; Compress=True;" />
             <commandText value="INSERT INTO Log (Date, Level, Class, Method, Message) VALUES (@Date, @Level, @Class, @Method, @Message)" />
             <reconnectOnError value="true" />
             <parameter>

@@ -38,7 +38,7 @@
     <PublishUrl>ftp://132.248.9.166/RegexMarkupDist/</PublishUrl>
     <InstallUrl>http://scielo.no-ip.org/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.7.5.67</ApplicationVersion>
+    <ApplicationVersion>0.7.5.73</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -214,6 +214,7 @@
   -->
   <ItemGroup>
     <Compile Include="Classes\AssemblyInfoHelper.cs" />
+    <Compile Include="Classes\Mail.cs" />
     <Compile Include="Structs\AttrTagStruct.cs" />
     <Compile Include="Classes\DTDSciELO.cs" />
     <Compile Include="Forms\ConfigRegexMarkup.cs">
@@ -413,9 +414,6 @@
     <Content Include="RegexMarkup.dll.log4net">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="log4net.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\undo.ico" />
     <None Include="Resources\redo.ico" />
     <None Include="Resources\trash.ico" />
@@ -431,6 +429,7 @@
     <None Include="Resources\first.ico" />
     <None Include="Resources\requiredAttribute.Icon.ico" />
     <None Include="Resources\debug.ico" />
+    <None Include="Resources\mail.ico" />
     <Content Include="SGML\en_attb.mds">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

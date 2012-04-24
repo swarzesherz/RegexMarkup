@@ -41,8 +41,12 @@
             this.buttonFirst = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
             this.buttonLast = new System.Windows.Forms.Button();
+            this.groupBoxTools = new System.Windows.Forms.GroupBox();
+            this.buttonSendMail = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLog)).BeginInit();
             this.panelNavigation.SuspendLayout();
+            this.groupBoxTools.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewLog
@@ -161,6 +165,40 @@
             this.buttonLast.UseVisualStyleBackColor = true;
             this.buttonLast.Click += new System.EventHandler(this.buttonLast_Click);
             // 
+            // groupBoxTools
+            // 
+            this.groupBoxTools.Controls.Add(this.buttonSendMail);
+            this.groupBoxTools.Controls.Add(this.buttonCancel);
+            this.groupBoxTools.Location = new System.Drawing.Point(10, 2);
+            this.groupBoxTools.Name = "groupBoxTools";
+            this.groupBoxTools.Size = new System.Drawing.Size(85, 45);
+            this.groupBoxTools.TabIndex = 24;
+            this.groupBoxTools.TabStop = false;
+            this.groupBoxTools.Text = "Herramientas";
+            // 
+            // buttonSendMail
+            // 
+            this.buttonSendMail.FlatAppearance.BorderSize = 0;
+            this.buttonSendMail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSendMail.Image = global::RegexMarkup.Properties.Resources.mail;
+            this.buttonSendMail.Location = new System.Drawing.Point(10, 15);
+            this.buttonSendMail.Name = "buttonSendMail";
+            this.buttonSendMail.Size = new System.Drawing.Size(23, 23);
+            this.buttonSendMail.TabIndex = 1;
+            this.buttonSendMail.UseVisualStyleBackColor = true;
+            this.buttonSendMail.Click += new System.EventHandler(this.buttonSendMail_Click);
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.FlatAppearance.BorderSize = 0;
+            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCancel.Image = global::RegexMarkup.Properties.Resources.cancel;
+            this.buttonCancel.Location = new System.Drawing.Point(39, 15);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(23, 23);
+            this.buttonCancel.TabIndex = 2;
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            // 
             // Debug
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -168,14 +206,17 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(564, 452);
+            this.Controls.Add(this.groupBoxTools);
             this.Controls.Add(this.panelNavigation);
             this.Controls.Add(this.dataGridViewLog);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Debug";
             this.Text = "Bítacora";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Debug_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLog)).EndInit();
             this.panelNavigation.ResumeLayout(false);
+            this.groupBoxTools.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -189,6 +230,9 @@
         private System.Windows.Forms.Button buttonFirst;
         private System.Windows.Forms.Button buttonNext;
         private System.Windows.Forms.Button buttonLast;
+        private System.Windows.Forms.GroupBox groupBoxTools;
+        private System.Windows.Forms.Button buttonSendMail;
+        private System.Windows.Forms.Button buttonCancel;
 
     }
 }
