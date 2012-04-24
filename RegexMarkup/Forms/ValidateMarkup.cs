@@ -15,7 +15,7 @@ using RegexMarkup.Forms;
 
 namespace RegexMarkup
 {
-    public partial class ValidateMarkup : Form
+    public sealed  partial class ValidateMarkup : Form
     {
         #region Singleton Implement
         /// <summary>
@@ -63,7 +63,7 @@ namespace RegexMarkup
                 Color.Blue,
                 Color.Violet};
 
-        public ValidateMarkup()
+        ValidateMarkup()
         {
             InitializeComponent();
             /* Agregando evento para cambiar el tamaño de los richtextbox cuando cambie el tamaño del formulario */
@@ -75,7 +75,7 @@ namespace RegexMarkup
             this.radioButtonNo.Text = Resources.ValidateMarkup_radioButtonNo;
             this.radioButtonYes.Text = Resources.ValidateMarkup_radioButtonYes;
             this.labelCitationStatus.Text = Resources.ValidateMarkup_labelCitationStatus;
-            this.groupBoxTools.Text = Resources.ValidateMarkup_groupBoxTools;
+            this.groupBoxTools.Text = Resources.groupBoxTools;
             /*Tooltip para los botones*/
             this.toolTipInfo.SetToolTip(this.buttonEnd, Resources.ValidateMarkup_buttonEndToolTip);
             this.toolTipInfo.SetToolTip(this.buttonCancel, Resources.ValidateMarkup_buttonCancelToolTip);

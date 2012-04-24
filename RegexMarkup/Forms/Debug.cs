@@ -16,15 +16,39 @@ using log4net.Appender;
 
 namespace RegexMarkup.Forms
 {
-    public partial class Debug : Form
+    public sealed partial class Debug : Form
     {
+        #region Singleton Implement
+        /// <summary>
+        /// Código para llamar a la clase como un singleton
+        /// </summary>
+        static Debug instance = null;
+        static readonly object padlock = new object();
+
+        public static Debug Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new Debug();
+                    }
+                    return instance;
+                }
+            }
+        }
+        #endregion
+
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private String debugFileDB;
         private SQLiteConnection connection;
         private int curretPage;
         private int totalPages;
         private int queryLimit = 15;
-        public Debug()
+        
+        Debug()
         {
             InitializeComponent();
             this.SizeChanged += new EventHandler(Debug_SizeChanged);
@@ -39,8 +63,11 @@ namespace RegexMarkup.Forms
                         break;
                 }
             }
-            this.constructPaginator();
-            this.paginateLog();
+            /*Actualizando cadenas de texto*/
+            this.Text = Resources.Debug_title;
+            this.groupBoxTools.Text = Resources.groupBoxTools;
+            this.toolTipInfo.SetToolTip(this.buttonExit, Resources.Debug_buttonExitToolTip);
+            this.toolTipInfo.SetToolTip(this.buttonSendMail, Resources.Debug_buttonSendMailToolTip);
         }
 
         private void constructPaginator(){
@@ -145,7 +172,8 @@ namespace RegexMarkup.Forms
 
         private void Debug_Load(object sender, EventArgs e)
         {
-
+            this.constructPaginator();
+            this.paginateLog();
         }
 
         private void sendDebugMail() {
@@ -209,6 +237,12 @@ namespace RegexMarkup.Forms
         {
             this.sendDebugMail();
         }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
 
     }
 }

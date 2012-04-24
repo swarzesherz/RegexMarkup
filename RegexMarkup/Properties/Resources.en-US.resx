@@ -207,7 +207,7 @@
   <data name="ValidateMarkup_childTags" xml:space="preserve">
     <value>Nodes within the tag {0}</value>
   </data>
-  <data name="ValidateMarkup_groupBoxTools" xml:space="preserve">
+  <data name="groupBoxTools" xml:space="preserve">
     <value>Tools</value>
   </data>
   <data name="ValidateMarkup_labelCitationStatus" xml:space="preserve">
@@ -251,6 +251,15 @@ The document is read-only mode</value>
     <value>Selected tag without attributes</value>
   </data>
   <data name="RibbonRegexMarkup_buttonDebug" xml:space="preserve">
+    <value>Logbook</value>
+  </data>
+  <data name="Debug_buttonExitToolTip" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="Debug_buttonSendMailToolTip" xml:space="preserve">
+    <value>Send logbook for analysis</value>
+  </data>
+  <data name="Debug_title" xml:space="preserve">
     <value>Logbook</value>
   </data>
 </root>

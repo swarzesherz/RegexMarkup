@@ -18,6 +18,7 @@
                 components.Dispose();
             }
             base.Dispose(disposing);
+            instance = null;
         }
 
         #region Windows Form Designer generated code
@@ -28,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -43,7 +45,8 @@
             this.buttonLast = new System.Windows.Forms.Button();
             this.groupBoxTools = new System.Windows.Forms.GroupBox();
             this.buttonSendMail = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonExit = new System.Windows.Forms.Button();
+            this.toolTipInfo = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLog)).BeginInit();
             this.panelNavigation.SuspendLayout();
             this.groupBoxTools.SuspendLayout();
@@ -168,7 +171,7 @@
             // groupBoxTools
             // 
             this.groupBoxTools.Controls.Add(this.buttonSendMail);
-            this.groupBoxTools.Controls.Add(this.buttonCancel);
+            this.groupBoxTools.Controls.Add(this.buttonExit);
             this.groupBoxTools.Location = new System.Drawing.Point(10, 2);
             this.groupBoxTools.Name = "groupBoxTools";
             this.groupBoxTools.Size = new System.Drawing.Size(85, 45);
@@ -188,16 +191,17 @@
             this.buttonSendMail.UseVisualStyleBackColor = true;
             this.buttonSendMail.Click += new System.EventHandler(this.buttonSendMail_Click);
             // 
-            // buttonCancel
+            // buttonExit
             // 
-            this.buttonCancel.FlatAppearance.BorderSize = 0;
-            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCancel.Image = global::RegexMarkup.Properties.Resources.cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(39, 15);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(23, 23);
-            this.buttonCancel.TabIndex = 2;
-            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonExit.FlatAppearance.BorderSize = 0;
+            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExit.Image = global::RegexMarkup.Properties.Resources.exit;
+            this.buttonExit.Location = new System.Drawing.Point(39, 15);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(23, 23);
+            this.buttonExit.TabIndex = 2;
+            this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // Debug
             // 
@@ -232,7 +236,8 @@
         private System.Windows.Forms.Button buttonLast;
         private System.Windows.Forms.GroupBox groupBoxTools;
         private System.Windows.Forms.Button buttonSendMail;
-        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.ToolTip toolTipInfo;
 
     }
 }

@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 using RegexMarkup.Forms;
 namespace RegexMarkup
 {
-    public partial class ConfigRegexMarkup : Form
+    public sealed  partial class ConfigRegexMarkup : Form
     {
         #region Singleton Implement
         /// <summary>
@@ -42,8 +42,9 @@ namespace RegexMarkup
         private String originalLanguage = null;
         private ValidateMarkup validateMarkup = null;
         private Waiting waitForm = null;
+        private Debug debugForm = null;
 
-        public ConfigRegexMarkup()
+        ConfigRegexMarkup()
         {
             InitializeComponent();
             /* Diccionario con los idiomas disponibles */
@@ -99,6 +100,8 @@ namespace RegexMarkup
                 this.validateMarkup.Dispose();
                 this.waitForm = Waiting.Instance;
                 this.waitForm.Dispose();
+                this.debugForm = Debug.Instance;
+                this.debugForm.Dispose();
             }
         }
 

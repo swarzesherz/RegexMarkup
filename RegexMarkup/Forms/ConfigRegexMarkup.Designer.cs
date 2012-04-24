@@ -30,15 +30,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfigRegexMarkup));
+            this.openFileDialogRegex = new System.Windows.Forms.OpenFileDialog();
             this.labelLanguage = new System.Windows.Forms.Label();
             this.comboBoxLang = new System.Windows.Forms.ComboBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.labelExternalFile = new System.Windows.Forms.Label();
             this.checkBoxExternalFile = new System.Windows.Forms.CheckBox();
-            this.openFileDialogRegex = new System.Windows.Forms.OpenFileDialog();
             this.textBoxExternalFile = new System.Windows.Forms.TextBox();
             this.buttonExaminar = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // openFileDialogRegex
+            // 
+            this.openFileDialogRegex.FileName = "regex.xml";
+            this.openFileDialogRegex.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogRegex_FileOk);
             // 
             // labelLanguage
             // 
@@ -87,11 +92,6 @@
             this.checkBoxExternalFile.UseVisualStyleBackColor = true;
             this.checkBoxExternalFile.CheckedChanged += new System.EventHandler(this.checkBoxExternalFile_CheckedChanged);
             // 
-            // openFileDialogRegex
-            // 
-            this.openFileDialogRegex.FileName = "regex.xml";
-            this.openFileDialogRegex.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogRegex_FileOk);
-            // 
             // textBoxExternalFile
             // 
             this.textBoxExternalFile.Location = new System.Drawing.Point(140, 68);
@@ -137,12 +137,12 @@
 
         #endregion
 
+        private System.Windows.Forms.OpenFileDialog openFileDialogRegex;
         private System.Windows.Forms.Label labelLanguage;
         private System.Windows.Forms.ComboBox comboBoxLang;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Label labelExternalFile;
         private System.Windows.Forms.CheckBox checkBoxExternalFile;
-        private System.Windows.Forms.OpenFileDialog openFileDialogRegex;
         private System.Windows.Forms.TextBox textBoxExternalFile;
         private System.Windows.Forms.Button buttonExaminar;
     }

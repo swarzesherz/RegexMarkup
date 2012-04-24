@@ -137,6 +137,33 @@ namespace RegexMarkup.Properties {
             }
         }
         
+        /// <summary>
+        ///   Busca una cadena traducida similar a Salir.
+        /// </summary>
+        internal static string Debug_buttonExitToolTip {
+            get {
+                return ResourceManager.GetString("Debug_buttonExitToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enviar bítacora para su analisis.
+        /// </summary>
+        internal static string Debug_buttonSendMailToolTip {
+            get {
+                return ResourceManager.GetString("Debug_buttonSendMailToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Bítacora.
+        /// </summary>
+        internal static string Debug_title {
+            get {
+                return ResourceManager.GetString("Debug_title", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap downArrow {
             get {
                 object obj = ResourceManager.GetObject("downArrow", resourceCulture);
@@ -178,10 +205,26 @@ namespace RegexMarkup.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap exit {
+            get {
+                object obj = ResourceManager.GetObject("exit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap first {
             get {
                 object obj = ResourceManager.GetObject("first", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Herramientas.
+        /// </summary>
+        internal static string groupBoxTools {
+            get {
+                return ResourceManager.GetString("groupBoxTools", resourceCulture);
             }
         }
         
@@ -467,15 +510,6 @@ namespace RegexMarkup.Properties {
         internal static string ValidateMarkup_groupBoxOriginal {
             get {
                 return ResourceManager.GetString("ValidateMarkup_groupBoxOriginal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Herramientas.
-        /// </summary>
-        internal static string ValidateMarkup_groupBoxTools {
-            get {
-                return ResourceManager.GetString("ValidateMarkup_groupBoxTools", resourceCulture);
             }
         }
         

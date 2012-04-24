@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace RegexMarkup.Forms
 {
-    public partial class EditAttribute : Form
+    public sealed partial class EditAttribute : Form
     {
         #region Singleton Implement
         /// <summary>
@@ -46,11 +46,12 @@ namespace RegexMarkup.Forms
         private int startSelection = 0;
         private int lenghtSelection = 0;
 
-        public EditAttribute()
+        EditAttribute()
         {
             InitializeComponent();
             /*Textos*/
             this.Text = Resources.EditAttribute_title;
+            this.groupBoxTools.Text = Resources.groupBoxTools;
             /*Tooltip para los botones*/
             this.toolTipInfo.SetToolTip(this.buttonEdit, Resources.EditAttribute_buttonEditToolTip);
             this.toolTipInfo.SetToolTip(this.buttonCancel, Resources.EditAttribute_buttonCancelToolTip);

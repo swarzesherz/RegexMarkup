@@ -9,7 +9,7 @@ using RegexMarkup.Properties;
 
 namespace RegexMarkup.Forms
 {
-    public partial class Waiting : Form
+    public sealed partial class Waiting : Form
     {
         #region Singleton Implement
         /// <summary>
@@ -33,7 +33,7 @@ namespace RegexMarkup.Forms
             }
         }
         #endregion
-        public Waiting()
+        Waiting()
         {
             InitializeComponent();
             /* Textos del formulario */

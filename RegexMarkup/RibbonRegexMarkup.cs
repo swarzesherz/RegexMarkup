@@ -21,6 +21,7 @@ namespace RegexMarkup
     {
         private RegexMarkup objectRegexMarkup = RegexMarkup.Instance;
         private ConfigRegexMarkup configForm = null;
+        private Debug debugForm = null;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public RibbonRegexMarkup()
         {
@@ -79,8 +80,8 @@ namespace RegexMarkup
 
         private void buttonDebug_Click(object sender, RibbonControlEventArgs e)
         {
-            Debug debugForm = new Debug();
-            debugForm.Show();
+            this.debugForm = Debug.Instance;
+            debugForm.ShowDialog();
         }
 
         #region SetAddRemoveProgramsIcon
