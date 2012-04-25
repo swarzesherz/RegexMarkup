@@ -53,6 +53,7 @@ namespace RegexMarkup
         private String currentGroupTag = null;
         private EditAttribute editAttribute = null;
         private RichTextBox richTextBoxTemp = new RichTextBox();
+        private RegexMarkup objectRegexMarkup = RegexMarkup.Instance;
         private int indexColorTag = 0;
 
         /* Definimos y asignamos el arreglo de colores para las etiquetas */
@@ -277,6 +278,12 @@ namespace RegexMarkup
         }
 
         private void currencyManager_PositionChanged(object sender, EventArgs e) {
+            /* Parseamos la cita actual si no lo esta */
+            if (!this.citas[this.currencyManager.Position].Parsed) {
+                this.objectRegexMarkup.parseMarkupString(this.citas[this.currencyManager.Position]);
+                this.richTextBoxMarkup.Text = this.citas[this.currencyManager.Position].MarkedStr;
+                this.radioButtonYes.Checked = this.citas[this.currencyManager.Position].Marked;
+            }
             /* Verificamos si la etiquetas de la cita estan coloreadas y si no loas coloreamos */
             if (!this.citas[this.currencyManager.Position].Colorized) {
                 this.colorRefTagsForm(this.citationStyle, startColor);

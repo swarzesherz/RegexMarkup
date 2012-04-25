@@ -52,7 +52,6 @@ namespace RegexMarkup.Forms
         {
             InitializeComponent();
             this.SizeChanged += new EventHandler(Debug_SizeChanged);
-            this.debugFileDB = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "log4net.db");
             foreach (Object appender in LogManager.GetRepository().GetAppenders())
             {
                 String appenderType = appender.GetType().Name;
@@ -60,6 +59,10 @@ namespace RegexMarkup.Forms
                 {
                     case "AdoNetAppender":
                         connection = new SQLiteConnection(((AdoNetAppender)appender).ConnectionString);
+                        this.debugFileDB = ((AdoNetAppender)appender).ConnectionString;
+                        this.debugFileDB = this.debugFileDB.Substring(this.debugFileDB.IndexOf("Data Source="));
+                        this.debugFileDB = this.debugFileDB.Substring(this.debugFileDB.IndexOf('=') + 1);
+                        this.debugFileDB = this.debugFileDB.Substring(0, this.debugFileDB.IndexOf(';')).Trim();
                         break;
                 }
             }

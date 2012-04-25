@@ -10,17 +10,19 @@ namespace RegexMarkup
     {
         private String originalStr = null;
         private RichTextBox markedRtb = null;
+        private Boolean parsed = false;
         private Boolean marked = false;
         private Boolean colorized = false;
         private Word.Range rngCita = null;
 
-        public MarkupStruct(String originalStr, String markedStr, Boolean marked, Word.Range rngCita) {
+        public MarkupStruct(String originalStr, String markedStr, Word.Range rngCita, Boolean marked, Boolean parsed) {
             this.originalStr = originalStr;
             /* Creando string rtf */
             this.markedRtb = new RichTextBox();
             this.markedRtb.DetectUrls = false;
             this.markedRtb.Text = markedStr;
             this.marked = marked;
+            this.parsed = parsed;
             this.rngCita = rngCita;
         }
 
@@ -84,6 +86,15 @@ namespace RegexMarkup
             }
         }
 
+        public Boolean Parsed
+        {
+            get { 
+                return this.parsed; 
+            }
+            set { 
+                this.parsed = value; 
+            }
+        }
         public Boolean Colorized
         {
             get
