@@ -1,19 +1,13 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
-using Microsoft.VisualStudio.Tools.Applications.Runtime;
-using Word = Microsoft.Office.Interop.Word;
-using Office = Microsoft.Office.Core;
-using System.Xml;
-using System.Text.RegularExpressions;
-using System.IO;
-using RegexMarkup.Properties;
-using RegexMarkup.Forms;
 using System.Deployment.Application;
-using log4net;
-using log4net.Config;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using System.Xml;
+using RegexMarkup.Forms;
+using RegexMarkup.Properties;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace RegexMarkup
 {
@@ -222,6 +216,11 @@ namespace RegexMarkup
         }
         #endregion 
 
+        #region parseMarkupString
+        /// <summary>
+        /// Se inicia el proceso de marcación y se hacen la correciones necesarias
+        /// </summary>
+        /// <param name="refMarkupStruct"></param>
         public void parseMarkupString(MarkupStruct refMarkupStruct)
         {
             String markedString = null;
@@ -303,6 +302,8 @@ namespace RegexMarkup
 
             refMarkupStruct.Parsed = true;
         }
+
+        #endregion
 
         #region getAttrValueInTag
         /// <summary>

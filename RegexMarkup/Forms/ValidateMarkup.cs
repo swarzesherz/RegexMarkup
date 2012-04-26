@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Xml;
-using System.Windows.Forms;
-using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using RegexMarkup.Forms;
 using RegexMarkup.Properties;
 using Sgml;
-using RegexMarkup.Forms;
 
 
 namespace RegexMarkup

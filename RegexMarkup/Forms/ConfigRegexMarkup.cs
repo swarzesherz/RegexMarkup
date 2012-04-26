@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.Collections.Specialized;
-using RegexMarkup.Properties;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using RegexMarkup.Forms;
+using RegexMarkup.Properties;
+
 namespace RegexMarkup
 {
     public sealed  partial class ConfigRegexMarkup : Form

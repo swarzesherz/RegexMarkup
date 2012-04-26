@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Office.Tools.Ribbon;
-using RegexMarkup.Properties;
-using System.Globalization;
-using System.Deployment.Application;
-using System.IO;
-using Microsoft.Win32;
-using System.Reflection;
-using log4net;
-using log4net.Config;   
-using RegexMarkup.Forms;
-using log4net.Appender;
 using System.Data.SQLite;
+using System.Deployment.Application;
+using System.Globalization;
+using System.IO;
+using log4net;
+using log4net.Appender;
+using Microsoft.Office.Tools.Ribbon;
+using Microsoft.Win32;
+using RegexMarkup.Forms;
+using RegexMarkup.Properties;
 
 namespace RegexMarkup
 {

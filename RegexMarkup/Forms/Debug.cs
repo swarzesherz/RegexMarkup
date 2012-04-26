@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.IO;
 using System.Data.SQLite;
-using log4net;
-using RegexMarkup.Properties;
-using System.Net.Mail;
+using System.IO;
 using System.IO.Compression;
+using System.Net.Mail;
+using System.Windows.Forms;
+using log4net;
 using log4net.Appender;
+using RegexMarkup.Properties;
 
 namespace RegexMarkup.Forms
 {
@@ -193,7 +188,7 @@ namespace RegexMarkup.Forms
                     this.compressFile(this.debugFileDB, this.debugFileDB + ".gz");
                     /*Adjuntando archivo con compresion*/
                     message.Attachments.Add(new Attachment(this.debugFileDB + ".gz"));
-                    message.Body = "  Mensaje de Prueba \n\n Enviado desde C#\n\n *VER EL ARCHIVO ADJUNTO*";
+                    message.Body = "   Mensaje con la bítacora \n\n   *VER EL ARCHIVO ADJUNTO*";
 
                     /* Enviar */
                     Cr.send(message);
@@ -204,6 +199,7 @@ namespace RegexMarkup.Forms
             }
             catch (Exception ex)
             {
+                if (log.IsErrorEnabled) log.Error(ex.Message + "\n" + ex.StackTrace);
                 MessageBox.Show(ex.ToString());
             }
         }
