@@ -41,14 +41,14 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'RegexMarkup'
-copyright = u'2012, Herz'
+copyright = u'2012, SciELO México - Herz'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = '0.7'
+version = '0.7.6.1'
 # The full version, including alpha/beta/rc tags.
 release = '0.7.6.1'
 
@@ -247,8 +247,8 @@ texinfo_documents = [
 # Bibliographic Dublin Core info.
 epub_title = u'RegexMarkup'
 epub_author = u'Herz'
-epub_publisher = u'Herz'
-epub_copyright = u'2012, Herz'
+epub_publisher = u'SciELO México'
+epub_copyright = u'2012, SciELO México - Herz'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.

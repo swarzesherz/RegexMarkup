@@ -38,7 +38,7 @@
     <PublishUrl>ftp://132.248.9.166/RegexMarkupDist/</PublishUrl>
     <InstallUrl>http://scielo.no-ip.org/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.7.6.1</ApplicationVersion>
+    <ApplicationVersion>0.7.6.2</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>

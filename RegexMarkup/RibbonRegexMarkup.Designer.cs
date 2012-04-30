@@ -30,21 +30,21 @@ namespace RegexMarkup
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RibbonRegexMarkup));
-            this.su = new Microsoft.Office.Tools.Ribbon.RibbonTab();
+            this.TabRegexMarkup = new Microsoft.Office.Tools.Ribbon.RibbonTab();
             this.groupRegexMarkup = new Microsoft.Office.Tools.Ribbon.RibbonGroup();
             this.buttonRegexMarkup = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.buttonDebug = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.buttonConfig = new Microsoft.Office.Tools.Ribbon.RibbonButton();
-            this.su.SuspendLayout();
+            this.TabRegexMarkup.SuspendLayout();
             this.groupRegexMarkup.SuspendLayout();
             this.SuspendLayout();
             // 
-            // su
+            // TabRegexMarkup
             // 
-            this.su.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
-            this.su.Groups.Add(this.groupRegexMarkup);
-            this.su.Label = "TabAddIns";
-            this.su.Name = "su";
+            this.TabRegexMarkup.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
+            this.TabRegexMarkup.Groups.Add(this.groupRegexMarkup);
+            this.TabRegexMarkup.Label = "TabAddIns";
+            this.TabRegexMarkup.Name = "TabRegexMarkup";
             // 
             // groupRegexMarkup
             // 
@@ -82,10 +82,10 @@ namespace RegexMarkup
             // 
             this.Name = "RibbonRegexMarkup";
             this.RibbonType = "Microsoft.Word.Document";
-            this.Tabs.Add(this.su);
+            this.Tabs.Add(this.TabRegexMarkup);
             this.Load += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonUIEventArgs>(this.RibbonRegexMarkup_Load);
-            this.su.ResumeLayout(false);
-            this.su.PerformLayout();
+            this.TabRegexMarkup.ResumeLayout(false);
+            this.TabRegexMarkup.PerformLayout();
             this.groupRegexMarkup.ResumeLayout(false);
             this.groupRegexMarkup.PerformLayout();
             this.ResumeLayout(false);
@@ -94,7 +94,7 @@ namespace RegexMarkup
 
         #endregion
 
-        internal Microsoft.Office.Tools.Ribbon.RibbonTab su;
+        internal Microsoft.Office.Tools.Ribbon.RibbonTab TabRegexMarkup;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup groupRegexMarkup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonRegexMarkup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonConfig;
