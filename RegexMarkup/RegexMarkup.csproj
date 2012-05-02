@@ -35,10 +35,10 @@
     <TargetFrameworkSubset>Full</TargetFrameworkSubset>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsUrl>http://132.248.9.166/</BootstrapperComponentsUrl>
-    <PublishUrl>ftp://132.248.9.166/RegexMarkupDist/</PublishUrl>
-    <InstallUrl>http://scielo.no-ip.org/</InstallUrl>
+    <PublishUrl>ftp://132.248.9.166/public_html/RegexMarkup/</PublishUrl>
+    <InstallUrl>http://scielo.no-ip.org/RegexMarkup/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.7.6.2</ApplicationVersion>
+    <ApplicationVersion>0.7.6.4</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
