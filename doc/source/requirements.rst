@@ -1,12 +1,13 @@
 Requirements
 ============
-`Install signing certificate <http://scielo.no-ip.org/Root.cer>`_
+- MS Office 2007 or 2010
+- `Install signing certificate <http://scielo.no-ip.org/RegexMarkup/Root.cer>`_
 
 *The install of signing certificate is required only once per user account in SO.*
 
-How-to
-------
-- Download the signing certificate `link <http://scielo.no-ip.org/Root.cer>`_
+How to install signing certificate
+----------------------------------
+- Download the signing certificate `link <http://scielo.no-ip.org/RegexMarkup/Root.cer>`_
 - In the emerge window click on open or download to open after
 	.. image:: ./images/pcert1.jpg
 - When open file the next window appear, click on **Install Certificate...**

@@ -7,12 +7,12 @@ Download and Install
 
 Download
 --------
-RegexMarkup app can download `here <http://scielo.no-ip.org/setup.exe>`_
+RegexMarkup app can download `here <http://scielo.no-ip.org/RegexMarkup/setup.exe>`_
 
 
 Install
 -------
-- Download *RegexMarkup* from this `link <http://scielo.no-ip.org/setup.exe>`_
+- Download *RegexMarkup* from this `link <http://scielo.no-ip.org/RegexMarkup/setup.exe>`_
 - In the emerge window click on open or download to open after
 	.. image:: ./images/papp1.jpg
 - If the app requires install aditional software one or more messages like this appear click **OK**
