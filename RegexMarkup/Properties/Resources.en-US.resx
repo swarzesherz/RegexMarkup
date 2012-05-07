@@ -151,25 +151,25 @@
     <value>Save marked citations</value>
   </data>
   <data name="ValidateMarkup_buttonFirstToolTip" xml:space="preserve">
-    <value>Go to first citation</value>
+    <value>Go to first reference</value>
   </data>
   <data name="ValidateMarkup_buttonLastToolTip" xml:space="preserve">
-    <value>Go to last citation</value>
+    <value>Go to last reference</value>
   </data>
   <data name="ValidateMarkup_buttonNextToolTip" xml:space="preserve">
-    <value>Go to next citation</value>
+    <value>Go to next reference</value>
   </data>
   <data name="ValidateMarkup_buttonPrevToolTip" xml:space="preserve">
-    <value>Go to previous citation</value>
+    <value>Go to previous reference</value>
   </data>
   <data name="ValidateMarkup_citationOf" xml:space="preserve">
     <value>{0} of {1}</value>
   </data>
   <data name="ValidateMarkup_groupBoxMarkup" xml:space="preserve">
-    <value>Marked citation:</value>
+    <value>Marked reference:</value>
   </data>
   <data name="ValidateMarkup_groupBoxOriginal" xml:space="preserve">
-    <value>Original citation:</value>
+    <value>Original reference:</value>
   </data>
   <data name="ValidateMarkup_radioButtonNo" xml:space="preserve">
     <value>No</value>
@@ -178,7 +178,7 @@
     <value>Yes</value>
   </data>
   <data name="ValidateMarkup_title" xml:space="preserve">
-    <value>Validation and marking of citations</value>
+    <value>Validation and marking references</value>
   </data>
   <data name="configRegexMarkup_buttonSave" xml:space="preserve">
     <value>Save</value>
@@ -211,7 +211,7 @@
     <value>Tools</value>
   </data>
   <data name="ValidateMarkup_labelCitationStatus" xml:space="preserve">
-    <value>Mark citation</value>
+    <value>Mark reference</value>
   </data>
   <data name="ValidateMarkup_parentTag" xml:space="preserve">
     <value>Back to top level {0}</value>
@@ -239,7 +239,7 @@ The document is read-only mode</value>
     <value>Are you sure to delete tag "{0}"?</value>
   </data>
   <data name="ValidateMarkup_messageConfirmation" xml:space="preserve">
-    <value>Are you sure to apply and save changes to the citations: {0}</value>
+    <value>Are you sure to apply and save changes to the references: {0}</value>
   </data>
   <data name="ValidateMarkup_messageConfirmationCaption" xml:space="preserve">
     <value>Confirmation</value>
