@@ -2486,7 +2486,7 @@
                     <opcion>
                         <regex>(.+?[.)])(\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[.]\s*)(.+?)(\.\s)(.+?)(\.?\s(?:Edition|Ed|ed|Edición)\.\s)(.+?)(\.?\s)([\d-]+)(\sp{1,2}\.$)</regex>
                         <struct>
-                            <omonog tag="true">
+                               <omonog tag="true">
                                 <autores>
                                     <value>${1}</value>
                                     <regex>(.+?)(;\sy\s|;\sand\s|;\s|\s\(.*?\)|$)</regex>
@@ -2525,9 +2525,6 @@
                                     <postvalue>${6}</postvalue>
                                 </title>
                                 <edition tag="true">
-                                    <attr>
-                                        <language>en</language>
-                                    </attr>
                                     <value>${7}</value>
                                     <postvalue>${8}${9}${10}</postvalue>
                                 </edition>
@@ -2537,6 +2534,7 @@
                                 </pages>
                             </omonog>
                         </struct>
+                            
                     </opcion>
                     <opcion>
                         <regex>(.+?[.)])(\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[.]\s*)(.+?)(\.\s)(.+?)([.,]*\s)([0-9\s\(\)]+?)(:\s*)([0-9]*?[–-]\s*[0-9]*)(.+$)</regex>
@@ -2577,10 +2575,10 @@
                                         <language>en</language>
                                     </attr>
                                     <value>${5}</value>
-                                    <postvalue>${6}</postvalue>
                                 </title>
                             </ocontrib>
-                            <oiserial tag="true">
+                            <oiserial tag="true">                            
+                                    <prevalue>${6}</prevalue>
                                 <sertitle tag="true">
                                     <value>${7}</value>
                                     <postvalue>${8}</postvalue>
@@ -2641,7 +2639,7 @@
                                                 <fname tag="true">
                                                     <value>${3}</value>
                                                 </fname>
-                                            </struct>
+                                            </struct> 
                                             <postvalue>${2}</postvalue>
                                         </oauthor>
                                     </struct>
@@ -2659,47 +2657,47 @@
                                     </attr>
                                     <value>${5}</value>
                                 </title>
-                                <pages tag="true">
-                                    <prevalue>${6}</prevalue>
-                                    <value>${7}</value>
-                                </pages>
+                                            <pages tag="true">
+                                                <prevalue>${6}</prevalue>
+                                                <value>${7}</value>
+                                            </pages>
                             </ocontrib>
                             <omonog tag="true">
                                 <prevalue>${8}</prevalue>
                                 <value>${9}</value>
-                                <regex>(.+?)(\.\s)(.+?)(\s\([ec].+?\.\s)(.+\.$)</regex>
-                                <struct>
-                                    <title tag="true">
-                                        <attr>
-                                            <language>en</language>
-                                        </attr>
-                                        <value>${1}</value>
-                                        <postvalue>${2}</postvalue>
-                                    </title>
-                                    <autores>
-                                        <value>${3}</value>
-                                        <regex>(.+?\.)(;*\sy\s|;*\sand\s|.\s|\s\(.*?\)|$)</regex>
+                                        <regex>(.+?)(\.\s)(.+?)(\s\([ec].+?\.\s)(.+\.$)</regex>
                                         <struct>
-                                            <oauthor tag="true">
-                                                <attr>
-                                                    <role>ed</role>
-                                                </attr>
-                                                <value>${1}</value>
-                                                <regex>(.+?)(,\s)(.+)$</regex>
+                                                <title tag="true">
+                                                    <attr>
+                                                      <language>en</language>
+                                                    </attr>
+                                                    <value>${1}</value>
+                                                    <postvalue>${2}</postvalue>
+                                                </title>
+                                            <autores>
+                                                <value>${3}</value>
+                                                <regex>(.+?\.)(;*\sy\s|;*\sand\s|.\s|\s\(.*?\)|$)</regex>
                                                 <struct>
-                                                    <surname tag="true">
+                                                    <oauthor tag="true">
+                                                        <attr>
+                                                            <role>ed</role>
+                                                        </attr>
                                                         <value>${1}</value>
-                                                        <postvalue>${2}</postvalue>
-                                                    </surname>
-                                                    <fname tag="true">
-                                                        <value>${3}</value>
-                                                    </fname>
+                                                        <regex>(.+?)(,\s)(.+)$</regex>
+                                                        <struct>
+                                                            <surname tag="true">
+                                                                <value>${1}</value>
+                                                                <postvalue>${2}</postvalue>
+                                                            </surname>
+                                                            <fname tag="true">
+                                                                <value>${3}</value>
+                                                            </fname>
+                                                        </struct> 
+                                                    </oauthor>
                                                 </struct>
-                                            </oauthor>
+                                                        <postvalue>${4}${5}</postvalue>
+                                            </autores>
                                         </struct>
-                                        <postvalue>${4}${5}</postvalue>
-                                    </autores>
-                                </struct>
                             </omonog>
                         </struct>
                     </opcion>
@@ -2725,7 +2723,7 @@
                                                 <fname tag="true">
                                                     <value>${3}</value>
                                                 </fname>
-                                            </struct>
+                                            </struct> 
                                             <postvalue>${2}</postvalue>
                                         </oauthor>
                                     </struct>
@@ -2747,36 +2745,36 @@
                             <omonog tag="true">
                                 <prevalue>${6}</prevalue>
                                 <value>${7}</value>
-                                <regex>(.+?)(\s\([ec].+?\.\s)(.+?)(pp\.\s)(.+?)(.$)</regex>
-                                <struct>
-                                    <autores>
-                                        <value>${1}</value>
-                                        <regex>(.+?\.)(;*\sy\s|;*\sand\s|.\s|\s\(.*?\)|$)</regex>
+                                        <regex>(.+?)(\s\([ec].+?\.\s)(.+?)(pp\.\s)(.+?)(.$)</regex>
                                         <struct>
-                                            <oauthor tag="true">
-                                                <attr>
-                                                    <role>ed</role>
-                                                </attr>
-                                                <value>${1}</value>
-                                                <regex>(.+?)(,\s)(.+)$</regex>
-                                                <struct>
-                                                    <surname tag="true">
-                                                        <value>${1}</value>
-                                                        <postvalue>${2}</postvalue>
-                                                    </surname>
-                                                    <fname tag="true">
-                                                        <value>${3}</value>
-                                                    </fname>
-                                                </struct>
-                                            </oauthor>
+                                <autores>
+                                    <value>${1}</value>
+                                    <regex>(.+?\.)(;*\sy\s|;*\sand\s|.\s|\s\(.*?\)|$)</regex>
+                                    <struct>
+                                        <oauthor tag="true">
+                                            <attr>
+                                                <role>ed</role>
+                                            </attr>
+                                            <value>${1}</value>
+                                            <regex>(.+?)(,\s)(.+)$</regex>
+                                            <struct>
+                                                <surname tag="true">
+                                                    <value>${1}</value>
+                                                    <postvalue>${2}</postvalue>
+                                                </surname>
+                                                <fname tag="true">
+                                                    <value>${3}</value>
+                                                </fname>
+                                            </struct> 
+                                        </oauthor>
+                                    </struct>
+                                            <postvalue>${2}${3}${4}</postvalue>
+                                </autores>
+                                <pages tag="true">
+                                    <value>${5}</value>
+                                    <postvalue>${6}</postvalue>
+                                </pages>
                                         </struct>
-                                        <postvalue>${2}${3}${4}</postvalue>
-                                    </autores>
-                                    <pages tag="true">
-                                        <value>${5}</value>
-                                        <postvalue>${6}</postvalue>
-                                    </pages>
-                                </struct>
                             </omonog>
                         </struct>
                     </opcion>
@@ -2843,7 +2841,7 @@
                     <opcion>
                         <regex>(.+?[.)])(\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[.]\s*)(.+?)(\.\s)(.+?)(\.?\s(?:Edition|Ed|ed|Edición)\.\s)(.+?)(\.?\s)([\d-]+)(\sp{1,2}\.$)</regex>
                         <struct>
-                            <omonog tag="true">
+                               <omonog tag="true">
                                 <autores>
                                     <value>${1}</value>
                                     <regex>(.+?)(;\sy\s|;\sand\s|;\s|\s\(.*?\)|$)</regex>
@@ -2882,9 +2880,6 @@
                                     <postvalue>${6}</postvalue>
                                 </title>
                                 <edition tag="true">
-                                    <attr>
-                                        <language>en</language>
-                                    </attr>
                                     <value>${7}</value>
                                     <postvalue>${8}${9}${10}</postvalue>
                                 </edition>
@@ -2894,6 +2889,7 @@
                                 </pages>
                             </omonog>
                         </struct>
+                            
                     </opcion>
                     <opcion>
                         <regex>(.+?[.)])(\s*)((?:17|18|19|20)[0-9]{2})([a-z]*[.]\s*)(.+?)(\.\s)(.+?)([.,]*\s)([0-9\s\(\)]+?)(:\s*)([0-9]*?[–-]\s*[0-9]*)(.+$)</regex>
@@ -2934,10 +2930,10 @@
                                         <language>en</language>
                                     </attr>
                                     <value>${5}</value>
-                                    <postvalue>${6}</postvalue>
                                 </title>
                             </ocontrib>
-                            <oiserial tag="true">
+                            <oiserial tag="true">                            
+                                    <prevalue>${6}</prevalue>
                                 <sertitle tag="true">
                                     <value>${7}</value>
                                     <postvalue>${8}</postvalue>
@@ -2998,7 +2994,7 @@
                                                 <fname tag="true">
                                                     <value>${3}</value>
                                                 </fname>
-                                            </struct>
+                                            </struct> 
                                             <postvalue>${2}</postvalue>
                                         </oauthor>
                                     </struct>
@@ -3016,47 +3012,47 @@
                                     </attr>
                                     <value>${5}</value>
                                 </title>
-                                <pages tag="true">
-                                    <prevalue>${6}</prevalue>
-                                    <value>${7}</value>
-                                </pages>
+                                            <pages tag="true">
+                                                <prevalue>${6}</prevalue>
+                                                <value>${7}</value>
+                                            </pages>
                             </ocontrib>
                             <omonog tag="true">
                                 <prevalue>${8}</prevalue>
                                 <value>${9}</value>
-                                <regex>(.+?)(\.\s)(.+?)(\s\([ec].+?\.\s)(.+\.$)</regex>
-                                <struct>
-                                    <title tag="true">
-                                        <attr>
-                                            <language>en</language>
-                                        </attr>
-                                        <value>${1}</value>
-                                        <postvalue>${2}</postvalue>
-                                    </title>
-                                    <autores>
-                                        <value>${3}</value>
-                                        <regex>(.+?\.)(;*\sy\s|;*\sand\s|.\s|\s\(.*?\)|$)</regex>
+                                        <regex>(.+?)(\.\s)(.+?)(\s\([ec].+?\.\s)(.+\.$)</regex>
                                         <struct>
-                                            <oauthor tag="true">
-                                                <attr>
-                                                    <role>ed</role>
-                                                </attr>
-                                                <value>${1}</value>
-                                                <regex>(.+?)(,\s)(.+)$</regex>
+                                                <title tag="true">
+                                                    <attr>
+                                                      <language>en</language>
+                                                    </attr>
+                                                    <value>${1}</value>
+                                                    <postvalue>${2}</postvalue>
+                                                </title>
+                                            <autores>
+                                                <value>${3}</value>
+                                                <regex>(.+?\.)(;*\sy\s|;*\sand\s|.\s|\s\(.*?\)|$)</regex>
                                                 <struct>
-                                                    <surname tag="true">
+                                                    <oauthor tag="true">
+                                                        <attr>
+                                                            <role>ed</role>
+                                                        </attr>
                                                         <value>${1}</value>
-                                                        <postvalue>${2}</postvalue>
-                                                    </surname>
-                                                    <fname tag="true">
-                                                        <value>${3}</value>
-                                                    </fname>
+                                                        <regex>(.+?)(,\s)(.+)$</regex>
+                                                        <struct>
+                                                            <surname tag="true">
+                                                                <value>${1}</value>
+                                                                <postvalue>${2}</postvalue>
+                                                            </surname>
+                                                            <fname tag="true">
+                                                                <value>${3}</value>
+                                                            </fname>
+                                                        </struct> 
+                                                    </oauthor>
                                                 </struct>
-                                            </oauthor>
+                                                        <postvalue>${4}${5}</postvalue>
+                                            </autores>
                                         </struct>
-                                        <postvalue>${4}${5}</postvalue>
-                                    </autores>
-                                </struct>
                             </omonog>
                         </struct>
                     </opcion>
@@ -3082,7 +3078,7 @@
                                                 <fname tag="true">
                                                     <value>${3}</value>
                                                 </fname>
-                                            </struct>
+                                            </struct> 
                                             <postvalue>${2}</postvalue>
                                         </oauthor>
                                     </struct>
@@ -3104,36 +3100,36 @@
                             <omonog tag="true">
                                 <prevalue>${6}</prevalue>
                                 <value>${7}</value>
-                                <regex>(.+?)(\s\([ec].+?\.\s)(.+?)(pp\.\s)(.+?)(.$)</regex>
-                                <struct>
-                                    <autores>
-                                        <value>${1}</value>
-                                        <regex>(.+?\.)(;*\sy\s|;*\sand\s|.\s|\s\(.*?\)|$)</regex>
+                                        <regex>(.+?)(\s\([ec].+?\.\s)(.+?)(pp\.\s)(.+?)(.$)</regex>
                                         <struct>
-                                            <oauthor tag="true">
-                                                <attr>
-                                                    <role>ed</role>
-                                                </attr>
-                                                <value>${1}</value>
-                                                <regex>(.+?)(,\s)(.+)$</regex>
-                                                <struct>
-                                                    <surname tag="true">
-                                                        <value>${1}</value>
-                                                        <postvalue>${2}</postvalue>
-                                                    </surname>
-                                                    <fname tag="true">
-                                                        <value>${3}</value>
-                                                    </fname>
-                                                </struct>
-                                            </oauthor>
+                                <autores>
+                                    <value>${1}</value>
+                                    <regex>(.+?\.)(;*\sy\s|;*\sand\s|.\s|\s\(.*?\)|$)</regex>
+                                    <struct>
+                                        <oauthor tag="true">
+                                            <attr>
+                                                <role>ed</role>
+                                            </attr>
+                                            <value>${1}</value>
+                                            <regex>(.+?)(,\s)(.+)$</regex>
+                                            <struct>
+                                                <surname tag="true">
+                                                    <value>${1}</value>
+                                                    <postvalue>${2}</postvalue>
+                                                </surname>
+                                                <fname tag="true">
+                                                    <value>${3}</value>
+                                                </fname>
+                                            </struct> 
+                                        </oauthor>
+                                    </struct>
+                                            <postvalue>${2}${3}${4}</postvalue>
+                                </autores>
+                                <pages tag="true">
+                                    <value>${5}</value>
+                                    <postvalue>${6}</postvalue>
+                                </pages>
                                         </struct>
-                                        <postvalue>${2}${3}${4}</postvalue>
-                                    </autores>
-                                    <pages tag="true">
-                                        <value>${5}</value>
-                                        <postvalue>${6}</postvalue>
-                                    </pages>
-                                </struct>
                             </omonog>
                         </struct>
                     </opcion>

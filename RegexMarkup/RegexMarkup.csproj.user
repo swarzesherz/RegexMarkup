@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ProjectFiles</ProjectView>
-    <PublishUrlHistory>ftp://132.248.9.166/public_html/RegexMarkup/|ftp://132.248.9.166/RegexMarkupDist/</PublishUrlHistory>
+    <PublishUrlHistory>ftp://132.248.9.166/public_html/RegexMarkup/</PublishUrlHistory>
     <InstallUrlHistory>http://scielo.no-ip.org/RegexMarkup/|http://scielo.no-ip.org/|http://http://scielo.no-ip.org//|http://132.248.9.166/</InstallUrlHistory>
   </PropertyGroup>
   <ProjectExtensions>
