@@ -1,12 +1,12 @@
 Use main app
 ============
 
-	* `Before begin`_
-	* `Automatic tagging tool RegexMarkup`_
-		* `Validating and tagging references`_
-			* :ref:`Toolbar <label-toolbar>`
-			* :ref:`Tagging tools <label-tagging-tools>`
-			* :ref:`Navigation bar <label-navigation-bar>`
+* `Before begin`_
+* `Automatic tagging tool RegexMarkup`_
+	* `Validating and tagging references`_
+		* :ref:`Toolbar <label-toolbar>`
+		* :ref:`Tagging tools <label-tagging-tools>`
+		* :ref:`Navigation bar <label-navigation-bar>`
 
 Before begin
 ------------
