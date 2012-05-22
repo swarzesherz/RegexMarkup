@@ -180,7 +180,7 @@ namespace RegexMarkup
                         connection.Close();
 
                         log.Debug("((AdoNetAppender)appender).ConnectionString = " + ((AdoNetAppender)appender).ConnectionString);
-                        ((AdoNetAppender)appender).ConnectionString = ((AdoNetAppender)appender).ConnectionString.Replace("{SourceDB}", pathDB);
+                        ((AdoNetAppender)appender).ConnectionString = ((AdoNetAppender)appender).ConnectionString.Replace(@"C:\tmp\{SourceDB}", pathDB);
                         log.Debug("((AdoNetAppender)appender).ConnectionString = " + ((AdoNetAppender)appender).ConnectionString);
                         ((AdoNetAppender)appender).ActivateOptions();
                         log.Debug("((AdoNetAppender)appender).ConnectionString = " + ((AdoNetAppender)appender).ConnectionString);
