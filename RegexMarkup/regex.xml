@@ -1763,7 +1763,7 @@
                                             <value>${1}</value>
                                             <multiple>
                                                 <option>
-                                                    <regex>(.+?)(,\s|,*\s|,\s*)([A-Zh.\s]+$)</regex>
+                                                    <regex>(.+?)(,\s|,?\s|,\s?)([A-Zh.\s]+$)</regex>
                                                     <struct>
                                                         <surname tag="true">
                                                             <value>${1}</value>
@@ -2218,7 +2218,7 @@
         <norm>other</norm>
     </journal>
     <journal issn="2007-0934">
-        <name>journal mexicana de ciencias agrícolas</name>
+        <name>Revista mexicana de ciencias agrícolas</name>
         <norm>other</norm>
         <regex>(....+)</regex>
         <struct>

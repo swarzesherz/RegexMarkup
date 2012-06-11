@@ -53,7 +53,7 @@ Journal element struct
 		*/
 		<struct>
 			/*
-			*<!ELEMENT tagname ( attr?, prevalue?, value?, ( regex, struct  | multiple)?, tagname*, postvalue? ) >
+			*<!ELEMENT tagname ( tagname*, attr?, prevalue?, value?, ( regex, struct  | multiple)?, postvalue? ) >
 			*<!ATTLIST tagname tag ( true ) #IMPLIED >
 			*/
 			<tagname tag="true">
@@ -157,6 +157,18 @@ Journal element struct
 				</ocitat>
 				...
 
+			* **tagname** .- You can put hierarchy of tags contains inner tags
+				.. code-block:: xml
+					:linenos:
+
+					...
+					<ocitat tag="true">
+						<omonog tag=true>
+							...
+						<omonog>
+					</ocitat>
+					...
+
 			* **attr** .- This element contains attributes of tag if require put default value in these.
 				* **attrname** .- Is a generic name to element,  this take name of attributes of tag like [oauthor **role="nd"**] is represented:
 					.. code-block:: xml
@@ -170,120 +182,124 @@ Journal element struct
 							...
 						</oauthor>
 						...
-				* **prevalue** .- Contains backreference of group in regular expression pattern and print the value before tag.
-				* **value** .- Contains backreference of group in regular expression pattern and print the value in middle of tag.
-				* **postvalue** .- Contains backreference of group in regular expression pattern and print the value after tag.
-					.. code-block:: xml
-						:linenos:
 
+			* **prevalue** .- Contains backreference of group in regular expression pattern and print the value before tag.
+
+			* **value** .- Contains backreference of group in regular expression pattern and print the value in middle of tag.
+
+			* **postvalue** .- Contains backreference of group in regular expression pattern and print the value after tag.
+				.. code-block:: xml
+					:linenos:
+
+					...
+					/*
+					* Example string and regex
+					* ...; Castillo, G. F.; ...
+					* (.+?;\s)(Castillo, G. F.)(;\s.+)
+					* Group 1:	...;
+					* Group 2:	Castillo, G. F.
+					* Group 3:	; ...
+					*/
+					<oauthor tag="true">
 						...
-						/*
-						* Example string and regex
-						* ...; Castillo, G. F.; ...
-						* (.+?;\s)(Castillo, G. F.)(;\s.+)
-						* Group 1:	...;
-						* Group 2:	Castillo, G. F.
-						* Group 3:	; ...
-						*/
-						<oauthor tag="true">
-							...
-							<prevalue>$1</prevalue>
-							<value>$2</value>
-							<postvalue>$3</postvalue>
-							...
-						</oauthor>
-						/*
-						* Result
-						* ...; [oauthor]Castillo, G. F.[/oauthor]; ...
-						*/
-				* **regex** .- This element used when value of tag contains child tags, if this tag is used you need  put **struct** element and inner tags
-					.. code-block:: xml
-						:linenos:
-
+						<prevalue>$1</prevalue>
+						<value>$2</value>
+						<postvalue>$3</postvalue>
 						...
-						/*
-						* Example string and regex
-						* ...; Castillo, G. F.; ...
-						* (.+?;\s)(Castillo, G. F.)(;\s.+)
-						* Group 2:	Castillo, G. F.
-						* Group 2 contains surname and fname and can parse with this regex
-						* (Castillo)(,\s)(G\.\sF\.)
-						*/
-						<oauthor tag="true">
-							...
-							<prevalue>$1</prevalue>
-							<value>$2</value>
-							<regex>(Castillo)(,\s)(G\.\sF\.)</regex>
-							<struct>
-								<surname tag="true">
-									<value>$1</value>
-									<postvalue>$2</postvalue>
-								</surname>
-								<fname>
-									<value>$3</value>
-								</fname>
-							</struct>
-							<postvalue>$3</postvalue>
-							...
-						</oauthor>
-						/*
-						* Result
-						* ...; [oauthor][surname]Castillo[/surname], [fname]G. F.[/fname][/oauthor]; ...
-						*/
+					</oauthor>
+					/*
+					* Result
+					* ...; [oauthor]Castillo, G. F.[/oauthor]; ...
+					*/
 
-				* **multiple** .- In case the value element can parsed by more than one regular expression, use this element and put each pattern in sub element **option**
-					* **option** .- This element contains each **regex** pattern and **struct** of these.
+			* **regex** .- This element used when value of tag contains child tags, if this tag is used you need  put **struct** element and inner tags
+				.. code-block:: xml
+					:linenos:
 
-					.. code-block:: xml
-						:linenos:
-
+					...
+					/*
+					* Example string and regex
+					* ...; Castillo, G. F.; ...
+					* (.+?;\s)(Castillo, G. F.)(;\s.+)
+					* Group 2:	Castillo, G. F.
+					* Group 2 contains surname and fname and can parse with this regex
+					* (Castillo)(,\s)(G\.\sF\.)
+					*/
+					<oauthor tag="true">
 						...
-						/*
-						* Example strings and regex
-						* ...; Castillo, G. F.; ...
-						* (.+?;\s)(Castillo, G. F.)(;\s.+)
-						* (.+?;\s)(G. F., Castillo)(;\s.+)
-						* Group 2:	Castillo, G. F.
-						* Group 2:	G. F., Castillo
-						* Group 2 can parsed with these regex
-						* (Castillo)(,\s)(G\.\sF\.)
-						* (G\.\sF\.)(,\s)(Castillo)
-						*/
-						<oauthor tag="true">
-							...
-							<prevalue>$1</prevalue>
-							<value>$2</value>
-							<multiple>
-								<option>
-									<regex>(Castillo)(,\s)(G\.\sF\.)</regex>
-									<struct>
-										<surname tag="true">
-											<value>$1</value>
-											<postvalue>$2</postvalue>
-										</surname>
-										<fname>
-											<value>$3</value>
-										</fname>
-									</struct>
-								</option>
-								<option>
-									<regex>(G\.\sF\.)(,\s)(Castillo)</regex>
-									<struct>
-										<surname tag="true">
-											<value>$1</value>
-											<postvalue>$2</postvalue>
-										</surname>
-										<fname>
-											<value>$3</value>
-										</fname>
-									</struct>
-								</option>
-							</multiple>
-							<postvalue>$3</postvalue>
-							...
-						</oauthor>
-						/*
-						* Results
-						* ...; [oauthor][surname]Castillo[/surname], [fname]G. F.[/fname][/oauthor]; ...
-						* ...; [oauthor][surname]G. F.[/surname], [fname]Castillo[/fname][/oauthor]; ...
-						*/
+						<prevalue>$1</prevalue>
+						<value>$2</value>
+						<regex>(Castillo)(,\s)(G\.\sF\.)</regex>
+						<struct>
+							<surname tag="true">
+								<value>$1</value>
+								<postvalue>$2</postvalue>
+							</surname>
+							<fname>
+								<value>$3</value>
+							</fname>
+						</struct>
+						<postvalue>$3</postvalue>
+						...
+					</oauthor>
+					/*
+					* Result
+					* ...; [oauthor][surname]Castillo[/surname], [fname]G. F.[/fname][/oauthor]; ...
+					*/
+
+			* **multiple** .- In case the value element can parsed by more than one regular expression, use this element and put each pattern in sub element **option**
+				* **option** .- This element contains each **regex** pattern and **struct** of these.
+
+				.. code-block:: xml
+					:linenos:
+
+					...
+					/*
+					* Example strings and regex
+					* ...; Castillo, G. F.; ...
+					* ...; G. F., Castillo; ...
+					* (.+?;\s)(.+?)(;\s.+)
+					* Group 2:	Castillo, G. F.
+					* Group 2:	G. F., Castillo
+					* Group 2 can parsed with these regex
+					* (Castillo)(,\s)(G\.\sF\.)
+					* (G\.\sF\.)(,\s)(Castillo)
+					*/
+					<oauthor tag="true">
+						...
+						<prevalue>$1</prevalue>
+						<value>$2</value>
+						<multiple>
+							<option>
+								<regex>(Castillo)(,\s)(G\.\sF\.)</regex>
+								<struct>
+									<surname tag="true">
+										<value>$1</value>
+										<postvalue>$2</postvalue>
+									</surname>
+									<fname>
+										<value>$3</value>
+									</fname>
+								</struct>
+							</option>
+							<option>
+								<regex>(G\.\sF\.)(,\s)(Castillo)</regex>
+								<struct>
+									<surname tag="true">
+										<value>$1</value>
+										<postvalue>$2</postvalue>
+									</surname>
+									<fname>
+										<value>$3</value>
+									</fname>
+								</struct>
+							</option>
+						</multiple>
+						<postvalue>$3</postvalue>
+						...
+					</oauthor>
+					/*
+					* Results
+					* ...; [oauthor][surname]Castillo[/surname], [fname]G. F.[/fname][/oauthor]; ...
+					* ...; [oauthor][surname]G. F.[/surname], [fname]Castillo[/fname][/oauthor]; ...
+					*/

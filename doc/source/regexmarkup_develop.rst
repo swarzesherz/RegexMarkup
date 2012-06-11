@@ -7,3 +7,4 @@
 
    regexp.rst
    definition_file.rst
+   create_journal_rule.rst
