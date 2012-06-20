@@ -47,12 +47,15 @@ namespace RegexMarkup
                 reader = new SgmlReader();
                 reader.CaseFolding = Sgml.CaseFolding.ToLower;
                 String sgmlArticle = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, this.availableVersion[DTD+version]);
+                if (log.IsDebugEnabled) log.Debug("sgmlArticle: " + sgmlArticle);
                 reader.SystemLiteral = sgmlArticle;
                 dtd = new Dictionary<String, SgmlDtd>();
                 dtd.Add(DTD, reader.Dtd);
+                if (log.IsDebugEnabled) log.Debug("dtd.Add(DTD: " + DTD + ", reader.Dtd: " + reader.Dtd.ToString() + ")");
                 this.version.Add(version, dtd);
+                if (log.IsDebugEnabled) log.Debug("this.version.Add(version: " + version + ", dtd: " + dtd.ToString() + ")");
             }
-
+            if (log.IsDebugEnabled) log.Debug("return this.version[version: " + version + "][DTD: " + DTD + "]");
             return this.version[version][DTD];
         }
 
@@ -60,8 +63,8 @@ namespace RegexMarkup
             if (log.IsDebugEnabled) log.Debug("checkAvailableVersion(version: " + version + ")");
             if (this.availableVersion.Count <= 0)
             {
-                this.availableVersion.Add("article4.0", "SGML/art4_0.dtd");
-                this.availableVersion.Add("text4.0", "SGML/text4_0.dtd");
+                this.availableVersion.Add("article4.0", @"SGML\art4_0.dtd");
+                this.availableVersion.Add("text4.0", @"SGML\text4_0.dtd");
             }
             return this.availableVersion.ContainsKey(version);   
         }

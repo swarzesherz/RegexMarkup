@@ -11,12 +11,12 @@ namespace RegexMarkup
         private List<String> childs = null;
         private bool childNodes = false;
         private Dictionary<String, AttrTagStruct> attributes = null;
-        private List<String> atributeLanguages = new List<string>();
+        private List<String> attributeLanguages = new List<string>();
 
-        public List<String> AtributeLanguages
+        public List<String> AttributeLanguages
         {
-            get { return atributeLanguages; }
-            set { atributeLanguages = value; }
+            get { return attributeLanguages; }
+            set { attributeLanguages = value; }
         }
 
         public Dictionary<String, AttrTagStruct> Attributes

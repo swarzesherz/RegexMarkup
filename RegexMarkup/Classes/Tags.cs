@@ -142,9 +142,9 @@ namespace RegexMarkup
             List<String> attrKeys = null;
             List<String> attrValues = null;
 
-            if (!this.tag[node].AtributeLanguages.Contains(language))
+            if (!this.tag[node].AttributeLanguages.Contains(language))
             {
-                this.tag[node].AtributeLanguages.Add(language);
+                this.tag[node].AttributeLanguages.Add(language);
                 try
                 {
                     /*Verificamos que el archivo de descripción exista de otra forma cargamos es_ES_bars.tr como idioma principal*/

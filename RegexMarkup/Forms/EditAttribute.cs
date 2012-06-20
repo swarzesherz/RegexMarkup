@@ -37,7 +37,7 @@ namespace RegexMarkup.Forms
         private String tagName = null;
         private RichTextBox selectedRtb = new RichTextBox();
         private Dictionary<String, GroupBox> groupAtributes = new Dictionary<String, GroupBox>();
-        private Dictionary<String, CustomValidation.ContainerValidator> groupAttributesValidate = new Dictionary<string, CustomValidation.ContainerValidator>();
+        private Dictionary<String, CustomValidation.ContainerValidator> groupAttributesValidate = new Dictionary<String, CustomValidation.ContainerValidator>();
         private String actualAttibuteControl = null;
         private int startSelection = 0;
         private int lenghtSelection = 0;

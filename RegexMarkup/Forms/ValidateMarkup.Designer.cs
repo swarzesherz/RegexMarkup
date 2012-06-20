@@ -336,25 +336,25 @@ namespace RegexMarkup
         #endregion
 
         private System.Windows.Forms.RichTextBox richTextBoxMarkup;
-        private Button buttonFirst;
-        private Button buttonPrev;
-        private Button buttonNext;
-        private Button buttonLast;
-        private RadioButton radioButtonYes;
-        private RadioButton radioButtonNo;
-        private Label labelCitationStatus;
-        private RichTextBox richTextBoxOriginal;
-        private Button buttonEnd;
-        private Label citationOf;
-        private ToolTip toolTipInfo;
-        private GroupBox groupBoxTools;
-        private Button buttonClearTag;
-        private Button buttonEditAttr;
-        private GroupBox groupBoxOriginal;
-        private GroupBox groupBoxMarkup;
-        private Button buttonUndo;
-        private Button buttonRedo;
-        private Button buttonCancel;
-        private Panel panelNavigation;
+        private System.Windows.Forms.Button buttonFirst;
+        private System.Windows.Forms.Button buttonPrev;
+        private System.Windows.Forms.Button buttonNext;
+        private System.Windows.Forms.Button buttonLast;
+        private System.Windows.Forms.RadioButton radioButtonYes;
+        private System.Windows.Forms.RadioButton radioButtonNo;
+        private System.Windows.Forms.Label labelCitationStatus;
+        private System.Windows.Forms.RichTextBox richTextBoxOriginal;
+        private System.Windows.Forms.Button buttonEnd;
+        private System.Windows.Forms.Label citationOf;
+        private System.Windows.Forms.ToolTip toolTipInfo;
+        private System.Windows.Forms.GroupBox groupBoxTools;
+        private System.Windows.Forms.Button buttonClearTag;
+        private System.Windows.Forms.Button buttonEditAttr;
+        private System.Windows.Forms.GroupBox groupBoxOriginal;
+        private System.Windows.Forms.GroupBox groupBoxMarkup;
+        private System.Windows.Forms.Button buttonUndo;
+        private System.Windows.Forms.Button buttonRedo;
+        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Panel panelNavigation;
     }
 }

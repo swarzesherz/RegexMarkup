@@ -38,7 +38,7 @@
     <PublishUrl>ftp://132.248.9.166/public_html/RegexMarkup/</PublishUrl>
     <InstallUrl>http://scielo.no-ip.org/RegexMarkup/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.7.6.10</ApplicationVersion>
+    <ApplicationVersion>0.7.6.12</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -414,6 +414,7 @@
     <Content Include="RegexMarkup.dll.log4net">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Resources\undo.ico" />
     <None Include="Resources\redo.ico" />
     <None Include="Resources\trash.ico" />

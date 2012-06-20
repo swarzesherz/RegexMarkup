@@ -42,8 +42,8 @@ namespace RegexMarkup
         #endregion
 
         public static Word.Document ActiveDocument = null;
-        private Waiting waitForm = null;
         public static Object missing = Type.Missing;
+        private Waiting waitForm = null;
         private String citationStyle = "other";
         private String dtdVersion = null;
         private String dtdType = null;
@@ -549,7 +549,7 @@ namespace RegexMarkup
                         if (matchResults.Index > 0 && resultString != "")
                         {
                             String searchStringIndex = refString.Substring(matchResults.Index);
-                            resultString = resultString.Substring(0, resultString.IndexOf(searchStringIndex)) + objRegExp.Replace(refString, replaceGeneral, 1, matchResults.Index).Substring(matchResults.Index);
+                            resultString = resultString.Substring(0, resultString.LastIndexOf(searchStringIndex)) + objRegExp.Replace(refString, replaceGeneral, 1, matchResults.Index).Substring(matchResults.Index);
                         }
                         else {
                             resultString = objRegExp.Replace(refString, replaceGeneral, 1, matchResults.Index);
