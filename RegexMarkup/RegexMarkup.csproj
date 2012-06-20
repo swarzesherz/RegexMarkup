@@ -414,7 +414,6 @@
     <Content Include="RegexMarkup.dll.log4net">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Resources\undo.ico" />
     <None Include="Resources\redo.ico" />
     <None Include="Resources\trash.ico" />
