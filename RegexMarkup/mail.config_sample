@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mailSettings>
+    <add key="user" value="scielo.regexmarkup@gmail.com" />
+    <add key="password" value="*********"/>
+    <add key="smtpHost" value="smtp.gmail.com" />
+    <add key="smtpPort" value="587"/>
+    <add key="enbaleSsl" value="true"/>
+</mailSettings>

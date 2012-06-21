@@ -1,10 +1,13 @@
 ﻿using System.Net.Mail;
+using System.Configuration;
+using System.Collections.Specialized;
+using System;
 
 namespace RegexMarkup
 {
     class Mail
     {
-        private SmtpClient server = new SmtpClient("smtp.gmail.com", 587);
+        private SmtpClient server = null;
         private MailMessage message = null;
         #region Singleton Implement
         /// <summary>
@@ -28,8 +31,10 @@ namespace RegexMarkup
         }
         #endregion
         public Mail() {
-            server.Credentials = new System.Net.NetworkCredential("scielo.regexmarkup@gmail.com", "5ci3l0#.");
-            server.EnableSsl = true;
+            NameValueCollection settings = ConfigurationManager.GetSection("mailSettings") as NameValueCollection;
+            server = new SmtpClient(settings["smtpHost"], Int16.Parse(settings["smtpPort"]));
+            server.Credentials = new System.Net.NetworkCredential(settings["user"], settings["password"]);
+            server.EnableSsl = Boolean.Parse(settings["enbaleSsl"]);
         }
 
         public void send(MailMessage message)
