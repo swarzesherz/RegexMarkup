@@ -60,12 +60,14 @@ namespace RegexMarkup
             }
             this.comboBoxLang.SelectedValueChanged += new EventHandler(comboBoxLang_SelectedValueChanged);
             /* Textos del formulario */
-            this.buttonSave.Text = Resources.configRegexMarkup_buttonSave;
             this.buttonExaminar.Text = Resources.configRegexMarkup_buttonExaminar;
             this.labelLanguage.Text = Resources.configRegexMarkup_language;
             this.labelExternalFile.Text = Resources.configRegexMarkup_labelExternalFile;
             this.Text = Resources.configRegexMarkup_title;
             /*Valores iniciales*/
+            this.textBoxName.Text = Settings.Default.userName;
+            this.textBoxLastName.Text = Settings.Default.userLastName;
+            this.textBoxEmail.Text = Settings.Default.userEmail;
             this.checkBoxExternalFile.Checked = Settings.Default.useExternalRegexFile;
             this.textBoxExternalFile.Text = Settings.Default.externalRegexFile;
             this.textBoxExternalFile.Enabled = this.checkBoxExternalFile.Checked;
@@ -86,21 +88,6 @@ namespace RegexMarkup
             
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            Settings.Default.Save();
-            this.Close();
-            /*Si hay un cambio en el idioma eliminamos las intancias de los formularios*/
-            if (this.originalLanguage != Settings.Default.language) {
-                this.Dispose();
-                this.validateMarkup = ValidateMarkup.Instance;
-                this.validateMarkup.Dispose();
-                this.waitForm = Waiting.Instance;
-                this.waitForm.Dispose();
-                this.debugForm = Debug.Instance;
-                this.debugForm.Dispose();
-            }
-        }
 
         #region Disable close button
         /// <summary>
@@ -142,6 +129,31 @@ namespace RegexMarkup
             Settings.Default.useExternalRegexFile = this.checkBoxExternalFile.Checked;
             this.textBoxExternalFile.Enabled = this.checkBoxExternalFile.Checked;
             this.buttonExaminar.Enabled = this.checkBoxExternalFile.Checked;
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            Settings.Default.userName = this.textBoxName.Text;
+            Settings.Default.userLastName = this.textBoxLastName.Text;
+            Settings.Default.userEmail = this.textBoxEmail.Text;
+            Settings.Default.Save();
+            this.Close();
+            /*Si hay un cambio en el idioma eliminamos las intancias de los formularios*/
+            if (this.originalLanguage != Settings.Default.language)
+            {
+                this.Dispose();
+                this.validateMarkup = ValidateMarkup.Instance;
+                this.validateMarkup.Dispose();
+                this.waitForm = Waiting.Instance;
+                this.waitForm.Dispose();
+                this.debugForm = Debug.Instance;
+                this.debugForm.Dispose();
+            }
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

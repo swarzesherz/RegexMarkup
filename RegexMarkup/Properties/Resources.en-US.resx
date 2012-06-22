@@ -262,4 +262,19 @@ The document is read-only mode</value>
   <data name="Debug_title" xml:space="preserve">
     <value>Logbook</value>
   </data>
+  <data name="ConfigRegexMarkup_labelEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ConfigRegexMarkup_labelLastName" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="ConfigRegexMarkup_labelName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ConfigRegexMarkup_tabGeneral" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="ConfigRegexMarkup_tabUser" xml:space="preserve">
+    <value>User</value>
+  </data>
 </root>

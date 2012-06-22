@@ -38,7 +38,7 @@
     <PublishUrl>ftp://132.248.9.166/public_html/RegexMarkup/</PublishUrl>
     <InstallUrl>http://scielo.no-ip.org/RegexMarkup/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.7.6.12</ApplicationVersion>
+    <ApplicationVersion>0.7.6.14</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -215,6 +215,12 @@
   <ItemGroup>
     <Compile Include="Classes\AssemblyInfoHelper.cs" />
     <Compile Include="Classes\Mail.cs" />
+    <Compile Include="Forms\MailMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MailMsg.Designer.cs">
+      <DependentUpon>MailMsg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Structs\AttrTagStruct.cs" />
     <Compile Include="Classes\DTDSciELO.cs" />
     <Compile Include="Forms\ConfigRegexMarkup.cs">
@@ -261,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditAttribute.resx">
       <DependentUpon>EditAttribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MailMsg.resx">
+      <DependentUpon>MailMsg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ValidateMarkup.resx">
       <DependentUpon>ValidateMarkup.cs</DependentUpon>
@@ -414,9 +423,9 @@
     <Content Include="RegexMarkup.dll.log4net">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="mail.config">
+    <Content Include="mail.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="Resources\undo.ico" />
     <None Include="Resources\redo.ico" />
     <None Include="Resources\trash.ico" />

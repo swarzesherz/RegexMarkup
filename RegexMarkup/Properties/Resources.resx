@@ -311,4 +311,19 @@ El documento está en modo solo lectura</value>
   <data name="Debug_title" xml:space="preserve">
     <value>Bítacora</value>
   </data>
+  <data name="ConfigRegexMarkup_labelEmail" xml:space="preserve">
+    <value>Correo-e</value>
+  </data>
+  <data name="ConfigRegexMarkup_labelLastName" xml:space="preserve">
+    <value>Apellidos</value>
+  </data>
+  <data name="ConfigRegexMarkup_labelName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="ConfigRegexMarkup_tabGeneral" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="ConfigRegexMarkup_tabUser" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
 </root>

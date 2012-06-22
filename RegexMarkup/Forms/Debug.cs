@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using log4net;
 using log4net.Appender;
 using RegexMarkup.Properties;
+using System.Text;
 
 namespace RegexMarkup.Forms
 {
@@ -42,6 +43,7 @@ namespace RegexMarkup.Forms
         private int curretPage;
         private int totalPages;
         private int queryLimit = 15;
+        private MailMsg mailMsjForm = MailMsg.Instance;
         
         Debug()
         {
@@ -175,32 +177,37 @@ namespace RegexMarkup.Forms
         }
 
         private void sendDebugMail() {
-            try
+            this.mailMsjForm.clear();
+            if (this.mailMsjForm.ShowDialog() == DialogResult.OK)
             {
-                 
-                Mail Cr = new Mail();
-                using(MailMessage message = new MailMessage())  
+                try
                 {
-                    message.Subject = "Regexmarkup.Debug";
-                    message.To.Add(new MailAddress("achwazer@gmail.com"));
-                    message.From = new MailAddress("scielo.regexmarkup@gmail.com", "RegexMarkup SciELO");
-                    /* Comprimiendo y adjuntado archivo de la bítacora */
-                    this.compressFile(this.debugFileDB, this.debugFileDB + ".gz");
-                    /*Adjuntando archivo con compresion*/
-                    message.Attachments.Add(new Attachment(this.debugFileDB + ".gz"));
-                    message.Body = "   Mensaje con la bítacora \n\n   *VER EL ARCHIVO ADJUNTO*";
 
-                    /* Enviar */
-                    Cr.send(message);
-                } 
-                
+                    Mail Cr = new Mail();
+                    using (MailMessage message = new MailMessage())
+                    {
+                        message.Subject = "Regexmarkup.Debug";
+                        message.To.Add(new MailAddress("achwazer@gmail.com"));
+                        message.From = new MailAddress(Settings.Default.userEmail, "RegexMarkup SciELO - " + Settings.Default.userName + " (" + Settings.Default.userEmail + ")");
+                        /* Comprimiendo y adjuntado archivo de la bítacora */
+                        this.compressFile(this.debugFileDB, this.debugFileDB + ".gz");
+                        /*Adjuntando archivo con compresion*/
+                        message.Attachments.Add(new Attachment(this.debugFileDB + ".gz"));
+                        message.Body = "   " + this.mailMsjForm.mailMsg;
+                        message.Body += "\n   Mensaje con la bítacora \n\n   *VER EL ARCHIVO ADJUNTO*";
+                        message.BodyEncoding = System.Text.Encoding.UTF8;
+                        /* Enviar */
+                        Cr.send(message);
+                    }
 
-                MessageBox.Show("El Mail se ha Enviado Correctamente", "Listo!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
-            catch (Exception ex)
-            {
-                if (log.IsErrorEnabled) log.Error(ex.Message + "\n" + ex.StackTrace);
-                MessageBox.Show(ex.ToString());
+
+                    MessageBox.Show("El Mail se ha Enviado Correctamente", "Listo!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                catch (Exception ex)
+                {
+                    if (log.IsErrorEnabled) log.Error(ex.Message + "\n" + ex.StackTrace);
+                    MessageBox.Show(ex.ToString());
+                }
             }
         }
 
