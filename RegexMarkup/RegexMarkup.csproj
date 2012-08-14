@@ -31,7 +31,7 @@
     <SignManifests>true</SignManifests>
     <IsWebBootstrapper>True</IsWebBootstrapper>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>RegexMarkup.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>RegexMarkup.snk</AssemblyOriginatorKeyFile>
     <TargetFrameworkSubset>Full</TargetFrameworkSubset>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsUrl>http://132.248.9.166/</BootstrapperComponentsUrl>
@@ -426,6 +426,7 @@
     <Content Include="mail.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="RegexMarkup.snk" />
     <None Include="Resources\undo.ico" />
     <None Include="Resources\redo.ico" />
     <None Include="Resources\trash.ico" />

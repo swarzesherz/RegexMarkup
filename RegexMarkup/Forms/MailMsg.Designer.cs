@@ -33,13 +33,13 @@
             this.groupBoxTools = new System.Windows.Forms.GroupBox();
             this.buttonSend = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.groupBoxDescription = new System.Windows.Forms.GroupBox();
             this.groupBoxTools.SuspendLayout();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.splitContainer.Panel1.SuspendLayout();
+            this.splitContainer.Panel2.SuspendLayout();
+            this.splitContainer.SuspendLayout();
+            this.groupBoxDescription.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBoxDescription
@@ -86,51 +86,51 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
-            // splitContainer1
+            // splitContainer
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer.Name = "splitContainer";
+            this.splitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer1.Panel1
+            // splitContainer.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.groupBoxTools);
+            this.splitContainer.Panel1.Controls.Add(this.groupBoxTools);
             // 
-            // splitContainer1.Panel2
+            // splitContainer.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer1.Size = new System.Drawing.Size(658, 353);
-            this.splitContainer1.SplitterDistance = 45;
-            this.splitContainer1.SplitterWidth = 1;
-            this.splitContainer1.TabIndex = 26;
+            this.splitContainer.Panel2.Controls.Add(this.groupBoxDescription);
+            this.splitContainer.Size = new System.Drawing.Size(658, 353);
+            this.splitContainer.SplitterDistance = 45;
+            this.splitContainer.SplitterWidth = 1;
+            this.splitContainer.TabIndex = 26;
             // 
-            // groupBox1
+            // groupBoxDescription
             // 
-            this.groupBox1.Controls.Add(this.richTextBoxDescription);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(658, 307);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Descripción";
+            this.groupBoxDescription.Controls.Add(this.richTextBoxDescription);
+            this.groupBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxDescription.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxDescription.Name = "groupBoxDescription";
+            this.groupBoxDescription.Size = new System.Drawing.Size(658, 307);
+            this.groupBoxDescription.TabIndex = 2;
+            this.groupBoxDescription.TabStop = false;
+            this.groupBoxDescription.Text = "Descripción";
             // 
             // MailMsg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 353);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.splitContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MailMsg";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MailMsg";
             this.groupBoxTools.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
+            this.splitContainer.Panel1.ResumeLayout(false);
+            this.splitContainer.Panel2.ResumeLayout(false);
+            this.splitContainer.ResumeLayout(false);
+            this.groupBoxDescription.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -141,7 +141,7 @@
         private System.Windows.Forms.GroupBox groupBoxTools;
         private System.Windows.Forms.Button buttonSend;
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.SplitContainer splitContainer;
+        private System.Windows.Forms.GroupBox groupBoxDescription;
     }
 }
