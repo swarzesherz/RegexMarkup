@@ -11,7 +11,7 @@
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
     <AssemblyName>CustomValidation</AssemblyName>
-    <AssemblyOriginatorKeyFile>RegexMarkup.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>CustomValidation.snk</AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
@@ -115,7 +115,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="RegexMarkup.pfx" />
+    <None Include="CustomValidation.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
