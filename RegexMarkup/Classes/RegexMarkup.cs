@@ -192,14 +192,20 @@ namespace RegexMarkup
                             /*Guardamos los cambios*/
                             if (!ActiveDocument.ReadOnly)
                             {
-                                object FileName = ActiveDocument.Name;
+                                object FileName = Path.Combine(ActiveDocument.Path, ActiveDocument.Name);
                                 object FileFormat = Word.WdSaveFormat.wdFormatFilteredHTML;
-                                ActiveDocument.SaveAs(ref FileName, ref FileFormat, ref missing,
-                                        ref missing, ref missing, ref missing,
-                                        ref missing, ref missing,
-                                        ref missing, ref missing,
-                                        ref missing, ref missing, ref missing,
-                                        ref missing, ref missing, ref missing);
+                                try
+                                {
+                                    ActiveDocument.SaveAs(ref FileName, ref FileFormat, ref missing,
+                                            ref missing, ref missing, ref missing,
+                                            ref missing, ref missing,
+                                            ref missing, ref missing,
+                                            ref missing, ref missing, ref missing,
+                                            ref missing, ref missing, ref missing);
+                                }catch (Exception e)
+                                {
+                                    if (log.IsErrorEnabled) log.Error(e.Message);
+                                }
                             }
                             else
                             {

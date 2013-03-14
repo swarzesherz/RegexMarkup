@@ -12,6 +12,8 @@ Prepare development environment
 
 * Install MS Visual Studio 2008 with Visual C# and Visual Studio Tools for Office.
 
+* Doenload and install `Setups for 32-bit Windows (.NET Framework 3.5 SP1) <http://system.data.sqlite.org/downloads/1.0.80.0/sqlite-netFx35-setup-bundle-x86-2008-1.0.80.0.exe>`_
+
 * Download and install `Git <http://git-scm.com/download>`_
 
 * Download and install `Git extensions <http://code.google.com/p/gitextensions>`_
@@ -42,4 +44,5 @@ Config project
 --------------
 
 * Copy CLONE_DIR/RegexMarkup/mail.config_sample to CLONE_DIR/RegexMarkup/mail.config and edit values of mailSettings
+* Open CLONE_DIR/RegexMarkup/RegexMarkup.pfx
 * Open project in VS2008
