@@ -47,10 +47,12 @@ namespace RegexMarkup
         private String dtdVersion = null;
         private String dtdType = null;
         private String currentGroupTag = null;
+        private int currentGroupTagScroll = 12;
         private EditAttribute editAttribute = null;
         private RichTextBox richTextBoxTemp = new RichTextBox();
         private RegexMarkup objectRegexMarkup = RegexMarkup.Instance;
         private int indexColorTag = 0;
+        private Button prevMarkupButtons;
 
         /* Definimos y asignamos el arreglo de colores para las etiquetas */
         private Color[] colors = new Color[]{
@@ -89,6 +91,34 @@ namespace RegexMarkup
             this.richTextBoxMarkup.DetectUrls = false;
             this.richTextBoxMarkup.HideSelection = false;
             this.richTextBoxTemp.DetectUrls = false;
+            /*Navegación en los controles*/
+            this.nextMarkupButtons = new System.Windows.Forms.Button();
+            this.nextMarkupButtons.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.nextMarkupButtons.Location = new System.Drawing.Point(188, 6);
+            this.nextMarkupButtons.Name = "nextMarkupButtons";
+            this.nextMarkupButtons.Size = new System.Drawing.Size(12, 38);
+            this.nextMarkupButtons.TabIndex = 23;
+            this.nextMarkupButtons.Text = ">>";
+            this.nextMarkupButtons.UseVisualStyleBackColor = true;
+            this.nextMarkupButtons.Click += new System.EventHandler(this.nextMarkupButtons_Click);
+            this.nextMarkupButtons.Location = new Point(this.Size.Width - 36, 55);
+            this.nextMarkupButtons.Visible = false;
+
+            this.prevMarkupButtons = new System.Windows.Forms.Button();
+            this.prevMarkupButtons.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.prevMarkupButtons.Location = new System.Drawing.Point(188, 6);
+            this.prevMarkupButtons.Name = "prevMarkupButtons";
+            this.prevMarkupButtons.Size = new System.Drawing.Size(12, 38);
+            this.prevMarkupButtons.TabIndex = 23;
+            this.prevMarkupButtons.Text = "<<";
+            this.prevMarkupButtons.UseVisualStyleBackColor = true;
+            this.prevMarkupButtons.Click += new System.EventHandler(this.prevMarkupButtons_Click);
+            this.prevMarkupButtons.Location = new Point(10, 55);
+            this.prevMarkupButtons.Visible = false;
+
+            /*Agregando navegación de botones de marcación*/
+            this.Controls.Add(this.prevMarkupButtons);
+            this.Controls.Add(this.nextMarkupButtons);
         }
 
         public void startValidate(ref List<MarkupStruct> citas)
@@ -123,6 +153,7 @@ namespace RegexMarkup
         /// Coloca los botones de forma dinamica en el formulario a partir de un nodo padre
         /// </summary>
         public void addMarkupButtons(String node, String parentGroup) {
+            this.currentGroupTagScroll = 12;
             ElementDecl article = null;
             Dictionary<String, MarkupButton> childs = null;
             node = node.ToLower();
@@ -143,9 +174,10 @@ namespace RegexMarkup
                 this.groupMarkupButtons[node].AutoSizeMode = AutoSizeMode.GrowAndShrink;
                 this.groupMarkupButtons[node].MaximumSize = new System.Drawing.Size(this.Size.Width - 34, 45);
                 this.groupMarkupButtons[node].Location = new Point(10, 49);
+                this.groupMarkupButtons[node].MouseEnter += new EventHandler(this.groupMarkupButtons_MouseEnter);
                 this.Controls.Add(this.groupMarkupButtons[node]);
                 /*Posicion de los botones dentro del grupo*/
-                int botonesPosX = 10;
+                int botonesPosX = 0;
                 /*Instanciamos el Dictionary<String, MarkupButton>*/
                 childs = new Dictionary<String, MarkupButton>();
                 /*Agregamos un boton para regresar al grupo al que pertenece el nodo padre*/
@@ -202,28 +234,42 @@ namespace RegexMarkup
                     }
                 }
                 /* Agregamos los botones al grupo*/
+                /*Creamos un panel para poner los botones y poder hacer scroll*/
+                Panel markupButtonsPanel = new Panel();
+                markupButtonsPanel.Name = node;
+                markupButtonsPanel.AutoSize = true;
+                markupButtonsPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                //markupButtonsPanel.MaximumSize = new System.Drawing.Size(this.Size.Width - 30, 45);
+                markupButtonsPanel.BackColor = Color.Transparent;
+                markupButtonsPanel.Location = new Point(12, 0);
+
                 foreach(String childName in childs.Keys){
                     /*Agregamos el boton de la etiqueta*/
                     childs[childName].Markup.Location = new Point(botonesPosX, 15);
-                    this.groupMarkupButtons[node].Controls.Add(childs[childName].Markup);
+                    markupButtonsPanel.Controls.Add(childs[childName].Markup);
                     botonesPosX += childs[childName].Markup.Size.Width;
                     /*Si la etiqueta tiene nodos hijos y el nodo padre no es el mismo que la tiqueta agregamos el botón para mostrar los nodos hijos*/
                     if (childs[childName].Childs != null && node != childs[childName].Markup.Name)
                     {
                         childs[childName].Childs.Location = new Point(botonesPosX, 15);
-                        this.groupMarkupButtons[node].Controls.Add(childs[childName].Childs);
+                        markupButtonsPanel.Controls.Add(childs[childName].Childs);
                         botonesPosX += childs[childName].Childs.Size.Width;
                     }
                 }
+                /*Agregamos el panel con los botones*/
+                this.groupMarkupButtons[node].Controls.Add(markupButtonsPanel);
             }
             else {
                 this.groupMarkupButtons[node].Visible = true;
+                this.groupMarkupButtons[node].Controls[node].Location = new Point(0, 0);
                 /*Si el nodo padre no es nulo y ademas es diferente del actual lo actualizamos*/
-                if (parentGroup != null && parentGroup != this.groupMarkupButtons[node].Controls[0].Name) {
-                    this.groupMarkupButtons[node].Controls[0].Name = parentGroup + "ParentGrp";
-                    this.toolTipInfo.SetToolTip(this.groupMarkupButtons[node].Controls[0], String.Format(Resources.ValidateMarkup_parentTag, parentGroup));
+                if (parentGroup != null && parentGroup != this.groupMarkupButtons[node].Controls[node].Controls[0].Name) {
+                    this.groupMarkupButtons[node].Controls[node].Controls[0].Name = parentGroup + "ParentGrp";
+                    this.toolTipInfo.SetToolTip(this.groupMarkupButtons[node].Controls[node].Controls[0], String.Format(Resources.ValidateMarkup_parentTag, parentGroup));
                 }
             }
+            /*Actualizamos la navegación de los botones de marcación*/
+            this.updateMarkupBUttonsControl();
 
         }
 
@@ -270,6 +316,8 @@ namespace RegexMarkup
             this.groupBoxOriginal.Width = this.Size.Width - 35;
             this.groupBoxMarkup.Width = this.Size.Width - 35;
             this.groupMarkupButtons[this.currentGroupTag].MaximumSize = new System.Drawing.Size(this.Size.Width - 34, 45);
+            this.nextMarkupButtons.Location = new Point(this.Size.Width - 36, 55);
+            this.updateMarkupBUttonsControl();
             this.panelNavigation.Location = new System.Drawing.Point(panelNavigationX, panelNavigationY);
         }
 
@@ -290,6 +338,12 @@ namespace RegexMarkup
             /* Mostramos la posicion del resultado actual respecto al total */
             this.citationOf.Text = String.Format(Resources.ValidateMarkup_citationOf, (this.currencyManager.Position + 1), this.citas.Count);
         }
+
+        private void groupMarkupButtons_MouseEnter(object sender, EventArgs e)
+        {
+            this.updateMarkupBUttonsControl();
+        }
+
         #endregion
 
         #region selectTagContent
@@ -614,6 +668,26 @@ namespace RegexMarkup
             this.Close();
         }
 
+        private void nextMarkupButtons_Click(object sender, EventArgs e)
+        {
+            GroupBox groupMarkupButtons = (GroupBox)this.groupMarkupButtons[this.currentGroupTag];
+            Panel groupMarkupButtonsPanel = (Panel)groupMarkupButtons.Controls[this.currentGroupTag];
+
+            this.currentGroupTagScroll = this.currentGroupTagScroll - (groupMarkupButtons.MaximumSize.Width - 100);
+            groupMarkupButtonsPanel.Location = new Point(this.currentGroupTagScroll, 0);
+            this.updateMarkupBUttonsControl();
+        }
+
+        private void prevMarkupButtons_Click(object sender, EventArgs e)
+        {
+            GroupBox groupMarkupButtons = (GroupBox)this.groupMarkupButtons[this.currentGroupTag];
+            Panel groupMarkupButtonsPanel = (Panel)groupMarkupButtons.Controls[this.currentGroupTag];
+
+            this.currentGroupTagScroll = this.currentGroupTagScroll + (groupMarkupButtons.MaximumSize.Width - 100);
+            groupMarkupButtonsPanel.Location = new Point(this.currentGroupTagScroll, 0);
+            this.updateMarkupBUttonsControl();
+        }
+
         #endregion
 
         #region Disable close button
@@ -661,6 +735,31 @@ namespace RegexMarkup
         }
 
         #endregion
+
+        private void updateMarkupBUttonsControl(){
+            GroupBox groupMarkupButtons = (GroupBox)this.groupMarkupButtons[this.currentGroupTag];
+            Panel groupMarkupButtonsPanel = (Panel) groupMarkupButtons.Controls[this.currentGroupTag];
+            int groupMarkupButtonsMaxWidth = groupMarkupButtons.MaximumSize.Width;
+            if ((groupMarkupButtonsPanel.Size.Width + groupMarkupButtonsPanel.Location.X) > groupMarkupButtonsMaxWidth && groupMarkupButtonsPanel.Location.X <= 12)
+            {
+                this.prevMarkupButtons.Visible = false;
+                this.nextMarkupButtons.Visible = true;
+            }
+            else if (groupMarkupButtonsPanel.Location.X < 12 && (groupMarkupButtonsPanel.Size.Width + groupMarkupButtonsPanel.Location.X) < groupMarkupButtonsMaxWidth)
+            {
+                this.prevMarkupButtons.Visible = true;
+                this.nextMarkupButtons.Visible = false;
+            }
+            else if (groupMarkupButtonsPanel.Location.X < 12 && (groupMarkupButtonsPanel.Size.Width + groupMarkupButtonsPanel.Location.X) > groupMarkupButtonsMaxWidth)
+            {
+                this.prevMarkupButtons.Visible = true;
+                this.nextMarkupButtons.Visible = true;
+            }
+            else {
+                this.prevMarkupButtons.Visible = false;
+                this.nextMarkupButtons.Visible = false;
+            }
+        }
 
     }
 }

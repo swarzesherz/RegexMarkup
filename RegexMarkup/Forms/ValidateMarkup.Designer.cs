@@ -356,5 +356,6 @@ namespace RegexMarkup
         private System.Windows.Forms.Button buttonRedo;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Panel panelNavigation;
+        private Button nextMarkupButtons;
     }
 }
