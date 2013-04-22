@@ -261,7 +261,7 @@ namespace RegexMarkup
             }
             else {
                 this.groupMarkupButtons[node].Visible = true;
-                this.groupMarkupButtons[node].Controls[node].Location = new Point(0, 0);
+                this.groupMarkupButtons[node].Controls[node].Location = new Point(12, 0);
                 /*Si el nodo padre no es nulo y ademas es diferente del actual lo actualizamos*/
                 if (parentGroup != null && parentGroup != this.groupMarkupButtons[node].Controls[node].Controls[0].Name) {
                     this.groupMarkupButtons[node].Controls[node].Controls[0].Name = parentGroup + "ParentGrp";
