@@ -2,7 +2,7 @@
   <PropertyGroup>
     <ProjectView>ProjectFiles</ProjectView>
     <PublishUrlHistory>ftp://132.248.9.166/public_html/RegexMarkup/</PublishUrlHistory>
-    <InstallUrlHistory>http://scielo.no-ip.org/RegexMarkup/|http://scielo.no-ip.org/|http://http://scielo.no-ip.org//|http://132.248.9.166/</InstallUrlHistory>
+    <InstallUrlHistory>http://132.248.9.166/RegexMarkup/|http://scielo.no-ip.org/RegexMarkup/|http://scielo.no-ip.org/|http://http://scielo.no-ip.org//|http://132.248.9.166/</InstallUrlHistory>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

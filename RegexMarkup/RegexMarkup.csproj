@@ -36,9 +36,9 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsUrl>http://132.248.9.166/</BootstrapperComponentsUrl>
     <PublishUrl>ftp://132.248.9.166/public_html/RegexMarkup/</PublishUrl>
-    <InstallUrl>http://scielo.no-ip.org/RegexMarkup/</InstallUrl>
+    <InstallUrl>http://132.248.9.166/RegexMarkup/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.7.6.33</ApplicationVersion>
+    <ApplicationVersion>0.7.6.36</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
