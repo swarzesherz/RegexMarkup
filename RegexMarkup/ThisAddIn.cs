@@ -9,6 +9,7 @@ using Microsoft.Office.Tools.Word;
 using Microsoft.Office.Tools.Word.Extensions;
 using System.Deployment.Application;
 using log4net;
+using RegexMarkup.Classes;
 
 namespace RegexMarkup
 {
@@ -18,12 +19,43 @@ namespace RegexMarkup
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
+            object wdKeyAlt = Microsoft.Office.Interop.Word.WdKey.wdKeyAlt;
+            object wdKeyF3 = Microsoft.Office.Interop.Word.WdKey.wdKeyF3;
+            object wdKeyShift = Microsoft.Office.Interop.Word.WdKey.wdKeyShift;
+            object missing = Type.Missing;
+            try
+            {
+                int keycode = Globals.ThisAddIn.Application.BuildKeyCode(Microsoft.Office.Interop.Word.WdKey.wdKeyControl, ref wdKeyF3, ref missing, ref missing);
+                Globals.ThisAddIn.Application.KeyBindings.Add(
+                    Microsoft.Office.Interop.Word.WdKeyCategory.wdKeyCategoryStyle,
+                    "testKeybind",
+                    keycode,
+                    ref missing,
+                    ref missing);
+                Word.KeyBindings myKey = Globals.ThisAddIn.Application.KeyBindings;
+                string mystr = "";
+                foreach (Word.KeyBinding wrdKey in myKey)
+                {  
+                    mystr = mystr + wrdKey.KeyString;
 
+                }
+                //System.Windows.Forms.MessageBox.Show(mystr);
+            }
+            catch (Exception ex)
+            {
+                if (log.IsErrorEnabled) log.Error(ex.Message + "\r\n" + ex.StackTrace);
+            }
+            InterceptKeys.SetHook();
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
         {
+            InterceptKeys.ReleaseHook();
+        }
 
+        private void testKeybind()
+        {
+            System.Windows.Forms.MessageBox.Show("Key Binding");
         }
 
         #region Código generado por VSTO

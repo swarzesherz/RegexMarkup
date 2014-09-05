@@ -35,6 +35,7 @@ namespace RegexMarkup
             this.buttonRegexMarkup = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.buttonDebug = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.buttonConfig = new Microsoft.Office.Tools.Ribbon.RibbonButton();
+            this.restInstitutionButton = new Microsoft.Office.Tools.Ribbon.RibbonButton();
             this.TabRegexMarkup.SuspendLayout();
             this.groupRegexMarkup.SuspendLayout();
             this.SuspendLayout();
@@ -51,6 +52,7 @@ namespace RegexMarkup
             this.groupRegexMarkup.Items.Add(this.buttonRegexMarkup);
             this.groupRegexMarkup.Items.Add(this.buttonDebug);
             this.groupRegexMarkup.Items.Add(this.buttonConfig);
+            this.groupRegexMarkup.Items.Add(this.restInstitutionButton);
             this.groupRegexMarkup.Label = "RegexMarkup";
             this.groupRegexMarkup.Name = "groupRegexMarkup";
             // 
@@ -78,6 +80,14 @@ namespace RegexMarkup
             this.buttonConfig.ShowImage = true;
             this.buttonConfig.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.buttonConfig_Click);
             // 
+            // restInstitutionButton
+            // 
+            this.restInstitutionButton.Image = global::RegexMarkup.Properties.Resources.institution;
+            this.restInstitutionButton.Label = "Institución";
+            this.restInstitutionButton.Name = "restInstitutionButton";
+            this.restInstitutionButton.ShowImage = true;
+            this.restInstitutionButton.Click += new System.EventHandler<Microsoft.Office.Tools.Ribbon.RibbonControlEventArgs>(this.restInstitutionButton_Click);
+            // 
             // RibbonRegexMarkup
             // 
             this.Name = "RibbonRegexMarkup";
@@ -99,6 +109,7 @@ namespace RegexMarkup
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonRegexMarkup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonConfig;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonDebug;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton restInstitutionButton;
     }
 
     partial class ThisRibbonCollection : Microsoft.Office.Tools.Ribbon.RibbonReadOnlyCollection

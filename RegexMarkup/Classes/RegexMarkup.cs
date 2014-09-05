@@ -318,7 +318,7 @@ namespace RegexMarkup
         /// <param name="tag">Etiqueta donde buscaremos</param>
         /// <param name="attr">Atributo a buscar</param>
         /// <returns>El valor del atributo buscado</returns>
-        private String getAttrValueInTag(String tag, String attr) {
+        public String getAttrValueInTag(String tag, String attr) {
             if (log.IsInfoEnabled) log.Info("Begin");
             if (log.IsDebugEnabled) log.Debug("getAttrValueInTag(tag: " + tag + ", attr: " + attr + ")");
             /* Declaración de variables */

@@ -17,6 +17,7 @@ namespace RegexMarkup
         private RegexMarkup objectRegexMarkup = RegexMarkup.Instance;
         private ConfigRegexMarkup configForm = null;
         private Debug debugForm = null;
+        private FindInstitution findInstitution = null;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public RibbonRegexMarkup()
         {
@@ -79,6 +80,12 @@ namespace RegexMarkup
             debugForm.ShowDialog();
         }
 
+        private void restInstitutionButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            this.findInstitution = FindInstitution.Instance;
+            findInstitution.ShowDialog();
+        }
+
         #region SetAddRemoveProgramsIcon
         /// <summary>
         /// Función que nos permite poner un icono en agregar o quitar programas
@@ -118,7 +125,7 @@ namespace RegexMarkup
         }
         #endregion
 
-        #region
+        #region  updateSourceLogFiles
         /// <summary>
         /// Función para actualizar la configuración de lo4net
         /// </summary>
@@ -189,6 +196,5 @@ namespace RegexMarkup
             }
         }
         #endregion
-
     }
 }
