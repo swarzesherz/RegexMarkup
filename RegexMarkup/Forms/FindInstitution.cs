@@ -44,16 +44,17 @@ namespace RegexMarkup.Forms
         private bool scrollEvent = false;
         private int offset = 47800;
         private int limit = 50;
-        private string url = "http://biblat.unam.mx/api";
-        private string requestParams = "institutions/find.json/slug/{slug}/country/{country}/limit/{limit}/offset/{offset}";
-        private string searchString = "-";
-        private string country = "-";
+        private String url = "http://biblat.unam.mx/api";
+        private String requestParams = "institutions/find.json/slug/{slug}/country/{country}/limit/{limit}/offset/{offset}";
+        private String searchString = "-";
+        private String country = "-";
         private List<Country> countrys = new List<Country>();
         public static Word.Document ActiveDocument = null;
         public static Object missing = Type.Missing;
         private MarkupStruct aff = null;
         private Tags tags = Tags.Instance;
         private RegexMarkup objectRegexMarkup = RegexMarkup.Instance;
+        private InstitutionParams objectInstitutionParams = InstitutionParams.Instance;
         private DTDSciELO dtdSciELO = DTDSciELO.Instance;
         /* Definimos y asignamos el arreglo de colores para las etiquetas */
         private Color[] colors = new Color[]{
@@ -194,7 +195,12 @@ namespace RegexMarkup.Forms
 
 
         public void slugSearch(){
-            searchString = this.textSearch.Text.ToLower();
+            searchString = this.textSearch.Text;
+            if (Regex.IsMatch(searchString, "[A-Z]+?$", RegexOptions.Multiline))
+            {
+                searchString = Regex.Replace(searchString, "([A-Z])", "$1.", RegexOptions.Multiline);
+            }
+            searchString = searchString.ToLower();
             Dictionary<char, char> lReplaceValues = new Dictionary<char, char>();
             lReplaceValues['á'] = 'a';
             lReplaceValues['é'] = 'e';
@@ -293,7 +299,15 @@ namespace RegexMarkup.Forms
         private void buttonCopy_Click(object sender, EventArgs e)
         {
             this.setAffiliation();
+            object parrafoStart = aff.RngCita.Start;
+            object parrafoEnd = ((int)parrafoStart + aff.OriginalStr.Length);
+            Clipboard.Clear();
+            aff.MarkedRtb.SelectAll();
             Clipboard.SetText(aff.OriginalStr, TextDataFormat.Text);
+            aff.RngCita.Paste();
+            ActiveDocument.Range(ref parrafoStart, ref parrafoEnd).InsertParagraphAfter();
+            ActiveDocument.Range(ref parrafoStart, ref parrafoStart).Select();
+            Clipboard.Clear();
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -303,16 +317,65 @@ namespace RegexMarkup.Forms
             String city = this.dataGridView1.SelectedCells[1].Value.ToString().Trim();
             String state = null;
             String country = this.dataGridView1.SelectedCells[2].Value.ToString().Trim();
+            String id = "a0#";
+            String orgdiv1 = "";
+            String orgdiv2 = "";
+            String orgdiv3 = "";
+            String zipcode = "";
+            String email = "";
+            String orgdiv1Markup = "";
+            String orgdiv2Markup = "";
+            String orgdiv3Markup = "";
+            String zipcodeMarkup = "";
+            String emailMarkup = "";
             String original = null;
             String markup = null;
 
+            this.Hide();
+
+            if (this.checkBoxCompletInfo.Checked) {
+                objectInstitutionParams.OriginalAffiliation = ActiveDocument.Application.Selection.Paragraphs[1].Range.Text;
+                objectInstitutionParams.ShowDialog();
+                id = objectInstitutionParams.Id;
+                orgdiv1 = objectInstitutionParams.OrgDiv1;
+                orgdiv2 = objectInstitutionParams.OrgDiv2;
+                orgdiv3 = objectInstitutionParams.OrgDiv3;
+                zipcode = objectInstitutionParams.ZipCode;
+                email = objectInstitutionParams.Email;
+            }
+            if (orgdiv1 != "")
+            {
+                orgdiv1Markup = String.Format(" orgdiv1=\"{0}\"", orgdiv1);
+                orgdiv1 = String.Format(" {0},", orgdiv1);
+            }
+            if (orgdiv2 != "")
+            {
+                orgdiv2Markup = String.Format(" orgdiv2=\"{0}\"", orgdiv2);
+                orgdiv2 = String.Format(" {0},", orgdiv2);
+            }
+            if (orgdiv3 != "")
+            {
+                orgdiv3Markup = String.Format(" orgdiv3=\"{0}\"", orgdiv3);
+                orgdiv3 = String.Format(" {0},", orgdiv3);
+            }
+            if (zipcode != "")
+            {
+                zipcodeMarkup = String.Format(" [zipcode]{0}[/zipcode],", zipcode);
+                zipcode = String.Format(" {0},", zipcode);
+            }
+            if (email != "")
+            {
+                emailMarkup = String.Format(" [email]{0}[/email].", email);
+                email = String.Format(" {0}.", email);
+            }
+
             Match match = Regex.Match(city, @"(.+?),\s(.+?)$", RegexOptions.Multiline | RegexOptions.Compiled);
-            original = String.Format("{0}, {1}, {2}.", intitution, city, country);
-            markup = String.Format("[aff id=\"\" orgname=\"{0}\"]{0}, [city]{1}[/city], [country]{2}[/country].[/aff]", intitution, city, country);
+            original = String.Format("{0},{3}{4}{5}{6} {1}, {2}.{7}", intitution, city, country, orgdiv1, orgdiv2, orgdiv3, zipcode, email);
+            markup = String.Format("[aff id=\"{0}\" orgname=\"{1}\"{4}{5}{6}]{1},{7}{8}{9}{10} [city]{2}[/city], [country]{3}[/country].{11}[/aff]", id, intitution, city, country, orgdiv1Markup, orgdiv2Markup, orgdiv3Markup, orgdiv1, orgdiv2, orgdiv3, zipcodeMarkup, emailMarkup);
             if (match.Success) {
                 city = match.Groups[1].Value;
                 state = match.Groups[2].Value;
-                markup = String.Format("[aff id=\"a0#\" orgname=\"{0}\"]{0}, [city]{1}[/city], [state]{2}[/state], [country]{3}[/country].[/aff]", intitution, city, state, country);
+                markup = String.Format("[aff id=\"{0}\" orgname=\"{1}\"{5}{6}{7}]{1},{8}{9}{10}{11} [city]{2}[/city], [state]{3}[/state], [country]{4}[/country].{12}[/aff]", id, intitution, city, state, country, orgdiv1Markup, orgdiv2Markup, orgdiv3Markup, orgdiv1, orgdiv2, orgdiv3, zipcodeMarkup, emailMarkup);
             }
             Word.Paragraph parrafo = ActiveDocument.Application.Selection.Paragraphs[1];
             object parrafoStart = parrafo.Range.Start;
@@ -406,6 +469,8 @@ namespace RegexMarkup.Forms
         public string e_100w { get; set; }
         [DisplayName("País")] 
         public string e_100x { get; set; }
+        [DisplayName("Registros")]
+        public int registros { get; set; }
     }
 
     public class Country

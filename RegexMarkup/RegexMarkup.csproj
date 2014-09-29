@@ -39,7 +39,7 @@
     <PublishUrl>ftp://132.248.9.166/public_html/RegexMarkup/</PublishUrl>
     <InstallUrl>http://132.248.9.166/RegexMarkup/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.8.0.1</ApplicationVersion>
+    <ApplicationVersion>0.8.0.4</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -233,6 +233,12 @@
     <Compile Include="Forms\FindInstitution.Designer.cs">
       <DependentUpon>FindInstitution.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\InstitutionParams.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstitutionParams.Designer.cs">
+      <DependentUpon>InstitutionParams.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MailMsg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FindInstitution.resx">
       <DependentUpon>FindInstitution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InstitutionParams.resx">
+      <DependentUpon>InstitutionParams.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MailMsg.resx">
       <DependentUpon>MailMsg.cs</DependentUpon>
@@ -476,6 +485,7 @@
     <None Include="Resources\institution.ico" />
     <None Include="Resources\copy.ico" />
     <None Include="Resources\code.ico" />
+    <None Include="Resources\check.ico" />
     <Content Include="SGML\en_attb.mds">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
