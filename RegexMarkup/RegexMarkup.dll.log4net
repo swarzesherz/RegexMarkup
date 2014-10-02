@@ -14,7 +14,7 @@
         </appender>
         <appender name="AdoNetAppender" type="log4net.Appender.AdoNetAppender">
             <bufferSize value="1" />
-            <connectionType value="System.Data.SQLite.SQLiteConnection, System.Data.SQLite, Version=1.0.80.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139" />
+            <connectionType value="System.Data.SQLite.SQLiteConnection, System.Data.SQLite, Version=1.0.94.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139" />
             <connectionString value="Data Source=C:\tmp\{SourceDB}; Version=3; Compress=True;" />
             <commandText value="INSERT INTO Log (Date, Level, Class, Method, Message) VALUES (@Date, @Level, @Class, @Method, @Message)" />
             <reconnectOnError value="true" />

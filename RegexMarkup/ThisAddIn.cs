@@ -6,8 +6,6 @@ using System.Xml.Linq;
 using Word = Microsoft.Office.Interop.Word;
 using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Word;
-using Microsoft.Office.Tools.Word.Extensions;
-using System.Deployment.Application;
 using log4net;
 using RegexMarkup.Classes;
 
@@ -16,7 +14,6 @@ namespace RegexMarkup
     public partial class ThisAddIn
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             object wdKeyAlt = Microsoft.Office.Interop.Word.WdKey.wdKeyAlt;
@@ -35,7 +32,7 @@ namespace RegexMarkup
                 Word.KeyBindings myKey = Globals.ThisAddIn.Application.KeyBindings;
                 string mystr = "";
                 foreach (Word.KeyBinding wrdKey in myKey)
-                {  
+                {
                     mystr = mystr + wrdKey.KeyString;
 
                 }
@@ -58,11 +55,11 @@ namespace RegexMarkup
             System.Windows.Forms.MessageBox.Show("Key Binding");
         }
 
-        #region Código generado por VSTO
+        #region VSTO generated code
 
         /// <summary>
-        /// Método necesario para admitir el Diseñador. No se puede modificar
-        /// el contenido del método con el editor de código.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InternalStartup()
         {

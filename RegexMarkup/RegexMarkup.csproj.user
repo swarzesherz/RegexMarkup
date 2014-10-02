@@ -1,18 +1,9 @@
-﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+    <PublishUrlHistory>ftp://132.248.9.166/public_html/RegexMarkup/|ftp://132.248.9.166/public_html/RegexMarkup2/</PublishUrlHistory>
+    <InstallUrlHistory>http://132.248.9.166/RegexMarkup/|http://132.248.9.166/RegexMarkup2/</InstallUrlHistory>
+    <SupportUrlHistory />
     <ProjectView>ProjectFiles</ProjectView>
-    <PublishUrlHistory>ftp://132.248.9.166/public_html/RegexMarkup/</PublishUrlHistory>
-    <InstallUrlHistory>http://132.248.9.166/RegexMarkup/|http://scielo.no-ip.org/RegexMarkup/|http://scielo.no-ip.org/|http://http://scielo.no-ip.org//|http://132.248.9.166/</InstallUrlHistory>
   </PropertyGroup>
-  <ProjectExtensions>
-    <VisualStudio>
-      <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
-        <ProjectClient>
-          <VSTO_CompatibleProducts ErrorProduct="Este proyecto requiere Microsoft Office Word 2007 y los ensamblados de interoperabilidad primarios registrados, pero no están instalados." ErrorPIA="Este proyecto hace referencia al ensamblado de interoperabilidad primario para Microsoft Office Word 2007, pero este ensamblado no está instalado.">
-            <Product Code="{XX12XXXX-XXXX-XXXX-X000-X000000FF1CE}" Feature="WORDFiles" PIAFeature="WORD_PIA" />
-          </VSTO_CompatibleProducts>
-        </ProjectClient>
-      </FlavorProperties>
-    </VisualStudio>
-  </ProjectExtensions>
 </Project>

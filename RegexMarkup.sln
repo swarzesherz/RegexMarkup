@@ -1,14 +1,15 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexMarkup", "RegexMarkup\RegexMarkup.csproj", "{E3637B7E-8F3C-4F38-B373-D9200D390D04}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexMarkup", "RegexMarkup\RegexMarkup.csproj", "{17306A3E-CCE7-45F9-98DB-A35BEA817A4A}"
 	ProjectSection(ProjectDependencies) = postProject
+		{637D0C98-311F-4E90-8D2B-8A98489098A3} = {637D0C98-311F-4E90-8D2B-8A98489098A3}
 		{499527FF-AE52-450F-B3E3-4AD53E1712AD} = {499527FF-AE52-450F-B3E3-4AD53E1712AD}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SgmlReaderDll", "sgmlreaderdll\SgmlReaderDll.csproj", "{499527FF-AE52-450F-B3E3-4AD53E1712AD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomValidation", "CustomValidation\CustomValidation.csproj", "{637D0C98-311F-4E90-8D2B-8A98489098A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SgmlReaderDll", "sgmlreaderdll\SgmlReaderDll.csproj", "{499527FF-AE52-450F-B3E3-4AD53E1712AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,18 +17,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E3637B7E-8F3C-4F38-B373-D9200D390D04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3637B7E-8F3C-4F38-B373-D9200D390D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3637B7E-8F3C-4F38-B373-D9200D390D04}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3637B7E-8F3C-4F38-B373-D9200D390D04}.Release|Any CPU.Build.0 = Release|Any CPU
-		{499527FF-AE52-450F-B3E3-4AD53E1712AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{499527FF-AE52-450F-B3E3-4AD53E1712AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{499527FF-AE52-450F-B3E3-4AD53E1712AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{499527FF-AE52-450F-B3E3-4AD53E1712AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17306A3E-CCE7-45F9-98DB-A35BEA817A4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17306A3E-CCE7-45F9-98DB-A35BEA817A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17306A3E-CCE7-45F9-98DB-A35BEA817A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17306A3E-CCE7-45F9-98DB-A35BEA817A4A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{637D0C98-311F-4E90-8D2B-8A98489098A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{637D0C98-311F-4E90-8D2B-8A98489098A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{637D0C98-311F-4E90-8D2B-8A98489098A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{637D0C98-311F-4E90-8D2B-8A98489098A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{499527FF-AE52-450F-B3E3-4AD53E1712AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{499527FF-AE52-450F-B3E3-4AD53E1712AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{499527FF-AE52-450F-B3E3-4AD53E1712AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{499527FF-AE52-450F-B3E3-4AD53E1712AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -112,32 +112,9 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="buttonRegexMarkup.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOuwAA
-        DrsBx/jUNgAAAJ5JREFUOE+dUssOgDAIm573z9OfNZ6NHkx8rWoNQTQoCdnA0gG2CKZV6z295lxd2vhb
-        1iKwciZdmkIAGKc0NwGKdPFTzjmQFzYoYJNjOGwUdysOLG7PAhaSk3+F3xlfOBDM2TVAEkhSEhxnjJEd
-        8PzVAbjYAe5yB52xg9673L84rQVLG6/cUnkpj7CrE6N4TUv3k5TxCAqkp8X79CfcBh/KRi/2AvkKAAAA
-        AElFTkSuQmCC
-</value>
-  </data>
-  <data name="buttonConfig.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAOuwAA
-        DrsBx/jUNgAAASVJREFUOE+9kqFSxDAQhu+NDgfu+gh1VDBD3qArcazENRJ366i7OJCVuOYRKnFgUJlm
-        6aaT467JVTF0ppNJuv//f7vpZvNXT7M/eE2Gox+1HWvqmEw/kumO56t55s2yCGORgsYr0NOZCedimBic
-        pooBICVF8ETsvf8Yhq/URAxEOL/9CKgTA0kWg2iC+rfVQCSYRQUsq+xlHhFVPxOjngnsMHD3blk9pCHH
-        1oqqdrKZyMawIjARTK3pEFDeYTAQitOgs9nsbutZvD+4z9etA6W8kMSi8h6FyOfazZFkr7CsMJBmH421
-        69vdGEkuoubUDcK3fSlceXMVBjkNN6xxJqs/kiQH8fX2DE9uaHk7iVHzWLNtC16KY2E0WSW5JF6arLbx
-        7x9/ADlM3k0jqYsQAAAAAElFTkSuQmCC
-</value>
-  </data>
 </root>

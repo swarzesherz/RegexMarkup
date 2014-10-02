@@ -1,4 +1,5 @@
-﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!--
     This section defines project-level properties.
 
@@ -20,70 +21,50 @@
     <ProjectTypeGuids>{BAA0C2D2-18E2-41B9-852F-F413020CAA33};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E3637B7E-8F3C-4F38-B373-D9200D390D04}</ProjectGuid>
+    <ProjectGuid>{17306A3E-CCE7-45F9-98DB-A35BEA817A4A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
     <RootNamespace>RegexMarkup</RootNamespace>
     <AssemblyName>RegexMarkup</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <ManifestCertificateThumbprint>A485F485AAD9345D5ECC59F85F4F0A72B94EA863</ManifestCertificateThumbprint>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
-    <SignManifests>true</SignManifests>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <DefineConstants>VSTO40</DefineConstants>
     <IsWebBootstrapper>True</IsWebBootstrapper>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>RegexMarkup.snk</AssemblyOriginatorKeyFile>
-    <TargetFrameworkSubset>Full</TargetFrameworkSubset>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <BootstrapperComponentsUrl>http://132.248.9.166/</BootstrapperComponentsUrl>
     <PublishUrl>ftp://132.248.9.166/public_html/RegexMarkup/</PublishUrl>
     <InstallUrl>http://132.248.9.166/RegexMarkup/</InstallUrl>
     <TargetCulture>es</TargetCulture>
-    <ApplicationVersion>0.8.0.4</ApplicationVersion>
+    <ApplicationVersion>0.8.0.10</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
     <UpdateIntervalUnits>days</UpdateIntervalUnits>
+    <ProductName>RegexMarkup</ProductName>
+    <PublisherName />
+    <SupportUrl />
+    <FriendlyName>RegexMarkup</FriendlyName>
+    <OfficeApplicationDescription />
+    <LoadBehavior>3</LoadBehavior>
   </PropertyGroup>
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
-      <ProductName>.NET Framework Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5</ProductName>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
+      <Install>false</Install>
     </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Office.PIA.2007">
+    <BootstrapperPackage Include="Microsoft.VSTORuntime.4.0">
       <Visible>False</Visible>
-      <ProductName>2007 Microsoft Office Primary Interop Assemblies</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Office.PIARedist.2007">
-      <Visible>False</Visible>
-      <ProductName>Microsoft Office 2007 Primary Interop Assemblies</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.VSTORuntime.3.0">
-      <Visible>False</Visible>
-      <ProductName>Visual Studio Tools para Office system 3.0 Runtime Service Pack 1</ProductName>
+      <ProductName>Microsoft Visual Studio 2010 Tools for Office Runtime %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
@@ -121,9 +102,8 @@
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <!--
     This section defines properties that are set when the "Release" configuration is selected.
@@ -146,7 +126,7 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <!--
@@ -159,57 +139,76 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>A485F485AAD9345D5ECC59F85F4F0A72B94EA863</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>RegexMarkup.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <!--
     This section specifies references for the project.
   -->
   <ItemGroup>
     <Reference Include="Accessibility" />
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-client\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharpSigned.104.1\lib\net4-client\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.AddIn, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.94.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Data.SQLite.x86.1.0.94.1\lib\net40\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="Microsoft.Office.Tools.v9.0, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Office.Tools.Common.v9.0, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Office.Tools.Word.v9.0, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.VisualStudio.Tools.Applications.Runtime.v9.0, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\log4net-1.2.11\3.5\log4net.dll</HintPath>
+    <Reference Include="Microsoft.Office.Tools.v4.0.Framework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.Tools.Applications.Runtime, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Tools, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Tools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Tools.Word, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Tools.Common.v4.0.Utilities, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Office, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <Private>False</Private>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Word, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <Private>False</Private>
-    </Reference>
-    <Reference Include="RestSharp, Version=104.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Packages\RestSharp\lib\net35-client\RestSharp.dll</HintPath>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
     </Reference>
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Data.SQLite, Version=1.0.80.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Web.Extensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
   </ItemGroup>
   <!--
@@ -224,29 +223,12 @@
   -->
   <ItemGroup>
     <Compile Include="Classes\AssemblyInfoHelper.cs" />
-    <Compile Include="Classes\InterceptKeys.cs" />
+    <Compile Include="Classes\DTDSciELO.cs" />
+    <Compile Include="Classes\interceptkeys.cs" />
     <Compile Include="Classes\ListConverter.cs" />
     <Compile Include="Classes\Mail.cs" />
-    <Compile Include="Forms\FindInstitution.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FindInstitution.Designer.cs">
-      <DependentUpon>FindInstitution.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\InstitutionParams.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\InstitutionParams.Designer.cs">
-      <DependentUpon>InstitutionParams.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MailMsg.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MailMsg.Designer.cs">
-      <DependentUpon>MailMsg.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Structs\AttrTagStruct.cs" />
-    <Compile Include="Classes\DTDSciELO.cs" />
+    <Compile Include="Classes\RegexMarkup.cs" />
+    <Compile Include="Classes\Tags.cs" />
     <Compile Include="Forms\ConfigRegexMarkup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -265,6 +247,24 @@
     <Compile Include="Forms\EditAttribute.Designer.cs">
       <DependentUpon>EditAttribute.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FindInstitution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FindInstitution.Designer.cs">
+      <DependentUpon>FindInstitution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InstitutionParams.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstitutionParams.Designer.cs">
+      <DependentUpon>InstitutionParams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MailMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MailMsg.Designer.cs">
+      <DependentUpon>MailMsg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ValidateMarkup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,23 +277,17 @@
     <Compile Include="Forms\Waiting.Designer.cs">
       <DependentUpon>Waiting.cs</DependentUpon>
     </Compile>
-    <Compile Include="Structs\MarkupButton.cs" />
-    <Compile Include="Structs\MarkupStruct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <EmbeddedResource Include="Forms\ConfigRegexMarkup.resx">
       <DependentUpon>ConfigRegexMarkup.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Debug.resx">
       <DependentUpon>Debug.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditAttribute.resx">
       <DependentUpon>EditAttribute.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FindInstitution.resx">
       <DependentUpon>FindInstitution.cs</DependentUpon>
@@ -303,26 +297,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MailMsg.resx">
       <DependentUpon>MailMsg.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ValidateMarkup.resx">
       <DependentUpon>ValidateMarkup.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Waiting.resx">
       <DependentUpon>Waiting.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.en-US.resx">
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RibbonRegexMarkup.resx">
-      <DependentUpon>RibbonRegexMarkup.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -330,7 +314,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="app.config" />
+    <EmbeddedResource Include="Properties\Resources.en-US.resx" />
+    <EmbeddedResource Include="RibbonRegexMarkup.resx">
+      <DependentUpon>RibbonRegexMarkup.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="mail.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -340,19 +334,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Classes\RegexMarkup.cs" />
     <Compile Include="RibbonRegexMarkup.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="RibbonRegexMarkup.Designer.cs">
       <DependentUpon>RibbonRegexMarkup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Tags.cs" />
+    <Compile Include="Structs\AttrTagStruct.cs" />
+    <Compile Include="Structs\MarkupButton.cs" />
+    <Compile Include="Structs\MarkupStruct.cs" />
     <Compile Include="Structs\TagStruct.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Content Include="RegexMarkup.dll.log4net">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="RegexMarkup.pfx" />
+    <None Include="RegexMarkup.snk" />
     <None Include="SGML\art1_1.dtd" />
     <None Include="SGML\art2_0.dtd" />
     <None Include="SGML\art3_0.dtd" />
@@ -368,6 +368,18 @@
     <None Include="SGML\common3.dtd" />
     <None Include="SGML\common31.dtd" />
     <Content Include="SGML\common4_0.dtd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\en_attb.mds">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\en_bars.tr">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\es_attb.mds">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SGML\es_bars.tr">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="SGML\ISOamsa.sgm">
@@ -427,10 +439,7 @@
     <Content Include="SGML\ISOtech.sgm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="SGML\es_bars.tr">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SGML\en_bars.tr">
+    <Content Include="SGML\pt_bars.tr">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="SGML\ser1_0.dtd" />
@@ -452,48 +461,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="markup.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="regex.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="RegexMarkup.dll.log4net">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="mail.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Include="RegexMarkup.snk" />
-    <None Include="Resources\undo.ico" />
-    <None Include="Resources\redo.ico" />
-    <None Include="Resources\trash.ico" />
-    <None Include="Resources\pencil.ico" />
-    <None Include="Resources\downArrow.ico" />
-    <None Include="Resources\upArrow.ico" />
-    <None Include="Resources\edit.ico" />
-    <None Include="Resources\cancel.ico" />
-    <None Include="Resources\save.ico" />
-    <None Include="Resources\prev.ico" />
-    <None Include="Resources\next.ico" />
-    <None Include="Resources\last.ico" />
-    <None Include="Resources\first.ico" />
-    <None Include="Resources\requiredAttribute.Icon.ico" />
-    <None Include="Resources\debug.ico" />
-    <None Include="Resources\mail.ico" />
-    <None Include="Resources\exit.ico" />
-    <None Include="Resources\institution.ico" />
-    <None Include="Resources\copy.ico" />
-    <None Include="Resources\code.ico" />
-    <None Include="Resources\check.ico" />
-    <Content Include="SGML\en_attb.mds">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SGML\es_attb.mds">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CustomValidation\CustomValidation.csproj">
       <Project>{637D0C98-311F-4E90-8D2B-8A98489098A3}</Project>
       <Name>CustomValidation</Name>
@@ -503,23 +470,98 @@
       <Name>SgmlReaderDll</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\markup.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\code.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\debug.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\downArrow.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\first.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\institution.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\last.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mail.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\prev.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\requiredAttribute.Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\undo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\upArrow.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\config.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\config1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="markup.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="regex.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- Include additional build rules for an Office application add-in. -->
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\OfficeTools\Microsoft.VisualStudio.Tools.Office.Office2007.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\OfficeTools\Microsoft.VisualStudio.Tools.Office.targets" />
   <!-- This section defines VSTO properties that describe the host-changeable project properties. -->
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
-        <ProjectProperties HostName="Word" HostPackage="{D2B20FF5-A6E5-47E1-90E8-463C6860CB05}" OfficeVersion="12.0" VstxVersion="3.0" ApplicationType="Word" Language="cs" TemplatesPath="" DebugInfoExeName="#Software\Microsoft\Office\12.0\Word\InstallRoot\Path#WINWORD.EXE" DebugInfoCommandLine="/w" AddItemTemplatesGuid="{147FB6A7-F239-4523-AE65-B6A4E49B361F}" />
+        <ProjectProperties HostName="Word" HostPackage="{D2B20FF5-A6E5-47E1-90E8-463C6860CB05}" OfficeVersion="12.0" VstxVersion="4.0" ApplicationType="Word" Language="cs" TemplatesPath="" DebugInfoExeName="#Software\Microsoft\Office\12.0\Word\InstallRoot\Path#WINWORD.EXE" DebugInfoCommandLine="/w" AddItemTemplatesGuid="{51063C3A-E220-4D12-8922-BDA915ACD783}" />
         <Host Name="Word" GeneratedCodeNamespace="RegexMarkup" PublishedHash="69C324AB27932AA2FBF2B7EA72250886FF164DE6" IconIndex="0">
-          <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" PublishedHash="03DB9621349CF9D73230EFD70EEEA48FEE0718C5" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
+          <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" PublishedHash="0F4F513CA5067D79DC69B9C81224DB0B185878BD" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
         </Host>
-        <ProjectClient>
-          <VSTO_CompatibleProducts ErrorProduct="Este proyecto requiere Microsoft Office Word 2007 y los ensamblados de interoperabilidad primarios registrados, pero no están instalados." ErrorPIA="Este proyecto hace referencia al ensamblado de interoperabilidad primario para Microsoft Office Word 2007, pero este ensamblado no está instalado.">
-            <Product Code="{XX12XXXX-XXXX-XXXX-X000-X000000FF1CE}" Feature="WORDFiles" PIAFeature="WORD_PIA" />
-          </VSTO_CompatibleProducts>
-        </ProjectClient>
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>

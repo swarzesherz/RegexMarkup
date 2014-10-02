@@ -72,10 +72,19 @@ namespace RegexMarkup.Forms
 
         private void constructPaginator(){
             this.connection.Open();
-            String query = "SELECT count() FROM Log";
+            String query = "SELECT count(*) FROM Log";
             SQLiteCommand cmd = new SQLiteCommand(query, this.connection);
             SQLiteDataReader datos = cmd.ExecuteReader();
-            this.totalPages = (Convert.ToInt16(datos[0]) + this.queryLimit -1 )/ this.queryLimit;
+            datos.Read();
+            int registros = Convert.ToInt16(datos[0]);
+            try
+            {
+                this.totalPages = (registros  + this.queryLimit - 1) / this.queryLimit;
+            }
+            catch (Exception ex)
+            {
+                if (log.IsErrorEnabled) log.Error(ex.Message + "\r\n" + ex.StackTrace);
+            }
             this.connection.Close();
         }
 

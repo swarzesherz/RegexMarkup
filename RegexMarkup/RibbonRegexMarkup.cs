@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.SQLite;
 using System.Deployment.Application;
 using System.Globalization;
 using System.IO;
@@ -9,17 +8,20 @@ using Microsoft.Office.Tools.Ribbon;
 using Microsoft.Win32;
 using RegexMarkup.Forms;
 using RegexMarkup.Properties;
+using System.Data.SQLite;
 
 namespace RegexMarkup
 {
-    public partial class RibbonRegexMarkup : OfficeRibbon
+    public partial class RibbonRegexMarkup
     {
+
         private RegexMarkup objectRegexMarkup = RegexMarkup.Instance;
         private ConfigRegexMarkup configForm = null;
         private Debug debugForm = null;
         private FindInstitution findInstitution = null;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public RibbonRegexMarkup()
+
+        private void RibbonRegexMarkup_Load(object sender, RibbonUIEventArgs e)
         {
             /*Actualizando configuración de log4net*/
             this.updateSourceLogFiles();
@@ -35,7 +37,6 @@ namespace RegexMarkup
                 Resources.Culture = System.Globalization.CultureInfo.CurrentCulture;
                 Settings.Default.language = Resources.Culture.ToString();
             }
-            InitializeComponent();
             /*Actualizando textos*/
             this.buttonConfig.Label = Resources.RibbonRegexMarkup_buttonConfiguration;
             this.buttonDebug.Label = Resources.RibbonRegexMarkup_buttonDebug;
@@ -49,19 +50,28 @@ namespace RegexMarkup
             }
         }
 
-        private void RibbonRegexMarkup_Load(object sender, RibbonUIEventArgs e)
-        {
-            
-        }
-
         private void buttonRegexMarkup_Click(object sender, RibbonControlEventArgs e)
         {
             try
             {
                 this.objectRegexMarkup.startMarkup();
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 if (log.IsErrorEnabled) log.Error(ex.Message + "\r\n" + ex.StackTrace);
+            }
+        }
+
+        private void buttonDebug_Click(object sender, RibbonControlEventArgs e)
+        {
+            try
+            {
+                this.debugForm = Debug.Instance;
+                debugForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
 
@@ -74,13 +84,7 @@ namespace RegexMarkup
             this.buttonDebug.Label = Resources.RibbonRegexMarkup_buttonDebug;
         }
 
-        private void buttonDebug_Click(object sender, RibbonControlEventArgs e)
-        {
-            this.debugForm = Debug.Instance;
-            debugForm.ShowDialog();
-        }
-
-        private void restInstitutionButton_Click(object sender, RibbonControlEventArgs e)
+        private void buttonInstitution_Click(object sender, RibbonControlEventArgs e)
         {
             this.findInstitution = FindInstitution.Instance;
             findInstitution.ShowDialog();
@@ -105,7 +109,8 @@ namespace RegexMarkup
                     string[] mySubKeyNames = myUninstallKey.GetSubKeyNames();
                     int i = 0;
                     bool keyFound = false;
-                    while (i < mySubKeyNames.Length && !keyFound) {
+                    while (i < mySubKeyNames.Length && !keyFound)
+                    {
                         RegistryKey myKey = myUninstallKey.OpenSubKey(mySubKeyNames[i], true);
                         object myValue = myKey.GetValue("DisplayName");
                         if (myValue != null && myValue.ToString() == AssemblyInfoHelper.Product)
@@ -118,7 +123,8 @@ namespace RegexMarkup
                         i++;
                     }
                 }
-                catch (Exception e) {
+                catch (Exception e)
+                {
                     if (log.IsErrorEnabled) log.Error(e.Message + "\r\n" + e.StackTrace);
                 }
             }
@@ -129,7 +135,8 @@ namespace RegexMarkup
         /// <summary>
         /// Función para actualizar la configuración de lo4net
         /// </summary>
-        private void updateSourceLogFiles() {
+        private void updateSourceLogFiles()
+        {
             /*Actualizando directorios para los archivos usados por log4net*/
             String dataDirectory = null;
             String appenderType = null;

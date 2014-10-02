@@ -36,10 +36,10 @@
             this.countryLabel = new System.Windows.Forms.Label();
             this.countryCbox = new System.Windows.Forms.ComboBox();
             this.groupBoxTools = new System.Windows.Forms.GroupBox();
+            this.checkBoxCompletInfo = new System.Windows.Forms.CheckBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonInsert = new System.Windows.Forms.Button();
             this.buttonCopy = new System.Windows.Forms.Button();
-            this.checkBoxCompletInfo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBoxTools.SuspendLayout();
             this.SuspendLayout();
@@ -116,6 +116,18 @@
             this.groupBoxTools.TabStop = false;
             this.groupBoxTools.Text = "Herramientas";
             // 
+            // checkBoxCompletInfo
+            // 
+            this.checkBoxCompletInfo.AutoSize = true;
+            this.checkBoxCompletInfo.Checked = true;
+            this.checkBoxCompletInfo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxCompletInfo.Location = new System.Drawing.Point(299, 19);
+            this.checkBoxCompletInfo.Name = "checkBoxCompletInfo";
+            this.checkBoxCompletInfo.Size = new System.Drawing.Size(198, 17);
+            this.checkBoxCompletInfo.TabIndex = 21;
+            this.checkBoxCompletInfo.Text = "Agregar datos de la afiliación original";
+            this.checkBoxCompletInfo.UseVisualStyleBackColor = true;
+            // 
             // buttonCancel
             // 
             this.buttonCancel.AutoSize = true;
@@ -124,9 +136,9 @@
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancel.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancel.Image")));
             this.buttonCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancel.Location = new System.Drawing.Point(491, 14);
+            this.buttonCancel.Location = new System.Drawing.Point(503, 15);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(73, 23);
+            this.buttonCancel.Size = new System.Drawing.Size(77, 23);
             this.buttonCancel.TabIndex = 20;
             this.buttonCancel.Text = "Cancelar";
             this.buttonCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -143,7 +155,7 @@
             this.buttonInsert.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonInsert.Location = new System.Drawing.Point(10, 15);
             this.buttonInsert.Name = "buttonInsert";
-            this.buttonInsert.Size = new System.Drawing.Size(154, 23);
+            this.buttonInsert.Size = new System.Drawing.Size(159, 23);
             this.buttonInsert.TabIndex = 14;
             this.buttonInsert.Text = "Insertar afiliación marcada";
             this.buttonInsert.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -159,26 +171,14 @@
             this.buttonCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCopy.Image = global::RegexMarkup.Properties.Resources.copy;
             this.buttonCopy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCopy.Location = new System.Drawing.Point(170, 15);
+            this.buttonCopy.Location = new System.Drawing.Point(175, 15);
             this.buttonCopy.Name = "buttonCopy";
-            this.buttonCopy.Size = new System.Drawing.Size(111, 23);
+            this.buttonCopy.Size = new System.Drawing.Size(118, 23);
             this.buttonCopy.TabIndex = 0;
             this.buttonCopy.Text = "Insertar afiliación";
             this.buttonCopy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonCopy.UseVisualStyleBackColor = true;
             this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
-            // 
-            // checkBoxCompletInfo
-            // 
-            this.checkBoxCompletInfo.AutoSize = true;
-            this.checkBoxCompletInfo.Checked = true;
-            this.checkBoxCompletInfo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxCompletInfo.Location = new System.Drawing.Point(287, 18);
-            this.checkBoxCompletInfo.Name = "checkBoxCompletInfo";
-            this.checkBoxCompletInfo.Size = new System.Drawing.Size(198, 17);
-            this.checkBoxCompletInfo.TabIndex = 21;
-            this.checkBoxCompletInfo.Text = "Agregar datos de la afiliación original";
-            this.checkBoxCompletInfo.UseVisualStyleBackColor = true;
             // 
             // FindInstitution
             // 
