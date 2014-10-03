@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InstitutionParams));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.richTextBoxOriginalText = new System.Windows.Forms.RichTextBox();
             this.labelId = new System.Windows.Forms.Label();
@@ -302,6 +303,7 @@
             this.Controls.Add(this.textBoxId);
             this.Controls.Add(this.labelId);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InstitutionParams";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InstitutionParams";

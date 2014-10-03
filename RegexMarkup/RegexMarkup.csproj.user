@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>ftp://132.248.9.166/public_html/RegexMarkup/|ftp://132.248.9.166/public_html/RegexMarkup2/</PublishUrlHistory>
-    <InstallUrlHistory>http://132.248.9.166/RegexMarkup/|http://132.248.9.166/RegexMarkup2/</InstallUrlHistory>
+    <PublishUrlHistory>ftp://132.248.9.166/public_html/RegexMarkup/</PublishUrlHistory>
+    <InstallUrlHistory>http://132.248.9.166/RegexMarkup/</InstallUrlHistory>
     <SupportUrlHistory />
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
 </Project>

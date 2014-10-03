@@ -348,6 +348,8 @@
       <DependentUpon>RibbonRegexMarkup.cs</DependentUpon>
     </Compile>
     <Compile Include="Structs\AttrTagStruct.cs" />
+    <Compile Include="Structs\Country.cs" />
+    <Compile Include="Structs\Institution.cs" />
     <Compile Include="Structs\MarkupButton.cs" />
     <Compile Include="Structs\MarkupStruct.cs" />
     <Compile Include="Structs\TagStruct.cs" />

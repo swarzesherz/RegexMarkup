@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Data;
 using System.Collections.Generic;
-using System.Reflection;
-using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using RestSharp;
 using RegexMarkup.Classes;
+using RegexMarkup.Structs;
 using Word = Microsoft.Office.Interop.Word;
 
 namespace RegexMarkup.Forms
@@ -42,7 +40,7 @@ namespace RegexMarkup.Forms
 
         private VScrollBar vScrollBar;
         private bool scrollEvent = false;
-        private int offset = 47800;
+        private int offset = 0;
         private int limit = 50;
         private String url = "http://biblat.unam.mx/api";
         private String requestParams = "institutions/find.json/slug/{slug}/country/{country}/limit/{limit}/offset/{offset}";
@@ -75,46 +73,22 @@ namespace RegexMarkup.Forms
                  }
             }
             this.getCountrys();
+            this.textSearch.KeyDown +=new KeyEventHandler(textSearch_KeyDown);
         }
 
-        void vScrollBar_ValueChanged(object sender, object e)
+        public void getCountrys()
         {
-            int scrollMax = vScrollBar.Maximum - vScrollBar.Size.Height;
-            if (!scrollEvent && vScrollBar.Value >= scrollMax)
-            {
-                this.addRows();
-            }
-        }
-
-        void dataGridView1_Scroll(object sender, ScrollEventArgs e)
-        {
-            int scrollMax = vScrollBar.Maximum - vScrollBar.Size.Height;
-            scrollEvent = true;
-            if (e.Type == ScrollEventType.EndScroll)
-            {
-                if (vScrollBar.Value >= scrollMax)
-                {
-                    this.addRows();
-                }
-                scrollEvent = false;
-            }
-        }
-
-        public void addRows() {
             var client = new RestClient(url);
-            var request = new RestRequest(requestParams, Method.GET);
-            offset += limit;
-            request.AddUrlSegment("limit", limit.ToString());
-            request.AddUrlSegment("offset", offset.ToString());
-            request.AddUrlSegment("slug", this.searchString);
-            request.AddUrlSegment("country", this.country);
-            IRestResponse<List<Institution>> result = client.Execute<List<Institution>>(request);
-            DataTable dt = new DataTable();
-            dt = result.Data.ToDataTable();
-            foreach (DataRow dr in dt.Rows)
-            {
-                dataGridView1.Rows.Add(dr.ItemArray);
-            }
+            var request = new RestRequest("institutions/country.json", Method.GET);
+            IRestResponse<List<Country>> result = client.Execute<List<Country>>(request);
+            Country all = new Country();
+            all.slugPais = "-";
+            all.e_100x = "Todos";
+            countrys.Add(all);
+            countrys.AddRange(result.Data);
+            this.countryCbox.DisplayMember = "e_100x";
+            this.countryCbox.ValueMember = "slugPais";
+            this.countryCbox.DataSource = countrys;
         }
 
         public void getInstitutions(){
@@ -143,49 +117,25 @@ namespace RegexMarkup.Forms
             scrollEvent = false;
         }
 
-        public void getCountrys()
+        public void addRows()
         {
             var client = new RestClient(url);
-            var request = new RestRequest("institutions/country.json", Method.GET);
-            IRestResponse<List<Country>> result = client.Execute<List<Country>>(request);
-            Country all = new Country();
-            all.slugPais = "-";
-            all.e_100x = "Todos";
-            countrys.Add(all);
-            countrys.AddRange(result.Data);
-            this.countryCbox.DisplayMember = "e_100x";
-            this.countryCbox.ValueMember = "slugPais";
-            this.countryCbox.DataSource = countrys;
-        }
-
-        private void dgGrid_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            var grid = sender as DataGridView;
-            var rowIdx = (e.RowIndex + 1).ToString();
-
-            var centerFormat = new StringFormat()
+            var request = new RestRequest(requestParams, Method.GET);
+            offset += limit;
+            request.AddUrlSegment("limit", limit.ToString());
+            request.AddUrlSegment("offset", offset.ToString());
+            request.AddUrlSegment("slug", this.searchString);
+            request.AddUrlSegment("country", this.country);
+            IRestResponse<List<Institution>> result = client.Execute<List<Institution>>(request);
+            DataTable dt = new DataTable();
+            dt = result.Data.ToDataTable();
+            foreach (DataRow dr in dt.Rows)
             {
-                // right alignment might actually make more sense for numbers
-                Alignment = StringAlignment.Center,
-                LineAlignment = StringAlignment.Center
-            };
-
-            var headerBounds = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height);
-            e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
+                dataGridView1.Rows.Add(dr.ItemArray);
+            }
         }
 
-        private void FindInstitution_Load(object sender, EventArgs e)
-        {
-            /* Inicializamos variables */
-            ActiveDocument = Globals.ThisAddIn.Application.ActiveDocument;
-            this.tags.Dtd = dtdSciELO.getDTD("4.0", "article");
-            this.textSearch.Text = ActiveDocument.Application.Selection.Text.Trim();
-            this.offset = 0;
-            this.slugSearch();
-            this.getInstitutions();
-        }
-
-        private void submitSearch_Click(object sender, EventArgs e)
+        private void submit()
         {
             this.slugSearch();
             this.country = this.countryCbox.SelectedValue.ToString();
@@ -193,8 +143,9 @@ namespace RegexMarkup.Forms
             getInstitutions();
         }
 
-
-        public void slugSearch(){
+        #region slugSearch
+        public void slugSearch()
+        {
             searchString = this.textSearch.Text;
             if (Regex.IsMatch(searchString, "[A-Z]+?$", RegexOptions.Multiline))
             {
@@ -266,52 +217,14 @@ namespace RegexMarkup.Forms
             searchString = Regex.Replace(searchString, @"[^\w-]", "", RegexOptions.Compiled);
             searchString = Regex.Replace(searchString, @"-+", "-", RegexOptions.Compiled);
             searchString = Regex.Replace(searchString, @"(-$|^-)", "", RegexOptions.Compiled);
-            if (searchString == "") {
+            if (searchString == "")
+            {
                 searchString = "-";
             }
         }
+        #endregion
 
-        private void buttonCancel_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
-        }
-
-        private void buttonInsert_Click(object sender, EventArgs e)
-        {
-            this.setAffiliation();
-            object parrafoStart = aff.RngCita.Start;
-            object parrafoEnd = ((int)parrafoStart + aff.MarkedStr.Length);
-            object idAffStart = ((int)parrafoStart + "[aff id=\"a0".Length);
-            object idAffEnd = ((int)idAffStart + 1);
-            Clipboard.Clear();
-            aff.MarkedRtb.SelectAll();
-            Clipboard.SetText(aff.MarkedRtb.SelectedRtf, TextDataFormat.Rtf);
-            aff.RngCita.Paste();
-            ActiveDocument.Range(ref parrafoStart, ref parrafoEnd).InsertParagraphAfter();
-            ActiveDocument.Range(ref idAffStart, ref idAffEnd).Select();
-            Clipboard.Clear();
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
-
-
-        private void buttonCopy_Click(object sender, EventArgs e)
-        {
-            this.setAffiliation();
-            object parrafoStart = aff.RngCita.Start;
-            object parrafoEnd = ((int)parrafoStart + aff.OriginalStr.Length);
-            Clipboard.Clear();
-            aff.MarkedRtb.SelectAll();
-            Clipboard.SetText(aff.OriginalStr, TextDataFormat.Text);
-            aff.RngCita.Paste();
-            ActiveDocument.Range(ref parrafoStart, ref parrafoEnd).InsertParagraphAfter();
-            ActiveDocument.Range(ref parrafoStart, ref parrafoStart).Select();
-            Clipboard.Clear();
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
-
+        #region setAffiliation
         private void setAffiliation() {
             String intitution = this.dataGridView1.SelectedCells[0].Value.ToString().Trim();
             String city = this.dataGridView1.SelectedCells[1].Value.ToString().Trim();
@@ -383,6 +296,7 @@ namespace RegexMarkup.Forms
             aff.MarkedRtb.Font = new Font("Arial", 11, FontStyle.Regular);
             this.colorRefTags("aff", 1);
         }
+        #endregion
 
         #region colorTags
         /// <summary>
@@ -459,25 +373,114 @@ namespace RegexMarkup.Forms
             }
         }
         #endregion
-    }
 
-    public class Institution
-    {
-        [DisplayName("Institución")] 
-        public string e_100u { get; set; }
-        [DisplayName("Ciudad")] 
-        public string e_100w { get; set; }
-        [DisplayName("País")] 
-        public string e_100x { get; set; }
-        [DisplayName("Registros")]
-        public int registros { get; set; }
-    }
+        #region generalEvents
+        void vScrollBar_ValueChanged(object sender, object e)
+        {
+            int scrollMax = vScrollBar.Maximum - vScrollBar.Size.Height;
+            if (!scrollEvent && vScrollBar.Value >= scrollMax)
+            {
+                this.addRows();
+            }
+        }
 
-    public class Country
-    {
-        [DisplayName("slug")]
-        public string slugPais { get; set; }
-        [DisplayName("País")]
-        public string e_100x { get; set; }
+        void dataGridView1_Scroll(object sender, ScrollEventArgs e)
+        {
+            int scrollMax = vScrollBar.Maximum - vScrollBar.Size.Height;
+            scrollEvent = true;
+            if (e.Type == ScrollEventType.EndScroll)
+            {
+                if (vScrollBar.Value >= scrollMax)
+                {
+                    this.addRows();
+                }
+                scrollEvent = false;
+            }
+        }
+
+        private void dgGrid_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            var rowIdx = (e.RowIndex + 1).ToString();
+
+            var centerFormat = new StringFormat()
+            {
+                // right alignment might actually make more sense for numbers
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+
+            var headerBounds = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height);
+            e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
+        }
+
+        private void FindInstitution_Load(object sender, EventArgs e)
+        {
+            /* Inicializamos variables */
+            ActiveDocument = Globals.ThisAddIn.Application.ActiveDocument;
+            this.tags.Dtd = dtdSciELO.getDTD("4.0", "article");
+            this.textSearch.Text = ActiveDocument.Application.Selection.Text.Trim();
+            this.offset = 0;
+            this.slugSearch();
+            this.getInstitutions();
+        }
+        #endregion
+
+        #region clickEvents
+
+        void textSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+            {
+                submit();
+            }
+        }
+
+        private void submitSearch_Click(object sender, EventArgs e)
+        {
+            submit();
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void buttonInsert_Click(object sender, EventArgs e)
+        {
+            this.setAffiliation();
+            object parrafoStart = aff.RngCita.Start;
+            object parrafoEnd = ((int)parrafoStart + aff.MarkedStr.Length);
+            object idAffStart = ((int)parrafoStart + "[aff id=\"a0".Length);
+            object idAffEnd = ((int)idAffStart + 1);
+            Clipboard.Clear();
+            aff.MarkedRtb.SelectAll();
+            Clipboard.SetText(aff.MarkedRtb.SelectedRtf, TextDataFormat.Rtf);
+            aff.RngCita.Paste();
+            ActiveDocument.Range(ref parrafoStart, ref parrafoEnd).InsertParagraphAfter();
+            ActiveDocument.Range(ref idAffStart, ref idAffEnd).Select();
+            Clipboard.Clear();
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void buttonCopy_Click(object sender, EventArgs e)
+        {
+            this.setAffiliation();
+            object parrafoStart = aff.RngCita.Start;
+            object parrafoEnd = ((int)parrafoStart + aff.OriginalStr.Length);
+            Clipboard.Clear();
+            aff.MarkedRtb.SelectAll();
+            Clipboard.SetText(aff.OriginalStr, TextDataFormat.Text);
+            aff.RngCita.Paste();
+            ActiveDocument.Range(ref parrafoStart, ref parrafoEnd).InsertParagraphAfter();
+            ActiveDocument.Range(ref parrafoStart, ref parrafoStart).Select();
+            Clipboard.Clear();
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        #endregion
     }
 }
