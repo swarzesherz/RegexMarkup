@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Data.SQLite;
 using System.IO;
 using System.IO.Compression;
 using System.Net.Mail;
@@ -9,6 +8,11 @@ using log4net;
 using log4net.Appender;
 using RegexMarkup.Properties;
 using System.Text;
+using LogViewer;
+using System.Xml;
+using System.Xml.Linq;
+using LogViewer;
+using System.Collections.Generic;
 
 namespace RegexMarkup.Forms
 {
@@ -38,11 +42,12 @@ namespace RegexMarkup.Forms
         #endregion
 
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private String debugFileDB;
-        private SQLiteConnection connection;
-        private int curretPage;
-        private int totalPages;
-        private int queryLimit = 15;
+        private String debugFileDB = null;
+        private List<LogEntry> debugData = null;
+        private int curretPage = 0;
+        private int totalPages = 0;
+        private int pageSize = 15;
+        private int totalRows = 0;
         private MailMsg mailMsjForm = MailMsg.Instance;
         
         Debug()
@@ -54,12 +59,8 @@ namespace RegexMarkup.Forms
                 String appenderType = appender.GetType().Name;
                 switch (appenderType)
                 {
-                    case "AdoNetAppender":
-                        connection = new SQLiteConnection(((AdoNetAppender)appender).ConnectionString);
-                        this.debugFileDB = ((AdoNetAppender)appender).ConnectionString;
-                        this.debugFileDB = this.debugFileDB.Substring(this.debugFileDB.IndexOf("Data Source="));
-                        this.debugFileDB = this.debugFileDB.Substring(this.debugFileDB.IndexOf('=') + 1);
-                        this.debugFileDB = this.debugFileDB.Substring(0, this.debugFileDB.IndexOf(';')).Trim();
+                    case "RollingFileAppender":
+                        this.debugFileDB = ((RollingFileAppender)appender).File;
                         break;
                 }
             }
@@ -71,43 +72,39 @@ namespace RegexMarkup.Forms
         }
 
         private void constructPaginator(){
-            this.connection.Open();
-            String query = "SELECT count(*) FROM Log";
-            SQLiteCommand cmd = new SQLiteCommand(query, this.connection);
-            SQLiteDataReader datos = cmd.ExecuteReader();
-            datos.Read();
-            int registros = Convert.ToInt16(datos[0]);
-            try
-            {
-                this.totalPages = (registros  + this.queryLimit - 1) / this.queryLimit;
-            }
-            catch (Exception ex)
-            {
-                if (log.IsErrorEnabled) log.Error(ex.Message + "\r\n" + ex.StackTrace);
-            }
-            this.connection.Close();
+            LogEntryParser log = new LogEntryParser();
+            FileStream stream = new FileStream(debugFileDB, FileMode.Open);
+            IEnumerable<LogViewer.LogEntry> loge = log.Parse(stream);
+            stream.Close();
+            debugData = new List<LogViewer.LogEntry>(loge);
+            debugData.Reverse();
+            this.totalRows = debugData.Count;
+            this.totalPages = (this.totalRows + this.pageSize - 1) / this.pageSize;
         }
 
         private void paginateLog(){
+            int limit = this.pageSize * (this.curretPage + 1);
             this.pageOf.Text = String.Format(Resources.ValidateMarkup_citationOf, this.curretPage + 1, this.totalPages);
             this.showNavButtons();
-            int start = this.curretPage * this.queryLimit;
-            this.connection.Open();
-
-            String query = String.Format("SELECT Date, Level, Class, Method, Message FROM Log ORDER BY Date DESC LIMIT {0}, {1}", start, this.queryLimit);
-
-            SQLiteDataAdapter db = new SQLiteDataAdapter(query, this.connection);
-
-            DataSet ds = new DataSet();
-            ds.Reset();
-
+            int start = this.curretPage * this.pageSize;
             DataTable dt = new DataTable();
-            db.Fill(ds);
+            dt.Columns.Add("Date", typeof(DateTime));
+            dt.Columns.Add("Level", typeof (String));
+            dt.Columns.Add("Class", typeof (String));
+            dt.Columns.Add("Method", typeof (String));
+            dt.Columns.Add("Message", typeof (String));
 
-            dt = ds.Tables[0];
+            if (((this.curretPage + 1) * this.pageSize) > this.totalRows) {
+                limit = this.totalRows;
+            }
+
+            for (int i = start; i < limit; i++)
+            {
+                LogEntry entry = debugData[i];
+                dt.Rows.Add(entry.Data.TimeStamp, entry.Data.Level, entry.Data.LocationInfo.ClassName, entry.Data.LocationInfo.MethodName, entry.Data.Message);   
+            }
+
             this.dataGridViewLog.DataSource = dt;
-
-            this.connection.Close();
         }
 
         private void Debug_SizeChanged(object sender, EventArgs e)
