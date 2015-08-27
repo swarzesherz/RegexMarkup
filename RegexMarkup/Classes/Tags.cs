@@ -60,14 +60,14 @@ namespace RegexMarkup
                 pathDescriptionFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SGML/" + language + "_bars.tr");
                 try
                 {
-                    /*Verificamos que el archivo de descripción exista de otra forma cargamos es_ES_bars.tr como idioma principal*/
+                    /*Verificamos que el archivo de descripción exista de otra forma cargamos es_bars.tr como idioma principal*/
                     if (File.Exists(pathDescriptionFile))
                     {
                         langReader = new StreamReader(pathDescriptionFile, Encoding.Default);
                     }
                     else
                     {
-                        pathDescriptionFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SGML/es-ES_bars.tr");
+                        pathDescriptionFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SGML/es_bars.tr");
                         langReader = new StreamReader(pathDescriptionFile, Encoding.Default);
                     }
                 }
@@ -155,7 +155,7 @@ namespace RegexMarkup
                     }
                     else
                     {
-                        pathAttributeFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SGML/es-ES_attb.mds");
+                        pathAttributeFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SGML/es_attb.mds");
                         langReader = new StreamReader(pathAttributeFile, Encoding.Default);
                     }
                 }
