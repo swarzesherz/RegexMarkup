@@ -18,6 +18,7 @@ namespace RegexMarkup
         private ConfigRegexMarkup configForm = null;
         private Debug debugForm = null;
         private FindInstitution findInstitution = null;
+        private Ecuation2Markup ecuation2Markup = null;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private void RibbonRegexMarkup_Load(object sender, RibbonUIEventArgs e)
@@ -167,5 +168,19 @@ namespace RegexMarkup
             }
         }
         #endregion
+
+        private void mmlmath_Click(object sender, RibbonControlEventArgs e)
+        {
+            this.ecuation2Markup = Ecuation2Markup.Instance;
+            this.ecuation2Markup.initialize();
+            this.ecuation2Markup.convertSelection();
+        }
+
+        private void mmlmathfull_Click(object sender, RibbonControlEventArgs e)
+        {
+            this.ecuation2Markup = Ecuation2Markup.Instance;
+            this.ecuation2Markup.initialize();
+            this.ecuation2Markup.convertAll();
+        }
     }
 }

@@ -59,6 +59,11 @@
       <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 y x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+    <BootstrapperPackage Include="JEuclid">
+      <Visible>False</Visible>
+      <ProductName>JEuclid</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -231,6 +236,7 @@
   <ItemGroup>
     <Compile Include="Classes\AssemblyInfoHelper.cs" />
     <Compile Include="Classes\DTDSciELO.cs" />
+    <Compile Include="Classes\Ecuation2Markup.cs" />
     <Compile Include="Classes\interceptkeys.cs" />
     <Compile Include="Classes\ListConverter.cs" />
     <Compile Include="Classes\Mail.cs" />
@@ -356,6 +362,9 @@
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Content Include="mml2markup.xsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="RegexMarkup.dll.log4net">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>

@@ -56,6 +56,8 @@
             this.groupRegexMarkup.Items.Add(this.buttonDebug);
             this.groupRegexMarkup.Items.Add(this.buttonConfig);
             this.groupRegexMarkup.Items.Add(this.buttonInstitution);
+            this.groupRegexMarkup.Items.Add(this.mmlmath);
+            this.groupRegexMarkup.Items.Add(this.mmlmathfull);
             this.groupRegexMarkup.Label = "RegexMarkup";
             this.groupRegexMarkup.Name = "groupRegexMarkup";
             // 
@@ -91,14 +93,26 @@
             this.buttonInstitution.ShowImage = true;
             this.buttonInstitution.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonInstitution_Click);
             // 
+            // mmlmath
+            // 
+            this.mmlmath.Label = "equation";
+            this.mmlmath.Name = "mmlmath";
+            this.mmlmath.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.mmlmath_Click);
+            // 
+            // mmlmathfull
+            // 
+            this.mmlmathfull.Label = "*equation";
+            this.mmlmathfull.Name = "mmlmathfull";
+            this.mmlmathfull.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.mmlmathfull_Click);
+            // 
             // RibbonRegexMarkup
             // 
             this.Name = "RibbonRegexMarkup";
             this.RibbonType = "Microsoft.Word.Document";
-            this.Tabs.Add(this.tab1);
+            this.Tabs.Add(this.tabRegexMarkup);
             this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.RibbonRegexMarkup_Load);
-            this.tab1.ResumeLayout(false);
-            this.tab1.PerformLayout();
+            this.tabRegexMarkup.ResumeLayout(false);
+            this.tabRegexMarkup.PerformLayout();
             this.groupRegexMarkup.ResumeLayout(false);
             this.groupRegexMarkup.PerformLayout();
 
@@ -112,6 +126,8 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonDebug;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonConfig;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonInstitution;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton mmlmath;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton mmlmathfull;
     }
 
     partial class ThisRibbonCollection
