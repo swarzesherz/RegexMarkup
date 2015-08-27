@@ -195,7 +195,7 @@
             // 
             this.buttonExit.FlatAppearance.BorderSize = 0;
             this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExit.Image = global::RegexMarkup.Properties.Resources.exit;
+            this.buttonExit.Image = global::RegexMarkup.Properties.Resources.cancel;
             this.buttonExit.Location = new System.Drawing.Point(39, 15);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(23, 23);
@@ -213,7 +213,7 @@
             this.Controls.Add(this.groupBoxTools);
             this.Controls.Add(this.panelNavigation);
             this.Controls.Add(this.dataGridViewLog);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = System.Drawing.Icon.FromHandle(global::RegexMarkup.Properties.Resources.debug.GetHicon());
             this.Name = "Debug";
             this.Text = "Bítacora";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
