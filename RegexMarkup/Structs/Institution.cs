@@ -5,11 +5,11 @@ namespace RegexMarkup.Structs
     class Institution
     {
         [DisplayName("Institución")]
-        public string e_100u { get; set; }
+        public string institucion { get; set; }
         [DisplayName("Ciudad")]
-        public string e_100w { get; set; }
+        public string ciudad { get; set; }
         [DisplayName("País")]
-        public string e_100x { get; set; }
+        public string pais { get; set; }
         [DisplayName("Registros")]
         public int registros { get; set; }
     }
