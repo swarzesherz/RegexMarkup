@@ -34,21 +34,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tab1 = this.Factory.CreateRibbonTab();
+            this.tabRegexMarkup = this.Factory.CreateRibbonTab();
             this.groupRegexMarkup = this.Factory.CreateRibbonGroup();
             this.buttonRegexMarkup = this.Factory.CreateRibbonButton();
             this.buttonDebug = this.Factory.CreateRibbonButton();
             this.buttonConfig = this.Factory.CreateRibbonButton();
             this.buttonInstitution = this.Factory.CreateRibbonButton();
-            this.tab1.SuspendLayout();
+            this.mmlmath = this.Factory.CreateRibbonButton();
+            this.mmlmathfull = this.Factory.CreateRibbonButton();
+            this.tabRegexMarkup.SuspendLayout();
             this.groupRegexMarkup.SuspendLayout();
             // 
-            // tab1
+            // tabRegexMarkup
             // 
-            this.tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
-            this.tab1.Groups.Add(this.groupRegexMarkup);
-            this.tab1.Label = "TabAddIns";
-            this.tab1.Name = "tab1";
+            this.tabRegexMarkup.Groups.Add(this.groupRegexMarkup);
+            this.tabRegexMarkup.Label = "RegexMarkup";
+            this.tabRegexMarkup.Name = "tabRegexMarkup";
             // 
             // groupRegexMarkup
             // 
@@ -120,7 +121,7 @@
 
         #endregion
 
-        internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonTab tabRegexMarkup;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup groupRegexMarkup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonRegexMarkup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonDebug;
