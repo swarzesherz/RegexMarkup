@@ -213,7 +213,6 @@
             this.Controls.Add(this.groupBoxTools);
             this.Controls.Add(this.panelNavigation);
             this.Controls.Add(this.dataGridViewLog);
-            this.Icon = System.Drawing.Icon.FromHandle(global::RegexMarkup.Properties.Resources.debug.GetHicon());
             this.Name = "Debug";
             this.Text = "Bítacora";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

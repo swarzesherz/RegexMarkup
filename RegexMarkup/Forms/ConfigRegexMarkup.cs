@@ -44,6 +44,8 @@ namespace RegexMarkup
         ConfigRegexMarkup()
         {
             InitializeComponent();
+            /* Icon */
+            this.Icon = System.Drawing.Icon.FromHandle(global::RegexMarkup.Properties.Resources.config.GetHicon());
             /* Diccionario con los idiomas disponibles */
             this.languages = new Dictionary<string, string>();
             this.languages.Add("es-ES", Resources.configRegexMarkup_esES);

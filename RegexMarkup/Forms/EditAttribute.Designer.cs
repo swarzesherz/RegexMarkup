@@ -106,7 +106,6 @@
             this.ClientSize = new System.Drawing.Size(598, 262);
             this.Controls.Add(this.groupBoxTools);
             this.Controls.Add(this.groupBoxTag);
-            this.Icon = System.Drawing.Icon.FromHandle(global::RegexMarkup.Properties.Resources.pencil.GetHicon());
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditAttribute";

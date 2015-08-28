@@ -45,6 +45,8 @@ namespace RegexMarkup.Forms
         EditAttribute()
         {
             InitializeComponent();
+            /* Icon */
+            this.Icon = System.Drawing.Icon.FromHandle(global::RegexMarkup.Properties.Resources.pencil.GetHicon());
             /*Textos*/
             this.Text = Resources.EditAttribute_title;
             this.groupBoxTools.Text = Resources.groupBoxTools;

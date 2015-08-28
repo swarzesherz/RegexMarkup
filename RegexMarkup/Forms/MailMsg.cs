@@ -39,6 +39,8 @@ namespace RegexMarkup.Forms
         MailMsg()
         {
             InitializeComponent();
+            /* Icon */
+            this.Icon = System.Drawing.Icon.FromHandle(global::RegexMarkup.Properties.Resources.mail.GetHicon());
         }
 
         public void clear() {

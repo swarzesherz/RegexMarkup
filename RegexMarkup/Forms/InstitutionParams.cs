@@ -68,6 +68,8 @@ namespace RegexMarkup.Forms
         InstitutionParams()
         {
             InitializeComponent();
+            /* Icon */
+            this.Icon = System.Drawing.Icon.FromHandle(global::RegexMarkup.Properties.Resources.institution.GetHicon());
             this.richTextBoxOriginalText.HideSelection = false;
         }
 

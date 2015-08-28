@@ -65,6 +65,8 @@ namespace RegexMarkup
         ValidateMarkup()
         {
             InitializeComponent();
+            /* Icon */
+            this.Icon = System.Drawing.Icon.FromHandle(global::RegexMarkup.Properties.Resources.regex.GetHicon());
             /* Agregando evento para cambiar el tamaño de los richtextbox cuando cambie el tamaño del formulario */
             this.SizeChanged += new EventHandler(ValidateMarkup_SizeChanged);
             /* Textos del formulario */
@@ -454,7 +456,7 @@ namespace RegexMarkup
             {
                 try
                 {
-                    tagExp = new Regex("\\[/*" + tag + ".*?\\]", options);
+                    tagExp = new Regex("\\[/?" + tag + ".*?\\]", options);
                     matchResults = tagExp.Match(this.richTextBoxMarkup.Text);
                     while (matchResults.Success)
                     {

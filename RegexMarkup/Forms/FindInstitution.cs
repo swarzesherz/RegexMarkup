@@ -64,6 +64,8 @@ namespace RegexMarkup.Forms
 
         FindInstitution(){
             InitializeComponent();
+            /* Icon */
+            this.Icon = System.Drawing.Icon.FromHandle(global::RegexMarkup.Properties.Resources.institution.GetHicon());
             this.dataGridView1.RowPostPaint += new DataGridViewRowPostPaintEventHandler(dgGrid_RowPostPaint);
             foreach (Control c in dataGridView1.Controls){
                  if (c is VScrollBar){

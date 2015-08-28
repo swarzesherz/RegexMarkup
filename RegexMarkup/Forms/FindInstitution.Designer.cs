@@ -134,7 +134,7 @@
             this.buttonCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancel.FlatAppearance.BorderSize = 0;
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCancel.Image = ((System.Drawing.Image)(resources.GetObject("buttonCancel.Image")));
+            this.buttonCancel.Image = global::RegexMarkup.Properties.Resources.cancel;
             this.buttonCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCancel.Location = new System.Drawing.Point(503, 15);
             this.buttonCancel.Name = "buttonCancel";
@@ -192,7 +192,6 @@
             this.Controls.Add(this.textSearch);
             this.Controls.Add(this.submitSearch);
             this.Controls.Add(this.dataGridView1);
-            this.Icon = System.Drawing.Icon.FromHandle(global::RegexMarkup.Properties.Resources.institution.GetHicon());
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FindInstitution";

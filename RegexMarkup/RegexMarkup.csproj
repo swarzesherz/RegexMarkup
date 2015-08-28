@@ -375,6 +375,7 @@
     <None Include="SGML\art2_0.dtd" />
     <None Include="SGML\art3_0.dtd" />
     <None Include="SGML\art3_1.dtd" />
+    <None Include="Resources\regex.ico" />
     <Content Include="SGML\art4_0.dtd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

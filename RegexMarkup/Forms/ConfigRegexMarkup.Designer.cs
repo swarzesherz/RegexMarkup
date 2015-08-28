@@ -292,7 +292,6 @@
             this.ClientSize = new System.Drawing.Size(472, 196);
             this.Controls.Add(this.splitContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = System.Drawing.Icon.FromHandle(global::RegexMarkup.Properties.Resources.config.GetHicon());
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ConfigRegexMarkup";

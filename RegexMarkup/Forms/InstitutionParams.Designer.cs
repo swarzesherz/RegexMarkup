@@ -303,7 +303,6 @@
             this.Controls.Add(this.textBoxId);
             this.Controls.Add(this.labelId);
             this.Controls.Add(this.groupBox1);
-            this.Icon = System.Drawing.Icon.FromHandle(global::RegexMarkup.Properties.Resources.institution.GetHicon());
             this.Name = "InstitutionParams";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InstitutionParams";

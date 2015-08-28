@@ -11,7 +11,6 @@ using System.Text;
 using LogViewer;
 using System.Xml;
 using System.Xml.Linq;
-using LogViewer;
 using System.Collections.Generic;
 
 namespace RegexMarkup.Forms
@@ -53,6 +52,9 @@ namespace RegexMarkup.Forms
         Debug()
         {
             InitializeComponent();
+            /* Icon */
+            this.Icon = System.Drawing.Icon.FromHandle(global::RegexMarkup.Properties.Resources.debug.GetHicon());
+
             this.SizeChanged += new EventHandler(Debug_SizeChanged);
             foreach (Object appender in LogManager.GetRepository().GetAppenders())
             {
