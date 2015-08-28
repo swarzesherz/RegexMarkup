@@ -64,7 +64,7 @@
             // 
             // buttonRegexMarkup
             // 
-            this.buttonRegexMarkup.Image = global::RegexMarkup.Properties.Resources.markup;
+            this.buttonRegexMarkup.Image = global::RegexMarkup.Properties.Resources.regex;
             this.buttonRegexMarkup.Label = "Markup Regex";
             this.buttonRegexMarkup.Name = "buttonRegexMarkup";
             this.buttonRegexMarkup.ShowImage = true;

@@ -316,7 +316,7 @@ namespace RegexMarkup
             this.Controls.Add(this.labelCitationStatus);
             this.Controls.Add(this.radioButtonNo);
             this.Controls.Add(this.radioButtonYes);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = System.Drawing.Icon.FromHandle(global::RegexMarkup.Properties.Resources.regex.GetHicon());
             this.MinimizeBox = false;
             this.Name = "ValidateMarkup";
             this.ShowInTaskbar = false;
