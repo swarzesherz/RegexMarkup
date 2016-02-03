@@ -33,6 +33,7 @@ namespace RegexMarkup.Forms
         }
         #endregion
 
+        private RegexMarkupUtils utils = RegexMarkupUtils.Instance;
         private Tags tags = Tags.Instance;
         private String tagName = null;
         private RichTextBox selectedRtb = new RichTextBox();
@@ -75,6 +76,7 @@ namespace RegexMarkup.Forms
             this.selectedRtb.Select(startSelection, lenghtSelection);
             this.richTextBoxTag.Rtf = this.selectedRtb.SelectedRtf;
             this.showAttributeControls();
+            this.updateAttributeControls();
         }
 
         #region showAttributeControls
@@ -192,6 +194,29 @@ namespace RegexMarkup.Forms
         }
         #endregion
 
+        #region updateAttributeControls
+
+        private void updateAttributeControls() {
+            String attributeName = null;
+            String attributeValue = null;
+            foreach (Control attribute in this.groupAtributes[this.tagName].Controls){
+                if (attribute.GetType().Name == "ComboBox")
+                {
+                    attributeName = ((ComboBox)attribute).Name.Replace("comboBox", "");
+                    attributeValue = utils.getAttrValueInTag(this.tagName, attributeName, this.SelectedRtb.Text);
+                    if (attributeValue != null && attributeValue != "")
+                        ((ComboBox)attribute).SelectedValue = attributeValue;
+                }
+                else if (attribute.GetType().Name == "TextBox"){
+                    attributeName = ((TextBox)attribute).Name.Replace("textBox", "");
+                    attributeValue = utils.getAttrValueInTag(this.tagName, attributeName, this.SelectedRtb.Text);
+                    if (attributeValue != null && attributeValue != "")
+                        ((TextBox)attribute).Text = attributeValue;
+                }
+            }
+        }
+        #endregion
+
         #region dropDownWidth
         /// <summary>
         /// Funcion que nos devuelve el tamaño para ajustar un comboBox al texto
@@ -268,18 +293,14 @@ namespace RegexMarkup.Forms
                         attributeName = ((ComboBox)attribute).Name.Replace("comboBox", "");
                         attributeValue = ((ComboBox)attribute).SelectedValue.ToString();
                         if (attributeValue != null && attributeValue != "")
-                        {
                             openTag += " " + attributeName + "=\"" + attributeValue + "\"";
-                        }
                     }
                     else if (attribute.GetType().Name == "TextBox")
                     {
                         attributeName = ((TextBox)attribute).Name.Replace("textBox", "");
                         attributeValue = ((TextBox)attribute).Text;
                         if (attributeValue != null && attributeValue != "")
-                        {
                             openTag += " " + attributeName + "=\"" + attributeValue + "\"";
-                        }
                     }
                 }
                 openTag += "]";
