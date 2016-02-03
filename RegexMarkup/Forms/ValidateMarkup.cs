@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using RegexMarkup.Forms;
 using RegexMarkup.Properties;
 using Sgml;
+using Word = Microsoft.Office.Interop.Word;
 
 
 namespace RegexMarkup
@@ -37,6 +38,7 @@ namespace RegexMarkup
         #endregion
 
         const int MF_BYPOSITION = 0x400;
+        public static Word.Document ActiveDocument = null;
         private List<MarkupStruct> citas;
         private CurrencyManager currencyManager = null;
         private int startColor = -1;
@@ -126,6 +128,7 @@ namespace RegexMarkup
         public void startValidate(ref List<MarkupStruct> citas)
         {
             this.citas = citas;
+            ActiveDocument = Globals.ThisAddIn.Application.ActiveDocument;
             /*Cargamos los datos de las citas*/
             this.currencyManager = (CurrencyManager)this.BindingContext[this.citas];
             this.richTextBoxOriginal.DataBindings.Clear();
@@ -271,7 +274,7 @@ namespace RegexMarkup
                 }
             }
             /*Actualizamos la navegación de los botones de marcación*/
-            this.updateMarkupBUttonsControl();
+            this.updateMarkupButtonsControl();
 
         }
 
@@ -306,6 +309,46 @@ namespace RegexMarkup
         }
         #endregion
 
+        #region clearRtfTag
+        /// <summary>
+        /// Funcion que limpia las etiquetas dentro de una cadena
+        /// </summary>
+        /// <param name="originalString">La cadena a la que se le quitaran la etiqueta</param>
+        /// <param name="tag">La etiqueta que eliminaremos</param>
+        /// <returns></returns>
+
+        public void clearRtfTag(String node)
+        {
+            String replaceContent = null;
+            int replaceContentLength = 0;
+            int offsetLenght = 0;
+            Regex objRegExp = null;
+            RegexOptions options = RegexOptions.Compiled;
+            Match matchResults = null;
+            bool tagReplaced = false;
+            objRegExp = new Regex(@"\[("+node+@").*?\](.*?)\[/\1\]", options);
+            matchResults = objRegExp.Match(this.richTextBoxTemp.Text);
+            while (matchResults.Success)
+            {
+                this.richTextBoxTemp.Select(matchResults.Groups[2].Index - offsetLenght, matchResults.Groups[2].Length);
+                replaceContent = this.richTextBoxTemp.SelectedRtf;
+                replaceContentLength = this.richTextBoxTemp.SelectedText.Length;
+                this.richTextBoxTemp.Select(matchResults.Index - offsetLenght, matchResults.Length);
+                this.richTextBoxTemp.SelectedRtf = replaceContent;
+                tagReplaced = true;
+                offsetLenght += matchResults.Length - replaceContentLength;
+                matchResults = matchResults.NextMatch();
+            }
+            if (tagReplaced && this.tags.Tag[node].ChildNodes)
+            {
+                foreach (String tagName in this.tags.getChilds(node))
+                {
+                    this.clearRtfTag(tagName);
+                }
+            }
+        }
+        #endregion
+
         #region General event functions
         /// <summary>
         /// Funciones para diferentes tipos de eventos
@@ -319,22 +362,23 @@ namespace RegexMarkup
             this.groupBoxMarkup.Width = this.Size.Width - 35;
             this.groupMarkupButtons[this.currentGroupTag].MaximumSize = new System.Drawing.Size(this.Size.Width - 34, 45);
             this.nextMarkupButtons.Location = new Point(this.Size.Width - 36, 55);
-            this.updateMarkupBUttonsControl();
+            this.updateMarkupButtonsControl();
             this.panelNavigation.Location = new System.Drawing.Point(panelNavigationX, panelNavigationY);
         }
 
         private void currencyManager_PositionChanged(object sender, EventArgs e) {
             /* Parseamos la cita actual si no lo esta */
             if (!this.citas[this.currencyManager.Position].Parsed) {
-                this.objectRegexMarkup.parseMarkupString(this.citas[this.currencyManager.Position]);
+                this.objectRegexMarkup.parseMarkupString(this.citas[this.currencyManager.Position], this.currencyManager.Position);
                 this.richTextBoxMarkup.Text = this.citas[this.currencyManager.Position].MarkedStr;
                 this.radioButtonYes.Checked = this.citas[this.currencyManager.Position].Marked;
             }
-            /* Verificamos si la etiquetas de la cita estan coloreadas y si no loas coloreamos */
+            /* Verificamos si la etiquetas de la cita estan coloreadas y si no las coloreamos */
             if (!this.citas[this.currencyManager.Position].Colorized) {
                 this.colorRefTagsForm(this.citationStyle, startColor);
                 this.citas[this.currencyManager.Position].Colorized = true;
             }
+            this.restoreStringFormat();
             /* Llamada showNavButtons */
             this.showNavButtons();
             /* Mostramos la posicion del resultado actual respecto al total */
@@ -343,7 +387,7 @@ namespace RegexMarkup
 
         private void groupMarkupButtons_MouseEnter(object sender, EventArgs e)
         {
-            this.updateMarkupBUttonsControl();
+            this.updateMarkupButtonsControl();
         }
 
         #endregion
@@ -483,6 +527,32 @@ namespace RegexMarkup
         }
         #endregion
 
+        #region restoreStringFormat
+        private void restoreStringFormat()
+        {
+            Regex tagContentExp = new Regex(@"\[([a-z][a-z0-9]*)[^\]]*\]([^[\]]+?)\[/\1\]", RegexOptions.Compiled);
+            Match matchResults = null;
+            String findContent = null;
+            int rangeStart = this.citas[this.currencyManager.Position].RngCita.Start;
+            int rangeEnd = this.citas[this.currencyManager.Position].RngCita.End;
+            matchResults = tagContentExp.Match(this.richTextBoxMarkup.Text);
+            Word.Range rngCita = ActiveDocument.Range(rangeStart, rangeEnd);
+            while (matchResults.Success)
+            {
+                findContent = matchResults.Groups[2].Value;
+                this.richTextBoxMarkup.Select(matchResults.Groups[2].Index, matchResults.Groups[2].Length);
+                Clipboard.Clear();
+                rngCita.Find.Execute(findContent);
+                rngCita.Select();
+                rngCita.Copy();
+                this.richTextBoxMarkup.Paste();
+                rngCita = ActiveDocument.Range(rngCita.End, rangeEnd);
+                Clipboard.Clear();
+                matchResults = matchResults.NextMatch();
+            }
+        }
+        #endregion
+
         #region Click events function
         /// <summary>
         /// Conjuntos de funciones para los eventos click de los botones
@@ -544,7 +614,7 @@ namespace RegexMarkup
         /*Funcion encargada de eliminar la etiqueta seleccionada al dar click al buttonClearTag*/
         private void buttonClearTag_Click(object sender, EventArgs e)
         {
-            String selectedTag = this.richTextBoxMarkup.SelectedText.Trim();
+            String selectedTag = this.getSelectedTag();
             /*Verificamos si el texto seleccionado no es nulo y ademas corresponde a un etiqueta*/
             if (selectedTag != null && this.tags.Dtd.FindElement(selectedTag) != null)
             {
@@ -554,9 +624,8 @@ namespace RegexMarkup
                     this.selectTagContent(selectedTag);
                     /*Quitamos la o las etiquetas*/
                     this.richTextBoxTemp.Clear();
-                    this.richTextBoxTemp.Font = new Font("Verdana", 10, FontStyle.Regular);
-                    this.richTextBoxTemp.ForeColor = Color.Black;
-                    this.richTextBoxTemp.Text = this.clearTag(this.richTextBoxMarkup.SelectedText, selectedTag);
+                    this.richTextBoxTemp.Rtf = this.richTextBoxMarkup.SelectedRtf;
+                    this.clearRtfTag(selectedTag);
                     this.richTextBoxTemp.SelectAll();
                     this.richTextBoxMarkup.SelectedRtf = this.richTextBoxTemp.SelectedRtf;
                 }
@@ -570,7 +639,14 @@ namespace RegexMarkup
 
         private void buttonEditAttr_Click(object sender, EventArgs e)
         {
-            String selectedTag = this.richTextBoxMarkup.SelectedText.Trim();
+            String selectedTag = this.getSelectedTag();
+            if (selectedTag == null || selectedTag == "")
+            {
+                int end = this.richTextBoxMarkup.Find(" ", this.richTextBoxMarkup.SelectionStart, RichTextBoxFinds.None);
+                int start = this.richTextBoxMarkup.Find("[", 0, end, RichTextBoxFinds.Reverse) + 1;
+                this.richTextBoxMarkup.Select(start, (end - start));
+                selectedTag = this.richTextBoxMarkup.SelectedText.Trim();
+            }
             if (selectedTag != null && this.tags.Dtd.FindElement(selectedTag) != null)
             {
                 if (this.tags.getAttributes(selectedTag) != null)
@@ -677,7 +753,7 @@ namespace RegexMarkup
 
             this.currentGroupTagScroll = this.currentGroupTagScroll - (groupMarkupButtons.MaximumSize.Width - 100);
             groupMarkupButtonsPanel.Location = new Point(this.currentGroupTagScroll, 0);
-            this.updateMarkupBUttonsControl();
+            this.updateMarkupButtonsControl();
         }
 
         private void prevMarkupButtons_Click(object sender, EventArgs e)
@@ -687,7 +763,7 @@ namespace RegexMarkup
 
             this.currentGroupTagScroll = this.currentGroupTagScroll + (groupMarkupButtons.MaximumSize.Width - 100);
             groupMarkupButtonsPanel.Location = new Point(this.currentGroupTagScroll, 0);
-            this.updateMarkupBUttonsControl();
+            this.updateMarkupButtonsControl();
         }
 
         #endregion
@@ -738,7 +814,8 @@ namespace RegexMarkup
 
         #endregion
 
-        private void updateMarkupBUttonsControl(){
+        #region updateMarkupBUttonsContro
+        private void updateMarkupButtonsControl(){
             GroupBox groupMarkupButtons = (GroupBox)this.groupMarkupButtons[this.currentGroupTag];
             Panel groupMarkupButtonsPanel = (Panel) groupMarkupButtons.Controls[this.currentGroupTag];
             int groupMarkupButtonsMaxWidth = groupMarkupButtons.MaximumSize.Width;
@@ -762,6 +839,22 @@ namespace RegexMarkup
                 this.nextMarkupButtons.Visible = false;
             }
         }
+        #endregion
 
+        private string getSelectedTag() {
+            String selectedTag = this.richTextBoxMarkup.SelectedText.Trim();
+            if (selectedTag == null || selectedTag == "")
+            {
+                int start = this.richTextBoxMarkup.SelectionStart;
+                int end = this.richTextBoxMarkup.Find(" ", start, RichTextBoxFinds.None);
+                int endBracket = this.richTextBoxMarkup.Find("]", start, RichTextBoxFinds.None);
+                if (endBracket < end)
+                    end = endBracket;
+                start = this.richTextBoxMarkup.Find("[", 0, end, RichTextBoxFinds.Reverse) + 1;
+                this.richTextBoxMarkup.Select(start, (end - start));
+                selectedTag = this.richTextBoxMarkup.SelectedText.Trim();
+            }
+            return selectedTag;
+        }
     }
 }
