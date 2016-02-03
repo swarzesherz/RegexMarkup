@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RegexMarkup.AssemblyInfoHelper" Collapsed="true">
+    <Position X="2.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAABAAAgAEAAAAAAAAAAAAAAFAAAAABARABAAAA=</HashCode>
+      <FileName>Classes\AssemblyInfoHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.DTDSciELO" Collapsed="true">
+    <Position X="4" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAgAAAAAACAAAAABABAAAQgAAAAAAIAA=</HashCode>
+      <FileName>Classes\DTDSciELO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.Mail" Collapsed="true">
+    <Position X="2.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQgAAAAAAAAAAAABAAAAAQAAAAAAAACI=</HashCode>
+      <FileName>Classes\Mail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.RegexMarkup" Collapsed="true">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAIgAAEAAgAAAAAADAAAAQBgAEAAwABAAQAIABA=</HashCode>
+      <FileName>Classes\RegexMarkup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.Tags" Collapsed="true">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAgEgAAgAAAEAACIABABAAAQAQAAAAAAAA=</HashCode>
+      <FileName>Classes\Tags.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.ConfigRegexMarkup" Collapsed="true">
+    <Position X="4" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAAAEIARCABBgiACALAAABCACBCAQCAYgAAEEAAAAg=</HashCode>
+      <FileName>Forms\ConfigRegexMarkup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.ValidateMarkup" Collapsed="true">
+    <Position X="2.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>6iiBBEAUZmEIcnCCAwzWBAgKEYBmAQTSQCBAEUAAMFg=</HashCode>
+      <FileName>Forms\ValidateMarkup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.RibbonRegexMarkup" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABhgCACAIIAEAAADICAACAAAAIAACAAAIEAAAAAA=</HashCode>
+      <FileName>RibbonRegexMarkup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.ThisRibbonCollection" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.AttrTagStruct" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAEFACABAQAgAAAAAAA=</HashCode>
+      <FileName>Structs\AttrTagStruct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.MarkupButton" Collapsed="true">
+    <Position X="2.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAQAAAAE=</HashCode>
+      <FileName>Structs\MarkupButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.MarkupStruct" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgEAAhAAAAAQABwAAAAQIAAAIAAAAAQAAAAAIAIBA=</HashCode>
+      <FileName>Structs\MarkupStruct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.TagStruct" Collapsed="true">
+    <Position X="0.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAhAIAAIACAAAQQAAAEEAAAAACAAAAAgAA=</HashCode>
+      <FileName>Structs\TagStruct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.ThisAddIn" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAwAACQCBAAEQAgAQEAiFgAAAAAABAQAAgAIAAAACg=</HashCode>
+      <FileName>ThisAddIn.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RegexMarkup.Globals" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAgAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.Forms.Debug" Collapsed="true">
+    <Position X="0.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgBAAAAUiAMEhAAIiDBiAAKAJJAAAAKQICCBMAAAAI=</HashCode>
+      <FileName>Forms\Debug.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.Forms.EditAttribute" Collapsed="true">
+    <Position X="5.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oAEAAEAQACJIAhCAAICAhAACGABSAQAASARACCAACAA=</HashCode>
+      <FileName>Forms\EditAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.Forms.Waiting" Collapsed="true">
+    <Position X="5.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAACAAAgAAAACAAAACAABAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Forms\Waiting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.Properties.Resources" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABBgCAAMACCAgBUCAwnFEBmAI0lFwQABBUBCArICGvE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegexMarkup.Properties.Settings" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAgAEAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

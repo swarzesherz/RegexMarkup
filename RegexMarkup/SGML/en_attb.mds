@@ -1,10 +1,10 @@
 ccode
-scielo/bireme;revista de saúde pública;Centro de Información para Decisiones en Salud;Dirección General de Bibliotecas - UNAM
-br1.1;rsp;CENIDS;DGB
+brazilian journal of chemical engineering;brazilian journal of genetics;brazilian journal of medical and biological research;brazilian journal of physics;Comisión Nacional de Investigación Científica y Tecnológica;dados - revista de ciências sociais;scielo/bireme;InfoMed;journal of the brazilian chemical society;journal of the brazilian computer society;memórias do instituto oswaldo cruz;revista brasileira de ciência do solo;revista brasileira de geociências;revista do instituto de medicina tropical de são paulo;revista de saúde pública
+bjce;bjg;bjmbr;bjp;conicyt;dados;br1.1;infomed;jbchs;jbcos;mioc;rbcs;rbgeo;rimtsp;rsp
 
 doctopic
-abstracts;annex;announcements;brief communication;comments;case report;clinical trial;editorial;interview;letter;methodology;original article;point-of-view;press release;recount;research note;review article;technical report;update
-ab;ax;an;sc;co;cr;ct;ed;in;le;mt;oa;pv;pr;rc;rn;ra;tr;up
+research article;abstract;comments;case report;clinical trial;editorial;editorial material (discussion, opinion, interview, ...);correction;letter;press release (in brief);review article;book review;retraction or disavowal of previously published material;brief report / research note (research results);brief communication (research update or news);technical report;other
+oa;ab;co;cr;ct;ed;em;er;le;pr;ra;rc;re;rn;sc;tr;zz
 
 language
 English;Portuguese;Spanish;Afrikaans;Arabic;Bulgarian;Chinese;Czech;Danish;Dutch;Esperanto;French;German;Greek;Hebrew;Hindi;Hungarian;Indonesian;Interlingua;Interlingue;Italian;Japanese;Korean;Latin;Norwergian;Polish;Romanian;Russian;Sanskrit;Serbo-Croat;Slovak;Slovenian;Swedish;Turkish;Ukrainian;Urdu;Other;Galician;Basque;Catalan
@@ -23,8 +23,8 @@ title;sectitle
 1;2
 
 role
-Not defined;coordinator;publisher;organizer;translator
-nd;coord;ed;org;tr
+Not defined;coordinator;inventor;publisher;organizer;translator
+nd;coord;inventor;ed;org;tr
 
 scheme
 No Descriptor;Health Science Descriptors
@@ -67,8 +67,8 @@ to
 00000000
 
 sponsor
-
-
+Not definido
+nd
 
 no
 0
@@ -114,17 +114,13 @@ source
 
 
 
-doctype
-audio;press release;video
-au;pr;vi
-
 cturl
 
 
 
 ftype
-graphic;cartoon;chart;diagram;drawing;exhibit;illustration;map;plate;schema;other;workflow
-graphic;cartoon;chart;diagram;drawing;exhibit;illustration;map;plate;schema;other;workflow
+audiogram;cardiogram;cartoon;chart;chemical structure;dendrogram;diagram;drawing;exihibit;graphic;illustration;map;medical image;other;photo;photomicrograph;plate;polysomnogram;schema;workflow
+audiogram;cardiogram;cartoon;chart;chemical structure;dendrogram;diagram;drawing;exihibit;graphic;illustration;map;medical image;other;photo;photomicrograph;plate;polysomnogram;schema;workflow
 
 lictype
 open access;not defined
@@ -147,6 +143,38 @@ filename
 
 
 ref-type
+Affiliation;Appendix;Author notes;Bibliographic reference;Textbox or sidebar;Contributor;Corresponding author;Display formula;Figure or group of figures;Footnote;List;None of the items listed;Supplementary material;Table or group of tables
+aff;app;author-notes;bibr;boxed-text;contrib;corresp;disp-formula;fig;fn;list;other;supplementary-material;table
 
+sec-type
+undefined;* Materials and Methodology;* Results and Discussion;* Results and Conclusions;* Results, Discussion, Conclusions;Cases/Case Reports;Conclusions/Comment;Discussion/Interpretation;Introduction/Synopsis;Materials;Methods/Methodology/Procedures;Results/Statement of Findings;Subjects/Participants/Patients;Supplementary materials
+nd;materials|methods;results|discussion;results|conclusions;results|discussion|conclusions;cases;conclusions;discussion;intro;materials;methods;results;subjects;supplementary-material
 
+listtype
+Ordered list. Prefix character is a number or a letter, depending on style;Unordered or bulleted list. Prefix character is a bullet, dash, or other symbol;Ordered list. Prefix character is a lowercase alphabetical character;Ordered list. Prefix character is an uppercase alphabetical character;Ordered list. Prefix character is a lowercase roman numeral;Ordered list. Prefix character is an uppercase roman numeral;Simple or plain list (No prefix character before each item) 
+order;bullet;alpha-lower;alpha-upper;roman-lower;roman-upper;simple
+
+fntype
+Abbreviations;Communicated-by information;Contributed-by information;Conflict of interest statements;Corresponding author information not identified separately, but merely footnoted;Contributor's current affiliation;Person has died since article was written;Contributor has the role of an editor;Contributed equally to the creation of the document;Statement of funding or denial of funds received in support of the research on which an article is based;Contributor is on sabbatical or other leave of absence;Some footnote type, other than those enumerated.;Some footnote type, other than those enumerated, but related to author.;Contributor was a researcher for an article;Contributor's current address;Conference, colloquium, or other occasion at which this paper was presented;Contributor who presented the material;Contributor's previous location or affiliation;Contributor was a member of the study group for the research;Points to or describes supplementary material for the article;Research upon which an article is based was supported by some entity
+abbr;com;con;conflict;corresp;current-aff;deceased;edited-by;equal;financial-disclosure;on-leave;other;author;participating-researchers;present-address;presented-at;presented-by;previously-at;study-group-members;supplementary-material;supported-by
+
+blcktype
+undefined;Acknowledge
+nd;ack
+
+corresp
+no;yes
+n;y
+
+eqcontr
+not informed;no;yes
+nd;n;y
+
+deceased
+no;yes
+n;y
+
+ctrbidtp
+ORCID
+ORCID
 

@@ -1,10 +1,10 @@
 ccode
-scielo/bireme;revista de saúde pública;Centro de Información para Decisiones en Salud;Dirección General de Bibliotecas - UNAM
-br1.1;rsp;CENIDS;DGB
+brazilian journal of chemical engineering;brazilian journal of genetics;brazilian journal of medical and biological research;brazilian journal of physics;Comisión Nacional de Investigación Científica y Tecnológica;dados - revista de ciências sociais;scielo/bireme;InfoMed;journal of the brazilian chemical society;journal of the brazilian computer society;memórias do instituto oswaldo cruz;revista brasileira de ciência do solo;revista brasileira de geociências;revista do instituto de medicina tropical de são paulo;revista de saúde pública
+bjce;bjg;bjmbr;bjp;conicyt;dados;br1.1;infomed;jbchs;jbcos;mioc;rbcs;rbgeo;rimtsp;rsp
 
 doctopic
-anexo;anuncio;actualización;artículo original;cartas;comentarios;comunicación breve;editorial;ensayos clínicos;entrevista;informe de caso;informe técnico;metodología;nota;punto de vista;press release;reseña;resumen;revisión
-ax;an;up;oa;le;co;sc;ed;ct;in;cr;tr;mt;rn;pv;pr;rc;ab;ra
+artículo original (research article);resumen (abstract);comentario (comments);informe de caso (case report);ensayos clínicos (clinical trials);editorial;material editorial (discusión, opinión, entrevista, ...);errata (corrections);carta (letter);press release (in brief);artículo de revisión (review article);reseña (book review);retractación o rectificación de lo qué fue anteriormente publicado (retraction);notas de investigación / resultados de pesquisa (brief report);comunicación breve (atualizaciones / novedades) (brief communication);informe técnico;otro
+oa;ab;co;cr;ct;ed;em;er;le;pr;ra;rc;re;rn;sc;tr;zz
 
 language
 Español;Inglés;Portugués;Africano;Alemán;Arabe;Búlgaro;Chino;Coreano;Dinamarqués;Eslovaco;Esperanto;Francés;Griego;Hebreo;Hindú;Holandés;Húngaro;Indonesio;Interlingua;Interlingue;Italiano;Japonés;Latín;Noruego;Polaco;Rumano;Ruso;Sánscrito;Servo-Croata;Slovenian;Sueco;Tcheco;Turco;Ucrano;Urdú;Otros;Gallego;Vasco;Catalán
@@ -23,8 +23,8 @@ title;sectitle
 1;2
 
 role
-No definido;coordinador;editor;organizador;traductor
-nd;coord;ed;org;tr
+No definido;coordinador;inventor;editor;organizador;traductor
+nd;coord;inventor;ed;org;tr
 
 scheme
 Ningun Descriptor;Descriptores en Ciencia de la Salud
@@ -67,8 +67,8 @@ to
 00000000
 
 sponsor
-
-
+No definido
+nd
 
 no
 0
@@ -114,17 +114,17 @@ source
 
 
 
-doctype
-audio;press release;video
-au;pr;vi
+reltype
+- choose one of the options below -;-- objects --;video;audio;table;figure;other object;-- sources --;book;chapter;database;article;press release;other source;-- related types --;addended-article;addendum;commentary-article;object-of-concern;companion;corrected-article;letter;retracted-article;peer-reviewed-article;peer-review;other related type
+unknown;unknown-object;vi;au;table;figure;other-object;unknown-source;book;chapter;database;article;pr;other-source;unknown-related-type;addended-article;addendum;commentary-article;object-of-concern;companion;corrected-article;letter;retracted-article;peer-reviewed-article;peer-review;other-related-type
 
 cturl
 
 
 
 ftype
-gráfico;cartoon;cuadro;diagrama;diseño;demostración (exhibit);ilustración;mapa;gravura (plate);esquema;flujo de trabajo;otro
-graphic;cartoon;chart;diagram;drawing;exhibit;illustration;map;plate;schema;workflow;other
+audiograma;cardiograma;cartoon;cuadro;estructura química;dendrograma;diagrama;dibujo;demostración (exihibit);gráfico;ilustración;mapa;imagen médica;otro;fotografía;fotomicrografía;lámina;polisomnograma;esquema;diagrama de flujo
+audiogram;cardiogram;cartoon;chart;chemical structure;dendrogram;diagram;drawing;exihibit;graphic;illustration;map;medical image;other;photo;photomicrograph;plate;polysomnogram;schema;workflow
 
 lictype
 acceso abierto;no definido
@@ -147,6 +147,38 @@ filename
 
 
 ref-type
+afiliación;Apendice;Notas de autor;Referencia bibliográfica;Caja de texto o barra lateral;Contribución;Autor correspondiente;Fórmula;Figura;Nota de pie de página;Listado;Otro;Material suplementario;Tabla
+aff;app;author-notes;bibr;boxed-text;contrib;corresp;disp-formula;fig;fn;list;other;supplementary-material;table
 
+sec-type
+indefinido;Materiales y Metodologías;* Resultados y Discusión;* Resultados y Conclusiones;* Resultados, Discusión, Conclusiones;Informes de casos;Conclusiones o comentarios;Discusiones o interpretaciones;Introducción o sinopsis;Materiales;Métodos/Metodología/Procedimientos;Resultados/Declaración de descobiertas;Temas/Participantes/Pacientes;Materiales suplementares
+nd;materials|methods;results|discussion;results|conclusions;results|discussion|conclusions;cases;conclusions;discussion;intro;materials;methods;results;subjects;supplementary-material
 
+listtype
+Lista ordenada. Caracter del prefijo es un número o letra dependiendo del estilo;Lista no-ordenada. Caracter del prefijo es un caracter especial;Lista ordenada. Caracter del prefijo es un caracter alfabético en caja baja;Lista ordenada. Caracter del prefijo es un caracter alfabético en caja alta;Lista ordenada. Caracter del prefijo es un numeral romano en caja baja;Lista ordenada. Caracter del prefijo es un numeral romano en caja alta;Lista simple (ningun prefijo)
+order;bullet;alpha-lower;alpha-upper;roman-lower;roman-upper;simple
+
+fntype
+Abreviaciones;Información de comunicado;Información de comunicación;Declaración de conflito de interese;Información de correspondencia;Afiliación vigente del autor;Persona se morrió desde la escritura del artículo;Autor ejerce el ról de editor;Contribución igualitaria en la creación del documento;Declaración o o negación de recibimiento de financiamiento en el apoyo de la investigación en la cual el artículo es basado ;Autor ausente (sabático o otro);Otro tipo de nota;Otro tipo de nota relacionada ao autor;Autor fue un investigador para el artículo;Dirección vigente del autor;Presentado en evento;Presentador del material;Afiliación del autor anterior;Colaborador fue un miembro del grupo de estudio para la investigación;Indica o describe el material suplementar para el artículo;Investigación en la cual el artículo fue basado fue apoyado por alguna entidad. 
+abbr;com;con;conflict;corresp;current-aff;deceased;edited-by;equal;financial-disclosure;on-leave;other;author;participating-researchers;present-address;presented-at;presented-by;previously-at;study-group-members;supplementary-material;supported-by
+
+blcktype
+indefinido;Agradecimientos
+nd;ack
+
+corresp
+no;sí
+n;y
+
+eqcontr
+não informado;no;sí
+nd;n;y
+
+deceased
+no;sí
+n;y
+
+ctrbidtp
+ORCID
+ORCID
 

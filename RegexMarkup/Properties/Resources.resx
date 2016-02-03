@@ -118,14 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="next" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\next.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mail" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mail.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ValidateMarkup_buttonPrevToolTip" xml:space="preserve">
     <value>Ir a la cita anterior</value>
   </data>
   <data name="downArrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\downArrow.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="configRegexMarkup_language" xml:space="preserve">
+    <value>Idioma</value>
   </data>
   <data name="ValidateMarkup_buttonRedo" xml:space="preserve">
     <value>Rehacer</value>
@@ -145,6 +148,9 @@
   <data name="RibbonRegexMarkup_buttonDebug" xml:space="preserve">
     <value>Bítacora</value>
   </data>
+  <data name="upArrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\upArrow.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ValidateMarkup_buttonEndToolTip" xml:space="preserve">
     <value>Guardar las citas marcadas</value>
   </data>
@@ -162,9 +168,6 @@
   </data>
   <data name="Waiting_labelWait" xml:space="preserve">
     <value>Espere por favor</value>
-  </data>
-  <data name="ValidateMarkup_citationOf" xml:space="preserve">
-    <value>{0} de {1}</value>
   </data>
   <data name="ConfigRegexMarkup_tabUser" xml:space="preserve">
     <value>Usuario</value>
@@ -196,8 +199,8 @@
   <data name="check" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\check.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="configRegexMarkup_enUS" xml:space="preserve">
-    <value>Ingles</value>
+  <data name="next" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\next.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ValidateMarkup_buttonNextToolTip" xml:space="preserve">
     <value>Ir a la siguiente cita</value>
@@ -208,9 +211,6 @@
   <data name="ValidateMarkup_radioButtonNo" xml:space="preserve">
     <value>No</value>
   </data>
-  <data name="markup" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\markup.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="EditAttribute_buttonEditToolTip" xml:space="preserve">
     <value>Editar</value>
   </data>
@@ -219,6 +219,9 @@
   </data>
   <data name="RegexMarkup_issnNotDefined" xml:space="preserve">
     <value>No esta definido issn</value>
+  </data>
+  <data name="ValidateMarkup_buttonFirstToolTip" xml:space="preserve">
+    <value>Ir a la primer cita</value>
   </data>
   <data name="ValidateMarkup_childTags" xml:space="preserve">
     <value>Nodos dentro de la etiqueta {0}</value>
@@ -239,7 +242,7 @@
     <value>..\Resources\copy.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Debug_buttonSendMailToolTip" xml:space="preserve">
-    <value>Enviar bítacora para su analisis</value>
+    <value>Enviar bítacora para su análisis</value>
   </data>
   <data name="RegexMarkup_messageOnlyRead" xml:space="preserve">
     <value>No se pueden guardar los cambios.
@@ -248,11 +251,8 @@ El documento está en modo solo lectura</value>
   <data name="undo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\undo.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="RegexMarkup_title" xml:space="preserve">
-    <value>RegexMarkup</value>
-  </data>
-  <data name="EditAttribute_buttonCancelToolTip" xml:space="preserve">
-    <value>Cancelar</value>
+  <data name="ValidateMarkup_parentTag" xml:space="preserve">
+    <value>Regresar al nivel superior {0}</value>
   </data>
   <data name="RibbonRegexMarkup_buttonConfiguration" xml:space="preserve">
     <value>Configuración</value>
@@ -275,8 +275,11 @@ El documento está en modo solo lectura</value>
   <data name="cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cancel.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ValidateMarkup_buttonFirstToolTip" xml:space="preserve">
-    <value>Ir a la primer cita</value>
+  <data name="trash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trash.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RegexMarkup_title" xml:space="preserve">
+    <value>RegexMarkup</value>
   </data>
   <data name="ValidateMarkup_labelCitationStatus" xml:space="preserve">
     <value>Marcar cita</value>
@@ -305,14 +308,14 @@ El documento está en modo solo lectura</value>
   <data name="ValidateMarkup_groupBoxOriginal" xml:space="preserve">
     <value>Cita original:</value>
   </data>
-  <data name="ConfigRegexMarkup_labelEmail" xml:space="preserve">
-    <value>Correo-e</value>
+  <data name="EditAttribute_buttonCancelToolTip" xml:space="preserve">
+    <value>Cancelar</value>
   </data>
   <data name="pencil" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pencil.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="configRegexMarkup_language" xml:space="preserve">
-    <value>Idioma</value>
+  <data name="markup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\markup.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ValidateMarkup_buttonUndo" xml:space="preserve">
     <value>Deshacer</value>
@@ -323,25 +326,31 @@ El documento está en modo solo lectura</value>
   <data name="ValidateMarkup_messageTagWithoutAttr" xml:space="preserve">
     <value>La etiqueta seleccionada no contiene atributos</value>
   </data>
-  <data name="ValidateMarkup_parentTag" xml:space="preserve">
-    <value>Regresar al nivel superior {0}</value>
+  <data name="configRegexMarkup_enUS" xml:space="preserve">
+    <value>Ingles</value>
   </data>
   <data name="first" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\first.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="trash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\trash.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ConfigRegexMarkup_labelEmail" xml:space="preserve">
+    <value>Correo-e</value>
   </data>
-  <data name="upArrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\upArrow.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ValidateMarkup_citationOf" xml:space="preserve">
+    <value>{0} de {1}</value>
   </data>
   <data name="ValidateMarkup_buttonLastToolTip" xml:space="preserve">
     <value>Ir a la última</value>
   </data>
-  <data name="mail" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mail.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="regex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\regex.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hourglass-start" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hourglass-start.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hourglass-half" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hourglass-half.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hourglass-end" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hourglass-end.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -376,6 +376,9 @@
     <None Include="SGML\art3_0.dtd" />
     <None Include="SGML\art3_1.dtd" />
     <None Include="Resources\regex.ico" />
+    <None Include="Resources\hourglass-start.ico" />
+    <None Include="Resources\hourglass-half.ico" />
+    <None Include="Resources\hourglass-end.ico" />
     <Content Include="SGML\art4_0.dtd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

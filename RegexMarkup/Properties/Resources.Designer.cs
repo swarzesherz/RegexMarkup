@@ -238,7 +238,7 @@ namespace RegexMarkup.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Enviar bítacora para su analisis.
+        ///   Busca una cadena traducida similar a Enviar bítacora para su análisis.
         /// </summary>
         internal static string Debug_buttonSendMailToolTip {
             get {
@@ -318,6 +318,36 @@ namespace RegexMarkup.Properties {
         internal static string groupBoxTools {
             get {
                 return ResourceManager.GetString("groupBoxTools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hourglass_end {
+            get {
+                object obj = ResourceManager.GetObject("hourglass-end", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hourglass_half {
+            get {
+                object obj = ResourceManager.GetObject("hourglass-half", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hourglass_start {
+            get {
+                object obj = ResourceManager.GetObject("hourglass-start", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
