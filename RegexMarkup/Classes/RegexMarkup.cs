@@ -8,6 +8,7 @@ using System.Xml;
 using RegexMarkup.Forms;
 using RegexMarkup.Properties;
 using Word = Microsoft.Office.Interop.Word;
+using System.Xml.Xsl;
 
 namespace RegexMarkup
 {
@@ -50,7 +51,9 @@ namespace RegexMarkup
         private ValidateMarkup formValidate = null;
         private Tags tags = Tags.Instance;
         private XmlNode serialNode = null;
+        private RegexMarkupUtils utils = RegexMarkupUtils.Instance;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private XmlDocument xmlDoc = null;
         #region startMarkup
         ///<summary>
         ///Procedimiento al que llamaremos para inciar el proceso de marcación
@@ -67,11 +70,15 @@ namespace RegexMarkup
             String pathXML = null;
             String clearTag = null;
             Word.Selection docSeleccion = null;
-            XmlDocument xmlDoc = new XmlDocument();
+            this.xmlDoc = new XmlDocument();
             List<MarkupStruct> citas = null;
-            Regex objRegExp = null;
             RegexOptions options = RegexOptions.None;
-            objRegExp = new Regex(@"\[[^\]]+?\]", options);
+            Regex objRegExp = new Regex(@"\[[^\]]+?\]", options);;
+            Dictionary<String, String> altRule = new Dictionary<String, String>(){
+                {"doc", "0000-0000"},
+                {"article", "XXXX-XXXX"},
+                {"text", "XXXX-XXXX"}
+            };
             /*Definiendo directorios de los xml*/
             if (ApplicationDeployment.IsNetworkDeployed)
             {
@@ -88,11 +95,18 @@ namespace RegexMarkup
             ActiveDocument = Globals.ThisAddIn.Application.ActiveDocument;
             /* Leemos y verificamos que el issn exista */
             this.dtdType = "article";
-            issn = getAttrValueInTag("article", "issn");
-            /* Hacemos un segundo intento con la etiqueta text en caso de que no haya aparecido con article */
+            issn = utils.getAttrValueInTag("article", "issn");
+            /* Verificamos la existencia de text */
             if (issn == null) {
-                issn = this.getAttrValueInTag("text", "issn");
+                issn = utils.getAttrValueInTag("text", "issn");
                 this.dtdType = "text";
+            }
+
+            /* Verificamos la existencia de doc */
+            if (issn == null)
+            {
+                issn = utils.getAttrValueInTag("doc", "issn");
+                this.dtdType = "doc";
             }
 
             if (log.IsDebugEnabled) log.Debug("issn: " + issn);
@@ -100,11 +114,12 @@ namespace RegexMarkup
                 MessageBox.Show(Resources.RegexMarkup_issnNotDefined, Resources.RegexMarkup_title);
             } else {
                 /*Asignamos el numero de version de la DTD*/
-                this.dtdVersion = this.getAttrValueInTag(this.dtdType, "version");
+                this.dtdVersion = utils.getAttrValueInTag(this.dtdType, "version");
+                this.dtdVersion = this.dtdVersion == null ? "4.0" : this.dtdVersion;
                 /* Cargamos el archivo xml donde se encuetran los patrones de las revistas */
                 try
                 {
-                    xmlDoc.Load(pathXML);
+                    this.xmlDoc.Load(pathXML);
                 }
                 catch (Exception e)
                 {
@@ -112,111 +127,119 @@ namespace RegexMarkup
                     return;
                 }
                 /* Leemos el nodo correspondiente al issn de la revista */
-                this.serialNode = xmlDoc.SelectSingleNode("//*[@issn=\"" + issn + "\"]");
-                if (this.serialNode == null){
-                    MessageBox.Show(Resources.RegexMarkup_serilaNotInXML, Resources.RegexMarkup_title);
-                }else { 
-                    /* Asignamos el estilo de la citación */
-                    this.citationStyle = this.serialNode.SelectSingleNode("norm").InnerText.Trim();
-                    /* Verificamos que la seleccion sea del parrafo completo */
-                    Word.Range start = Globals.ThisAddIn.Application.Selection.Range;
-                    docSeleccion = Globals.ThisAddIn.Application.Selection;
-                    if (docSeleccion.Start != docSeleccion.Paragraphs.First.Range.Start || docSeleccion.End != docSeleccion.Paragraphs.Last.Range.End){
-                        MessageBox.Show(Resources.RegexMarkup_selectCitationComplete, Resources.RegexMarkup_title);
-                    } else {
-                        /* Asignamos el texto de la seleccion a subjectString */
-                        if (log.IsInfoEnabled) log.Info("Select paragraphs");
-                        /* Inicializando arratlist de citas */
-                        citas = new List<MarkupStruct>();
-                        /*Creamos una instancia del formulario*/
-                        this.formValidate = ValidateMarkup.Instance;
-                        this.formValidate.CitationStyle = this.citationStyle;
-                        this.formValidate.DtdVersion = this.dtdVersion;
-                        this.formValidate.DtdType = this.dtdType;
-                        this.formValidate.updateDTDInfo();
-                        /* Buscando parrafo por parrafo */
-                        foreach (Word.Paragraph parrafo in docSeleccion.Paragraphs){
-                            fixedMarkedString = null;
-                            marked = false;
-                            parsed = false;
-                            /* Mandamos el texto de cada parrafo a una funcion que nos lo regresara marcado y quitamos el salto linea */
-                            object parrafoStart = parrafo.Range.Start;
-                            object parrafoEnd = (parrafo.Range.End - 1);
-                            originalString = ActiveDocument.Range(ref parrafoStart, ref parrafoEnd).Text;
-                            //MessageBox.Show(subjetcString, "Texto de parrafo");
-                            if (originalString != null)
-                            {   
-                                /*Verificamos si la cadena original ya esta marcada*/
-                                if (originalString.IndexOf("[") == 0 && originalString.LastIndexOf("]") == originalString.Length - 1)
-                                {
-                                    marked = true;
-                                    parsed = true;
-                                    fixedMarkedString = originalString;
-                                    clearTag = fixedMarkedString.Substring(1, fixedMarkedString.IndexOf("]") - 1);
-                                    /*Nos aseguramos de que la etiqueta no contenga algun atributo buscando un espacio*/
-                                    if(clearTag.IndexOf(" ") > 0){
-                                        clearTag = clearTag.Substring(clearTag.IndexOf(" "));
-                                    }
-                                    /*Con la ayuda de la instancia del formulario limpiamos la cadena marcada*/
-                                    this.tags.getChilds(clearTag);
-                                    originalString = this.formValidate.clearTag(fixedMarkedString, clearTag);
+                this.serialNode = this.xmlDoc.SelectSingleNode("//*[@issn=\"" + issn + "\"]");
+                /* Si no existe una regla para la revista cargamos una generica */
+                this.serialNode = this.serialNode == null ? this.xmlDoc.SelectSingleNode("//*[@issn=\"" + altRule[this.dtdType] + "\"]") : this.serialNode;
+                /* Asignamos el estilo de la citación */
+                this.citationStyle = this.serialNode.SelectSingleNode("norm").InnerText.Trim();
+                if (this.dtdType == "doc")
+                    this.citationStyle = "refs";
+                /* Verificamos que la seleccion sea del parrafo completo */
+                Word.Range start = Globals.ThisAddIn.Application.Selection.Range;
+                docSeleccion = Globals.ThisAddIn.Application.Selection;
+                if (docSeleccion.Start != docSeleccion.Paragraphs.First.Range.Start || docSeleccion.End != docSeleccion.Paragraphs.Last.Range.End){
+                    MessageBox.Show(Resources.RegexMarkup_selectCitationComplete, Resources.RegexMarkup_title);
+                } else {
+                    /* Asignamos el texto de la seleccion a subjectString */
+                    if (log.IsInfoEnabled) log.Info("Select paragraphs");
+                    /* Inicializando arratlist de citas */
+                    citas = new List<MarkupStruct>();
+                    /*Creamos una instancia del formulario*/
+                    this.formValidate = ValidateMarkup.Instance;
+                    this.formValidate.CitationStyle = this.citationStyle;
+                    this.formValidate.DtdVersion = this.dtdVersion;
+                    this.formValidate.DtdType = this.dtdType;
+                    this.formValidate.updateDTDInfo();
+                    /* Buscando parrafo por parrafo */
+                    foreach (Word.Paragraph parrafo in docSeleccion.Paragraphs){
+                        fixedMarkedString = null;
+                        marked = false;
+                        parsed = false;
+                        /* Mandamos el texto de cada parrafo a una funcion que nos lo regresara marcado y quitamos el salto linea */
+                        object parrafoStart = parrafo.Range.Start;
+                        object parrafoEnd = (parrafo.Range.End - 1);
+                        originalString = ActiveDocument.Range(ref parrafoStart, ref parrafoEnd).Text;
+                        //MessageBox.Show(subjetcString, "Texto de parrafo");
+                        if (originalString != null)
+                        {   
+                            /*Verificamos si la cadena original ya esta marcada*/
+                            if (originalString.IndexOf("[") == 0 && originalString.LastIndexOf("]") == originalString.Length - 1)
+                            {
+                                marked = true;
+                                parsed = true;
+                                fixedMarkedString = originalString;
+                                clearTag = fixedMarkedString.Substring(1, fixedMarkedString.IndexOf("]") - 1);
+                                /*Nos aseguramos de que la etiqueta no contenga algun atributo buscando un espacio*/
+                                if(clearTag.IndexOf(" ") > 0){
+                                    clearTag = clearTag.Substring(0, clearTag.IndexOf(" "));
                                 }
-                                citas.Add(new MarkupStruct(originalString, fixedMarkedString, ActiveDocument.Range(ref parrafoStart, ref parrafoEnd), marked, parsed));
+                                /*Con la ayuda de la instancia del formulario limpiamos la cadena marcada*/
+                                this.tags.getChilds(clearTag);
+                                originalString = this.formValidate.clearTag(fixedMarkedString, clearTag);
                             }
+                            citas.Add(new MarkupStruct(originalString, fixedMarkedString, ActiveDocument.Range(ref parrafoStart, ref parrafoEnd), marked, parsed));
                         }
-                        /* Mandamos llamar al formulario para la validación de las citas*/
-                        this.formValidate.startValidate(ref citas);
-
-                        if (this.formValidate.ShowDialog() == DialogResult.OK)
-                        {
-                            /* Ocultamos la aplicacion durante los procesos de reemplazo y coloreado para hacer mas rapida la aplicacion */
-                            Globals.ThisAddIn.Application.Visible = false;
-                            waitForm = Waiting.Instance;
-                            waitForm.Show();
-                            /* Reemplzando texto original por el marcado */
-                            /* Utilizando el rango de texto de la cita original y reemplzado el texto por el marcado */
-                            foreach (MarkupStruct cita in citas)
-                            {
-                                if (cita.Marked && cita.Colorized)
-                                {
-                                    Clipboard.Clear();
-                                    cita.MarkedRtb.SelectAll();
-                                    Clipboard.SetText(cita.MarkedRtb.SelectedRtf, TextDataFormat.Rtf);
-                                    cita.RngCita.Paste();
-                                    Clipboard.Clear();
-                                }
-                            }
-                            /* Mostramos de nuevo la aplicacion */
-                            waitForm.Hide();
-                            Globals.ThisAddIn.Application.Visible = true;
-                            /*Guardamos los cambios*/
-                            if (!ActiveDocument.ReadOnly)
-                            {
-                                object FileName = Path.Combine(ActiveDocument.Path, ActiveDocument.Name);
-                                object FileFormat = Word.WdSaveFormat.wdFormatFilteredHTML;
-                                try
-                                {
-                                    ActiveDocument.SaveAs(ref FileName, ref FileFormat, ref missing,
-                                            ref missing, ref missing, ref missing,
-                                            ref missing, ref missing,
-                                            ref missing, ref missing,
-                                            ref missing, ref missing, ref missing,
-                                            ref missing, ref missing, ref missing);
-                                }catch (Exception e)
-                                {
-                                    if (log.IsErrorEnabled) log.Error(e.Message);
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show(Resources.RegexMarkup_messageOnlyRead);
-                            }
-                        }
-                        
                     }
+                    /* Mandamos llamar al formulario para la validación de las citas*/
+                    this.formValidate.startValidate(ref citas);
 
+                    if (this.formValidate.ShowDialog() == DialogResult.OK)
+                    {
+                        /* Ocultamos la aplicacion durante los procesos de reemplazo y coloreado para hacer mas rapida la aplicacion */
+                        Globals.ThisAddIn.Application.Visible = false;
+                        waitForm = Waiting.Instance;
+                        waitForm.Show();
+                        /* Reemplzando texto original por el marcado */
+                        /* Utilizando el rango de texto de la cita original y reemplzado el texto por el marcado */
+                        int citaIndex = 0;
+                        foreach (MarkupStruct cita in citas)
+                        {
+                            if (cita.Marked && cita.Colorized)
+                            {
+                                Clipboard.Clear();
+                                cita.MarkedRtb.SelectAll();
+                                Clipboard.SetText(cita.MarkedRtb.SelectedRtf, TextDataFormat.Rtf);
+                                cita.RngCita.Paste();
+                                cita.RngCita.Font.Size = 11;
+                                Clipboard.Clear();
+                            }
+                            if (this.dtdType == "doc") {
+                                if (citaIndex == 0)
+                                    cita.RngCita.InsertBefore("[refs]");
+                                if (citaIndex == (citas.Count - 1))
+                                    cita.RngCita.InsertAfter("[/refs]");
+                            }
+                            citaIndex++;
+                        }
+                        /* Mostramos de nuevo la aplicacion */
+                        waitForm.Hide();
+                        Globals.ThisAddIn.Application.Visible = true;
+                        /*Guardamos los cambios*/
+                        if (!ActiveDocument.ReadOnly)
+                        {
+                            object FileName = Path.Combine(ActiveDocument.Path, ActiveDocument.Name);
+                            object FileFormat = Word.WdSaveFormat.wdFormatFilteredHTML;
+                            if (!ActiveDocument.Path.Contains(".htm"))
+                                FileFormat = missing;
+                            try
+                            {
+                                ActiveDocument.SaveAs(ref FileName, ref FileFormat, ref missing,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing,
+                                        ref missing, ref missing,
+                                        ref missing, ref missing, ref missing,
+                                        ref missing, ref missing, ref missing);
+                            }catch (Exception e)
+                            {
+                                if (log.IsErrorEnabled) log.Error(e.Message);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(Resources.RegexMarkup_messageOnlyRead);
+                        }
+                    }
                 }
-
             }
             if (log.IsInfoEnabled) log.Info("End");
         }
@@ -227,7 +250,7 @@ namespace RegexMarkup
         /// Se inicia el proceso de marcación y se hacen la correciones necesarias
         /// </summary>
         /// <param name="refMarkupStruct"></param>
-        public void parseMarkupString(MarkupStruct refMarkupStruct)
+        public void parseMarkupString(MarkupStruct refMarkupStruct, int position)
         {
             String markedString = null;
             String fixedMarkedString = null;
@@ -238,15 +261,37 @@ namespace RegexMarkup
             Match matchResults = null;
             Match matchResults2 = null;
             objRegExp = new Regex(@"\[[^\]]+?\]", options);
+            XmlDocument xmlMarkup = null;
+            XslCompiledTransform xslt = new XslCompiledTransform();
+            String mml2markupPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "mml2markup.xsl");
+            xslt.Load(mml2markupPath);
+            StringWriter writer = new StringWriter();
 
             /* Asignamos los struct en los que se divide la revista */
             structNode = this.serialNode.SelectSingleNode("struct");
+            XmlElement value = this.xmlDoc.CreateElement("value");
+            value.InnerText="${1}";
+            if (structNode.SelectSingleNode("tag") != null)
+                structNode.SelectSingleNode("tag").AppendChild(value);
+            if (structNode.SelectSingleNode("container") != null)
+                structNode.SelectSingleNode("container").AppendChild(value);
             /* Patrón de búsqueda */
-            patternString = this.serialNode.SelectSingleNode("regex").InnerText;
-
+            patternString = "(....+)";
+            if (this.serialNode.SelectSingleNode("regex") != null)
+                patternString = this.serialNode.SelectSingleNode("regex").InnerText;
             try
             {
                 markedString = this.markupText(patternString, refMarkupStruct.OriginalStr, structNode);
+                markedString = Regex.Replace(markedString.Replace("&", "&amp;"), @"<(?!/?[_:a-z][-._:a-z0-9]*\b(?:/|\s+[_:a-z][-._:a-z0-9]*(?:\s*=\s*(?:'[^']*'|""[^""]*""))?)*\s*>)", "&lt;", RegexOptions.IgnoreCase);
+                xmlMarkup = new XmlDocument();
+                xmlMarkup.LoadXml(markedString);
+                if (xmlMarkup.DocumentElement.Name == "ref")
+                {
+                    xmlMarkup.DocumentElement.Attributes.Prepend(xmlMarkup.CreateAttribute("id"));
+                    xmlMarkup.DocumentElement.Attributes["id"].Value = (position + 1 ).ToString();
+                }
+                xslt.Transform(xmlMarkup, null, writer);
+                markedString = writer.ToString();
             }
             catch (Exception e)
             {
@@ -311,42 +356,6 @@ namespace RegexMarkup
 
         #endregion
 
-        #region getAttrValueInTag
-        /// <summary>
-        /// Función para obtener el atributo de una etiqueta(TAG)
-        /// </summary>
-        /// <param name="tag">Etiqueta donde buscaremos</param>
-        /// <param name="attr">Atributo a buscar</param>
-        /// <returns>El valor del atributo buscado</returns>
-        public String getAttrValueInTag(String tag, String attr) {
-            if (log.IsInfoEnabled) log.Info("Begin");
-            if (log.IsDebugEnabled) log.Debug("getAttrValueInTag(tag: " + tag + ", attr: " + attr + ")");
-            /* Declaración de variables */
-            String subjectString = null;
-            String result = null;
-            String pattern = null;
-            Regex regexObj = null;
-            Match matchResults = null;
-            RegexOptions options = RegexOptions.IgnoreCase;
-            /* Inicializamos variables */
-            pattern = "\\[" + tag + ".*?" + attr + "=(\\\".*?\\\"|\\'.*?\\'|[^\\ \\]]*).*?\\]";
-            subjectString = ActiveDocument.Content.Text;
-            /* Verificamos que haya coincidencia */
-            regexObj = new Regex(pattern, options);
-            matchResults = regexObj.Match(subjectString);
-            if (matchResults.Success)
-            {
-                result = matchResults.Groups[1].Value;
-                if (result.EndsWith("\"") || result.EndsWith("'"))
-                {
-                    result = result.Substring(1, result.Length - 2);
-                }
-            }
-            if (log.IsInfoEnabled) log.Info("End");
-            return result;
-        }
-        #endregion
-   
         #region markupText
         /// <summary>
         /// Función para marcar la cadena de texto
@@ -375,6 +384,8 @@ namespace RegexMarkup
             String singleOptionPattern = null;
             Regex objRegExp = null;
             Regex multipleOptionRegExp = null;
+            String openTag = "<";
+            String closeTag = ">";
             RegexOptions options = RegexOptions.Compiled | RegexOptions.Multiline;
             Match matchResults = null;
             Match multipleOptionsMarchResults = null;
@@ -396,34 +407,34 @@ namespace RegexMarkup
                         /* Iteramos los nodos dentro del xml que nos dan el contenido de las citas */
                         foreach (XmlNode itemXML in refStruct.ChildNodes)
                         {
-                            /* Verificamos que el nodo hijo sea diferente de prevalue y postvalue */
-                            if (itemXML.Name != "prevalue" && itemXML.Name != "postvalue")
+                            /* Verificamos que el nodo hijo sea diferente de prevalue, postvalue y attr */
+                            if (itemXML.Name != "prevalue" && itemXML.Name != "postvalue" && itemXML.Name != "attributes")
                             {
                                 /* Verificamos si el nodo es una etiqueta(tag) o no */
-                                if (itemXML.Attributes.GetNamedItem("tag") != null)
+                                if (itemXML.Name == "tag")
                                 {
                                     /*Verificamos y agregamos atributos por omisión  a la etiqueta de apertura*/
-                                    if (itemXML.SelectSingleNode("attr") == null)
+                                    if (itemXML.SelectSingleNode("attributes") == null)
                                     {
-                                        tagStringOpen = "[" + itemXML.Name + "]";
+                                        tagStringOpen = openTag + itemXML.Attributes["name"].Value + closeTag;
                                     }
                                     else
                                     {
-                                        tagStringOpen = "[" + itemXML.Name;
-                                        foreach (XmlNode attrNode in itemXML.SelectSingleNode("attr"))
+                                        tagStringOpen = openTag + itemXML.Attributes["name"].Value;
+                                        foreach (XmlNode attrNode in itemXML.SelectSingleNode("attributes"))
                                         {
-                                            if (attrNode.Name == "dateiso" && attrNode.InnerText == "")
+                                            if (attrNode.Attributes["name"].Value == "dateiso" && attrNode.InnerText == "")
                                             {
-                                                tagStringOpen += " " + attrNode.Name + "=\"" + objRegExp.Replace(refString, itemXML.SelectSingleNode("value").InnerText) + "0000\"";
+                                                tagStringOpen += " " + attrNode.Attributes["name"].Value + "=\"" + objRegExp.Replace(refString, itemXML.SelectSingleNode("value").InnerText) + "0000\"";
                                             }
                                             else
                                             {
-                                                tagStringOpen += " " + attrNode.Name + "=\"" + attrNode.InnerText + "\"";
+                                                tagStringOpen += " " + attrNode.Attributes["name"].Value + "=\"" + attrNode.InnerText + "\"";
                                             }
                                         }
-                                        tagStringOpen += "]";
+                                        tagStringOpen += closeTag;
                                     }
-                                    tagStringClose = "[/" + itemXML.Name + "]";
+                                    tagStringClose = openTag + "/" + itemXML.Attributes["name"].Value + closeTag;
                                 }
                                 else
                                 {
