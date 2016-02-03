@@ -65,6 +65,7 @@ namespace RegexMarkup
             {
                 this.availableVersion.Add("article4.0", @"SGML\art4_0.dtd");
                 this.availableVersion.Add("text4.0", @"SGML\text4_0.dtd");
+                this.availableVersion.Add("doc4.0", @"SGML\doc4_0.dtd");
             }
             return this.availableVersion.ContainsKey(version);   
         }
