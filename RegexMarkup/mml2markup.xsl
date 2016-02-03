@@ -58,7 +58,21 @@
         <xsl:text> </xsl:text>
         <xsl:value-of select="name()"/>
         <xsl:text>="</xsl:text>
-        <xsl:value-of select="."/>
+        <xsl:variable name="open">
+            <xsl:call-template name="string-replace-all">
+                <xsl:with-param name="text" select="."/>
+                <xsl:with-param name="replace" select="'['" />
+                <xsl:with-param name="by" select="'&amp;#91;'" />
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="close">
+            <xsl:call-template name="string-replace-all">
+                <xsl:with-param name="text" select="$open" />
+                <xsl:with-param name="replace" select="']'" />
+                <xsl:with-param name="by" select="'&amp;#93;'" />
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:value-of select="$close"/>
         <xsl:text>"</xsl:text>
     </xsl:template>
     
