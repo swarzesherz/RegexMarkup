@@ -65,7 +65,7 @@
             // buttonRegexMarkup
             // 
             this.buttonRegexMarkup.Image = global::RegexMarkup.Properties.Resources.regex;
-            this.buttonRegexMarkup.Label = "Markup Regex";
+            this.buttonRegexMarkup.Label = "RegexMarkup";
             this.buttonRegexMarkup.Name = "buttonRegexMarkup";
             this.buttonRegexMarkup.ShowImage = true;
             this.buttonRegexMarkup.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.buttonRegexMarkup_Click);
