@@ -242,6 +242,7 @@
     <Compile Include="Classes\Mail.cs" />
     <Compile Include="Classes\RegexMarkup.cs" />
     <Compile Include="Classes\Tags.cs" />
+    <Compile Include="Classes\Utils.cs" />
     <Compile Include="Forms\ConfigRegexMarkup.cs">
       <SubType>Form</SubType>
     </Compile>
