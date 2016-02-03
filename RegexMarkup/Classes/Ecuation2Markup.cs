@@ -11,7 +11,8 @@ using System.IO;
 using Microsoft.Office.Interop.Word;
 using System.Diagnostics;
 using System.Drawing;
-using System.Text.RegularExpressions; 
+using System.Text.RegularExpressions;
+using RegexMarkup.Forms; 
 
 namespace RegexMarkup
 {
@@ -44,7 +45,7 @@ namespace RegexMarkup
         private String omml2mmlPath = Path.Combine(Globals.ThisAddIn.Application.Path, "OMML2MML.XSL");
         String jeuclidPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "JEuclid");
         private Boolean jeuclidExist = false;
-
+        private Waiting waitForm = null;
 
         public void initialize() {
             ActiveDocument = Globals.ThisAddIn.Application.ActiveDocument;
@@ -81,10 +82,21 @@ namespace RegexMarkup
                 return;
             }
 
+            /* Ocultamos la aplicacion durante los procesos de reemplazo y coloreado para hacer mas rapida la aplicacion */
+            Globals.ThisAddIn.Application.Visible = false;
+            waitForm = Waiting.Instance;
+            waitForm.Show();
             foreach (OMath equation in ActiveDocument.OMaths)
             {
                 this.convert(equation);
             }
+            /* Mostramos de nuevo la aplicacion */
+            waitForm.Hide();
+            Globals.ThisAddIn.Application.Visible = true;
+        }
+
+        public void revertAll(){
+
         }
 
         public void convert(OMath equation) {
@@ -130,6 +142,7 @@ namespace RegexMarkup
             xslt.Load(mml2markupPath);
             xslt.Transform(mmlxml, null, writer);
             mmlMarkup = writer.ToString().Replace("[mml:math]", "[mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"]"); ;
+            mmlMarkup = writer.ToString().Replace("[mml:math]", "[mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"]");
 
             /* Set parent tags */
             if (mml_convert) 
