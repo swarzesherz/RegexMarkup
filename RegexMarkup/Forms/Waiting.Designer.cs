@@ -36,7 +36,7 @@
             // 
             this.waitButton.FlatAppearance.BorderSize = 0;
             this.waitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.waitButton.Image = global::RegexMarkup.Properties.Resources.hourglass_start;
+            this.waitButton.Image = global::RegexMarkup.Properties.Resources.hourglassstart;
             this.waitButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.waitButton.Location = new System.Drawing.Point(12, 9);
             this.waitButton.Name = "waitButton";

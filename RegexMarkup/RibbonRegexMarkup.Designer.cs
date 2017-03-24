@@ -42,6 +42,8 @@
             this.buttonInstitution = this.Factory.CreateRibbonButton();
             this.mmlmath = this.Factory.CreateRibbonButton();
             this.mmlmathfull = this.Factory.CreateRibbonButton();
+            this.revert_equation = this.Factory.CreateRibbonButton();
+            this.remove_hyperlinks = this.Factory.CreateRibbonButton();
             this.tabRegexMarkup.SuspendLayout();
             this.groupRegexMarkup.SuspendLayout();
             // 
@@ -59,6 +61,8 @@
             this.groupRegexMarkup.Items.Add(this.buttonInstitution);
             this.groupRegexMarkup.Items.Add(this.mmlmath);
             this.groupRegexMarkup.Items.Add(this.mmlmathfull);
+            this.groupRegexMarkup.Items.Add(this.revert_equation);
+            this.groupRegexMarkup.Items.Add(this.remove_hyperlinks);
             this.groupRegexMarkup.Label = "RegexMarkup";
             this.groupRegexMarkup.Name = "groupRegexMarkup";
             // 
@@ -106,6 +110,18 @@
             this.mmlmathfull.Name = "mmlmathfull";
             this.mmlmathfull.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.mmlmathfull_Click);
             // 
+            // revert_equation
+            // 
+            this.revert_equation.Label = "*revert equation";
+            this.revert_equation.Name = "revert_equation";
+            this.revert_equation.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.revert_equation_Click);
+            // 
+            // remove_hyperlinks
+            // 
+            this.remove_hyperlinks.Label = "remove hyperlinks";
+            this.remove_hyperlinks.Name = "remove_hyperlinks";
+            this.remove_hyperlinks.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.remove_hyperlinks_Click);
+            // 
             // RibbonRegexMarkup
             // 
             this.Name = "RibbonRegexMarkup";
@@ -129,6 +145,8 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton buttonInstitution;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton mmlmath;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton mmlmathfull;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton revert_equation;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton remove_hyperlinks;
     }
 
     partial class ThisRibbonCollection

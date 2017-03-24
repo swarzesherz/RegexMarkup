@@ -33,7 +33,7 @@ namespace RegexMarkup.Forms
         {
             InitializeComponent();
             /* Icon */
-            this.Icon = System.Drawing.Icon.FromHandle(global::RegexMarkup.Properties.Resources.hourglass_half.GetHicon());
+            this.Icon = System.Drawing.Icon.FromHandle(global::RegexMarkup.Properties.Resources.hourglasshalf.GetHicon());
             /* Textos del formulario */
             this.Text = Resources.Waiting_labelWait;
             this.waitButton.Text = Resources.Waiting_labelWait;

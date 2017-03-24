@@ -68,7 +68,20 @@ namespace RegexMarkup
         }
 
         public void convertAll() {
-            if (ActiveDocument.OMaths.Count <= 0)
+
+            int omaths = 0;
+
+            foreach (Word.Footnote footnote in ActiveDocument.Footnotes){
+                omaths += footnote.Range.OMaths.Count;
+            }
+
+            foreach (Word.Endnote endnote in ActiveDocument.Endnotes){
+                omaths += endnote.Range.OMaths.Count;
+            }
+
+            omaths += ActiveDocument.OMaths.Count;
+
+            if (omaths <= 0)
             {
                 MessageBox.Show("No se encontraron ecuaciones");
                 return;
@@ -76,7 +89,7 @@ namespace RegexMarkup
             DialogResult result;
             
 
-            result = MessageBox.Show(String.Format("Se encontraron {0} ecuaciones.\n Continuar?", ActiveDocument.OMaths.Count), "", MessageBoxButtons.YesNo);
+            result = MessageBox.Show(String.Format("Se encontraron {0} ecuaciones.\n Continuar?", omaths), "", MessageBoxButtons.YesNo);
 
             if(result == DialogResult.No){
                 return;
@@ -90,6 +103,22 @@ namespace RegexMarkup
             {
                 this.convert(equation);
             }
+
+            foreach (Word.Footnote footnote in ActiveDocument.Footnotes)
+            {
+                foreach (OMath equation in footnote.Range.OMaths)
+                {
+                    this.convert(equation);
+                }
+            }
+
+            foreach (Word.Endnote endnote in ActiveDocument.Endnotes)
+            {
+                foreach (OMath equation in endnote.Range.OMaths)
+                {
+                    this.convert(equation);
+                }
+            }
             /* Mostramos de nuevo la aplicacion */
             waitForm.Hide();
             Globals.ThisAddIn.Application.Visible = true;
@@ -99,11 +128,50 @@ namespace RegexMarkup
 
         }
 
+        public void revert() {
+            ActiveDocument = Globals.ThisAddIn.Application.ActiveDocument;
+            Regex regexObj = null;
+            Match matchResults = null;
+            RegexOptions options = RegexOptions.IgnoreCase;
+            String pattern = @".*?(\[mml:math.+?\[/mml:math\]).*";
+            regexObj = new Regex(pattern, options);
+
+            List<Tuple<String, Range>> equations = new List<Tuple<String, Range>>{};
+
+            Word.Range frng = ActiveDocument.Content;
+            Word.Find findObject = frng.Find;
+            findObject.ClearFormatting();
+            findObject.Text = @"\[equation*\]*\[/mml:math\]*\[/equation\]";
+            findObject.MatchWildcards = true;
+
+            while (findObject.Execute())
+            {
+                matchResults = regexObj.Match(frng.Text);
+                String mmlstr = matchResults.Groups[1].Value;
+                mmlstr = mmlstr
+                    .Replace("<", "&lt;")
+                    .Replace(">", "&gt;")
+                    .Replace('[', '<')
+                    .Replace(']', '>')
+                    .Replace("&#91;", "[")
+                    .Replace("&#93;", "]");
+                equations.Add(Tuple.Create(mmlstr, ActiveDocument.Range(frng.Start, frng.End)));
+            }
+
+            for (int i = 0; i < equations.Count; i++){
+                Clipboard.Clear();
+                Clipboard.SetText(equations[i].Item1, TextDataFormat.UnicodeText);
+                equations[i].Item2.Font.ColorIndex = WdColorIndex.wdBlack;
+                equations[i].Item2.Paste();
+            }
+        }
+
         public void convert(OMath equation) {
-            this.convert(equation, true, true);
+            this.convert(equation, true, false);
         }
 
         public void convert(OMath equation, Boolean mml_convert, Boolean img_convert) {
+            object missing = Type.Missing;
             XmlDocument ommlxml = new XmlDocument();
             XmlDocument mmlxml = new XmlDocument();
             XslCompiledTransform xslt = new XslCompiledTransform();
@@ -141,8 +209,14 @@ namespace RegexMarkup
             writer = new StringWriter();
             xslt.Load(mml2markupPath);
             xslt.Transform(mmlxml, null, writer);
-            mmlMarkup = writer.ToString().Replace("[mml:math]", "[mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"]"); ;
             mmlMarkup = writer.ToString().Replace("[mml:math]", "[mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"]");
+            //mmlMarkup = writer.ToString().Replace("[mml:math]", "[mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"]"); ;
+
+            /*Add display mode*/
+            //mmlxml.DocumentElement.Attributes.Append(mmlxml.CreateAttribute("display"));
+            //mmlxml.DocumentElement.Attributes["display"].Value = "block";
+            /* Get img fron range */
+            equation.Range.CopyAsPicture();
 
             /* Set parent tags */
             if (mml_convert) 
@@ -175,16 +249,36 @@ namespace RegexMarkup
                 }
             }
 
-
             /*Remove equation and insert tags*/
-            Clipboard.Clear();
-            Clipboard.SetText(markedRtb.Rtf, TextDataFormat.Rtf);
-            Word.Range rng = ActiveDocument.Range(equation.Range.Start, equation.Range.End);
-            rng.Delete();
-            equation.Remove();
+            Word.Range rng = equation.Range;
+            //Clipboard.Clear();
+            //Clipboard.SetText(markedRtb.Rtf, TextDataFormat.Rtf);
+            rng.Select();
             rng.Paste();
             Clipboard.Clear();
+            equation.Range.Copy();
+            object PDT = Word.WdPasteDataType.wdPasteEnhancedMetafile;
+            rng.PasteSpecial(ref missing, ref missing, ref missing, ref missing, ref PDT, ref missing, ref missing);
+            equation.Remove();
             equationStart = equation.Range.Start - equationTag.Length - 1;
+            rng.SetRange(equationStart, rng.End+1);
+            Word.Find findObject = rng.Find;
+            //findObject.ClearFormatting();
+            findObject.Text = Environment.NewLine;
+            findObject.Replacement.ClearFormatting();
+            findObject.Replacement.Text = "";
+            object replaceAll = Word.WdReplace.wdReplaceAll;
+            findObject.Execute(ref missing, ref missing, ref missing, ref missing, ref missing,
+                ref missing, ref missing, ref missing, ref missing, ref missing,
+                ref replaceAll, ref missing, ref missing, ref missing, ref missing);
+            findObject.Text = "\n";
+            findObject.Execute(ref missing, ref missing, ref missing, ref missing, ref missing,
+                ref missing, ref missing, ref missing, ref missing, ref missing,
+                ref replaceAll, ref missing, ref missing, ref missing, ref missing);
+            findObject.Text = "\r";
+            findObject.Execute(ref missing, ref missing, ref missing, ref missing, ref missing,
+                ref missing, ref missing, ref missing, ref missing, ref missing,
+                ref replaceAll, ref missing, ref missing, ref missing, ref missing);
 
             /* Convert mml to img */
             if (img_convert && jeuclidExist)
@@ -206,8 +300,9 @@ namespace RegexMarkup
 
                 string output = p.StandardOutput.ReadToEnd();
                 p.WaitForExit();
-                rng = ActiveDocument.Range(imgStart, imgStart+1);
+                rng.SetRange(imgStart, imgStart+1);
                 rng.InlineShapes.AddPicture(imgPath);
+
             }
         }
 

@@ -19,6 +19,7 @@ namespace RegexMarkup
         private Debug debugForm = null;
         private FindInstitution findInstitution = null;
         private Ecuation2Markup ecuation2Markup = null;
+        private RegexMarkupUtils utils = null;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private void RibbonRegexMarkup_Load(object sender, RibbonUIEventArgs e)
@@ -181,6 +182,19 @@ namespace RegexMarkup
             this.ecuation2Markup = Ecuation2Markup.Instance;
             this.ecuation2Markup.initialize();
             this.ecuation2Markup.convertAll();
+        }
+
+        private void revert_equation_Click(object sender, RibbonControlEventArgs e)
+        {
+            this.ecuation2Markup = Ecuation2Markup.Instance;
+            this.ecuation2Markup.initialize();
+            this.ecuation2Markup.revert();
+        }
+
+        private void remove_hyperlinks_Click(object sender, RibbonControlEventArgs e)
+        {
+            utils = RegexMarkupUtils.Instance;
+            utils.removeHyperlinks();
         }
     }
 }

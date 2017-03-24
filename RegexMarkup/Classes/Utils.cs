@@ -85,6 +85,13 @@ namespace RegexMarkup
             return result;
         }
         #endregion
-   
+
+        public void removeHyperlinks() {
+            ActiveDocument = Globals.ThisAddIn.Application.ActiveDocument;
+            if (ActiveDocument.Content != null)
+                while (ActiveDocument.Content.Hyperlinks.Count > 0)
+                    ActiveDocument.Content.Hyperlinks[1].Delete();
+
+        }
     }
 }
