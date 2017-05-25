@@ -12,7 +12,7 @@ using Microsoft.Office.Interop.Word;
 using System.Diagnostics;
 using System.Drawing;
 using System.Text.RegularExpressions;
-using RegexMarkup.Forms; 
+using RegexMarkup.Forms;
 
 namespace RegexMarkup
 {
@@ -46,20 +46,87 @@ namespace RegexMarkup
         String jeuclidPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "JEuclid");
         private Boolean jeuclidExist = false;
         private Waiting waitForm = null;
+        private Regex texPattern = new Regex(@"\\\[(.+?)\\\]|(?<![$])\$\$(.+?)\$\$(?!\$)|(?<![$])\$([^$]+)\$(?!\$)", RegexOptions.Singleline);
 
         public void initialize() {
             ActiveDocument = Globals.ThisAddIn.Application.ActiveDocument;
             jeuclidExist = File.Exists(Path.Combine(jeuclidPath, "bin/mml2xxx.bat"));
         }
+
+        public void convertSelection2MML(bool showAlert=true)
+        {
+            Word.Selection docSeleccion = Globals.ThisAddIn.Application.Selection;
+            int searchLenght = 255;
+            String mml = "";
+            List<Tuple<String, Range>> texEquations = new List<Tuple<String, Range>> { };
+            Match matchResults = texPattern.Match(docSeleccion.Text);
+            if (!matchResults.Success)
+            {
+                if(showAlert) MessageBox.Show("No se encontraron ecuaciones TeX");
+                return;
+            }
+            Word.Range frng = docSeleccion.Range;
+            Word.Find findObject = frng.Find;
+            findObject.ClearFormatting();
+
+            while (matchResults.Success)
+            {
+                int rngStart = 0;
+                int rngEnd = 0;
+                bool foundWord = false;
+                mml = tex2mml(matchResults.Groups[1].Value + matchResults.Groups[2].Value + matchResults.Groups[3].Value);
+                if (mml == "")
+                {
+                    matchResults = matchResults.NextMatch();
+                    continue;
+                }
+                String searchText = matchResults.Value.Replace("^", "^^");
+
+                int parts = searchText.Length / searchLenght;
+                for (int i = 0; i <= parts; i++) {
+                    int lenght = searchLenght;
+                    if ((i + 1) * searchLenght > searchText.Length)
+                        lenght = searchText.Length % searchLenght;
+                    string search = searchText.Substring(i * searchLenght, lenght);
+                    findObject.Text = search;
+                    if (findObject.Execute())
+                    {
+                        if (i == 0) rngStart = frng.Start;
+                        rngEnd = frng.End;
+                        frng = ActiveDocument.Range(rngEnd, docSeleccion.Range.End);
+                        findObject = frng.Find;
+                        findObject.ClearFormatting();
+                        foundWord = true;
+                    }
+                }
+
+                if (!foundWord)
+                {
+                    rngStart = docSeleccion.Range.Start + matchResults.Index;
+                    rngEnd = rngStart + matchResults.Length;
+                }
+                texEquations.Add(Tuple.Create(mml, ActiveDocument.Range(rngStart, rngEnd)));
+                matchResults = matchResults.NextMatch();
+            }
+
+            for (int i = 0; i < texEquations.Count; i++)
+            {
+                Clipboard.Clear();
+                Clipboard.SetText(texEquations[i].Item1, TextDataFormat.UnicodeText);
+                texEquations[i].Item2.Font.ColorIndex = WdColorIndex.wdBlack;
+                texEquations[i].Item2.Paste();
+            }
+        }
         
         public void convertSelection() {
             Word.Selection docSeleccion = Globals.ThisAddIn.Application.Selection;
+            this.convertSelection2MML(false);
+
             if (docSeleccion.OMaths.Count <= 0)
             {
                 MessageBox.Show("No se encontraron ecuaciones");
                 return;
             }
-                
 
             foreach (OMath equation in docSeleccion.OMaths)
             {
@@ -167,7 +234,37 @@ namespace RegexMarkup
         }
 
         public void convert(OMath equation) {
-            this.convert(equation, true, false);
+            this.convert(equation, true, true);
+        }
+
+        private String tex2mml(String tex) {
+            String result = "";
+            String command = "";
+            tex = tex.Replace("\r", " ").Replace("\n", " ");
+            if (tex.Substring(0, 1) == "-")
+                tex = " -" + tex.Substring(1);
+            command = String.Format(@"/C tex2mml ""{0}"" > tex.mml", Regex.Replace(tex, @"(\\*)" + "\"", @"$1$1\" + "\""));
+
+            Process process = new Process();
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.CreateNoWindow = true;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = command;
+            startInfo.UseShellExecute = false;
+            startInfo.WorkingDirectory = ActiveDocument.Path;
+
+            startInfo.RedirectStandardError = true;
+            process.StartInfo = startInfo;
+            process.Start();
+            process.WaitForExit();
+
+            string error = process.StandardError.ReadToEnd();
+            if (error != "")
+                return result;
+            result = File.ReadAllText(Path.Combine(ActiveDocument.Path, "tex.mml"));
+
+            return result;
         }
 
         public void convert(OMath equation, Boolean mml_convert, Boolean img_convert) {
@@ -251,14 +348,16 @@ namespace RegexMarkup
 
             /*Remove equation and insert tags*/
             Word.Range rng = equation.Range;
-            //Clipboard.Clear();
-            //Clipboard.SetText(markedRtb.Rtf, TextDataFormat.Rtf);
+            Clipboard.Clear();
+            Clipboard.SetText(markedRtb.Rtf, TextDataFormat.Rtf);
             rng.Select();
             rng.Paste();
             Clipboard.Clear();
-            equation.Range.Copy();
+            /*Test native img convert*/
+            /*equation.Range.Copy();
             object PDT = Word.WdPasteDataType.wdPasteEnhancedMetafile;
             rng.PasteSpecial(ref missing, ref missing, ref missing, ref missing, ref PDT, ref missing, ref missing);
+            */
             equation.Remove();
             equationStart = equation.Range.Start - equationTag.Length - 1;
             rng.SetRange(equationStart, rng.End+1);
@@ -296,15 +395,17 @@ namespace RegexMarkup
                 p.StartInfo.Arguments = String.Format(@"{0} {1} -scriptSizeMult 1.1", mmlPath, imgPath);
                 p.StartInfo.UseShellExecute = false;
                 p.StartInfo.RedirectStandardOutput = true;
+                p.StartInfo.RedirectStandardError = true;
+                p.StartInfo.RedirectStandardInput = true;
                 p.Start();
 
-                string output = p.StandardOutput.ReadToEnd();
                 p.WaitForExit();
+
                 rng.SetRange(imgStart, imgStart+1);
                 rng.InlineShapes.AddPicture(imgPath);
 
             }
         }
-
     }
+
 }

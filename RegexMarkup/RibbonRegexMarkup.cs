@@ -196,5 +196,12 @@ namespace RegexMarkup
             utils = RegexMarkupUtils.Instance;
             utils.removeHyperlinks();
         }
+
+        private void tex2mml_Click(object sender, RibbonControlEventArgs e)
+        {
+            this.ecuation2Markup = Ecuation2Markup.Instance;
+            this.ecuation2Markup.initialize();
+            this.ecuation2Markup.convertSelection2MML();
+        }
     }
 }

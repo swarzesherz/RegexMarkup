@@ -44,6 +44,7 @@
             this.mmlmathfull = this.Factory.CreateRibbonButton();
             this.revert_equation = this.Factory.CreateRibbonButton();
             this.remove_hyperlinks = this.Factory.CreateRibbonButton();
+            this.tex2mml = this.Factory.CreateRibbonButton();
             this.tabRegexMarkup.SuspendLayout();
             this.groupRegexMarkup.SuspendLayout();
             // 
@@ -63,6 +64,7 @@
             this.groupRegexMarkup.Items.Add(this.mmlmathfull);
             this.groupRegexMarkup.Items.Add(this.revert_equation);
             this.groupRegexMarkup.Items.Add(this.remove_hyperlinks);
+            this.groupRegexMarkup.Items.Add(this.tex2mml);
             this.groupRegexMarkup.Label = "RegexMarkup";
             this.groupRegexMarkup.Name = "groupRegexMarkup";
             // 
@@ -122,6 +124,12 @@
             this.remove_hyperlinks.Name = "remove_hyperlinks";
             this.remove_hyperlinks.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.remove_hyperlinks_Click);
             // 
+            // tex2mml
+            // 
+            this.tex2mml.Label = "tex2mml";
+            this.tex2mml.Name = "tex2mml";
+            this.tex2mml.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.tex2mml_Click);
+            // 
             // RibbonRegexMarkup
             // 
             this.Name = "RibbonRegexMarkup";
@@ -147,6 +155,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton mmlmathfull;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton revert_equation;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton remove_hyperlinks;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton tex2mml;
     }
 
     partial class ThisRibbonCollection
