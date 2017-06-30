@@ -221,7 +221,8 @@ namespace RegexMarkup
                     .Replace('[', '<')
                     .Replace(']', '>')
                     .Replace("&#91;", "[")
-                    .Replace("&#93;", "]");
+                    .Replace("&#93;", "]")
+                    .Replace("underaccent", "accentunder");
                 equations.Add(Tuple.Create(mmlstr, ActiveDocument.Range(frng.Start, frng.End)));
             }
 
@@ -290,7 +291,7 @@ namespace RegexMarkup
                 {"equation", Color.FromArgb(127, 15, 126)},
                 {"graphic", Color.FromArgb(56, 152, 103)},
                 {"mmlmath", Color.FromArgb(24, 255, 254)},
-                {"mml:", Color.LightGray}
+                {"mml:", Color.LightSteelBlue}
             };
             
             /* Get XML from equation*/
