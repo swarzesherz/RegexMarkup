@@ -241,7 +241,7 @@ namespace RegexMarkup
         private String tex2mml(String tex) {
             String result = "";
             String command = "";
-            tex = tex.Replace("\r", " ").Replace("\n", " ");
+            tex = tex.Replace(@"{aligned}", @"{align}").Replace("\r", " ").Replace("\n", " ");
             if (tex.Substring(0, 1) == "-")
                 tex = " -" + tex.Substring(1);
             command = String.Format(@"/C tex2mml ""{0}"" > tex.mml", Regex.Replace(tex, @"(\\*)" + "\"", @"$1$1\" + "\""));
